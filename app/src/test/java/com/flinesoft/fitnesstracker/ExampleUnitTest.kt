@@ -1,4 +1,4 @@
-package com.example.fitnesstracker
+package com.flinesoft.fitnesstracker
 
 import org.junit.Test
 

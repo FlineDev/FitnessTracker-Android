@@ -1,4 +1,4 @@
-package com.example.fitnesstracker
+package com.flinesoft.fitnesstracker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
