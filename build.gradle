@@ -1,15 +1,41 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.3.50'
+    ext {
+        version_appcompat = '1.1.0'
+        version_constraint_layout = '2.0.0-beta2'
+        version_core = '1.1.0'
+        version_coroutine = '1.3.2'
+        version_espresso = '3.2.0'
+        version_fragment = '1.1.0'
+        version_glide = '4.10.0'
+        version_gradle = '3.5.1'
+        version_junit = '4.12'
+        version_joda = '2.10.4'
+        version_kotlin = '1.3.50'
+        version_lifecycle_extensions = '2.1.0'
+        version_material = '1.0.0'
+        version_moshi = '1.8.0'
+        version_navigation = '2.1.0'
+        version_paging = '2.1.0'
+        version_retrofit = '2.6.2'
+        version_retrofit_coroutines_adapter = '0.9.2'
+        version_recyclerview = '1.1.0-beta04'
+        version_room = '2.2.0-rc01'
+        version_test_runner = '1.2.0'
+        version_timber = '4.7.1'
+        version_work = '2.2.0'
+    }
+
     repositories {
         google()
         jcenter()
-        
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.android.tools.build:gradle:$version_gradle"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$version_kotlin"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
         classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,7 +46,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
     }
 }
 
