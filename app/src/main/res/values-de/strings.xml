@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FitnessTracker</string>
+    <string name="menu_main_workouts">Trainings</string>
+    <string name="menu_main_statistics">Statistiken</string>
+</resources>
