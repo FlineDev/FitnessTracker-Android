@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">FitnessTracker</string>
-    <string name="menu_main_statistics">Statistics</string>
-    <string name="menu_main_workouts">Workouts</string>
+    <string name="title_statistics">Statistics</string>
+    <string name="title_workouts">Workouts</string>
 </resources>
