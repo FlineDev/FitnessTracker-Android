@@ -45,10 +45,6 @@ android {
     lintOptions {
         // if true, stop the gradle build if errors are found
         abortOnError true
-        // if true, check all issues, including those that are off by default
-        checkAllWarnings true
-        // if true, treat all warnings as errors
-        warningsAsErrors true
     }
 }
 
