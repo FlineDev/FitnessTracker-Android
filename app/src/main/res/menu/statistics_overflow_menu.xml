@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/statistics_overflow_data"
+        android:icon="@drawable/ic_statistics_overflow_data"
+        android:title="@string/statistics_overflow_data" />
+
+    <item
+        android:id="@+id/statistics_overflow_calc"
+        android:icon="@drawable/ic_statistics_overflow_calc"
+        android:title="@string/statistics_overflow_calc" />
+</menu>

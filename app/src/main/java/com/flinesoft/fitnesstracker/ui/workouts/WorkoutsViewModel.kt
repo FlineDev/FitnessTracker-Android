@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class WorkoutsViewModel : ViewModel() {
-
     private val _text = MutableLiveData<String>().apply {
         value = "This is workouts Fragment"
     }

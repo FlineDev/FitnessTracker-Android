@@ -1,6 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="app_name">FitnessTracker</string>
+
+    <string name="statistics_overflow_calc">Berechnungsmethode</string>
+    <string name="statistics_overflow_data">Basisdaten verändern</string>
+
     <string name="title_statistics">Statistiken</string>
     <string name="title_workouts">Trainings</string>
+
+    <string name="workouts_overflow_reminder">Erinnerungen einstellen</string>
 </resources>

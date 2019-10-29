@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
         android:id="@+id/navigation_workouts"
         android:icon="@drawable/ic_workouts"
@@ -10,5 +9,4 @@
         android:id="@+id/navigation_statistics"
         android:icon="@drawable/ic_statistics"
         android:title="@string/title_statistics" />
-
 </menu>
