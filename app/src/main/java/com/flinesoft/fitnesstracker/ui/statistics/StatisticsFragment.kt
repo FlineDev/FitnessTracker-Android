@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.appcompat.view.menu.MenuBuilder
 import com.flinesoft.fitnesstracker.R
-
+import com.leinardi.android.speeddial.SpeedDialView
 
 
 class StatisticsFragment : Fragment() {
@@ -17,13 +17,14 @@ class StatisticsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         statisticsViewModel = ViewModelProviders.of(this).get(StatisticsViewModel::class.java)
 
-        val root = inflater.inflate(R.layout.fragment_statistics, container, false)
-        val textView: TextView = root.findViewById(R.id.text_statistics)
+        val rootView: View = inflater.inflate(R.layout.fragment_statistics, container, false)
+        val textView: TextView = rootView.findViewById(R.id.text_statistics)
         statisticsViewModel.text.observe(this, Observer { textView.text = it })
 
         setHasOptionsMenu(true)
+        configureFloatingActionButtonWithSpeedDial(rootView)
 
-        return root
+        return rootView
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -32,5 +33,10 @@ class StatisticsFragment : Fragment() {
         if (menu is MenuBuilder) {
             menu.setOptionalIconsVisible(true)
         }
+    }
+
+    private fun configureFloatingActionButtonWithSpeedDial(rootView: View) {
+        val speedDialView = rootView.findViewById<SpeedDialView>(R.id.statistics_speed_dial)
+        speedDialView.inflate(R.menu.statistics_speed_dial_menu)
     }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/workouts_speed_dial_workout"
+        android:icon="@drawable/ic_workouts_speed_dial_workout"
+        android:title="@string/workouts_speed_dial_workout" />
+
+    <item
+        android:id="@+id/workouts_speed_dial_injury"
+        android:icon="@drawable/ic_workouts_speed_dial_injury"
+        android:title="@string/workouts_speed_dial_injury" />
+</menu>

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.flinesoft.fitnesstracker.R
+import com.leinardi.android.speeddial.SpeedDialView
 
 class WorkoutsFragment : Fragment() {
     private lateinit var workoutsViewModel: WorkoutsViewModel
@@ -15,13 +16,14 @@ class WorkoutsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         workoutsViewModel = ViewModelProviders.of(this).get(WorkoutsViewModel::class.java)
 
-        val root = inflater.inflate(R.layout.fragment_workouts, container, false)
-        val textView: TextView = root.findViewById(R.id.text_workouts)
+        val rootView: View = inflater.inflate(R.layout.fragment_workouts, container, false)
+        val textView: TextView = rootView.findViewById(R.id.text_workouts)
         workoutsViewModel.text.observe(this, Observer { textView.text = it })
 
         setHasOptionsMenu(true)
+        configureFloatingActionButtonWithSpeedDial(rootView)
 
-        return root
+        return rootView
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -30,5 +32,10 @@ class WorkoutsFragment : Fragment() {
         if (menu is MenuBuilder) {
             menu.setOptionalIconsVisible(true)
         }
+    }
+
+    private fun configureFloatingActionButtonWithSpeedDial(rootView: View) {
+        val speedDialView = rootView.findViewById<SpeedDialView>(R.id.workouts_speed_dial)
+        speedDialView.inflate(R.menu.workouts_speed_dial_menu)
     }
 }

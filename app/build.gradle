@@ -103,6 +103,9 @@ dependencies {
     // Retrofit Coroutines Support
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
 
+    // A Floating Action Button Speed Dial implementation for Android that follows the Material Design specification
+    implementation "com.leinardi.android:speed-dial:$version_speed_dial"
+
     // Glide
     implementation "com.github.bumptech.glide:glide:$version_glide"
 
