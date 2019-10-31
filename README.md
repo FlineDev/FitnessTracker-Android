@@ -1,6 +1,6 @@
 [![Build Status](https://app.bitrise.io/app/a585f74c9b21bdd8/status.svg?token=QqGgwBKQfDPO06vldoB52A)](https://app.bitrise.io/app/a585f74c9b21bdd8)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/38033a9a5d59407287d45fd12a21b392)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Dschee/FitnessTracker-Android&amp;utm_campaign=Badge_Grade)
-[![codecov](https://codecov.io/gh/Dschee/FitnessTracker-Android/branch/stable/graph/badge.svg?token=V9d0qNPZNn)](https://codecov.io/gh/Dschee/FitnessTracker-Android)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/38033a9a5d59407287d45fd12a21b392)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Jeehut/FitnessTracker-Android&amp;utm_campaign=Badge_Grade)
+[![codecov](https://codecov.io/gh/Jeehut/FitnessTracker-Android/branch/stable/graph/badge.svg?token=V9d0qNPZNn)](https://codecov.io/gh/Jeehut/FitnessTracker-Android)
 
 # FitnessTracker-Android
 
