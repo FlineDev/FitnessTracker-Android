@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.appcompat.view.menu.MenuBuilder
 import com.flinesoft.fitnesstracker.R
 import com.leinardi.android.speeddial.SpeedDialView
-
+import timber.log.Timber
 
 class StatisticsFragment : Fragment() {
     private lateinit var statisticsViewModel: StatisticsViewModel
@@ -36,7 +36,26 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun configureFloatingActionButtonWithSpeedDial(rootView: View) {
-        val speedDialView = rootView.findViewById<SpeedDialView>(R.id.statistics_speed_dial)
+        val speedDialView: SpeedDialView = rootView.findViewById(R.id.statistics_speed_dial)
         speedDialView.inflate(R.menu.statistics_speed_dial_menu)
+
+        speedDialView.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
+            when(actionItem.id) {
+                R.id.statistics_speed_dial_waist_circumference -> {
+                    Timber.d("waist circumference button pressed")
+                    return@OnActionSelectedListener true
+                }
+
+                R.id.statistics_speed_dial_weight -> {
+                    Timber.d("weight button pressed")
+                    return@OnActionSelectedListener true
+                }
+
+                else -> {
+                    Timber.e("unknown speed dial action id clicked: '${actionItem.id}'")
+                    return@OnActionSelectedListener false
+                }
+            }
+        })
     }
 }
