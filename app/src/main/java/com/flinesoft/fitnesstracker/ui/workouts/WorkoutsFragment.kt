@@ -35,6 +35,20 @@ class WorkoutsFragment : Fragment() {
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.workouts_overflow_reminder -> {
+                Timber.d("reminder button pressed")
+                return true
+            }
+
+            else -> {
+                Timber.e("unknown overflow item id clicked: '${item.itemId}'")
+                return false
+            }
+        }
+    }
+
     private fun configureFloatingActionButtonWithSpeedDial(rootView: View) {
         val speedDialView: SpeedDialView = rootView.findViewById(R.id.workouts_speed_dial)
         speedDialView.inflate(R.menu.workouts_speed_dial_menu)

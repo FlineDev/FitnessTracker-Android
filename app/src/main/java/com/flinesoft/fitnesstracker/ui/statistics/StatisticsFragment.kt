@@ -35,6 +35,25 @@ class StatisticsFragment : Fragment() {
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.statistics_overflow_data -> {
+                Timber.d("data button pressed")
+                return true
+            }
+
+            R.id.statistics_overflow_calc -> {
+                Timber.d("calc button pressed")
+                return true
+            }
+
+            else -> {
+                Timber.e("unknown overflow item id clicked: '${item.itemId}'")
+                return false
+            }
+        }
+    }
+
     private fun configureFloatingActionButtonWithSpeedDial(rootView: View) {
         val speedDialView: SpeedDialView = rootView.findViewById(R.id.statistics_speed_dial)
         speedDialView.inflate(R.menu.statistics_speed_dial_menu)
