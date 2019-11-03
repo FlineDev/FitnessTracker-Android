@@ -4,20 +4,20 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.flinesoft.fitnesstracker.globals.utility.TimeInterval
 import com.flinesoft.fitnesstracker.globals.utility.hours
-import java.util.*
+import org.joda.time.DateTime
 
 @Entity(tableName = "Workouts")
 data class Workout(
     var type: Type,
-    var startDate: Date,
-    var endDate: Date
+    var startDate: DateTime,
+    var endDate: DateTime
 ): Recoverable {
     enum class Type {
         CARDIO, MUSCLE_BUILDING
     }
 
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0L
+    var id: Long = 0L
 
     override val timeToRecover: TimeInterval
         get() = when (type) {

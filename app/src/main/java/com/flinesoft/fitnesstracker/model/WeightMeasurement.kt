@@ -2,13 +2,13 @@ package com.flinesoft.fitnesstracker.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
+import org.joda.time.DateTime
 
 @Entity(tableName = "WeightMeasurements")
 data class WeightMeasurement(
     var weightInKilograms: Double,
-    var measureDate: Date
+    var measureDate: DateTime
 ) {
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0L
+    var id: Long = 0L
 }
