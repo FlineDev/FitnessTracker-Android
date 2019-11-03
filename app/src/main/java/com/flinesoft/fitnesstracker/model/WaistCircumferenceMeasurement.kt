@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity
+@Entity(tableName = "WaistCircumferenceMeasurements")
 data class WaistCircumferenceMeasurement(
     var circumferenceInCentimeters: Double,
     var measureDate: Date

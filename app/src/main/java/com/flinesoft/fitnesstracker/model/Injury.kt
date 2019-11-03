@@ -7,7 +7,7 @@ import com.flinesoft.fitnesstracker.globals.utility.days
 import com.flinesoft.fitnesstracker.globals.utility.hours
 import java.util.*
 
-@Entity
+@Entity(tableName = "Injuries")
 data class Injury(
     var type: Type,
     var startDate: Date

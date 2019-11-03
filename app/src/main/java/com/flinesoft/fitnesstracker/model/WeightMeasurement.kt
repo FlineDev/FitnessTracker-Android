@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity
+@Entity(tableName = "WeightMeasurements")
 data class WeightMeasurement(
     var weightInKilograms: Double,
     var measureDate: Date

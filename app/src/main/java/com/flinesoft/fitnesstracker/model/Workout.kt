@@ -6,7 +6,7 @@ import com.flinesoft.fitnesstracker.globals.utility.TimeInterval
 import com.flinesoft.fitnesstracker.globals.utility.hours
 import java.util.*
 
-@Entity
+@Entity(tableName = "Workouts")
 data class Workout(
     var type: Type,
     var startDate: Date,
