@@ -9,7 +9,7 @@ buildscript {
         version_espresso = '3.2.0'
         version_fragment = '1.1.0'
         version_glide = '4.10.0'
-        version_gradle = '3.5.1'
+        version_gradle = '3.5.2'
         version_junit = '4.12'
         version_joda = '2.10.4'
         version_kotlin = '1.3.50'

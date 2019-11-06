@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.flinesoft.fitnesstracker.R
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
 import timber.log.Timber
 
@@ -38,7 +39,7 @@ class WorkoutsFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.workouts_overflow_reminder -> {
-                Timber.d("reminder button pressed")
+                showRemindersForm()
                 return true
             }
 
@@ -56,12 +57,12 @@ class WorkoutsFragment : Fragment() {
         speedDialView.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
             when(actionItem.id) {
                 R.id.workouts_speed_dial_injury -> {
-                    Timber.d("injury button pressed")
+                    showNewInjuryForm()
                     return@OnActionSelectedListener true
                 }
 
                 R.id.workouts_speed_dial_workout -> {
-                    Timber.d("workout button pressed")
+                    showNewWorkoutForm()
                     return@OnActionSelectedListener true
                 }
 
@@ -71,5 +72,26 @@ class WorkoutsFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun showRemindersForm() {
+        MaterialAlertDialogBuilder(context)
+            .setTitle(R.string.workouts_overflow_reminder)
+            // TODO: not yet implemented
+            .show()
+    }
+
+    private fun showNewInjuryForm() {
+        MaterialAlertDialogBuilder(context)
+            .setTitle(R.string.workouts_speed_dial_injury)
+            // TODO: not yet implemented
+            .show()
+    }
+
+    private fun showNewWorkoutForm() {
+        MaterialAlertDialogBuilder(context)
+            .setTitle(R.string.workouts_speed_dial_workout)
+            // TODO: not yet implemented
+            .show()
     }
 }
