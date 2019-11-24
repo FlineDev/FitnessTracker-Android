@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/navigation_workouts"
         android:name="com.flinesoft.fitnesstracker.ui.workouts.WorkoutsFragment"
-        android:label="@string/workouts_title"
+        android:label="@string/workouts.title"
         tools:layout="@layout/fragment_workouts" />
 
     <fragment
         android:id="@+id/navigation_statistics"
         android:name="com.flinesoft.fitnesstracker.ui.statistics.StatisticsFragment"
-        android:label="@string/statistics_title"
+        android:label="@string/statistics.title"
         tools:layout="@layout/fragment_statistics" />
 </navigation>

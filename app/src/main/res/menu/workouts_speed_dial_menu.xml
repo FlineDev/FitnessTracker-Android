@@ -3,10 +3,10 @@
     <item
         android:id="@+id/workouts_speed_dial_workout"
         android:icon="@drawable/ic_workouts_speed_dial_workout"
-        android:title="@string/workouts_speed_dial_workout" />
+        android:title="@string/workouts.speed_dial.workout" />
 
     <item
         android:id="@+id/workouts_speed_dial_injury"
         android:icon="@drawable/ic_workouts_speed_dial_injury"
-        android:title="@string/workouts_speed_dial_injury" />
+        android:title="@string/workouts.speed_dial.injury" />
 </menu>

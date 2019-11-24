@@ -2,17 +2,17 @@
 <resources>
     <string name="app_name">FitnessTracker</string>
 
-    <string name="global_action_cancel">Abbrechen</string>
-    <string name="global_action_save">Speichern</string>
+    <string name="global.action.cancel">Abbrechen</string>
+    <string name="global.action.save">Speichern</string>
 
-    <string name="statistics_overflow_calc">Berechnungsmethode</string>
-    <string name="statistics_overflow_data">Basisdaten verändern</string>
-    <string name="statistics_speed_dial_waist_circumference">Neuer Taillenumfang</string>
-    <string name="statistics_speed_dial_weight">Neues Gewicht</string>
-    <string name="statistics_title">Statistiken</string>
+    <string name="statistics.overflow.calc">Berechnungsmethode</string>
+    <string name="statistics.overflow.data">Basisdaten verändern</string>
+    <string name="statistics.speed_dial.waist_circumference">Neuer Taillenumfang</string>
+    <string name="statistics.speed_dial.weight">Neues Gewicht</string>
+    <string name="statistics.title">Statistiken</string>
 
-    <string name="workouts_overflow_reminder">Erinnerungen einstellen</string>
-    <string name="workouts_speed_dial_injury">Neue Verletzung</string>
-    <string name="workouts_speed_dial_workout">Neues Training</string>
-    <string name="workouts_title">Trainings</string>
+    <string name="workouts.overflow.reminder">Erinnerungen einstellen</string>
+    <string name="workouts.speed_dial.injury">Neue Verletzung</string>
+    <string name="workouts.speed_dial.workout">Neues Training</string>
+    <string name="workouts.title">Trainings</string>
 </resources>

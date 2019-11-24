@@ -3,10 +3,10 @@
     <item
         android:id="@+id/statistics_speed_dial_weight"
         android:icon="@drawable/ic_statistics_speed_dial_weight"
-        android:title="@string/statistics_speed_dial_weight" />
+        android:title="@string/statistics.speed_dial.weight" />
 
     <item
         android:id="@+id/statistics_speed_dial_waist_circumference"
         android:icon="@drawable/ic_statistics_speed_dial_waist_circumference"
-        android:title="@string/statistics_speed_dial_waist_circumference" />
+        android:title="@string/statistics.speed_dial.waist_circumference" />
 </menu>
