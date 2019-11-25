@@ -1,6 +1,9 @@
 package com.flinesoft.fitnesstracker.ui.statistics
 
-import android.content.DialogInterface
+import android.icu.text.MeasureFormat
+import android.icu.util.Measure
+import android.icu.util.MeasureUnit
+import android.icu.util.ULocale
 import android.os.Bundle
 import android.text.InputType
 import android.view.*
@@ -11,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.appcompat.view.menu.MenuBuilder
 import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.globals.extensions.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
 import timber.log.Timber
@@ -98,34 +102,48 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun showNewWaistCircumferenceForm() {
-        val inputTextField = EditText(context).apply { inputType = InputType.TYPE_NUMBER_FLAG_DECIMAL }
+        val inputTextField = EditText(context).apply {
+            inputType = InputType.TYPE_CLASS_NUMBER
+            setHint(R.string.statistics_speed_dial_waist_circumference_hint)
+            afterTextChanged { _, textWatcher ->
+                val newValue: Int = MeasureFormatExt.short.stringToInt(text.toString(), MeasureUnit.CENTIMETER)
+                setTextIgnoringTextWatcher(MeasureFormatExt.short.valueToString(newValue, MeasureUnit.CENTIMETER), textWatcher)
+            }
+        }
 
         MaterialAlertDialogBuilder(context)
             .setTitle(R.string.statistics_speed_dial_waist_circumference)
-            .setView(inputTextField)
+            .setMessage(R.string.statistics_speed_dial_waist_circumference_input_message)
+            .setView(inputTextField, 50, 0, 50, 0)
             .setPositiveButton(R.string.global_action_save) { _, _ ->
-                val doubleValue = inputTextField.text.toString().toDouble()
-                saveNewWaistCircumference(doubleValue)
+                saveNewWaistCircumference(MeasureFormatExt.short.stringToInt(inputTextField.text.toString(), MeasureUnit.CENTIMETER))
             }
             .setNegativeButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
             .show()
     }
 
     private fun showNewWeightForm() {
-        val inputTextField = EditText(context).apply { inputType = InputType.TYPE_NUMBER_FLAG_DECIMAL }
+        val inputTextField = EditText(context).apply {
+            inputType = InputType.TYPE_CLASS_NUMBER + InputType.TYPE_NUMBER_FLAG_DECIMAL
+            setHint(R.string.statistics_speed_dial_weight_hint)
+            afterTextChanged { _, textWatcher ->
+                val newValue: Double = MeasureFormatExt.short.stringToDouble(text.toString(), MeasureUnit.KILOGRAM)
+                setTextIgnoringTextWatcher(MeasureFormatExt.short.valueToString(newValue, MeasureUnit.KILOGRAM), textWatcher)
+            }
+        }
 
         MaterialAlertDialogBuilder(context)
             .setTitle(R.string.statistics_speed_dial_weight)
-            .setView(inputTextField)
+            .setMessage(R.string.statistics_speed_dial_weight_input_message)
+            .setView(inputTextField, 50, 0, 50, 0)
             .setPositiveButton(R.string.global_action_save) { _, _ ->
-                val doubleValue = inputTextField.text.toString().toDouble()
-                saveNewWeight(doubleValue)
+                saveNewWeight(MeasureFormatExt.short.stringToDouble(inputTextField.text.toString(), MeasureUnit.KILOGRAM))
             }
             .setNegativeButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
             .show()
     }
 
-    private fun saveNewWaistCircumference(waistCircumference: Double) {
+    private fun saveNewWaistCircumference(waistCircumference: Int) {
         // TODO: not yet implemented
     }
 

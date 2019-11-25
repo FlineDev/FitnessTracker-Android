@@ -3,16 +3,26 @@
     <string name="app_name">FitnessTracker</string>
 
     <string name="global.action.cancel">Cancel</string>
+
     <string name="global.action.save">Save</string>
 
     <string name="statistics.overflow.calc">Calculation method</string>
+
     <string name="statistics.overflow.data">Change base data</string>
+
     <string name="statistics.speed_dial.waist_circumference">New waist circumference</string>
+    <string name="statistics.speed_dial.waist_circumference.hint">e.g. 90 cm</string>
+    <string name="statistics.speed_dial.waist_circumference.input_message">Enter your waist circumference in centimeters.</string>
     <string name="statistics.speed_dial.weight">New weight</string>
+    <string name="statistics.speed_dial.weight.hint">e.g. 75 kg</string>
+    <string name="statistics.speed_dial.weight.input_message">Enter your weight in kilograms.</string>
+
     <string name="statistics.title">Statistics</string>
 
     <string name="workouts.overflow.reminder">Configure reminders</string>
+
     <string name="workouts.speed_dial.injury">New injury</string>
     <string name="workouts.speed_dial.workout">New workout</string>
+
     <string name="workouts.title">Workouts</string>
 </resources>
