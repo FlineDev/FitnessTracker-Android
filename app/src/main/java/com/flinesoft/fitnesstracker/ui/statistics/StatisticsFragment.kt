@@ -8,14 +8,17 @@ import android.os.Bundle
 import android.text.InputType
 import android.view.*
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.appcompat.view.menu.MenuBuilder
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.extensions.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.leinardi.android.speeddial.SpeedDialView
 import timber.log.Timber
 
@@ -106,8 +109,10 @@ class StatisticsFragment : Fragment() {
             inputType = InputType.TYPE_CLASS_NUMBER
             setHint(R.string.statistics_speed_dial_waist_circumference_hint)
             afterTextChanged { _, textWatcher ->
-                val newValue: Int = MeasureFormatExt.short.stringToInt(text.toString(), MeasureUnit.CENTIMETER)
-                setTextIgnoringTextWatcher(MeasureFormatExt.short.valueToString(newValue, MeasureUnit.CENTIMETER), textWatcher)
+                MeasureFormatExt.short.stringToInt(text.toString(), MeasureUnit.CENTIMETER)?.let { newValue: Int ->
+                    setTextIgnoringTextWatcher(MeasureFormatExt.short.valueToString(newValue, MeasureUnit.CENTIMETER), textWatcher)
+                    setSelection(MeasureFormatExt.short.numberFormat.format(newValue).length)
+                }
             }
         }
 
@@ -116,7 +121,12 @@ class StatisticsFragment : Fragment() {
             .setMessage(R.string.statistics_speed_dial_waist_circumference_input_message)
             .setView(inputTextField, 50, 0, 50, 0)
             .setPositiveButton(R.string.global_action_save) { _, _ ->
-                saveNewWaistCircumference(MeasureFormatExt.short.stringToInt(inputTextField.text.toString(), MeasureUnit.CENTIMETER))
+                MeasureFormatExt.short.stringToInt(inputTextField.text.toString(), MeasureUnit.CENTIMETER)?.let { value: Int ->
+                    saveNewWaistCircumference(value)
+                    view?.snack(R.string.global_info_saved_successfully)
+                } ?: run {
+                    view?.snack(R.string.global_error_invalid_input)
+                }
             }
             .setNegativeButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
             .show()
@@ -127,8 +137,10 @@ class StatisticsFragment : Fragment() {
             inputType = InputType.TYPE_CLASS_NUMBER + InputType.TYPE_NUMBER_FLAG_DECIMAL
             setHint(R.string.statistics_speed_dial_weight_hint)
             afterTextChanged { _, textWatcher ->
-                val newValue: Double = MeasureFormatExt.short.stringToDouble(text.toString(), MeasureUnit.KILOGRAM)
-                setTextIgnoringTextWatcher(MeasureFormatExt.short.valueToString(newValue, MeasureUnit.KILOGRAM), textWatcher)
+                MeasureFormatExt.short.stringToDouble(text.toString(), MeasureUnit.KILOGRAM)?.let { newValue ->
+                    setTextIgnoringTextWatcher(MeasureFormatExt.short.valueToString(newValue, MeasureUnit.KILOGRAM), textWatcher)
+                    setSelection(MeasureFormatExt.short.numberFormat.format(newValue).length)
+                }
             }
         }
 
@@ -137,7 +149,12 @@ class StatisticsFragment : Fragment() {
             .setMessage(R.string.statistics_speed_dial_weight_input_message)
             .setView(inputTextField, 50, 0, 50, 0)
             .setPositiveButton(R.string.global_action_save) { _, _ ->
-                saveNewWeight(MeasureFormatExt.short.stringToDouble(inputTextField.text.toString(), MeasureUnit.KILOGRAM))
+                MeasureFormatExt.short.stringToDouble(inputTextField.text.toString(), MeasureUnit.KILOGRAM)?.let { value: Double ->
+                    saveNewWeight(value)
+                    view?.snack(R.string.global_info_saved_successfully)
+                } ?: run {
+                    view?.snack(R.string.global_error_invalid_input)
+                }
             }
             .setNegativeButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
             .show()

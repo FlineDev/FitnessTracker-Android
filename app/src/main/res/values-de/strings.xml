@@ -6,6 +6,10 @@
 
     <string name="global.action.save">Speichern</string>
 
+    <string name="global.error.invalid_input">Ungültige Daten. Bitte prüfe sie &amp; versuche es erneut.</string>
+
+    <string name="global.info.saved_successfully">Daten erfolgreich gespeichert.</string>
+
     <string name="statistics.overflow.calc">Berechnungsmethode</string>
 
     <string name="statistics.overflow.data">Basisdaten verändern</string>
