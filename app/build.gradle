@@ -52,6 +52,7 @@ dependencies {
     // Basics
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version_kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$version_kotlin"
 
     // Support libraries
     implementation "androidx.appcompat:appcompat:$version_appcompat"
