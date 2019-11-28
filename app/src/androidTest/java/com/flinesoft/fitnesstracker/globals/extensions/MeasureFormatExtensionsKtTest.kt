@@ -3,10 +3,13 @@ package com.flinesoft.fitnesstracker.globals.extensions
 import android.icu.text.MeasureFormat
 import android.icu.util.MeasureUnit
 import android.icu.util.ULocale
+import androidx.test.runner.AndroidJUnit4
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4::class)
 class MeasureFormatExtensionsKtTest {
     private val measureFormat = MeasureFormat.getInstance(ULocale.US, MeasureFormat.FormatWidth.SHORT)
 
