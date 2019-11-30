@@ -4,12 +4,19 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
+apply from: rootProject.file("jacoco.gradle")
+
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
 
     dataBinding {
         enabled = true
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
 
     compileOptions {
@@ -37,7 +44,6 @@ android {
         }
 
         release {
-            testCoverageEnabled true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -46,6 +52,15 @@ android {
     lintOptions {
         // if true, stop the gradle build if errors are found
         abortOnError true
+    }
+
+    testOptions {
+        execution 'ANDROID_TEST_ORCHESTRATOR'
+        animationsDisabled true
+
+        unitTests {
+            includeAndroidResources = true
+        }
     }
 }
 
@@ -119,16 +134,4 @@ dependencies {
     testImplementation "androidx.room:room-testing:$version_room"
     androidTestImplementation "androidx.test:runner:$version_test_runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso"
-}
-
-// Code Coverage
-apply plugin: 'jacoco-android'
-
-jacoco {
-    toolVersion = "0.8.4"
-}
-
-tasks.withType(Test) {
-    jacoco.includeNoLocationClasses = true
-    jacoco.excludes = ['jdk.internal.*']
 }
