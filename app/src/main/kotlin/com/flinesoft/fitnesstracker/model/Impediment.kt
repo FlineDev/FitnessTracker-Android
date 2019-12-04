@@ -7,8 +7,8 @@ import com.flinesoft.fitnesstracker.globals.utility.days
 import com.flinesoft.fitnesstracker.globals.utility.hours
 import org.joda.time.DateTime
 
-@Entity(tableName = "Injuries")
-data class Injury(
+@Entity(tableName = "impediments")
+data class Impediment(
     var type: Type,
     var startDate: DateTime
 ): Recoverable {

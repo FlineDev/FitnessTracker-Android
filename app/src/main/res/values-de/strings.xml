@@ -25,7 +25,7 @@
 
     <string name="workouts.overflow.reminder">Erinnerungen einstellen</string>
 
-    <string name="workouts.speed_dial.injury">Neue Verletzung</string>
+    <string name="workouts.speed_dial.impediment">Neue Verhinderung</string>
     <string name="workouts.speed_dial.workout">Neues Training</string>
 
     <string name="workouts.title">Trainings</string>

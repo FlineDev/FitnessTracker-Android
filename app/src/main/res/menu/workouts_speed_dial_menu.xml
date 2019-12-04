@@ -6,7 +6,7 @@
         android:title="@string/workouts.speed_dial.workout" />
 
     <item
-        android:id="@+id/workouts_speed_dial_injury"
-        android:icon="@drawable/ic_workouts_speed_dial_injury"
-        android:title="@string/workouts.speed_dial.injury" />
+        android:id="@+id/workouts_speed_dial_impediment"
+        android:icon="@drawable/ic_workouts_speed_dial_impediment"
+        android:title="@string/workouts.speed_dial.impediment" />
 </menu>

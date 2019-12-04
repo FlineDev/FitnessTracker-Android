@@ -56,8 +56,8 @@ class WorkoutsFragment : Fragment() {
 
         speedDialView.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
             when(actionItem.id) {
-                R.id.workouts_speed_dial_injury -> {
-                    showNewInjuryForm()
+                R.id.workouts_speed_dial_impediment -> {
+                    showNewImpedimentForm()
                     return@OnActionSelectedListener true
                 }
 
@@ -81,9 +81,9 @@ class WorkoutsFragment : Fragment() {
             .show()
     }
 
-    private fun showNewInjuryForm() {
+    private fun showNewImpedimentForm() {
         MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.workouts_speed_dial_injury)
+            .setTitle(R.string.workouts_speed_dial_impediment)
             // TODO: not yet implemented
             .show()
     }

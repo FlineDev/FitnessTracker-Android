@@ -1,15 +1,15 @@
 package com.flinesoft.fitnesstracker.persistence.converters
 
 import androidx.room.TypeConverter
-import com.flinesoft.fitnesstracker.model.Injury
+import com.flinesoft.fitnesstracker.model.Impediment
 import com.flinesoft.fitnesstracker.model.Workout
 
 class EnumConverters {
     @TypeConverter
-    fun injuryTypeToString(injuryType: Injury.Type): String = injuryType.name
+    fun impedimentTypeToString(impedimentType: Impediment.Type): String = impedimentType.name
 
     @TypeConverter
-    fun stringToInjuryType(string: String): Injury.Type = Injury.Type.valueOf(string)
+    fun stringToImpedimentType(string: String): Impediment.Type = Impediment.Type.valueOf(string)
 
     @TypeConverter
     fun workoutTypeToString(workoutType: Workout.Type): String = workoutType.name
