@@ -22,6 +22,6 @@ data class Workout(
     override val timeToRecover: TimeInterval
         get() = when (type) {
             Type.CARDIO -> 24.hours()
-            Type.MUSCLE_BUILDING -> 72.hours()
+            Type.MUSCLE_BUILDING -> 48.hours()
         }
 }
