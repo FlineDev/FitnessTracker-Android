@@ -37,15 +37,15 @@ class WorkoutsFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.workouts_overflow_reminder -> {
                 showRemindersForm()
-                return true
+                true
             }
 
             else -> {
                 Timber.e("unknown overflow item id clicked: '${item.itemId}'")
-                return false
+                false
             }
         }
     }

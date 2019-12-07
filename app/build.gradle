@@ -50,8 +50,10 @@ android {
     }
 
     lintOptions {
-        // if true, stop the gradle build if errors are found
+        warningsAsErrors true
         abortOnError true
+
+        lintConfig file("lint.xml")
     }
 
     testOptions {

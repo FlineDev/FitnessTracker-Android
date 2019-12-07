@@ -1,24 +1,18 @@
 package com.flinesoft.fitnesstracker.ui.statistics
 
-import android.icu.text.MeasureFormat
-import android.icu.util.Measure
 import android.icu.util.MeasureUnit
-import android.icu.util.ULocale
 import android.os.Bundle
 import android.text.InputType
 import android.view.*
 import android.widget.EditText
-import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.appcompat.view.menu.MenuBuilder
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.extensions.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
 import com.leinardi.android.speeddial.SpeedDialView
 import timber.log.Timber
 
