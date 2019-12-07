@@ -63,6 +63,13 @@ android {
             includeAndroidResources = true
         }
     }
+
+    tasks.whenTaskAdded { task ->
+        if (task.name == 'compileDebugSources' || task.name == 'compileReleaseSources') {
+            task.dependsOn lint
+            task.mustRunAfter lint
+        }
+    }
 }
 
 dependencies {
