@@ -1,20 +1,17 @@
 package com.flinesoft.fitnesstracker.persistence
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Query
 import com.flinesoft.fitnesstracker.model.Impediment
 
 @Dao
-interface ImpedimentDao {
-    @Insert
-    fun insert(impediment: Impediment)
-
-    @Update
-    fun update(impediment: Impediment)
-
-    @Delete
-    fun delete(impediment: Impediment)
-
+abstract class ImpedimentDao: CrudDao<Impediment>() {
     @Query("SELECT * FROM Impediments ORDER BY startDate ASC")
-    fun allOrderedByStartDate(): LiveData<List<Impediment>>
+    abstract fun allOrderedByStartDate(): LiveData<List<Impediment>>
+
+    fun create(impediment: Impediment): LiveData<Impediment> = read(insert(impediment))
+
+    @Query("SELECT * FROM Impediments WHERE id = :id")
+    protected abstract fun read(id: Long): LiveData<Impediment>
 }

@@ -1,20 +1,17 @@
 package com.flinesoft.fitnesstracker.persistence
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Query
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
 
 @Dao
-interface WeightMeasurementDao {
-    @Insert
-    fun insert(measurement: WeightMeasurement)
-
-    @Update
-    fun update(measurement: WeightMeasurement)
-
-    @Delete
-    fun delete(measurement: WeightMeasurement)
-
+abstract class WeightMeasurementDao: CrudDao<WeightMeasurement>() {
     @Query("SELECT * FROM WeightMeasurements ORDER BY measureDate ASC")
-    fun allOrderedByMeasureDate(): LiveData<List<WeightMeasurement>>
+    abstract fun allOrderedByMeasureDate(): LiveData<List<WeightMeasurement>>
+
+    fun create(measurement: WeightMeasurement): LiveData<WeightMeasurement> = read(insert(measurement))
+
+    @Query("SELECT * FROM WeightMeasurements WHERE id = :id")
+    protected abstract fun read(id: Long): LiveData<WeightMeasurement>
 }
