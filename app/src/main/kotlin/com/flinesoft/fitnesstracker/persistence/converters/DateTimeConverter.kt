@@ -9,5 +9,5 @@ class DateTimeConverter {
     fun dateTimeToString(dateTime: DateTime): String = ISODateTimeFormat.dateTime().withZoneUTC().print(dateTime)
 
     @TypeConverter
-    fun stringToDateTime(string: String): DateTime = ISODateTimeFormat.dateTime().withZoneUTC().parseDateTime(string)
+    fun stringToDateTime(string: String): DateTime = ISODateTimeFormat.dateTime().parseDateTime(string)
 }
