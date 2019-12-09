@@ -6,7 +6,7 @@ import androidx.room.Query
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 
 @Dao
-abstract class WaistCircumferenceMeasurementDao: CrudDao<WaistCircumferenceMeasurement>() {
+abstract class WaistCircumferenceMeasurementDao : CrudDao<WaistCircumferenceMeasurement>() {
     @Query("SELECT * FROM WaistCircumferenceMeasurements ORDER BY measureDate ASC")
     abstract fun allOrderedByMeasureDate(): LiveData<List<WaistCircumferenceMeasurement>>
 

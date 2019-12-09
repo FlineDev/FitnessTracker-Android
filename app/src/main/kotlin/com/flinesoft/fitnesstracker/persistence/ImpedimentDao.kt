@@ -6,7 +6,7 @@ import androidx.room.Query
 import com.flinesoft.fitnesstracker.model.Impediment
 
 @Dao
-abstract class ImpedimentDao: CrudDao<Impediment>() {
+abstract class ImpedimentDao : CrudDao<Impediment>() {
     @Query("SELECT * FROM Impediments ORDER BY startDate ASC")
     abstract fun allOrderedByStartDate(): LiveData<List<Impediment>>
 

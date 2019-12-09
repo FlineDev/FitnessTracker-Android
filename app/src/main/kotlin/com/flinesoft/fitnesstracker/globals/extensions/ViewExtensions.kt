@@ -5,7 +5,6 @@ import android.view.ViewGroup.MarginLayoutParams
 import com.flinesoft.fitnesstracker.globals.BOTTOM_NAVIGATION_VIEW_HEIGHT
 import com.google.android.material.snackbar.Snackbar
 
-
 fun View.snack(resId: Int, duration: Int = Snackbar.LENGTH_SHORT) {
     Snackbar.make(this, resId, duration).apply {
         (view.layoutParams as? MarginLayoutParams)?.apply {

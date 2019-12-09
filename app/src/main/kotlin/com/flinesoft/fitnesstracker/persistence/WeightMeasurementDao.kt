@@ -6,7 +6,7 @@ import androidx.room.Query
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
 
 @Dao
-abstract class WeightMeasurementDao: CrudDao<WeightMeasurement>() {
+abstract class WeightMeasurementDao : CrudDao<WeightMeasurement>() {
     @Query("SELECT * FROM WeightMeasurements ORDER BY measureDate ASC")
     abstract fun allOrderedByMeasureDate(): LiveData<List<WeightMeasurement>>
 

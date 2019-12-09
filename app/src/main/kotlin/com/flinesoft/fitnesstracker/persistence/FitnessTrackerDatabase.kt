@@ -14,7 +14,7 @@ import com.flinesoft.fitnesstracker.persistence.converters.EnumConverters
 
 @Database(entities = [Impediment::class, WaistCircumferenceMeasurement::class, WeightMeasurement::class, Workout::class], version = 1)
 @TypeConverters(DateTimeConverter::class, EnumConverters::class)
-abstract class FitnessTrackerDatabase: RoomDatabase() {
+abstract class FitnessTrackerDatabase : RoomDatabase() {
     abstract val impedimentDao: ImpedimentDao
     abstract val waistCircumferenceMeasurementDao: WaistCircumferenceMeasurementDao
     abstract val weightMeasurementDao: WeightMeasurementDao

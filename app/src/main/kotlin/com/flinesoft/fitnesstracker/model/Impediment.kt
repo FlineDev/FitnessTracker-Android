@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 data class Impediment(
     var type: Type,
     var startDate: DateTime
-): Recoverable {
+) : Recoverable {
     enum class Type {
         STIFFNESS, MODERATE_COLD, SEVERE_COLD, MODERATE_INJURY, SEVERE_INJURY
     }
@@ -29,4 +29,3 @@ data class Impediment(
             Type.SEVERE_INJURY -> 4.weeks()
         }
 }
-

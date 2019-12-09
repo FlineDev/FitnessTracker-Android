@@ -55,7 +55,7 @@ class WorkoutsFragment : Fragment() {
         speedDialView.inflate(R.menu.workouts_speed_dial_menu)
 
         speedDialView.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
-            when(actionItem.id) {
+            when (actionItem.id) {
                 R.id.workouts_speed_dial_impediment -> {
                     showNewImpedimentForm()
                     return@OnActionSelectedListener true

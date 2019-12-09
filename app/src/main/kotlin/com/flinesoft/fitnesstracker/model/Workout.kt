@@ -11,7 +11,7 @@ data class Workout(
     var type: Type,
     var startDate: DateTime,
     var endDate: DateTime
-): Recoverable {
+) : Recoverable {
     enum class Type {
         CARDIO, MUSCLE_BUILDING
     }

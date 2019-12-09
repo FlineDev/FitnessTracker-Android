@@ -16,7 +16,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
 import timber.log.Timber
 
-
 class StatisticsFragment : Fragment() {
     private lateinit var statisticsViewModel: StatisticsViewModel
 
@@ -65,7 +64,7 @@ class StatisticsFragment : Fragment() {
         speedDialView.inflate(R.menu.statistics_speed_dial_menu)
 
         speedDialView.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
-            when(actionItem.id) {
+            when (actionItem.id) {
                 R.id.statistics_speed_dial_waist_circumference -> {
                     showNewWaistCircumferenceForm()
                     return@OnActionSelectedListener true
