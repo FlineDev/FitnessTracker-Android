@@ -10,7 +10,7 @@ import org.junit.Assert.*
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class MeasureFormatExtensionsKtTest {
+class MeasureFormatExtKtTest {
     private val measureFormat = MeasureFormat.getInstance(ULocale.US, MeasureFormat.FormatWidth.SHORT)
 
     @Test

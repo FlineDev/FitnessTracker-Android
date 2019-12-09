@@ -4,6 +4,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Update
 
+@Suppress("UnnecessaryAbstractClass")
 abstract class CrudDao<T> {
     @Insert
     protected abstract fun insert(obj: T): Long

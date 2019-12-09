@@ -112,7 +112,7 @@ class StatisticsFragment : Fragment() {
         MaterialAlertDialogBuilder(context)
             .setTitle(R.string.statistics_speed_dial_waist_circumference)
             .setMessage(R.string.statistics_speed_dial_waist_circumference_input_message)
-            .setView(inputTextField, 50, 0, 50, 0)
+            .setView(inputTextField, DIALOG_HORIZONTAL_SPACING, 0, DIALOG_HORIZONTAL_SPACING, 0)
             .setPositiveButton(R.string.global_action_save) { _, _ ->
                 MeasureFormatExt.short.stringToInt(inputTextField.text.toString(), MeasureUnit.CENTIMETER)?.let { value: Int ->
                     saveNewWaistCircumference(value)
@@ -140,7 +140,7 @@ class StatisticsFragment : Fragment() {
         MaterialAlertDialogBuilder(context)
             .setTitle(R.string.statistics_speed_dial_weight)
             .setMessage(R.string.statistics_speed_dial_weight_input_message)
-            .setView(inputTextField, 50, 0, 50, 0)
+            .setView(inputTextField, DIALOG_HORIZONTAL_SPACING, 0, DIALOG_HORIZONTAL_SPACING, 0)
             .setPositiveButton(R.string.global_action_save) { _, _ ->
                 MeasureFormatExt.short.stringToDouble(inputTextField.text.toString(), MeasureUnit.KILOGRAM)?.let { value: Double ->
                     saveNewWeight(value)
