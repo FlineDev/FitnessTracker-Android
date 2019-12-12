@@ -12,8 +12,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.extensions.*
+import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
+import com.flinesoft.fitnesstracker.persistence.FitnessTrackerDatabase
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
+import org.joda.time.DateTime
 import timber.log.Timber
 
 class StatisticsFragment : Fragment() {
@@ -99,10 +102,10 @@ class StatisticsFragment : Fragment() {
 
     private fun showNewWaistCircumferenceForm() {
         val inputTextField = EditText(context).apply {
-            inputType = InputType.TYPE_CLASS_NUMBER
+            inputType = InputType.TYPE_CLASS_NUMBER + InputType.TYPE_NUMBER_FLAG_DECIMAL
             setHint(R.string.statistics_speed_dial_waist_circumference_hint)
             afterTextChanged { _, textWatcher ->
-                MeasureFormatExt.short.stringToInt(text.toString(), MeasureUnit.CENTIMETER)?.let { newValue: Int ->
+                MeasureFormatExt.short.stringToDouble(text.toString(), MeasureUnit.CENTIMETER)?.let { newValue: Double ->
                     setTextIgnoringTextWatcher(MeasureFormatExt.short.valueToString(newValue, MeasureUnit.CENTIMETER), textWatcher)
                     setSelection(MeasureFormatExt.short.numberFormat.format(newValue).length)
                 }
@@ -114,7 +117,7 @@ class StatisticsFragment : Fragment() {
             .setMessage(R.string.statistics_speed_dial_waist_circumference_input_message)
             .setView(inputTextField, 50, 0, 50, 0)
             .setPositiveButton(R.string.global_action_save) { _, _ ->
-                MeasureFormatExt.short.stringToInt(inputTextField.text.toString(), MeasureUnit.CENTIMETER)?.let { value: Int ->
+                MeasureFormatExt.short.stringToDouble(inputTextField.text.toString(), MeasureUnit.CENTIMETER)?.let { value: Double ->
                     saveNewWaistCircumference(value)
                     view?.snack(R.string.global_info_saved_successfully)
                 } ?: run {
@@ -153,8 +156,14 @@ class StatisticsFragment : Fragment() {
             .show()
     }
 
-    private fun saveNewWaistCircumference(waistCircumference: Int) {
-        // TODO: not yet implemented
+    private fun saveNewWaistCircumference(waistCircumference: Double) {
+        val measurement = WaistCircumferenceMeasurement(
+            circumferenceInCentimeters = waistCircumference,
+            measureDate = DateTime.now()
+        )
+        val application = requireNotNull(this.activity).application
+        val database = FitnessTrackerDatabase.getInstance(application)
+        database.waistCircumferenceMeasurementDao.create(measurement)
     }
 
     private fun saveNewWeight(weight: Double) {

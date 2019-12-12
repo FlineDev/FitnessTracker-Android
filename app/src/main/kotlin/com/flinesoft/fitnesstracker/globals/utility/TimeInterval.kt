@@ -5,8 +5,8 @@ package com.flinesoft.fitnesstracker.globals.utility
  */
 typealias TimeInterval = Double
 
-// MARK: Convenience initializers for a `TimeInterval` from integer literals. Use like this: `5.minutes()`
-fun Int.milliseconds(): TimeInterval = toDouble() / 1_000
+// Convenience initializers for a `TimeInterval` from integer literals. Use like this: `5.minutes()`
+fun Int.milliseconds(): TimeInterval = seconds() / 1_000
 fun Int.seconds(): TimeInterval = toDouble()
 fun Int.minutes(): TimeInterval = seconds() * 60
 fun Int.hours(): TimeInterval = minutes() * 60
