@@ -3,6 +3,7 @@ package com.flinesoft.fitnesstracker.persistence
 import androidx.test.runner.AndroidJUnit4
 import com.flinesoft.fitnesstracker.helpers.extensions.awaitValue
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
+import kotlinx.coroutines.runBlocking
 import org.joda.time.DateTime
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -14,7 +15,7 @@ import org.junit.runner.RunWith
 class WaistCircumferenceMeasurementTest: PersistenceTest() {
     @Test
     @Throws(Exception::class)
-    fun runBasicCRUDOperations() {
+    fun runBasicCRUDOperations() = runBlocking {
         val allMeasurementsSortedByMeasureDate = database.waistCircumferenceMeasurementDao.allOrderedByMeasureDate()
         assertNotNull(allMeasurementsSortedByMeasureDate.awaitValue())
         assert(allMeasurementsSortedByMeasureDate.awaitValue()!!.isEmpty())

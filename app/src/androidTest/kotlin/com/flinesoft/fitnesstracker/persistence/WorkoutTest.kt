@@ -3,6 +3,7 @@ package com.flinesoft.fitnesstracker.persistence
 import androidx.test.runner.AndroidJUnit4
 import com.flinesoft.fitnesstracker.helpers.extensions.awaitValue
 import com.flinesoft.fitnesstracker.model.Workout
+import kotlinx.coroutines.runBlocking
 import org.joda.time.DateTime
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -14,7 +15,7 @@ import org.junit.runner.RunWith
 class WorkoutTest: PersistenceTest() {
     @Test
     @Throws(Exception::class)
-    fun runBasicCRUDOperations() {
+    fun runBasicCRUDOperations() = runBlocking {
         val allWorkoutsOrderedByStartDate = database.workoutDao.allOrderedByStartDate()
         assertNotNull(allWorkoutsOrderedByStartDate.awaitValue())
         assert(allWorkoutsOrderedByStartDate.awaitValue()!!.isEmpty())

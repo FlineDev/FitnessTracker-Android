@@ -3,6 +3,7 @@ package com.flinesoft.fitnesstracker.persistence
 import androidx.test.runner.AndroidJUnit4
 import com.flinesoft.fitnesstracker.helpers.extensions.awaitValue
 import com.flinesoft.fitnesstracker.model.Impediment
+import kotlinx.coroutines.runBlocking
 import org.joda.time.DateTime
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -14,7 +15,7 @@ import org.junit.runner.RunWith
 class ImpedimentTest: PersistenceTest() {
     @Test
     @Throws(Exception::class)
-    fun runBasicCRUDOperations() {
+    fun runBasicCRUDOperations() = runBlocking {
         val allImpedimentsOrderedByStartDate = database.impedimentDao.allOrderedByStartDate()
         assertNotNull(allImpedimentsOrderedByStartDate.awaitValue())
         assert(allImpedimentsOrderedByStartDate.awaitValue()!!.isEmpty())
