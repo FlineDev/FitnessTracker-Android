@@ -10,7 +10,7 @@ abstract class WeightMeasurementDao : CrudDao<WeightMeasurement>() {
     @Query("SELECT * FROM WeightMeasurements ORDER BY measureDate ASC")
     abstract fun allOrderedByMeasureDate(): LiveData<List<WeightMeasurement>>
 
-    fun create(measurement: WeightMeasurement): LiveData<WeightMeasurement> = read(insert(measurement))
+    suspend fun create(measurement: WeightMeasurement): LiveData<WeightMeasurement> = read(insert(measurement))
 
     @Query("SELECT * FROM WeightMeasurements WHERE id = :id")
     protected abstract fun read(id: Long): LiveData<WeightMeasurement>

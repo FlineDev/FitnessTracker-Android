@@ -10,7 +10,7 @@ abstract class ImpedimentDao : CrudDao<Impediment>() {
     @Query("SELECT * FROM Impediments ORDER BY startDate ASC")
     abstract fun allOrderedByStartDate(): LiveData<List<Impediment>>
 
-    fun create(impediment: Impediment): LiveData<Impediment> = read(insert(impediment))
+    suspend fun create(impediment: Impediment): LiveData<Impediment> = read(insert(impediment))
 
     @Query("SELECT * FROM Impediments WHERE id = :id")
     protected abstract fun read(id: Long): LiveData<Impediment>

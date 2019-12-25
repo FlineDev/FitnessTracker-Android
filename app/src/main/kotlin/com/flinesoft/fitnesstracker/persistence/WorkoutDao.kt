@@ -13,7 +13,7 @@ abstract class WorkoutDao : CrudDao<Workout>() {
     @Query("SELECT * FROM Workouts ORDER BY endDate ASC")
     abstract fun allOrderedByEndDate(): LiveData<List<Workout>>
 
-    fun create(workout: Workout): LiveData<Workout> = read(insert(workout))
+    suspend fun create(workout: Workout): LiveData<Workout> = read(insert(workout))
 
     @Query("SELECT * FROM Workouts WHERE id = :id")
     protected abstract fun read(id: Long): LiveData<Workout>

@@ -13,9 +13,11 @@ import androidx.lifecycle.ViewModelProviders
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.extensions.*
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
-import com.flinesoft.fitnesstracker.persistence.FitnessTrackerDatabase
+import com.flinesoft.fitnesstracker.model.WeightMeasurement
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 import timber.log.Timber
 
@@ -161,12 +163,14 @@ class StatisticsFragment : Fragment() {
             circumferenceInCentimeters = waistCircumference,
             measureDate = DateTime.now()
         )
-        val application = requireNotNull(this.activity).application
-        val database = FitnessTrackerDatabase.getInstance(application)
-        database.waistCircumferenceMeasurementDao.create(measurement)
+        GlobalScope.launch { database().waistCircumferenceMeasurementDao.create(measurement) }
     }
 
     private fun saveNewWeight(weight: Double) {
-        // TODO: not yet implemented
+        val measurement = WeightMeasurement(
+            weightInKilograms = weight,
+            measureDate = DateTime.now()
+        )
+        GlobalScope.launch { database().weightMeasurementDao.create(measurement) }
     }
 }
