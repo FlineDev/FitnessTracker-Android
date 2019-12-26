@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
         Logger.setup()
 
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
 
-        val navController = findNavController(R.id.nav_host_fragment)
+        val navController = findNavController(R.id.navigationHostFragment)
         // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(R.id.navigation_workouts, R.id.navigation_statistics)

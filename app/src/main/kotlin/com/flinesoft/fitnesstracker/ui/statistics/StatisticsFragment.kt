@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.text.InputType
 import android.view.*
 import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.extensions.*
@@ -28,8 +26,10 @@ class StatisticsFragment : Fragment() {
         statisticsViewModel = ViewModelProviders.of(this).get(StatisticsViewModel::class.java)
 
         val rootView: View = inflater.inflate(R.layout.fragment_statistics, container, false)
-        val textView: TextView = rootView.findViewById(R.id.text_statistics)
-        statisticsViewModel.text.observe(this, Observer { textView.text = it })
+
+        // TODO: setup connection between cells and view model
+//        val bodyMassIndexCell: StatisticsCell = rootView.findViewById(R.id.bodyMassIndexCell)
+//        val bodyShapeIndexCell: StatisticsCell = rootView.findViewById(R.id.bodyShapeIndexCell)
 
         setHasOptionsMenu(true)
         configureFloatingActionButtonWithSpeedDial(rootView)
@@ -65,7 +65,7 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun configureFloatingActionButtonWithSpeedDial(rootView: View) {
-        val speedDialView: SpeedDialView = rootView.findViewById(R.id.statistics_speed_dial)
+        val speedDialView: SpeedDialView = rootView.findViewById(R.id.statisticsSpeedDial)
         speedDialView.inflate(R.menu.statistics_speed_dial_menu)
 
         speedDialView.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->

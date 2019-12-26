@@ -10,6 +10,9 @@
 
     <string name="global.info.saved_successfully">Saved data successfully.</string>
 
+    <string name="statistics.body_mass_index.title">Body Mass Index (BMI)</string>
+    <string name="statistics.body_shape_index.title">Body Shape Index (BSI)</string>
+
     <string name="statistics.overflow.calc">Calculation method</string>
 
     <string name="statistics.overflow.data">Change base data</string>
@@ -29,4 +32,6 @@
     <string name="workouts.speed_dial.workout">New workout</string>
 
     <string name="workouts.title">Workouts</string>
+
+    <string name="global.non_translatable.sample_title" translatable="false"><![CDATA[<Title>]]></string>
 </resources>

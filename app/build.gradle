@@ -142,6 +142,9 @@ dependencies {
     // Joda time library for dealing with time
     implementation "joda-time:joda-time:$version_joda"
 
+    // A powerful 🚀 Android chart view / graph view library
+    implementation "com.github.PhilJay:MPAndroidChart:$version_chart"
+
     // Testing
     testImplementation "junit:junit:$version_junit"
     testImplementation "androidx.room:room-testing:$version_room"

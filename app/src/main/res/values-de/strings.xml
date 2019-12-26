@@ -10,6 +10,9 @@
 
     <string name="global.info.saved_successfully">Daten erfolgreich gespeichert.</string>
 
+    <string name="statistics.body_mass_index.title">Body-Mass-Index (BMI)</string>
+    <string name="statistics.body_shape_index.title">Body-Shape-Index (BSI)</string>
+
     <string name="statistics.overflow.calc">Berechnungsmethode</string>
 
     <string name="statistics.overflow.data">Basisdaten verändern</string>

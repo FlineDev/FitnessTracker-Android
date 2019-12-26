@@ -46,4 +46,8 @@
         <attr name="shapeAppearanceAttr" format="reference"/>
     </declare-styleable>
 
+    <declare-styleable name="StatisticsCell">
+        <attr name="title" format="string"/>"
+    </declare-styleable>
+
 </resources>

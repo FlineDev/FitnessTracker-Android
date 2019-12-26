@@ -19,7 +19,7 @@ class WorkoutsFragment : Fragment() {
         workoutsViewModel = ViewModelProviders.of(this).get(WorkoutsViewModel::class.java)
 
         val rootView: View = inflater.inflate(R.layout.fragment_workouts, container, false)
-        val textView: TextView = rootView.findViewById(R.id.text_workouts)
+        val textView: TextView = rootView.findViewById(R.id.workoutsTextView)
         workoutsViewModel.text.observe(this, Observer { textView.text = it })
 
         setHasOptionsMenu(true)
@@ -51,7 +51,7 @@ class WorkoutsFragment : Fragment() {
     }
 
     private fun configureFloatingActionButtonWithSpeedDial(rootView: View) {
-        val speedDialView: SpeedDialView = rootView.findViewById(R.id.workouts_speed_dial)
+        val speedDialView: SpeedDialView = rootView.findViewById(R.id.workoutsSpeedDial)
         speedDialView.inflate(R.menu.workouts_speed_dial_menu)
 
         speedDialView.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
