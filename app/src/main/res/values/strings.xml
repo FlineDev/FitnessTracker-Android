@@ -10,8 +10,15 @@
 
     <string name="global.info.saved_successfully">Saved data successfully.</string>
 
+    <string name="statistics.body_mass_index.healthy_max_treshold.legend">Healthy range maximum</string>
+    <string name="statistics.body_mass_index.healthy_min_treshold.legend">Healthy range minimum</string>
+    <string name="statistics.body_mass_index.high_risk_treshold.legend">High risk</string>
+    <string name="statistics.body_mass_index.legend">Your BMI value</string>
     <string name="statistics.body_mass_index.title">Body Mass Index (BMI)</string>
-    <string name="statistics.body_shape_index.title">Body Shape Index (BSI)</string>
+    <string name="statistics.body_shape_index.double_risk_treshold.legend">Double risk</string>
+    <string name="statistics.body_shape_index.healthy_max_treshold.legend">Healthy range maximum</string>
+    <string name="statistics.body_shape_index.legend">Your ABSI value</string>
+    <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
 
     <string name="statistics.overflow.calc">Calculation method</string>
 

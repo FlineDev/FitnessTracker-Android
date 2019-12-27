@@ -29,14 +29,16 @@
                 android:id="@+id/bodyMassIndexCell"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="@string/statistics.body_mass_index.title" />
+                app:title="@string/statistics.body_mass_index.title"
+                app:legend="@string/statistics.body_mass_index.legend"/>
 
             <com.flinesoft.fitnesstracker.ui.shared.StatisticsCell
                 android:id="@+id/bodyShapeIndexCell"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:title="@string/statistics.body_shape_index.title" />
+                app:title="@string/statistics.body_shape_index.title"
+                app:legend="@string/statistics.body_shape_index.legend"/>
 
         </LinearLayout>
 

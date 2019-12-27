@@ -47,7 +47,8 @@
     </declare-styleable>
 
     <declare-styleable name="StatisticsCell">
-        <attr name="title" format="string"/>"
+        <attr name="title" format="string"/>
+        <attr name="legend" format="string"/>
     </declare-styleable>
 
 </resources>
