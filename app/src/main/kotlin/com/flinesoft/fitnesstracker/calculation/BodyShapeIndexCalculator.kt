@@ -38,7 +38,13 @@ object BodyShapeIndexCalculator {
     }
 
     // Source: https://www.mytecbits.com/tools/medical/absi-calculator
-    private fun standardDeviation(ageInYears: Int, gender: Gender): Double {
-        return 0.00374 // TODO: add data tables from here: https://www.mytecbits.com/tools/medical/absi-calculator
+    private fun standardDeviation(ageInYears: Int, gender: Gender): Double = when (gender) {
+        Gender.MALE -> 0.00385 - 0.0000033735 * ageInYears
+        Gender.FEMALE ->
+            when (ageInYears) {
+                in 0..30 -> 0.00358 + 0.0000275 * ageInYears
+                in 30..60 -> 0.00371 + 0.000023 * ageInYears
+                else -> 0.00391 + 0.00002 * ageInYears
+            }
     }
 }
