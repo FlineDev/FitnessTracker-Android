@@ -15,14 +15,14 @@ class MeasureFormatExtKtTest {
 
     @Test
     fun valueToStringForDouble() {
-        assertEquals("42.4 kg", measureFormat.valueToString(42.4, MeasureUnit.KILOGRAM))
-        assertEquals("1,000,000.001 cm", measureFormat.valueToString(1_000_000.001, MeasureUnit.CENTIMETER))
+        assertEquals("42.4 kg", measureFormat.doubleToString(42.4, MeasureUnit.KILOGRAM))
+        assertEquals("1,000,000.001 cm", measureFormat.doubleToString(1_000_000.001, MeasureUnit.CENTIMETER))
     }
 
     @Test
     fun valueToStringForInt() {
-        assertEquals("42 kg", measureFormat.valueToString(42, MeasureUnit.KILOGRAM))
-        assertEquals("1,000,000 cm", measureFormat.valueToString(1_000_000, MeasureUnit.CENTIMETER))
+        assertEquals("42 kg", measureFormat.intToString(42, MeasureUnit.KILOGRAM))
+        assertEquals("1,000,000 cm", measureFormat.intToString(1_000_000, MeasureUnit.CENTIMETER))
     }
 
     @Test

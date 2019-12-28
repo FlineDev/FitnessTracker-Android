@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import com.flinesoft.fitnesstracker.model.Workout
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 @Dao
 abstract class WorkoutDao : CrudDao<Workout>() {
     @Query("SELECT * FROM Workouts ORDER BY startDate ASC")

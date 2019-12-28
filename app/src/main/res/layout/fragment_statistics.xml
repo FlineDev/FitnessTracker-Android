@@ -4,14 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.leinardi.android.speeddial.SpeedDialView
-        android:id="@+id/statisticsSpeedDial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:sdMainFabClosedSrc="@drawable/ic_fab_add" />
-
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -29,6 +21,7 @@
                 android:id="@+id/bodyMassIndexCell"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 app:title="@string/statistics.body_mass_index.title"
                 app:legend="@string/statistics.body_mass_index.legend"/>
 
@@ -43,5 +36,13 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <com.leinardi.android.speeddial.SpeedDialView
+        android:id="@+id/statisticsSpeedDial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:sdMainFabClosedSrc="@drawable/ic_fab_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

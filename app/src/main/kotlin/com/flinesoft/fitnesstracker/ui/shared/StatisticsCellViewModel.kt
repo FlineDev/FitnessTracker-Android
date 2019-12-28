@@ -6,7 +6,7 @@ import org.joda.time.DateTime
 
 class StatisticsCellViewModel(val tresholdEntries: List<TresholdEntry>) : ViewModel() {
     data class DataEntry(val dateTime: DateTime, val value: Double)
-    data class TresholdEntry(val value: Double, val legend: String)
+    data class TresholdEntry(val value: Double, val legend: String, val color: Int)
 
     val dataEntries = MutableLiveData<List<DataEntry>>().apply { value = emptyList() }
 }

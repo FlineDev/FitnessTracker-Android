@@ -19,7 +19,9 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 import timber.log.Timber
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 class StatisticsFragment : Fragment() {
     private lateinit var statisticsViewModel: StatisticsViewModel
 
@@ -115,7 +117,7 @@ class StatisticsFragment : Fragment() {
             setHint(R.string.statistics_speed_dial_waist_circumference_hint)
             afterTextChanged { _, textWatcher ->
                 MeasureFormatExt.short.stringToDouble(text.toString(), MeasureUnit.CENTIMETER)?.let { newValue: Double ->
-                    setTextIgnoringTextWatcher(MeasureFormatExt.short.valueToString(newValue, MeasureUnit.CENTIMETER), textWatcher)
+                    setTextIgnoringTextWatcher(MeasureFormatExt.short.doubleToString(newValue, MeasureUnit.CENTIMETER), textWatcher)
                     setSelection(MeasureFormatExt.short.numberFormat.format(newValue).length)
                 }
             }
@@ -143,7 +145,7 @@ class StatisticsFragment : Fragment() {
             setHint(R.string.statistics_speed_dial_weight_hint)
             afterTextChanged { _, textWatcher ->
                 MeasureFormatExt.short.stringToDouble(text.toString(), MeasureUnit.KILOGRAM)?.let { newValue ->
-                    setTextIgnoringTextWatcher(MeasureFormatExt.short.valueToString(newValue, MeasureUnit.KILOGRAM), textWatcher)
+                    setTextIgnoringTextWatcher(MeasureFormatExt.short.doubleToString(newValue, MeasureUnit.KILOGRAM), textWatcher)
                     setSelection(MeasureFormatExt.short.numberFormat.format(newValue).length)
                 }
             }

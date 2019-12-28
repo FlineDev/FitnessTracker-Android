@@ -10,8 +10,8 @@ object MeasureFormatExt {
     val short: MeasureFormat = MeasureFormat.getInstance(ULocale.getDefault(), MeasureFormat.FormatWidth.SHORT)
 }
 
-fun MeasureFormat.valueToString(value: Double, unit: MeasureUnit): String = format(Measure(value, unit))
-fun MeasureFormat.valueToString(value: Int, unit: MeasureUnit): String = format(Measure(value, unit))
+fun MeasureFormat.doubleToString(doubleValue: Double, unit: MeasureUnit): String = format(Measure(doubleValue, unit))
+fun MeasureFormat.intToString(intValue: Int, unit: MeasureUnit): String = format(Measure(intValue, unit))
 
 fun MeasureFormat.stringToDouble(string: String, unit: MeasureUnit): Double? {
     val groupingSeparator: String = (numberFormat as DecimalFormat).decimalFormatSymbols.groupingSeparatorString

@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import com.flinesoft.fitnesstracker.model.Impediment
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 @Dao
 abstract class ImpedimentDao : CrudDao<Impediment>() {
     @Query("SELECT * FROM Impediments ORDER BY startDate ASC")

@@ -1,7 +1,9 @@
 package com.flinesoft.fitnesstracker.model
 
-import com.flinesoft.fitnesstracker.globals.utility.TimeInterval
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 interface Recoverable {
-    val timeToRecover: TimeInterval
+    val recoveryDuration: Duration
 }
