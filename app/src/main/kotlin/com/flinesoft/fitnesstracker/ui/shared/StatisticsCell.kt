@@ -16,6 +16,8 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.android.synthetic.main.cell_statistics.view.*
 import org.joda.time.format.DateTimeFormat
+import java.lang.Float.max
+import java.lang.Float.min
 import kotlin.time.ExperimentalTime
 import kotlin.time.days
 
@@ -24,6 +26,9 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     @SuppressLint("ResourceType")
     // TODO: use the localized string
     private val dataEntriesSet = LineDataSet(emptyList(), /*context.getString(R.styleable.StatisticsCell_legend)*/ "TODO")
+
+    // NOTE: Workaround for this issue: https://github.com/PhilJay/MPAndroidChart/issues/2203
+    private var xAxisOffsetMillis: Long? = null
 
     init {
         View.inflate(context, R.layout.cell_statistics, this)
@@ -40,6 +45,8 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
     fun setup(viewModel: StatisticsCellViewModel, lifecycleOwner: LifecycleOwner) {
         lineChart.data = LineData(styledDataSet(dataEntriesSet))
+        lineChart.axisLeft.axisMinimum = viewModel.alwaysShowValueRange.start.toFloat()
+        lineChart.axisLeft.axisMaximum = viewModel.alwaysShowValueRange.endInclusive.toFloat()
         lineChart.invalidate()
 
         viewModel.tresholdEntries.forEach { addTresholdEntry(it) }
@@ -49,10 +56,12 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     @SuppressLint("ResourceType")
     private fun setupLineChart() {
         lineChart.description.isEnabled = false
+        lineChart.axisRight.isEnabled = false
         lineChart.xAxis.granularity = 1.days.inMilliseconds.toFloat()
         lineChart.xAxis.valueFormatter = object : ValueFormatter() {
             override fun getAxisLabel(value: Float, axis: AxisBase?): String {
-                return DateTimeFormat.shortDateTime().print(value.toLong())
+                // NOTE: Workaround for this issue: https://github.com/PhilJay/MPAndroidChart/issues/2203 (the `+ xAxisOffsetMillis!!` part)
+                return DateTimeFormat.shortDate().print(value.toLong() + xAxisOffsetMillis!!)
             }
         }
     }
@@ -65,7 +74,15 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     }
 
     private fun updateDataEntries(dataEntries: List<StatisticsCellViewModel.DataEntry>) {
+        // NOTE: Workaround for this issue: https://github.com/PhilJay/MPAndroidChart/issues/2203
+        xAxisOffsetMillis = dataEntries.firstOrNull()?.dateTime?.millis
+
         dataEntriesSet.values = dataEntries.map { dataEntryToEntry(it) }
+        lineChart.data = LineData(styledDataSet(dataEntriesSet))
+
+        lineChart.axisLeft.axisMinimum = min(dataEntries.map { it.value.toFloat() }.min() ?: lineChart.axisLeft.axisMinimum, lineChart.axisLeft.axisMinimum)
+        lineChart.axisLeft.axisMaximum = max(dataEntries.map { it.value.toFloat() }.max() ?: lineChart.axisLeft.axisMaximum, lineChart.axisLeft.axisMaximum)
+
         lineChart.invalidate()
     }
 
@@ -75,6 +92,7 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     }
 
     private fun dataEntryToEntry(dataEntry: StatisticsCellViewModel.DataEntry): Entry {
-        return Entry(dataEntry.dateTime.millis.toFloat(), dataEntry.value.toFloat())
+        // NOTE: Workaround for this issue: https://github.com/PhilJay/MPAndroidChart/issues/2203 (the `- xAxisOffsetMillis!!` part)
+        return Entry((dataEntry.dateTime.millis - xAxisOffsetMillis!!).toFloat(), dataEntry.value.toFloat())
     }
 }

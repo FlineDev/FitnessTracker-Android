@@ -4,6 +4,7 @@ import android.app.Application
 import android.graphics.Color
 import androidx.lifecycle.AndroidViewModel
 import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.calculation.BodyMassIndexCalculator
 import com.flinesoft.fitnesstracker.calculation.BodyShapeIndexCalculator
 import com.flinesoft.fitnesstracker.globals.*
 import com.flinesoft.fitnesstracker.globals.extensions.database
@@ -44,7 +45,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
                 legend = application.getString(R.string.statistics_body_mass_index_upper_high_risk_treshold_legend),
                 color = Color.RED
             )
-        )
+        ),
+        alwaysShowValueRange = (BODY_MASS_INDEX_LOWER_HIGH_RISK - 1.0)..(BODY_MASS_INDEX_UPPER_HIGH_RISK + 1.0)
     )
 
     // Source: https://www.mytecbits.com/tools/medical/absi-calculator
@@ -70,7 +72,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
                 legend = application.getString(R.string.statistics_body_shape_index_high_risk_max_legend),
                 color = Color.RED
             )
-        )
+        ),
+        alwaysShowValueRange = (BODY_SHAPE_INDEX_VERY_LOW_RISK_MAX - 0.1)..(BODY_SHAPE_INDEX_HIGH_RISK_MAX + 0.1)
     )
 
     init {
@@ -87,7 +90,10 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     private fun updateBodyMassIndexDataEntries() {
-        // TODO: calculate new data entries using BMI
+        bodyMassIndexCellViewModel.dataEntries.value = weightMeasurements.map { weightMeasurement ->
+            val bodyMassIndex = BodyMassIndexCalculator.calculateIndex(weightMeasurement.weightInKilograms, heightInCentimeters / 100.0)
+            StatisticsCellViewModel.DataEntry(weightMeasurement.measureDate, bodyMassIndex)
+        }
     }
 
     private fun updateBodyShapeIndexDataEntries() {

@@ -22,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 app:title="@string/statistics.body_mass_index.title"
                 app:legend="@string/statistics.body_mass_index.legend"/>
 
