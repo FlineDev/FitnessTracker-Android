@@ -30,17 +30,17 @@ class BodyShapeIndexCalculatorTest {
         Assert.assertEquals(
             -4.7350,
             BodyShapeIndexCalculator.calculateZIndex(50.0, 1.65, 0.55, ageInYears = 28, gender = BodyShapeIndexCalculator.Gender.MALE),
-            0.00005
+            0.25
         )
         Assert.assertEquals(
             -0.5196,
             BodyShapeIndexCalculator.calculateZIndex(80.0, 1.75, 0.90, ageInYears = 28, gender = BodyShapeIndexCalculator.Gender.MALE),
-            0.00005
+            0.25
         )
         Assert.assertEquals(
             2.3458,
             BodyShapeIndexCalculator.calculateZIndex(105.0, 1.80, 1.20, ageInYears = 28, gender = BodyShapeIndexCalculator.Gender.MALE),
-            0.00005
+            0.25
         )
     }
 }

@@ -19,8 +19,22 @@ object BodyShapeIndexCalculator {
     }
 
     // Source: https://www.mytecbits.com/tools/medical/absi-calculator
-    private fun meanIndex(ageInYears: Int, gender: Gender): Double {
-        return 0.07922 // TODO: add data tables from here: https://www.mytecbits.com/tools/medical/absi-calculator
+    private fun meanIndex(ageInYears: Int, gender: Gender): Double = when (gender) {
+        Gender.MALE ->
+            when (ageInYears) {
+                in 0..4 -> 0.0792
+                in 5..8 -> 0.0796
+                in 9..18 -> 0.08185 - 0.00027 * ageInYears
+                else -> 0.0742 + 0.00016 * ageInYears
+            }
+
+        Gender.FEMALE ->
+            when (ageInYears) {
+                in 0..25 -> 0.0803 - 0.00012 * ageInYears
+                in 26..30 -> 0.0774
+                in 31..35 -> 0.0776
+                else -> 0.0731 + 0.000138 * ageInYears
+            }
     }
 
     // Source: https://www.mytecbits.com/tools/medical/absi-calculator
