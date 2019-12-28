@@ -12,13 +12,16 @@
 
     <string name="statistics.body_mass_index.healthy_max_treshold.legend">Healthy range maximum</string>
     <string name="statistics.body_mass_index.healthy_min_treshold.legend">Healthy range minimum</string>
-    <string name="statistics.body_mass_index.high_risk_treshold.legend">High risk</string>
     <string name="statistics.body_mass_index.legend">Your BMI value</string>
+    <string name="statistics.body_mass_index.lower_high_risk_treshold.legend">High risk (underweight)</string>
     <string name="statistics.body_mass_index.title">Body Mass Index (BMI)</string>
-    <string name="statistics.body_shape_index.double_risk_treshold.legend">Double risk</string>
-    <string name="statistics.body_shape_index.healthy_max_treshold.legend">Healthy range maximum</string>
+    <string name="statistics.body_mass_index.upper_high_risk_treshold.legend">High risk (overweight)</string>
+    <string name="statistics.body_shape_index.average_risk_max.legend">Average risk maximum</string>
+    <string name="statistics.body_shape_index.high_risk_max.legend">High risk maximum</string>
     <string name="statistics.body_shape_index.legend">Your ABSI value</string>
+    <string name="statistics.body_shape_index.low_risk_max.legend">Low risk maximum</string>
     <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
+    <string name="statistics.body_shape_index.very_low_risk_max.legend">Very low risk maximum</string>
 
     <string name="statistics.overflow.calc">Calculation method</string>
 

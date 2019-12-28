@@ -2,10 +2,11 @@ package com.flinesoft.fitnesstracker.persistence.converters
 
 import com.flinesoft.fitnesstracker.model.Impediment
 import com.flinesoft.fitnesstracker.model.Workout
+import org.junit.Assert.assertEquals
 import org.junit.Test
+import kotlin.time.ExperimentalTime
 
-import org.junit.Assert.*
-
+@ExperimentalTime
 class EnumConvertersTest {
     @Test
     fun impedimentTypeToString() {
