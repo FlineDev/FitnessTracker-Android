@@ -115,10 +115,9 @@ class StatisticsFragment : Fragment() {
         val inputTextField = EditText(context).apply {
             inputType = InputType.TYPE_CLASS_NUMBER + InputType.TYPE_NUMBER_FLAG_DECIMAL
             setHint(R.string.statistics_speed_dial_waist_circumference_hint)
-            afterTextChanged { _, textWatcher ->
+            afterTextChanged(skipDeletion = NumberFormatExt.default.decimalSeparator()) { _, textWatcher ->
                 MeasureFormatExt.short.stringToDouble(text.toString(), MeasureUnit.CENTIMETER)?.let { newValue: Double ->
                     setTextIgnoringTextWatcher(MeasureFormatExt.short.doubleToString(newValue, MeasureUnit.CENTIMETER), textWatcher)
-                    setSelection(MeasureFormatExt.short.numberFormat.format(newValue).length)
                 }
             }
         }
@@ -142,11 +141,11 @@ class StatisticsFragment : Fragment() {
     private fun showNewWeightForm() {
         val inputTextField = EditText(context).apply {
             inputType = InputType.TYPE_CLASS_NUMBER + InputType.TYPE_NUMBER_FLAG_DECIMAL
+
             setHint(R.string.statistics_speed_dial_weight_hint)
-            afterTextChanged { _, textWatcher ->
+            afterTextChanged(skipDeletion = NumberFormatExt.default.decimalSeparator()) { _, textWatcher ->
                 MeasureFormatExt.short.stringToDouble(text.toString(), MeasureUnit.KILOGRAM)?.let { newValue ->
                     setTextIgnoringTextWatcher(MeasureFormatExt.short.doubleToString(newValue, MeasureUnit.KILOGRAM), textWatcher)
-                    setSelection(MeasureFormatExt.short.numberFormat.format(newValue).length)
                 }
             }
         }
