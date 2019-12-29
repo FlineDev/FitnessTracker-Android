@@ -9,8 +9,9 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.time.ExperimentalTime
 
-
+@ExperimentalTime
 @RunWith(AndroidJUnit4::class)
 class WorkoutTest: PersistenceTest() {
     @Test

@@ -7,7 +7,9 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import java.io.IOException
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 abstract class PersistenceTest {
     @Rule
     @JvmField
