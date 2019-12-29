@@ -7,8 +7,11 @@ import org.joda.time.DateTime
 @Entity(tableName = "WeightMeasurements")
 data class WeightMeasurement(
     var weightInKilograms: Double,
-    var measureDate: DateTime
-) {
+    override var measureDate: DateTime
+) : Measurement {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L
+
+    override val value: Double
+        get() = weightInKilograms
 }

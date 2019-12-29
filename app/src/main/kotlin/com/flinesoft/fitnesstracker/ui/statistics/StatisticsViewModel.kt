@@ -8,9 +8,12 @@ import com.flinesoft.fitnesstracker.calculation.BodyMassIndexCalculator
 import com.flinesoft.fitnesstracker.calculation.BodyShapeIndexCalculator
 import com.flinesoft.fitnesstracker.globals.*
 import com.flinesoft.fitnesstracker.globals.extensions.database
+import com.flinesoft.fitnesstracker.globals.extensions.reduceToLatestMeasureDatePerDay
+import com.flinesoft.fitnesstracker.globals.extensions.reduceToLowestValuePerDay
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
 import com.flinesoft.fitnesstracker.ui.shared.StatisticsCellViewModel
+import org.joda.time.DateTime
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -78,25 +81,59 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
 
     init {
         database().weightMeasurementDao.allOrderedByMeasureDate().observeForever {
-            weightMeasurements = it
+            weightMeasurements = it.reduceToLowestValuePerDay()
             updateBodyMassIndexDataEntries()
             updateBodyShapeIndexDataEntries()
         }
 
         database().waistCircumferenceMeasurementDao.allOrderedByMeasureDate().observeForever {
-            waistCircumferenceMeasurements = it
+            waistCircumferenceMeasurements = it.reduceToLowestValuePerDay()
             updateBodyShapeIndexDataEntries()
         }
     }
 
     private fun updateBodyMassIndexDataEntries() {
         bodyMassIndexCellViewModel.dataEntries.value = weightMeasurements.map { weightMeasurement ->
-            val bodyMassIndex = BodyMassIndexCalculator.calculateIndex(weightMeasurement.weightInKilograms, heightInCentimeters / 100.0)
+            val bodyMassIndex = BodyMassIndexCalculator.calculateIndex(
+                weightInKilograms = weightMeasurement.weightInKilograms,
+                heightInMeters = heightInCentimeters / 100.0
+            )
             StatisticsCellViewModel.DataEntry(weightMeasurement.measureDate, bodyMassIndex)
         }
     }
 
     private fun updateBodyShapeIndexDataEntries() {
-        // TODO: calculate new data entries using BMI
+        if (waistCircumferenceMeasurements.isEmpty() || weightMeasurements.isEmpty()) return
+
+        val waistCircumferenceDataEntries: List<StatisticsCellViewModel.DataEntry> = waistCircumferenceMeasurements.map { waistCircumferenceMeasurement ->
+            val relatedWeightMeasurement = weightMeasurements.lastOrNull {
+                it.measureDate < waistCircumferenceMeasurement.measureDate
+            } ?: weightMeasurements.first()
+            val bodyShapeZIndex = BodyShapeIndexCalculator.calculateZIndex(
+                weightInKilograms = relatedWeightMeasurement.weightInKilograms,
+                heightInMeters = heightInCentimeters / 100.0,
+                waistCircumferenceInMeters = waistCircumferenceMeasurement.circumferenceInCentimeters / 100.0,
+                ageInYears = DateTime.now().year - birthYear,
+                gender = gender
+            )
+            StatisticsCellViewModel.DataEntry(waistCircumferenceMeasurement.measureDate, bodyShapeZIndex)
+        }
+
+        val weightDataEntries: List<StatisticsCellViewModel.DataEntry> = weightMeasurements.map { weightMeasurement ->
+            val relatedWaistCircumferenceMeasurement = waistCircumferenceMeasurements.lastOrNull {
+                it.measureDate < weightMeasurement.measureDate
+            } ?: waistCircumferenceMeasurements.first()
+            val bodyShapeZIndex = BodyShapeIndexCalculator.calculateZIndex(
+                weightInKilograms = weightMeasurement.weightInKilograms,
+                heightInMeters = heightInCentimeters / 100.0,
+                waistCircumferenceInMeters = relatedWaistCircumferenceMeasurement.circumferenceInCentimeters / 100.0,
+                ageInYears = DateTime.now().year - birthYear,
+                gender = gender
+            )
+            StatisticsCellViewModel.DataEntry(weightMeasurement.measureDate, bodyShapeZIndex)
+        }
+
+        val combinedOrderedDataEntries = (waistCircumferenceDataEntries + weightDataEntries).sortedBy { it.dateTime }
+        bodyShapeIndexCellViewModel.dataEntries.value = combinedOrderedDataEntries.reduceToLatestMeasureDatePerDay()
     }
 }

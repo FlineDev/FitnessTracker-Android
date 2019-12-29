@@ -71,8 +71,8 @@ android {
 
     tasks.whenTaskAdded { task ->
         if (task.name == 'compileDebugSources' || task.name == 'compileReleaseSources') {
-            task.dependsOn lint
-            task.mustRunAfter lint
+            task.dependsOn check
+            task.mustRunAfter check
         }
     }
 }
