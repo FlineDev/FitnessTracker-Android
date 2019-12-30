@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--colorPrimary colors map to components and elements, such as app bars and buttons. -->
-    <color name="primary">#bb86fc</color>
-    <color name="primaryVariant">#4b01d0</color>
+    <color name="primary">#6ab7ff</color>
+    <color name="primaryVariant">#1E88E5</color>
 
     <!--colorSecondary colors are most often used as accents on components, such as FABs and selection controls.-->
-    <color name="secondary">#03dac6</color>
-    <color name="secondaryVariant">#018786</color>
+    <color name="secondary">#ffbd45</color>
+    <color name="secondaryVariant">#fb8c00</color>
 
     <!--colorBackground appears behind scrollable content and is used for the default window background.-->
-    <color name="background">#000000</color>
+    <color name="background">#040506</color>
 
     <!--colorSurface is mapped to the surface of components such as cards, sheets and menus.-->
-    <color name="surface">#121212</color>
+    <color name="surface">#141A1F</color>
 
     <!--colorError is used to indicate an error state for components such as text fields.-->
     <color name="error">#cf6679</color>
@@ -23,4 +23,9 @@
     <color name="onBackground">#ffffff</color>
     <color name="onSurface">#ffffff</color>
     <color name="onError">#000000</color>
+
+    <!--limitZone colors in charts.-->
+    <color name="limitZoneSevereWarning">#F38C8C</color>
+    <color name="limitZoneWarning">#F9F986</color>
+    <color name="limitZoneSafe">#80FF80</color>
 </resources>

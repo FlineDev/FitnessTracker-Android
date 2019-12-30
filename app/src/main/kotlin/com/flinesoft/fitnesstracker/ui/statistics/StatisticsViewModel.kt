@@ -1,7 +1,6 @@
 package com.flinesoft.fitnesstracker.ui.statistics
 
 import android.app.Application
-import android.graphics.Color
 import androidx.lifecycle.AndroidViewModel
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.calculation.BodyMassIndexCalculator
@@ -31,22 +30,22 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_MASS_INDEX_LOWER_HIGH_RISK,
                 legend = application.getString(R.string.statistics_body_mass_index_lower_high_risk_treshold_legend),
-                color = Color.RED
+                color = application.getColor(R.color.limitZoneSevereWarning)
             ),
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_MASS_INDEX_HEALTHY_MIN,
                 legend = application.getString(R.string.statistics_body_mass_index_healthy_min_treshold_legend),
-                color = Color.YELLOW
+                color = application.getColor(R.color.limitZoneWarning)
             ),
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_MASS_INDEX_HEALTHY_MAX,
                 legend = application.getString(R.string.statistics_body_mass_index_healthy_max_treshold_legend),
-                color = Color.YELLOW
+                color = application.getColor(R.color.limitZoneWarning)
             ),
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_MASS_INDEX_UPPER_HIGH_RISK,
                 legend = application.getString(R.string.statistics_body_mass_index_upper_high_risk_treshold_legend),
-                color = Color.RED
+                color = application.getColor(R.color.limitZoneSevereWarning)
             )
         ),
         legend = application.getString(R.string.statistics_body_mass_index_legend)
@@ -58,22 +57,22 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_SHAPE_INDEX_VERY_LOW_RISK_MAX,
                 legend = application.getString(R.string.statistics_body_shape_index_very_low_risk_max_legend),
-                color = Color.GREEN
+                color = application.getColor(R.color.limitZoneSafe)
             ),
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_SHAPE_INDEX_LOW_RISK_MAX,
                 legend = application.getString(R.string.statistics_body_shape_index_low_risk_max_legend),
-                color = Color.YELLOW
+                color = application.getColor(R.color.limitZoneWarning)
             ),
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_SHAPE_INDEX_AVERAGE_RISK_MAX,
                 legend = application.getString(R.string.statistics_body_shape_index_average_risk_max_legend),
-                color = Color.RED
+                color = application.getColor(R.color.limitZoneSevereWarning)
             ),
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_SHAPE_INDEX_HIGH_RISK_MAX,
                 legend = application.getString(R.string.statistics_body_shape_index_high_risk_max_legend),
-                color = Color.RED
+                color = application.getColor(R.color.limitZoneSevereWarning)
             )
         ),
         legend = application.getString(R.string.statistics_body_shape_index_legend)

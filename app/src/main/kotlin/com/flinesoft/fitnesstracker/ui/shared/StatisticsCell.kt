@@ -86,6 +86,7 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         limitLine.lineColor = tresholdEntry.color
         limitLine.textColor = ContextCompat.getColor(context, R.color.onBackground)
         limitLine.textSize = defaultTextSize
+        limitLine.lineWidth = 3.0f
 
         lineChart.axisLeft.addLimitLine(limitLine)
         lineChart.invalidate()
@@ -113,6 +114,8 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     private fun styledDataSet(dataSet: LineDataSet): LineDataSet = dataSet.apply {
         setCircleColor(ContextCompat.getColor(context, R.color.primary))
         circleHoleColor = ContextCompat.getColor(context, R.color.background)
+        circleRadius = 5f
+        circleHoleRadius = 3f
 
         color = ContextCompat.getColor(context, R.color.primary)
         valueTextColor = ContextCompat.getColor(context, R.color.primary)
