@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.flinesoft.fitnesstracker.R
@@ -16,8 +17,8 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.android.synthetic.main.cell_statistics.view.*
 import org.joda.time.format.DateTimeFormat
-import java.lang.Float.max
-import java.lang.Float.min
+import kotlin.math.max
+import kotlin.math.min
 import kotlin.time.ExperimentalTime
 import kotlin.time.days
 
@@ -45,8 +46,6 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
 
     fun setup(viewModel: StatisticsCellViewModel, lifecycleOwner: LifecycleOwner) {
         lineChart.data = LineData(styledDataSet(dataEntriesSet))
-        lineChart.axisLeft.axisMinimum = viewModel.alwaysShowValueRange.start.toFloat()
-        lineChart.axisLeft.axisMaximum = viewModel.alwaysShowValueRange.endInclusive.toFloat()
         lineChart.invalidate()
 
         viewModel.tresholdEntries.forEach { addTresholdEntry(it) }
@@ -57,6 +56,7 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     private fun setupLineChart() {
         lineChart.description.isEnabled = false
         lineChart.axisRight.isEnabled = false
+
         lineChart.xAxis.granularity = 1.days.inMilliseconds.toFloat()
         lineChart.xAxis.valueFormatter = object : ValueFormatter() {
             override fun getAxisLabel(value: Float, axis: AxisBase?): String {
@@ -64,6 +64,9 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
                 return DateTimeFormat.shortDate().print(value.toLong() + xAxisOffsetMillis!!)
             }
         }
+
+        lineChart.setGridBackgroundColor(ContextCompat.getColor(context, R.color.color_background))
+        lineChart.setBorderColor(ContextCompat.getColor(context, R.color.color_on_background))
     }
 
     private fun addTresholdEntry(tresholdEntry: StatisticsCellViewModel.TresholdEntry) {
@@ -80,15 +83,21 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         dataEntriesSet.values = dataEntries.map { dataEntryToEntry(it) }
         lineChart.data = LineData(styledDataSet(dataEntriesSet))
 
-        lineChart.axisLeft.axisMinimum = min(dataEntries.map { it.value.toFloat() }.min() ?: lineChart.axisLeft.axisMinimum, lineChart.axisLeft.axisMinimum)
-        lineChart.axisLeft.axisMaximum = max(dataEntries.map { it.value.toFloat() }.max() ?: lineChart.axisLeft.axisMaximum, lineChart.axisLeft.axisMaximum)
+        if (dataEntries.isNotEmpty() && lineChart.axisLeft.limitLines.isNotEmpty()) {
+            lineChart.axisLeft.axisMinimum = min(dataEntries.map { it.value.toFloat() }.min()!!, lineChart.axisLeft.limitLines.map { it.limit }.min()!!)
+            lineChart.axisLeft.axisMaximum = max(dataEntries.map { it.value.toFloat() }.max()!!, lineChart.axisLeft.limitLines.map { it.limit }.max()!!)
+
+            // add 10 percent of extra space to top and bottom of left axis range
+            lineChart.axisLeft.axisMinimum -= lineChart.axisLeft.mAxisRange / 10f
+            lineChart.axisLeft.axisMaximum += lineChart.axisLeft.mAxisRange / 10f
+        }
 
         lineChart.invalidate()
     }
 
     private fun styledDataSet(dataSet: LineDataSet): LineDataSet = dataSet.apply {
-        color = R.color.color_on_surface
-        valueTextColor = R.color.color_on_surface
+        color = ContextCompat.getColor(context, R.color.color_primary)
+        valueTextColor = ContextCompat.getColor(context, R.color.color_secondary)
     }
 
     private fun dataEntryToEntry(dataEntry: StatisticsCellViewModel.DataEntry): Entry {

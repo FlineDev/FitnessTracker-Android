@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.flinesoft.fitnesstracker.model.Measurement
 import org.joda.time.DateTime
 
-class StatisticsCellViewModel(val tresholdEntries: List<TresholdEntry>, val alwaysShowValueRange: ClosedFloatingPointRange<Double>) : ViewModel() {
+class StatisticsCellViewModel(val tresholdEntries: List<TresholdEntry>) : ViewModel() {
     data class DataEntry(val dateTime: DateTime, override val value: Double) : Measurement {
         override val measureDate: DateTime
             get() = dateTime
