@@ -60,13 +60,13 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         lineChart.description.isEnabled = false
         lineChart.axisRight.isEnabled = false
 
-        lineChart.legend.textColor = ContextCompat.getColor(context, R.color.color_primary)
+        lineChart.legend.textColor = ContextCompat.getColor(context, R.color.primary)
         lineChart.legend.textSize = defaultTextSize
         lineChart.legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
 
-        lineChart.axisLeft.textColor = ContextCompat.getColor(context, R.color.color_on_background)
+        lineChart.axisLeft.textColor = ContextCompat.getColor(context, R.color.onBackground)
         lineChart.axisLeft.setDrawGridLines(false)
-        lineChart.xAxis.textColor = ContextCompat.getColor(context, R.color.color_on_background)
+        lineChart.xAxis.textColor = ContextCompat.getColor(context, R.color.onBackground)
         lineChart.xAxis.setDrawGridLines(false)
 
         lineChart.xAxis.granularity = 1.days.inMilliseconds.toFloat()
@@ -77,14 +77,14 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
             }
         }
 
-        lineChart.setBorderColor(ContextCompat.getColor(context, R.color.color_on_background))
+        lineChart.setBorderColor(ContextCompat.getColor(context, R.color.onBackground))
     }
 
     private fun addTresholdEntry(tresholdEntry: StatisticsCellViewModel.TresholdEntry) {
         val limitLine = LimitLine(tresholdEntry.value.toFloat(), tresholdEntry.legend)
 
         limitLine.lineColor = tresholdEntry.color
-        limitLine.textColor = ContextCompat.getColor(context, R.color.color_on_background)
+        limitLine.textColor = ContextCompat.getColor(context, R.color.onBackground)
         limitLine.textSize = defaultTextSize
 
         lineChart.axisLeft.addLimitLine(limitLine)
@@ -111,12 +111,12 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     }
 
     private fun styledDataSet(dataSet: LineDataSet): LineDataSet = dataSet.apply {
-        setCircleColor(ContextCompat.getColor(context, R.color.color_primary))
-        circleHoleColor = ContextCompat.getColor(context, R.color.color_background)
+        setCircleColor(ContextCompat.getColor(context, R.color.primary))
+        circleHoleColor = ContextCompat.getColor(context, R.color.background)
 
-        color = ContextCompat.getColor(context, R.color.color_primary)
-        valueTextColor = ContextCompat.getColor(context, R.color.color_primary)
-        highLightColor = ContextCompat.getColor(context, R.color.color_secondary)
+        color = ContextCompat.getColor(context, R.color.primary)
+        valueTextColor = ContextCompat.getColor(context, R.color.primary)
+        highLightColor = ContextCompat.getColor(context, R.color.secondary)
         valueTextSize = defaultTextSize
     }
 
