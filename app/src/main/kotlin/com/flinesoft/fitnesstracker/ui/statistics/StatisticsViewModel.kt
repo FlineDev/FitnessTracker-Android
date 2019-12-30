@@ -48,7 +48,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
                 legend = application.getString(R.string.statistics_body_mass_index_upper_high_risk_treshold_legend),
                 color = Color.RED
             )
-        )
+        ),
+        legend = application.getString(R.string.statistics_body_mass_index_legend)
     )
 
     // Source: https://www.mytecbits.com/tools/medical/absi-calculator
@@ -74,7 +75,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
                 legend = application.getString(R.string.statistics_body_shape_index_high_risk_max_legend),
                 color = Color.RED
             )
-        )
+        ),
+        legend = application.getString(R.string.statistics_body_shape_index_legend)
     )
 
     init {
