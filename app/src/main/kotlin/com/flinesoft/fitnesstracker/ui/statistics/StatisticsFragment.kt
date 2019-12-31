@@ -28,7 +28,7 @@ class StatisticsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         statisticsViewModel = ViewModelProviders.of(this).get(StatisticsViewModel::class.java)
 
-        val rootView: View = inflater.inflate(R.layout.fragment_statistics, container, false)
+        val rootView: View = inflater.inflate(R.layout.statistics_fragment, container, false)
         setupViewModelBinding(rootView)
 
         setHasOptionsMenu(true)

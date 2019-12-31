@@ -16,7 +16,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
-import kotlinx.android.synthetic.main.cell_statistics.view.*
+import kotlinx.android.synthetic.main.statistics_cell.view.*
 import org.joda.time.format.DateTimeFormat
 import kotlin.math.max
 import kotlin.math.min
@@ -33,7 +33,7 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     private var xAxisOffsetMillis: Long? = null
 
     init {
-        View.inflate(context, R.layout.cell_statistics, this)
+        View.inflate(context, R.layout.statistics_cell, this)
         setupLineChart()
 
         context.theme.obtainStyledAttributes(attrs, R.styleable.StatisticsCell, 0, 0).apply {

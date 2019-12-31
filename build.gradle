@@ -12,7 +12,7 @@ buildscript {
         version_espresso = '3.2.0'
         version_fragment = '1.1.0'
         version_glide = '4.10.0'
-        version_gradle = '3.5.3'
+        version_gradle = '3.6.0-rc01'
         version_jacoco = '0.8.4'
         version_junit = '4.12'
         version_joda = '2.10.4'

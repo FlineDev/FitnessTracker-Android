@@ -75,6 +75,10 @@ android {
             task.mustRunAfter check
         }
     }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {

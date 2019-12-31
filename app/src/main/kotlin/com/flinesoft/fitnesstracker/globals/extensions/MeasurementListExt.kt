@@ -9,7 +9,7 @@ import com.flinesoft.fitnesstracker.model.Measurement
 fun <T : Measurement> List<T>.reduceToLowestValuePerDay(): List<T> {
     if (isEmpty()) return this
 
-    var filteredList = mutableListOf(first())
+    val filteredList = mutableListOf(first())
     var lastAddedMeasurement = first()
 
     for (measurement in this.drop(1)) {
@@ -32,7 +32,7 @@ fun <T : Measurement> List<T>.reduceToLowestValuePerDay(): List<T> {
 fun <T : Measurement> List<T>.reduceToLatestMeasureDatePerDay(): List<T> {
     if (isEmpty()) return this
 
-    var filteredList = mutableListOf(first())
+    val filteredList = mutableListOf(first())
     var lastAddedMeasurement = first()
 
     for (measurement in this.drop(1)) {

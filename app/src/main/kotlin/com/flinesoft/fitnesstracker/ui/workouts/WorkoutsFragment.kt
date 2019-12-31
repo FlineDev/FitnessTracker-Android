@@ -19,7 +19,7 @@ class WorkoutsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         viewModel = ViewModelProviders.of(this).get(WorkoutsViewModel::class.java)
 
-        val rootView: View = inflater.inflate(R.layout.fragment_workouts, container, false)
+        val rootView: View = inflater.inflate(R.layout.workouts_fragment, container, false)
         val textView: TextView = rootView.findViewById(R.id.workoutsTextView)
         viewModel.text.observe(this, Observer { textView.text = it })
 
