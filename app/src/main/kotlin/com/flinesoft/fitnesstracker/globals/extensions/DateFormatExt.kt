@@ -5,5 +5,5 @@ import java.util.*
 
 object DateFormatExt {
     fun dateMedium(): DateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
-    fun timeMedium(): DateFormat = DateFormat.getTimeInstance(DateFormat.MEDIUM, Locale.getDefault())
+    fun timeShort(): DateFormat = DateFormat.getTimeInstance(DateFormat.SHORT, Locale.getDefault())
 }
