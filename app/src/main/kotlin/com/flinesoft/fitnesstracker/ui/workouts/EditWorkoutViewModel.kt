@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.model.Workout
 import org.joda.time.DateTime
 import timber.log.Timber
@@ -41,6 +42,20 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
                 workoutType = Workout.Type.MUSCLE_BUILDING
 
             else -> Timber.e("Found unexpected spinner item localized string: $spinnerItemLocalizedString")
+        }
+    }
+
+    suspend fun save() {
+        if (existingWorkoutId == null) {
+            database().workoutDao.create(
+                Workout(
+                    type = workoutType,
+                    startDate = startDate.value!!,
+                    endDate = endDate.value!!
+                )
+            )
+        } else {
+            // TODO: updating exisitng objects not yet implemented
         }
     }
 }

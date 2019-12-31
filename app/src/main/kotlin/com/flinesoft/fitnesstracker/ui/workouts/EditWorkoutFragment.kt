@@ -13,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.databinding.EditWorkoutFragmentBinding
 import com.flinesoft.fitnesstracker.globals.BackNavigationFragment
 import com.flinesoft.fitnesstracker.globals.extensions.DateFormatExt
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 import kotlin.time.ExperimentalTime
 
@@ -92,7 +94,8 @@ class EditWorkoutFragment : BackNavigationFragment() {
     }
 
     private fun saveButtonPressed() {
-        // TODO: not yet implemented
+        GlobalScope.launch { viewModel.save() }
+        findNavController().navigateUp()
     }
 
     private fun showDatePickerDialog(date: DateTime, listener: DatePickerDialog.OnDateSetListener) {
