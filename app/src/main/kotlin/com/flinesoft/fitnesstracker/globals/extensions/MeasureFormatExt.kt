@@ -7,7 +7,7 @@ import android.icu.util.MeasureUnit
 import android.icu.util.ULocale
 
 object MeasureFormatExt {
-    val short: MeasureFormat = MeasureFormat.getInstance(ULocale.getDefault(), MeasureFormat.FormatWidth.SHORT)
+    fun short(): MeasureFormat = MeasureFormat.getInstance(ULocale.getDefault(), MeasureFormat.FormatWidth.SHORT)
 }
 
 fun MeasureFormat.doubleToString(doubleValue: Double, unit: MeasureUnit): String {

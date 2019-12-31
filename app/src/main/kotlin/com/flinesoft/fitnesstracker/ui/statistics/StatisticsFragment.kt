@@ -111,8 +111,8 @@ class StatisticsFragment : Fragment() {
             inputType = InputType.TYPE_CLASS_NUMBER + InputType.TYPE_NUMBER_FLAG_DECIMAL
             setHint(R.string.statistics_speed_dial_waist_circumference_hint)
             afterTextChanged(skipDeletion = NumberFormatExt.default.decimalSeparator()) { _, textWatcher ->
-                MeasureFormatExt.short.stringToDouble(text.toString(), MeasureUnit.CENTIMETER)?.let { newValue: Double ->
-                    setTextIgnoringTextWatcher(MeasureFormatExt.short.doubleToString(newValue, MeasureUnit.CENTIMETER), textWatcher)
+                MeasureFormatExt.short().stringToDouble(text.toString(), MeasureUnit.CENTIMETER)?.let { newValue: Double ->
+                    setTextIgnoringTextWatcher(MeasureFormatExt.short().doubleToString(newValue, MeasureUnit.CENTIMETER), textWatcher)
                 }
             }
         }
@@ -122,7 +122,7 @@ class StatisticsFragment : Fragment() {
             .setMessage(R.string.statistics_speed_dial_waist_circumference_input_message)
             .setView(inputTextField, 50, 0, 50, 0)
             .setPositiveButton(R.string.global_action_save) { _, _ ->
-                MeasureFormatExt.short.stringToDouble(inputTextField.text.toString(), MeasureUnit.CENTIMETER)?.let { value: Double ->
+                MeasureFormatExt.short().stringToDouble(inputTextField.text.toString(), MeasureUnit.CENTIMETER)?.let { value: Double ->
                     saveNewWaistCircumference(value)
                     view?.snack(R.string.global_info_saved_successfully)
                 } ?: run {
@@ -139,8 +139,8 @@ class StatisticsFragment : Fragment() {
 
             setHint(R.string.statistics_speed_dial_weight_hint)
             afterTextChanged(skipDeletion = NumberFormatExt.default.decimalSeparator()) { _, textWatcher ->
-                MeasureFormatExt.short.stringToDouble(text.toString(), MeasureUnit.KILOGRAM)?.let { newValue ->
-                    setTextIgnoringTextWatcher(MeasureFormatExt.short.doubleToString(newValue, MeasureUnit.KILOGRAM), textWatcher)
+                MeasureFormatExt.short().stringToDouble(text.toString(), MeasureUnit.KILOGRAM)?.let { newValue ->
+                    setTextIgnoringTextWatcher(MeasureFormatExt.short().doubleToString(newValue, MeasureUnit.KILOGRAM), textWatcher)
                 }
             }
         }
@@ -150,7 +150,7 @@ class StatisticsFragment : Fragment() {
             .setMessage(R.string.statistics_speed_dial_weight_input_message)
             .setView(inputTextField, 50, 0, 50, 0)
             .setPositiveButton(R.string.global_action_save) { _, _ ->
-                MeasureFormatExt.short.stringToDouble(inputTextField.text.toString(), MeasureUnit.KILOGRAM)?.let { value: Double ->
+                MeasureFormatExt.short().stringToDouble(inputTextField.text.toString(), MeasureUnit.KILOGRAM)?.let { value: Double ->
                     saveNewWeight(value)
                     view?.snack(R.string.global_info_saved_successfully)
                 } ?: run {

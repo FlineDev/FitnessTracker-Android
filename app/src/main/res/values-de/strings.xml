@@ -36,9 +36,14 @@
 
     <string name="statistics.title">Statistiken</string>
 
+    <string name="workouts.edit_workout.end_date.overline">Enddatum:</string>
+    <string name="workouts.edit_workout.end_time.overline">Endzeit:</string>
+    <string name="workouts.edit_workout.start_date.overline">Startdatum:</string>
+    <string name="workouts.edit_workout.start_time.overline">Startzeit:</string>
     <string name="workouts.edit_workout.title">Training bearbeiten</string>
     <string name="workouts.edit_workout.workout_type.cardio">Herz-Kreislauf</string>
     <string name="workouts.edit_workout.workout_type.muscle_building">Muskelaufbau</string>
+    <string name="workouts.edit_workout.workout_type.overline">Art des Trainings:</string>
 
     <string name="workouts.overflow.reminder">Erinnerungen einstellen</string>
 
@@ -46,7 +51,4 @@
     <string name="workouts.speed_dial.workout">Neues Training</string>
 
     <string name="workouts.title">Trainings</string>
-    <string name="workouts.edit_workout.workout_type.overline">Art des Trainings:</string>
-    <string name="workouts.edit_workout.start_date.overline">Startzeitpunkt:</string>
-    <string name="workouts.edit_workout.end_date.overline">Endzeitpunkt:</string>
 </resources>
