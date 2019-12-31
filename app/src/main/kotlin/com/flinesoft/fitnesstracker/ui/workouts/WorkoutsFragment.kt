@@ -2,31 +2,31 @@ package com.flinesoft.fitnesstracker.ui.workouts
 
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.databinding.WorkoutsFragmentBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
 import timber.log.Timber
 
 class WorkoutsFragment : Fragment() {
+    private lateinit var binding: WorkoutsFragmentBinding
     private lateinit var viewModel: WorkoutsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = WorkoutsFragmentBinding.inflate(inflater)
         viewModel = ViewModelProviders.of(this).get(WorkoutsViewModel::class.java)
 
-        val rootView: View = inflater.inflate(R.layout.workouts_fragment, container, false)
-        val textView: TextView = rootView.findViewById(R.id.workoutsTextView)
-        viewModel.text.observe(this, Observer { textView.text = it })
+        viewModel.text.observe(this, Observer { binding.workoutsTextView.text = it })
 
         setHasOptionsMenu(true)
-        configureFloatingActionButtonWithSpeedDial(rootView)
+        configureFloatingActionButtonWithSpeedDial()
 
-        return rootView
+        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -51,11 +51,9 @@ class WorkoutsFragment : Fragment() {
         }
     }
 
-    private fun configureFloatingActionButtonWithSpeedDial(rootView: View) {
-        val speedDialView: SpeedDialView = rootView.findViewById(R.id.workoutsSpeedDial)
-        speedDialView.inflate(R.menu.workouts_speed_dial_menu)
-
-        speedDialView.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
+    private fun configureFloatingActionButtonWithSpeedDial() {
+        binding.workoutsSpeedDial.inflate(R.menu.workouts_speed_dial_menu)
+        binding.workoutsSpeedDial.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
             when (actionItem.id) {
                 R.id.workouts_speed_dial_impediment -> {
                     showNewImpedimentForm()

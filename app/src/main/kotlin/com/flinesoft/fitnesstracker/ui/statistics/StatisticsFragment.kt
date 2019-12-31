@@ -9,10 +9,10 @@ import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.databinding.StatisticsFragmentBinding
 import com.flinesoft.fitnesstracker.globals.extensions.*
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
-import com.flinesoft.fitnesstracker.ui.shared.StatisticsCell
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
 import kotlinx.coroutines.GlobalScope
@@ -23,18 +23,18 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 class StatisticsFragment : Fragment() {
+    private lateinit var binding: StatisticsFragmentBinding
     private lateinit var statisticsViewModel: StatisticsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = StatisticsFragmentBinding.inflate(inflater)
         statisticsViewModel = ViewModelProviders.of(this).get(StatisticsViewModel::class.java)
 
-        val rootView: View = inflater.inflate(R.layout.statistics_fragment, container, false)
-        setupViewModelBinding(rootView)
-
+        setupViewModelBinding()
         setHasOptionsMenu(true)
-        configureFloatingActionButtonWithSpeedDial(rootView)
+        configureFloatingActionButtonWithSpeedDial()
 
-        return rootView
+        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -64,20 +64,15 @@ class StatisticsFragment : Fragment() {
         }
     }
 
-    private fun setupViewModelBinding(rootView: View) {
-        val bodyMassIndexCell: StatisticsCell = rootView.findViewById(R.id.bodyMassIndexCell)
-        val bodyShapeIndexCell: StatisticsCell = rootView.findViewById(R.id.bodyShapeIndexCell)
-
+    private fun setupViewModelBinding() {
         val viewModel = ViewModelProviders.of(this)[StatisticsViewModel::class.java]
-        bodyMassIndexCell.setup(viewModel.bodyMassIndexCellViewModel, viewLifecycleOwner)
-        bodyShapeIndexCell.setup(viewModel.bodyShapeIndexCellViewModel, viewLifecycleOwner)
+        binding.bodyMassIndexCell.setup(viewModel.bodyMassIndexCellViewModel, viewLifecycleOwner)
+        binding.bodyShapeIndexCell.setup(viewModel.bodyShapeIndexCellViewModel, viewLifecycleOwner)
     }
 
-    private fun configureFloatingActionButtonWithSpeedDial(rootView: View) {
-        val speedDialView: SpeedDialView = rootView.findViewById(R.id.statisticsSpeedDial)
-        speedDialView.inflate(R.menu.statistics_speed_dial_menu)
-
-        speedDialView.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
+    private fun configureFloatingActionButtonWithSpeedDial() {
+        binding.statisticsSpeedDial.inflate(R.menu.statistics_speed_dial_menu)
+        binding.statisticsSpeedDial.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
             when (actionItem.id) {
                 R.id.statistics_speed_dial_waist_circumference -> {
                     showNewWaistCircumferenceForm()
