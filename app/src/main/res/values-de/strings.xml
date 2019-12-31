@@ -36,10 +36,17 @@
 
     <string name="statistics.title">Statistiken</string>
 
+    <string name="workouts.edit_workout.title">Edit Workout</string>
+    <string name="workouts.edit_workout.workout_type.cardio">Herz-Kreislauf</string>
+    <string name="workouts.edit_workout.workout_type.muscle_building">Muskelaufbau</string>
+
     <string name="workouts.overflow.reminder">Erinnerungen einstellen</string>
 
     <string name="workouts.speed_dial.impediment">Neue Verhinderung</string>
     <string name="workouts.speed_dial.workout">Neues Training</string>
 
     <string name="workouts.title">Trainings</string>
+    <string name="workouts.edit_workout.workout_type.overline">Art des Trainings:</string>
+    <string name="workouts.edit_workout.start_date.overline">Startzeitpunkt:</string>
+    <string name="workouts.edit_workout.end_date.overline">Endzeitpunkt:</string>
 </resources>

@@ -28,4 +28,7 @@
     <color name="limitZoneSevereWarning">#F38C8C</color>
     <color name="limitZoneWarning">#F9F986</color>
     <color name="limitZoneSafe">#80FF80</color>
+
+    <!--buttonColors-->
+    <color name="cancelButton">#2e2f30</color> <!-- slightly ligher variant of background -->
 </resources>

@@ -21,4 +21,19 @@
         <item name="itemTextAppearance">?textAppearanceBody2</item>
     </style>
 
+    <style name="Widget.MyTheme.DefaultButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/secondary</item>
+        <item name="android:textColor">@color/onSecondary</item>
+    </style>
+
+    <style name="Widget.MyTheme.CancelButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/cancelButton</item>
+        <item name="android:textColor">@color/onBackground</item>
+    </style>
+
+    <style name="Widget.MyTheme.Destructive" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/error</item>
+        <item name="android:textColor">@color/onError</item>
+    </style>
+
 </resources>

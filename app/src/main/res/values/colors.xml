@@ -9,7 +9,7 @@
     <color name="secondaryVariant">#c25e00</color>
 
     <!--colorBackground appears behind scrollable content and is used for the default window background.-->
-    <color name="background">#f9fafb</color>
+    <color name="background">#F9FAFB</color>
 
     <!--colorSurface is mapped to the surface of components such as cards, sheets and menus.-->
     <color name="surface">#ffffff</color>
@@ -28,4 +28,7 @@
     <color name="limitZoneSevereWarning">#BF4040</color>
     <color name="limitZoneWarning">#C2C20A</color>
     <color name="limitZoneSafe">#00B300</color>
+
+    <!--buttonColors-->
+    <color name="cancelButton">#c6c7c8</color> <!-- slightly darker variant of background -->
 </resources>

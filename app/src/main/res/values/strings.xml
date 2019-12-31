@@ -36,6 +36,10 @@
 
     <string name="statistics.title">Statistics</string>
 
+    <string name="workouts.edit_workout.title">Edit Workout</string>
+    <string name="workouts.edit_workout.workout_type.cardio">Cardio</string>
+    <string name="workouts.edit_workout.workout_type.muscle_building">Muscle building</string>
+
     <string name="workouts.overflow.reminder">Configure reminders</string>
 
     <string name="workouts.speed_dial.impediment">New impediment</string>
@@ -44,4 +48,7 @@
     <string name="workouts.title">Workouts</string>
 
     <string name="global.non_translatable.sample_title" translatable="false"><![CDATA[<Title>]]></string>
+    <string name="workouts.edit_workout.workout_type.overline">Workout type:</string>
+    <string name="workouts.edit_workout.start_date.overline">Started at:</string>
+    <string name="workouts.edit_workout.end_date.overline">Ended at:</string>
 </resources>
