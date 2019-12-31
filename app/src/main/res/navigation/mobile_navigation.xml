@@ -3,17 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_workouts">
+    app:startDestination="@+id/workouts">
 
     <fragment
-        android:id="@+id/navigation_workouts"
+        android:id="@+id/workouts"
         android:name="com.flinesoft.fitnesstracker.ui.workouts.WorkoutsFragment"
-        android:label="@string/workouts.title"
-        tools:layout="@layout/fragment_workouts" />
+        android:label="@string/workouts.title">
+        <action
+            android:id="@+id/action_workouts_to_edit_workout"
+            app:destination="@id/edit_workout"
+            app:enterAnim="@anim/sd_fade_and_translate_in"
+            app:exitAnim="@anim/sd_fade_and_translate_out" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_statistics"
+        android:id="@+id/statistics"
         android:name="com.flinesoft.fitnesstracker.ui.statistics.StatisticsFragment"
-        android:label="@string/statistics.title"
-        tools:layout="@layout/fragment_statistics" />
+        android:label="@string/statistics.title" />
+    <fragment
+        android:id="@+id/edit_workout"
+        android:name="com.flinesoft.fitnesstracker.ui.workouts.EditWorkoutFragment"
+        android:label="@string/workouts.edit_workout.title" />
 </navigation>

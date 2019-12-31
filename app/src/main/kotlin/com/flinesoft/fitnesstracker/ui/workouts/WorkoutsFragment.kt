@@ -7,20 +7,21 @@ import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
 import timber.log.Timber
 
 class WorkoutsFragment : Fragment() {
-    private lateinit var workoutsViewModel: WorkoutsViewModel
+    private lateinit var viewModel: WorkoutsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        workoutsViewModel = ViewModelProviders.of(this).get(WorkoutsViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(WorkoutsViewModel::class.java)
 
         val rootView: View = inflater.inflate(R.layout.fragment_workouts, container, false)
         val textView: TextView = rootView.findViewById(R.id.workoutsTextView)
-        workoutsViewModel.text.observe(this, Observer { textView.text = it })
+        viewModel.text.observe(this, Observer { textView.text = it })
 
         setHasOptionsMenu(true)
         configureFloatingActionButtonWithSpeedDial(rootView)
@@ -89,9 +90,6 @@ class WorkoutsFragment : Fragment() {
     }
 
     private fun showNewWorkoutForm() {
-        MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.workouts_speed_dial_workout)
-            // TODO: not yet implemented
-            .show()
+        findNavController().navigate(R.id.action_workouts_to_edit_workout)
     }
 }
