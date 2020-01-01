@@ -45,6 +45,12 @@
     <string name="workouts.edit_workout.workout_type.muscle_building">Muscle building</string>
     <string name="workouts.edit_workout.workout_type.overline">Workout type:</string>
 
+    <string name="workouts.header.postpone_button">Postpone</string>
+
+    <string name="workouts.header.title">Next Workout</string>
+
+    <string name="workouts.history.title">Recent Workouts</string>
+
     <string name="workouts.overflow.reminder">Configure reminders</string>
 
     <string name="workouts.speed_dial.impediment">New impediment</string>
@@ -52,5 +58,7 @@
 
     <string name="workouts.title">Workouts</string>
 
+    <string name="global.non_translatable.sample_date_time" translatable="false"><![CDATA[<DateTime>]]></string>
     <string name="global.non_translatable.sample_title" translatable="false"><![CDATA[<Title>]]></string>
+    <string name="workouts.header.next_workout_date_icon">calendar icon</string>
 </resources>

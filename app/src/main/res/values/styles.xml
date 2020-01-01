@@ -22,19 +22,27 @@
     </style>
 
     <!--Buttons-->
-    <style name="Widget.MyTheme.DefaultButton" parent="Widget.MaterialComponents.Button">
+    <style name="Widget.MyTheme.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:drawableTint">@color/onPrimary</item>
+    </style>
+
+    <style name="Widget.MyTheme.SecondaryButton" parent="Widget.MaterialComponents.Button">
         <item name="android:backgroundTint">@color/secondary</item>
         <item name="android:textColor">@color/onSecondary</item>
+        <item name="android:drawableTint">@color/onSecondary</item>
     </style>
 
     <style name="Widget.MyTheme.CancelButton" parent="Widget.MaterialComponents.Button">
         <item name="android:backgroundTint">@color/cancelButton</item>
         <item name="android:textColor">@color/onBackground</item>
+        <item name="android:drawableTint">@color/onBackground</item>
     </style>
 
     <style name="Widget.MyTheme.DestructiveButton" parent="Widget.MaterialComponents.Button" tools:ignore="UnusedResources">
         <item name="android:backgroundTint">@color/error</item>
         <item name="android:textColor">@color/onError</item>
+        <item name="android:drawableTint">@color/onError</item>
     </style>
-
 </resources>

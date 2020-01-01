@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
@@ -21,8 +20,7 @@ class WorkoutsFragment : Fragment() {
         binding = WorkoutsFragmentBinding.inflate(inflater)
         viewModel = ViewModelProviders.of(this).get(WorkoutsViewModel::class.java)
 
-        viewModel.text.observe(this, Observer { binding.workoutsTextView.text = it })
-
+        setupViewModelBinding()
         setHasOptionsMenu(true)
         configureFloatingActionButtonWithSpeedDial()
 
@@ -49,6 +47,10 @@ class WorkoutsFragment : Fragment() {
                 false
             }
         }
+    }
+
+    private fun setupViewModelBinding() {
+        // TODO: not yet implemented
     }
 
     private fun configureFloatingActionButtonWithSpeedDial() {

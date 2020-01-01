@@ -175,7 +175,7 @@
 
                 <Button
                     android:id="@+id/saveButton"
-                    style="@style/Widget.MyTheme.DefaultButton"
+                    style="@style/Widget.MyTheme.SecondaryButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/global.action.save"
