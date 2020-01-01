@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.globals.extensions.withDownPoppedAlpha
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.LimitLine
@@ -64,9 +65,9 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         lineChart.legend.textSize = defaultTextSize
         lineChart.legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
 
-        lineChart.axisLeft.textColor = ContextCompat.getColor(context, R.color.onBackground)
+        lineChart.axisLeft.textColor = ContextCompat.getColor(context, R.color.onBackground).withDownPoppedAlpha()
         lineChart.axisLeft.setDrawGridLines(false)
-        lineChart.xAxis.textColor = ContextCompat.getColor(context, R.color.onBackground)
+        lineChart.xAxis.textColor = ContextCompat.getColor(context, R.color.onBackground).withDownPoppedAlpha()
         lineChart.xAxis.setDrawGridLines(false)
 
         lineChart.xAxis.granularity = 1.days.inMilliseconds.toFloat()
@@ -84,7 +85,7 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         val limitLine = LimitLine(tresholdEntry.value.toFloat(), tresholdEntry.legend)
 
         limitLine.lineColor = tresholdEntry.color
-        limitLine.textColor = ContextCompat.getColor(context, R.color.onBackground)
+        limitLine.textColor = ContextCompat.getColor(context, R.color.onBackground).withDownPoppedAlpha()
         limitLine.textSize = defaultTextSize
         limitLine.lineWidth = 3.0f
 
@@ -121,6 +122,8 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         valueTextColor = ContextCompat.getColor(context, R.color.primary)
         highLightColor = ContextCompat.getColor(context, R.color.secondary)
         valueTextSize = defaultTextSize
+
+        lineWidth = 2.0f
     }
 
     private fun dataEntryToEntry(dataEntry: StatisticsCellViewModel.DataEntry): Entry {

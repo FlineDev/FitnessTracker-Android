@@ -20,7 +20,7 @@
         android:id="@+id/lineChart"
         android:layout_width="0dp"
         android:layout_height="240dp"
-        android:layout_marginTop="@dimen/spacingSmall"
+        android:layout_marginVertical="@dimen/spacingSmall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
