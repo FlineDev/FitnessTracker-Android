@@ -14,4 +14,11 @@
     <dimen name="alpha_emphasis_high">@dimen/material_emphasis_high_type</dimen>
     <dimen name="alpha_emphasis_medium">@dimen/material_emphasis_medium</dimen>
     <dimen name="alpha_emphasis_disabled">@dimen/material_emphasis_disabled</dimen>
+
+    <!--Downpop levels.-->
+    <dimen name="downPopLevel1">0.85</dimen>
+    <dimen name="downPopLevel2">0.7</dimen>
+    <dimen name="downPopLevel3">0.5</dimen>
+    <dimen name="downPopLevel4">0.3</dimen>
+    <dimen name="downPopLevel5">0.15</dimen>
 </resources>

@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.flinesoft.fitnesstracker.ui.shared.StatisticsCell
+            <com.flinesoft.fitnesstracker.ui.statistics.StatisticsCell
                 android:id="@+id/bodyMassIndexCell"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
                 android:layout_marginBottom="@dimen/spacingSmall"
                 app:title="@string/statistics.body_mass_index.title" />
 
-            <com.flinesoft.fitnesstracker.ui.shared.StatisticsCell
+            <com.flinesoft.fitnesstracker.ui.statistics.StatisticsCell
                 android:id="@+id/bodyShapeIndexCell"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -45,6 +45,8 @@
     <string name="workouts.edit_workout.workout_type.muscle_building">Muscle building</string>
     <string name="workouts.edit_workout.workout_type.overline">Workout type:</string>
 
+    <string name="workouts.header.next_workout_date_icon">calendar icon</string>
+
     <string name="workouts.header.postpone_button">Postpone</string>
 
     <string name="workouts.header.title">Next Workout</string>
@@ -58,7 +60,12 @@
 
     <string name="workouts.title">Workouts</string>
 
-    <string name="global.non_translatable.sample_date_time" translatable="false"><![CDATA[<DateTime>]]></string>
+    <string name="global.non_translatable.sample_date_time" translatable="false"><![CDATA[<Friday, October 15th>]]></string>
+    <string name="global.non_translatable.sample_number_short" translatable="false"><![CDATA[<15>]]></string>
+    <string name="global.non_translatable.sample_time" translatable="false"><![CDATA[<2:37 PM>]]></string>
+    <string name="global.non_translatable.sample_time_interval" translatable="false"><![CDATA[<4 days time>]]></string>
     <string name="global.non_translatable.sample_title" translatable="false"><![CDATA[<Title>]]></string>
-    <string name="workouts.header.next_workout_date_icon">calendar icon</string>
+    <string name="global.non_translatable.sample_weekday_short" translatable="false"><![CDATA[<FR>]]></string>
+    <string name="workouts.history_cell.workout_type_icon">workout type icon</string>
+    <string name="workouts.history_cell.between_workouts_icon">time between workouts rating indicator</string>
 </resources>

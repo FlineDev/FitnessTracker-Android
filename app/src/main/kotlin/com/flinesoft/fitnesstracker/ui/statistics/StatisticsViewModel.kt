@@ -11,7 +11,6 @@ import com.flinesoft.fitnesstracker.globals.extensions.reduceToLatestMeasureDate
 import com.flinesoft.fitnesstracker.globals.extensions.reduceToLowestValuePerDay
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
-import com.flinesoft.fitnesstracker.ui.shared.StatisticsCellViewModel
 import org.joda.time.DateTime
 import kotlin.time.ExperimentalTime
 

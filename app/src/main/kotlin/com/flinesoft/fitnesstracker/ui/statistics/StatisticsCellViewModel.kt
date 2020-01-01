@@ -1,4 +1,4 @@
-package com.flinesoft.fitnesstracker.ui.shared
+package com.flinesoft.fitnesstracker.ui.statistics
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

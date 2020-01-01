@@ -45,14 +45,20 @@
     <string name="workouts.edit_workout.workout_type.muscle_building">Muskelaufbau</string>
     <string name="workouts.edit_workout.workout_type.overline">Art des Trainings:</string>
 
+    <string name="workouts.header.next_workout_date_icon">Kalender-Symbol</string>
+
+    <string name="workouts.header.postpone_button">Verschieben</string>
+
+    <string name="workouts.header.title">Nächstes Training</string>
+
+    <string name="workouts.history.title">Letzte Trainings</string>
+
     <string name="workouts.overflow.reminder">Erinnerungen einstellen</string>
 
     <string name="workouts.speed_dial.impediment">Neue Verhinderung</string>
     <string name="workouts.speed_dial.workout">Neues Training</string>
 
     <string name="workouts.title">Trainings</string>
-    <string name="workouts.history.title">Letzte Trainings</string>
-    <string name="workouts.header.title">Nächstes Training</string>
-    <string name="workouts.header.postpone_button">Verschieben</string>
-    <string name="workouts.header.next_workout_date_icon">Kalender-Symbol</string>
+    <string name="workouts.history_cell.workout_type_icon">Trainings-Typ Icon</string>
+    <string name="workouts.history_cell.between_workouts_icon">Indikator zur Bewertung der Zeit zwischen zwei Trainings</string>
 </resources>

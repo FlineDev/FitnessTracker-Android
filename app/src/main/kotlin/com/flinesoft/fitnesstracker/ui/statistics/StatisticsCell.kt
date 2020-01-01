@@ -1,4 +1,4 @@
-package com.flinesoft.fitnesstracker.ui.shared
+package com.flinesoft.fitnesstracker.ui.statistics
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,7 +9,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.flinesoft.fitnesstracker.R
-import com.flinesoft.fitnesstracker.globals.extensions.withDownPoppedAlpha
+import com.flinesoft.fitnesstracker.globals.DownPopLevel
+import com.flinesoft.fitnesstracker.globals.extensions.withAlphaDownPoppedTo
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.LimitLine
@@ -25,7 +26,7 @@ import kotlin.time.ExperimentalTime
 import kotlin.time.days
 
 @ExperimentalTime
-class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
+class StatisticsCell(context: Context, attributes: AttributeSet) : ConstraintLayout(context, attributes) {
     private val dataEntriesSet: LineDataSet = LineDataSet(emptyList(), "TODO")
 
     private val defaultTextSize: Float = 13.0f
@@ -37,7 +38,7 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         View.inflate(context, R.layout.statistics_cell, this)
         setupLineChart()
 
-        context.theme.obtainStyledAttributes(attrs, R.styleable.StatisticsCell, 0, 0).apply {
+        context.theme.obtainStyledAttributes(attributes, R.styleable.StatisticsCell, 0, 0).apply {
             try {
                 titleTextView.text = getString(R.styleable.StatisticsCell_title)
             } finally {
@@ -65,9 +66,9 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         lineChart.legend.textSize = defaultTextSize
         lineChart.legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
 
-        lineChart.axisLeft.textColor = ContextCompat.getColor(context, R.color.onBackground).withDownPoppedAlpha()
+        lineChart.axisLeft.textColor = ContextCompat.getColor(context, R.color.onBackground).withAlphaDownPoppedTo(DownPopLevel.LEVEL2)
         lineChart.axisLeft.setDrawGridLines(false)
-        lineChart.xAxis.textColor = ContextCompat.getColor(context, R.color.onBackground).withDownPoppedAlpha()
+        lineChart.xAxis.textColor = ContextCompat.getColor(context, R.color.onBackground).withAlphaDownPoppedTo(DownPopLevel.LEVEL2)
         lineChart.xAxis.setDrawGridLines(false)
 
         lineChart.xAxis.granularity = 1.days.inMilliseconds.toFloat()
@@ -85,7 +86,7 @@ class StatisticsCell(context: Context, attrs: AttributeSet) : ConstraintLayout(c
         val limitLine = LimitLine(tresholdEntry.value.toFloat(), tresholdEntry.legend)
 
         limitLine.lineColor = tresholdEntry.color
-        limitLine.textColor = ContextCompat.getColor(context, R.color.onBackground).withDownPoppedAlpha()
+        limitLine.textColor = ContextCompat.getColor(context, R.color.onBackground).withAlphaDownPoppedTo(DownPopLevel.LEVEL2)
         limitLine.textSize = defaultTextSize
         limitLine.lineWidth = 3.0f
 
