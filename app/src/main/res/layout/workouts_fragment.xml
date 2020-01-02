@@ -78,7 +78,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="@dimen/spacingMedium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +87,7 @@
             android:id="@+id/historyTitleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacingMedium"
             android:text="@string/workouts.history.title"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.MyTheme.Headline4"

@@ -18,10 +18,13 @@ class WorkoutsHistoryCell(context: Context) : ConstraintLayout(context) {
 
     fun updateViewModel(viewModel: WorkoutsHistoryCellViewModel) {
         binding.betweenWorkoutsIconImageView.setImageDrawable(viewModel.betweenWorkoutsIconDrawable())
-        binding.betweenWorkoutsTextView.text = viewModel.betweenWorkoutsDuration.toComponents { days, hours, _, _, _ ->
-            val daysString = context.resources.getQuantityString(R.plurals.global_duration_days, days, days)
-            val hoursString = context.resources.getQuantityString(R.plurals.global_duration_hours, hours, days)
-            context.getString(R.string.workouts_history_cell_between_workouts_duration, daysString, hoursString)
-        }
+        binding.betweenWorkoutsTextView.text = viewModel.betweenWorkoutsText(context)
+
+        binding.dayTextView.text = viewModel.dayText()
+        binding.weekdayTextView.text = viewModel.weekDayText()
+
+        binding.workoutTypeIconImageView.setImageDrawable(viewModel.workoutTypeIconDrawable(context))
+        binding.workoutTypeTextView.text = viewModel.workoutTypeText(context)
+        binding.timeTextView.text = viewModel.timeText(context)
     }
 }

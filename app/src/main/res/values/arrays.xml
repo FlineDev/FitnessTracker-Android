@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="workoutTypes">
-        <item>@string/workouts.edit_workout.workout_type.cardio</item>
-        <item>@string/workouts.edit_workout.workout_type.muscle_building</item>
+        <item>@string/models.workout_type.cardio</item>
+        <item>@string/models.workout_type.muscle_building</item>
     </string-array>
 </resources>

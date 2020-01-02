@@ -94,6 +94,7 @@ class EditWorkoutFragment : BackNavigationFragment() {
     }
 
     private fun saveButtonPressed() {
+        // TODO: add validation that end date is after start date and duration is less than 4 hours
         GlobalScope.launch { viewModel.save() }
         findNavController().navigateUp()
     }

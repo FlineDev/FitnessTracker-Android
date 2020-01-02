@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/betweenWorkoutsEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacingMedium"
         android:layout_marginVertical="@dimen/spacingTiny"
         app:layout_constraintBottom_toTopOf="@+id/workoutEntry"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,8 +33,8 @@
             android:id="@+id/betweenWorkoutsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacingMedium"
-            android:alpha="@dimen/downPopLevel1"
+            android:layout_marginStart="@dimen/spacingSmall"
+            android:alpha="@dimen/downPopLevel2"
             android:text="@string/global.non_translatable.sample_time_interval"
             android:textAppearance="@style/TextAppearance.MyTheme.Body2"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +48,9 @@
         android:id="@+id/workoutEntry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/spacingTiny"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/spacingMedium"
+        android:paddingVertical="@dimen/spacingSmall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -67,17 +70,20 @@
                 android:id="@+id/dayTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:alpha="@dimen/downPopLevel2"
+                android:alpha="@dimen/downPopLevel1"
                 android:text="@string/global.non_translatable.sample_number_short"
-                android:textAppearance="@style/TextAppearance.MyTheme.Caption" />
+                android:textAppearance="@style/TextAppearance.MyTheme.Caption"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/weekdayTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:alpha="@dimen/downPopLevel2"
+                android:alpha="@dimen/downPopLevel1"
                 android:text="@string/global.non_translatable.sample_weekday_short"
-                android:textAppearance="@style/TextAppearance.MyTheme.Caption" />
+                android:textAppearance="@style/TextAppearance.MyTheme.Caption"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -85,7 +91,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/spacingMedium"
-            android:background="@color/surface"
+            android:background="@drawable/max_rounded_rectangle"
+            android:elevation="3dp"
             android:padding="@dimen/spacingTiny"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -111,6 +118,7 @@
                 android:labelFor="@id/workoutTypeIconImageView"
                 android:text="@string/global.non_translatable.sample_title"
                 android:textAppearance="@style/TextAppearance.MyTheme.Body1"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/timeTextView"
                 app:layout_constraintHorizontal_bias="0.0"

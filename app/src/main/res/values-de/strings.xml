@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">FitnessTracker</string>
 
     <string name="global.action.cancel">Abbrechen</string>
@@ -16,9 +16,14 @@
         <item quantity="other">%d Stunden</item>
     </plurals>
 
+    <string name="global.duration.time_interval"><xliff:g example="14:00" id="from">%1$s</xliff:g> - <xliff:g example="16:00" id="to">%2$s</xliff:g></string>
+
     <string name="global.error.invalid_input">Ungültige Daten. Bitte prüfe sie &amp; versuche es erneut.</string>
 
     <string name="global.info.saved_successfully">Daten erfolgreich gespeichert.</string>
+
+    <string name="models.workout_type.cardio">Herz-Kreislauf</string>
+    <string name="models.workout_type.muscle_building">Muskelaufbau</string>
 
     <string name="statistics.body_mass_index.healthy_max_treshold.legend">Gesunder Bereich Maximum</string>
     <string name="statistics.body_mass_index.healthy_min_treshold.legend">Gesunder Bereich Minimum</string>
@@ -51,8 +56,6 @@
     <string name="workouts.edit_workout.start_date.overline">Startdatum:</string>
     <string name="workouts.edit_workout.start_time.overline">Startzeit:</string>
     <string name="workouts.edit_workout.title">Training bearbeiten</string>
-    <string name="workouts.edit_workout.workout_type.cardio">Herz-Kreislauf</string>
-    <string name="workouts.edit_workout.workout_type.muscle_building">Muskelaufbau</string>
     <string name="workouts.edit_workout.workout_type.overline">Art des Trainings:</string>
 
     <string name="workouts.header.next_workout_date_icon">Kalender-Symbol</string>
@@ -63,7 +66,7 @@
 
     <string name="workouts.history.title">Letzte Trainings</string>
 
-    <string name="workouts.history_cell.between_workouts_duration">%1$s und %2$s dazwischen</string>
+    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g> und <xliff:g example="14 hours" id="hours">%2$s</xliff:g> dazwischen</string>
     <string name="workouts.history_cell.between_workouts_icon">Indikator zur Bewertung der Zeit zwischen zwei Trainings</string>
     <string name="workouts.history_cell.workout_type_icon">Trainings-Typ Icon</string>
 

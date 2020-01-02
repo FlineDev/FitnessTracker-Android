@@ -20,7 +20,7 @@ class WorkoutsHistoryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutsHistoryViewHolder {
         val cell = WorkoutsHistoryCell(parent.context)
-        // TODO: setup layout parameters
+        cell.layoutParams = RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         return WorkoutsHistoryViewHolder(cell)
     }
 

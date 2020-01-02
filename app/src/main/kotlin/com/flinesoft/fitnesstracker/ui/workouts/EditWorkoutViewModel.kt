@@ -35,10 +35,10 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
 
     fun updateWorkoutType(spinnerItemLocalizedString: String) {
         when (spinnerItemLocalizedString) {
-            getApplication<Application>().getString(R.string.workouts_edit_workout_workout_type_cardio) ->
+            getApplication<Application>().getString(R.string.models_workout_type_cardio) ->
                 workoutType = Workout.Type.CARDIO
 
-            getApplication<Application>().getString(R.string.workouts_edit_workout_workout_type_muscle_building) ->
+            getApplication<Application>().getString(R.string.models_workout_type_muscle_building) ->
                 workoutType = Workout.Type.MUSCLE_BUILDING
 
             else -> Timber.e("Found unexpected spinner item localized string: $spinnerItemLocalizedString")
