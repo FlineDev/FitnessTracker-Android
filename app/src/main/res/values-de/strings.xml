@@ -6,6 +6,16 @@
 
     <string name="global.action.save">Speichern</string>
 
+    <plurals name="global.duration.days">
+        <item quantity="one">%d Tag</item>
+        <item quantity="other">%d Tage</item>
+    </plurals>
+
+    <plurals name="global.duration.hours">
+        <item quantity="one">%d Stunde</item>
+        <item quantity="other">%d Stunden</item>
+    </plurals>
+
     <string name="global.error.invalid_input">Ungültige Daten. Bitte prüfe sie &amp; versuche es erneut.</string>
 
     <string name="global.info.saved_successfully">Daten erfolgreich gespeichert.</string>
@@ -53,12 +63,14 @@
 
     <string name="workouts.history.title">Letzte Trainings</string>
 
+    <string name="workouts.history_cell.between_workouts_duration">%1$s und %2$s dazwischen</string>
+    <string name="workouts.history_cell.between_workouts_icon">Indikator zur Bewertung der Zeit zwischen zwei Trainings</string>
+    <string name="workouts.history_cell.workout_type_icon">Trainings-Typ Icon</string>
+
     <string name="workouts.overflow.reminder">Erinnerungen einstellen</string>
 
     <string name="workouts.speed_dial.impediment">Neue Verhinderung</string>
     <string name="workouts.speed_dial.workout">Neues Training</string>
 
     <string name="workouts.title">Trainings</string>
-    <string name="workouts.history_cell.workout_type_icon">Trainings-Typ Icon</string>
-    <string name="workouts.history_cell.between_workouts_icon">Indikator zur Bewertung der Zeit zwischen zwei Trainings</string>
 </resources>

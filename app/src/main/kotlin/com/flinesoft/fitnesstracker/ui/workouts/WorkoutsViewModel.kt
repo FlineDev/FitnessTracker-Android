@@ -1,12 +1,13 @@
 package com.flinesoft.fitnesstracker.ui.workouts
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.flinesoft.fitnesstracker.globals.extensions.database
+import com.flinesoft.fitnesstracker.model.Workout
+import kotlin.time.ExperimentalTime
 
-class WorkoutsViewModel : ViewModel() {
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is workouts Fragment"
-    }
-    val text: LiveData<String> = _text
+@ExperimentalTime
+class WorkoutsViewModel(application: Application) : AndroidViewModel(application) {
+    val workouts: LiveData<List<Workout>> = database().workoutDao.allOrderedByEndDateDescending()
 }

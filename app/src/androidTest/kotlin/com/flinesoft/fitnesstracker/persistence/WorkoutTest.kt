@@ -17,7 +17,7 @@ class WorkoutTest: PersistenceTest() {
     @Test
     @Throws(Exception::class)
     fun runBasicCRUDOperations() = runBlocking {
-        val allWorkoutsOrderedByStartDate = database.workoutDao.allOrderedByStartDate()
+        val allWorkoutsOrderedByStartDate = database.workoutDao.allOrderedByStartDateDescending()
         assertNotNull(allWorkoutsOrderedByStartDate.awaitValue())
         assert(allWorkoutsOrderedByStartDate.awaitValue()!!.isEmpty())
 

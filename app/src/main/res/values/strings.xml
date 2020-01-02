@@ -6,6 +6,16 @@
 
     <string name="global.action.save">Save</string>
 
+    <plurals name="global.duration.days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+
+    <plurals name="global.duration.hours">
+        <item quantity="one">%d hour</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
+
     <string name="global.error.invalid_input">Invalid input data. Please check &amp; try again.</string>
 
     <string name="global.info.saved_successfully">Saved data successfully.</string>
@@ -53,6 +63,10 @@
 
     <string name="workouts.history.title">Recent Workouts</string>
 
+    <string name="workouts.history_cell.between_workouts_duration">%1$s and %2$s in between</string>
+    <string name="workouts.history_cell.between_workouts_icon">time between workouts rating indicator</string>
+    <string name="workouts.history_cell.workout_type_icon">workout type icon</string>
+
     <string name="workouts.overflow.reminder">Configure reminders</string>
 
     <string name="workouts.speed_dial.impediment">New impediment</string>
@@ -66,6 +80,4 @@
     <string name="global.non_translatable.sample_time_interval" translatable="false"><![CDATA[<4 days time>]]></string>
     <string name="global.non_translatable.sample_title" translatable="false"><![CDATA[<Title>]]></string>
     <string name="global.non_translatable.sample_weekday_short" translatable="false"><![CDATA[<FR>]]></string>
-    <string name="workouts.history_cell.workout_type_icon">workout type icon</string>
-    <string name="workouts.history_cell.between_workouts_icon">time between workouts rating indicator</string>
 </resources>

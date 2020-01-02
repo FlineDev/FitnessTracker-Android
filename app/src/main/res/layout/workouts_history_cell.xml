@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/betweenWorkoutsEntry"
         android:layout_width="wrap_content"
