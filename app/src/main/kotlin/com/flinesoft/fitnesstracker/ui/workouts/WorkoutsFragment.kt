@@ -69,6 +69,7 @@ class WorkoutsFragment : Fragment() {
     private fun setupViewModelBinding() {
         viewModel.workouts.observe(this, Observer {
             historyAdapter.notifyDataSetChanged()
+            binding.nextWorkoutDateTextView.text = viewModel.suggestedNextWorkoutDateString(context!!)
         })
     }
 
