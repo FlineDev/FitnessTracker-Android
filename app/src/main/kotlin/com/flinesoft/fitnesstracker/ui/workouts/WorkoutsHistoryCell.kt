@@ -17,8 +17,8 @@ class WorkoutsHistoryCell(context: Context) : ConstraintLayout(context) {
         betweenWorkoutsIconImageView.setImageDrawable(viewModel.betweenWorkoutsIconDrawable())
         betweenWorkoutsTextView.text = viewModel.betweenWorkoutsText(context)
 
+        monthTextView.text = viewModel.monthText()
         dayTextView.text = viewModel.dayText()
-        weekdayTextView.text = viewModel.weekDayText()
 
         workoutTypeIconImageView.setImageDrawable(viewModel.workoutTypeIconDrawable(context))
         workoutTypeTextView.text = viewModel.workoutTypeText(context)

@@ -62,28 +62,33 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/workoutDetailsLayout"
             app:layout_constraintEnd_toStartOf="@+id/workoutDetailsLayout"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/workoutDetailsLayout">
+
+            <TextView
+                android:id="@+id/monthTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="@dimen/downPopLevel1"
+                android:text="@string/global.non_translatable.sample_month_short"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MyTheme.Caption"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/dayTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="@dimen/downPopLevel1"
                 android:text="@string/global.non_translatable.sample_number_short"
+                android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.MyTheme.Caption"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/weekdayTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="@dimen/downPopLevel1"
-                android:text="@string/global.non_translatable.sample_weekday_short"
-                android:textAppearance="@style/TextAppearance.MyTheme.Caption"
-                android:textSize="14sp" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,7 +98,7 @@
             android:layout_marginStart="@dimen/spacingMedium"
             android:background="@drawable/max_rounded_rectangle"
             android:elevation="3dp"
-            android:padding="@dimen/spacingTiny"
+            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -129,7 +134,7 @@
                 android:id="@+id/timeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/spacingMedium"
+                android:layout_marginEnd="@dimen/spacingSmall"
                 android:alpha="@dimen/downPopLevel3"
                 android:text="@string/global.non_translatable.sample_time"
                 android:textAppearance="@style/TextAppearance.MyTheme.Body2"

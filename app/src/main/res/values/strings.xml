@@ -84,5 +84,5 @@
     <string name="global.non_translatable.sample_time" translatable="false"><![CDATA[<2:37 PM>]]></string>
     <string name="global.non_translatable.sample_time_interval" translatable="false"><![CDATA[<4 days time>]]></string>
     <string name="global.non_translatable.sample_title" translatable="false"><![CDATA[<Title>]]></string>
-    <string name="global.non_translatable.sample_weekday_short" translatable="false"><![CDATA[<FR>]]></string>
+    <string name="global.non_translatable.sample_month_short" translatable="false"><![CDATA[<APR>]]></string>
 </resources>

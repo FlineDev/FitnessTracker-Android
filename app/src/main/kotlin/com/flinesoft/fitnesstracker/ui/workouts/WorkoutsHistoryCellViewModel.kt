@@ -35,8 +35,8 @@ class WorkoutsHistoryCellViewModel(application: Application, val workout: Workou
         context.getString(R.string.workouts_history_cell_between_workouts_duration, daysString, hoursString)
     }
 
+    fun monthText(): String = DateFormatSymbols().shortMonths[workout.startDate.monthOfYear - 1].substring(0..2).toUpperCase(Locale.getDefault())
     fun dayText(): String = workout.startDate.dayOfMonth.toString().padStart(2, '0')
-    fun weekDayText(): String = DateFormatSymbols().shortWeekdays[workout.startDate.dayOfWeek].substring(0..1).toUpperCase(Locale.getDefault())
 
     fun workoutTypeIconDrawable(context: Context): Drawable? = when (workout.type) {
         Workout.Type.CARDIO ->
