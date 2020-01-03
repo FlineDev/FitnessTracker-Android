@@ -4,21 +4,31 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.globals.DEFAULT_WORKOUT_DURATION_MINUTES
+import com.flinesoft.fitnesstracker.globals.MAX_WORKOUT_DURATION_HOURS
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.model.Workout
 import org.joda.time.DateTime
 import timber.log.Timber
+import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
+import kotlin.time.milliseconds
 
 @ExperimentalTime
 class EditWorkoutViewModel(application: Application) : AndroidViewModel(application) {
     var existingWorkoutId: Long? = null
     var workoutType = Workout.Type.CARDIO
-    var startDate = MutableLiveData<DateTime>(DateTime.now().minusHours(1))
+    var startDate = MutableLiveData<DateTime>(DateTime.now().minusMinutes(DEFAULT_WORKOUT_DURATION_MINUTES))
     var endDate = MutableLiveData<DateTime>(DateTime.now())
 
     fun updateStartDate(year: Int, month: Int, day: Int) {
         startDate.value = startDate.value!!.withYear(year).withMonthOfYear(month).withDayOfMonth(day)
+
+        // auto-correct end date on start date change
+        updateEndDate(year, month, day)
+        if (endDate.value!! < startDate.value!!) {
+            endDate.value = endDate.value!!.plusDays(1)
+        }
     }
 
     fun updateStartTime(hour: Int, minute: Int) {
@@ -45,7 +55,9 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
-    suspend fun save() {
+    suspend fun save(): Boolean {
+        if (dateIsFuture() || invalidDuration()) return false
+
         if (existingWorkoutId == null) {
             database().workoutDao.create(
                 Workout(
@@ -57,5 +69,11 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
         } else {
             // TODO: updating exisitng objects not yet implemented
         }
+
+        return true
     }
+
+    private fun dateIsFuture(): Boolean = startDate.value!! > DateTime.now() || endDate.value!! > DateTime.now()
+    private fun invalidDuration(): Boolean = workoutDuration().inHours < 0 || workoutDuration().inHours > MAX_WORKOUT_DURATION_HOURS
+    private fun workoutDuration(): Duration = (endDate.value!!.millis - startDate.value!!.millis).milliseconds
 }

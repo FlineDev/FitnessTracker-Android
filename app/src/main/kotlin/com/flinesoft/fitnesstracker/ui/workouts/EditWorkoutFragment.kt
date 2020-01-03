@@ -10,10 +10,13 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.EditWorkoutFragmentBinding
 import com.flinesoft.fitnesstracker.globals.BackNavigationFragment
 import com.flinesoft.fitnesstracker.globals.extensions.DateFormatExt
+import com.flinesoft.fitnesstracker.globals.extensions.snack
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 import kotlin.time.ExperimentalTime
@@ -94,9 +97,17 @@ class EditWorkoutFragment : BackNavigationFragment() {
     }
 
     private fun saveButtonPressed() {
-        // TODO: add validation that end date is after start date and duration is less than 4 hours
-        GlobalScope.launch { viewModel.save() }
-        findNavController().navigateUp()
+        GlobalScope.launch {
+            val saveSuccess = viewModel.save()
+
+            MainScope().launch {
+                if (saveSuccess) {
+                    findNavController().navigateUp()
+                } else {
+                    view?.snack(R.string.global_error_invalid_input)
+                }
+            }
+        }
     }
 
     private fun showDatePickerDialog(date: DateTime, listener: DatePickerDialog.OnDateSetListener) {
