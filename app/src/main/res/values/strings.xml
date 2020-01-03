@@ -25,6 +25,8 @@
     <string name="models.workout_type.cardio">Cardio</string>
     <string name="models.workout_type.muscle_building">Muscle building</string>
 
+    <string name="statistics.body_mass_index.empty_data">No weight measurements available.</string>
+    <string name="statistics.body_mass_index.explanation"><![CDATA[The classical index derived from weight & height of a person to serve as an indicator for under-/overweight. Does not take into consideration the age, gender or body fat/muscles of a person.]]></string>
     <string name="statistics.body_mass_index.healthy_max_treshold.legend">Healthy range maximum</string>
     <string name="statistics.body_mass_index.healthy_min_treshold.legend">Healthy range minimum</string>
     <string name="statistics.body_mass_index.legend">Your BMI value over time</string>
@@ -32,6 +34,8 @@
     <string name="statistics.body_mass_index.title">Body Mass Index (BMI)</string>
     <string name="statistics.body_mass_index.upper_high_risk_treshold.legend">High risk (overweight)</string>
     <string name="statistics.body_shape_index.average_risk_max.legend">Average risk maximum</string>
+    <string name="statistics.body_shape_index.empty_data">No weight or waist circumference measurements available.</string>
+    <string name="statistics.body_shape_index.explanation"><![CDATA[The modern index which evolves the BMI by also taking into consideration the age, gender and body fat/muscles (via waist circumference) of a person. A value of 0 represents the average health risk of the same age and gender group within the US population.]]></string>
     <string name="statistics.body_shape_index.high_risk_max.legend">High risk maximum</string>
     <string name="statistics.body_shape_index.legend">Your ABSI z score over time</string>
     <string name="statistics.body_shape_index.low_risk_max.legend">Low risk maximum</string>
@@ -76,6 +80,7 @@
 
     <string name="global.non_translatable.sample_date_time" translatable="false"><![CDATA[<Friday, October 15th>]]></string>
     <string name="global.non_translatable.sample_number_short" translatable="false"><![CDATA[<15>]]></string>
+    <string name="global.non_translatable.sample_sentence" translatable="false"><![CDATA[<This is a sample sentence.>]]></string>
     <string name="global.non_translatable.sample_time" translatable="false"><![CDATA[<2:37 PM>]]></string>
     <string name="global.non_translatable.sample_time_interval" translatable="false"><![CDATA[<4 days time>]]></string>
     <string name="global.non_translatable.sample_title" translatable="false"><![CDATA[<Title>]]></string>

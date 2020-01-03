@@ -45,17 +45,15 @@ class StatisticsFragment : Fragment() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.statistics_overflow_data -> {
-                showBaseDataInput()
-                return true
-            }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.statistics_overflow_data -> {
+            showBaseDataInput()
+            true
+        }
 
-            else -> {
-                Timber.e("unknown overflow item id clicked: '${item.itemId}'")
-                return false
-            }
+        else -> {
+            Timber.e("unknown overflow item id clicked: '${item.itemId}'")
+            false
         }
     }
 

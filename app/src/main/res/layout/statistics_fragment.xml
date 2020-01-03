@@ -23,14 +23,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacingMedium"
-                android:layout_marginBottom="@dimen/spacingSmall"
                 app:title="@string/statistics.body_mass_index.title" />
 
             <com.flinesoft.fitnesstracker.ui.statistics.StatisticsCell
                 android:id="@+id/bodyShapeIndexCell"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacingLarge"
+                android:layout_marginTop="@dimen/spacingMedium"
                 app:title="@string/statistics.body_shape_index.title" />
 
         </LinearLayout>

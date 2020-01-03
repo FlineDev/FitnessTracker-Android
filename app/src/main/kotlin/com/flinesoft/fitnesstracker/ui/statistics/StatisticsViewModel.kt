@@ -47,6 +47,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
                 color = application.getColor(R.color.limitZoneSevereWarning)
             )
         ),
+        explanation = application.getString(R.string.statistics_body_mass_index_explanation),
+        emptyStateText = application.getString(R.string.statistics_body_mass_index_empty_data),
         legend = application.getString(R.string.statistics_body_mass_index_legend)
     )
 
@@ -74,6 +76,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
                 color = application.getColor(R.color.limitZoneSevereWarning)
             )
         ),
+        explanation = application.getString(R.string.statistics_body_shape_index_explanation),
+        emptyStateText = application.getString(R.string.statistics_body_shape_index_empty_data),
         legend = application.getString(R.string.statistics_body_shape_index_legend)
     )
 

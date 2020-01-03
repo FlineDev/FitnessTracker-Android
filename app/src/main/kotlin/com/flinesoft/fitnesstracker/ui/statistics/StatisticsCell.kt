@@ -36,6 +36,7 @@ class StatisticsCell(context: Context, attributes: AttributeSet) : ConstraintLay
 
     init {
         View.inflate(context, R.layout.statistics_cell, this)
+
         setupLineChart()
 
         context.theme.obtainStyledAttributes(attributes, R.styleable.StatisticsCell, 0, 0).apply {
@@ -49,6 +50,10 @@ class StatisticsCell(context: Context, attributes: AttributeSet) : ConstraintLay
 
     fun setup(viewModel: StatisticsCellViewModel, lifecycleOwner: LifecycleOwner) {
         dataEntriesSet.label = viewModel.legend
+        explanationTextView.text = viewModel.explanation
+
+        lineChart.setNoDataTextColor(ContextCompat.getColor(context, R.color.primaryVariant))
+        lineChart.setNoDataText(viewModel.emptyStateText)
 
         lineChart.data = LineData(styledDataSet(dataEntriesSet))
         lineChart.invalidate()
@@ -102,7 +107,6 @@ class StatisticsCell(context: Context, attributes: AttributeSet) : ConstraintLay
         xAxisOffsetMillis = dataEntries.firstOrNull()?.dateTime?.millis
 
         dataEntriesSet.values = dataEntries.map { dataEntryToEntry(it) }
-        lineChart.data = LineData(styledDataSet(dataEntriesSet))
 
         if (dataEntries.isNotEmpty() && lineChart.axisLeft.limitLines.isNotEmpty()) {
             lineChart.axisLeft.axisMinimum = min(dataEntries.map { it.value.toFloat() }.min()!!, lineChart.axisLeft.limitLines.map { it.limit }.min()!!)
@@ -111,6 +115,12 @@ class StatisticsCell(context: Context, attributes: AttributeSet) : ConstraintLay
             // add 10 percent of extra space to top and bottom of left axis range
             lineChart.axisLeft.axisMinimum -= lineChart.axisLeft.mAxisRange / 10f
             lineChart.axisLeft.axisMaximum += lineChart.axisLeft.mAxisRange / 10f
+        }
+
+        if (dataEntriesSet.values.isNotEmpty()) {
+            lineChart.data = LineData(styledDataSet(dataEntriesSet))
+        } else {
+            lineChart.clear()
         }
 
         lineChart.invalidate()
