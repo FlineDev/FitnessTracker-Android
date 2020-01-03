@@ -52,11 +52,6 @@ class StatisticsFragment : Fragment() {
                 return true
             }
 
-            R.id.statistics_overflow_calc -> {
-                showCalculationMethods()
-                return true
-            }
-
             else -> {
                 Timber.e("unknown overflow item id clicked: '${item.itemId}'")
                 return false
@@ -95,13 +90,6 @@ class StatisticsFragment : Fragment() {
     private fun showBaseDataInput() {
         MaterialAlertDialogBuilder(context)
             .setTitle(R.string.statistics_overflow_data)
-            // TODO: not yet implemented
-            .show()
-    }
-
-    private fun showCalculationMethods() {
-        MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.statistics_overflow_calc)
             // TODO: not yet implemented
             .show()
     }

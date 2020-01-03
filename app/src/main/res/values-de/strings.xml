@@ -38,8 +38,6 @@
     <string name="statistics.body_shape_index.title">Body-Shape-Index (ABSI)</string>
     <string name="statistics.body_shape_index.very_low_risk_max.legend">Sehr geringes Risiko Maximum</string>
 
-    <string name="statistics.overflow.calc">Berechnungsmethode</string>
-
     <string name="statistics.overflow.data">Basisdaten verändern</string>
 
     <string name="statistics.speed_dial.waist_circumference">Neuer Taillenumfang</string>
@@ -72,7 +70,6 @@
 
     <string name="workouts.overflow.reminder">Erinnerungen einstellen</string>
 
-    <string name="workouts.speed_dial.impediment">Neue Verhinderung</string>
     <string name="workouts.speed_dial.workout">Neues Training</string>
 
     <string name="workouts.title">Trainings</string>

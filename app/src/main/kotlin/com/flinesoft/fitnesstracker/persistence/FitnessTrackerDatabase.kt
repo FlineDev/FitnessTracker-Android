@@ -5,7 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.flinesoft.fitnesstracker.model.Impediment
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
 import com.flinesoft.fitnesstracker.model.Workout
@@ -14,10 +15,9 @@ import com.flinesoft.fitnesstracker.persistence.converters.EnumConverters
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
-@Database(entities = [Impediment::class, WaistCircumferenceMeasurement::class, WeightMeasurement::class, Workout::class], version = 1)
+@Database(entities = [WaistCircumferenceMeasurement::class, WeightMeasurement::class, Workout::class], version = 2)
 @TypeConverters(DateTimeConverter::class, EnumConverters::class)
 abstract class FitnessTrackerDatabase : RoomDatabase() {
-    abstract val impedimentDao: ImpedimentDao
     abstract val waistCircumferenceMeasurementDao: WaistCircumferenceMeasurementDao
     abstract val weightMeasurementDao: WeightMeasurementDao
     abstract val workoutDao: WorkoutDao
@@ -36,13 +36,19 @@ abstract class FitnessTrackerDatabase : RoomDatabase() {
                         FitnessTrackerDatabase::class.java,
                         "FitnessTrackerDatabase"
                     )
-                        .fallbackToDestructiveMigration()
+                        .addMigrations(migrationFrom1To2)
                         .build()
 
                     INSTANCE = instance
                 }
 
                 return instance
+            }
+        }
+
+        private val migrationFrom1To2 = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("DROP TABLE Impediments")
             }
         }
     }

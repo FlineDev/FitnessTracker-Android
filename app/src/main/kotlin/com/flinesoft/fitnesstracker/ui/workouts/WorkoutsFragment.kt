@@ -76,11 +76,6 @@ class WorkoutsFragment : Fragment() {
         binding.workoutsSpeedDial.inflate(R.menu.workouts_speed_dial_menu)
         binding.workoutsSpeedDial.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
             when (actionItem.id) {
-                R.id.workouts_speed_dial_impediment -> {
-                    showNewImpedimentForm()
-                    return@OnActionSelectedListener true
-                }
-
                 R.id.workouts_speed_dial_workout -> {
                     showNewWorkoutForm()
                     return@OnActionSelectedListener true
@@ -97,13 +92,6 @@ class WorkoutsFragment : Fragment() {
     private fun showRemindersForm() {
         MaterialAlertDialogBuilder(context)
             .setTitle(R.string.workouts_overflow_reminder)
-            // TODO: not yet implemented
-            .show()
-    }
-
-    private fun showNewImpedimentForm() {
-        MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.workouts_speed_dial_impediment)
             // TODO: not yet implemented
             .show()
     }

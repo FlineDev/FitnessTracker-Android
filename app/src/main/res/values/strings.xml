@@ -38,8 +38,6 @@
     <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
     <string name="statistics.body_shape_index.very_low_risk_max.legend">Very low risk maximum</string>
 
-    <string name="statistics.overflow.calc">Calculation method</string>
-
     <string name="statistics.overflow.data">Change base data</string>
 
     <string name="statistics.speed_dial.waist_circumference">New waist circumference</string>
@@ -72,7 +70,6 @@
 
     <string name="workouts.overflow.reminder">Configure reminders</string>
 
-    <string name="workouts.speed_dial.impediment">New impediment</string>
     <string name="workouts.speed_dial.workout">New workout</string>
 
     <string name="workouts.title">Workouts</string>
