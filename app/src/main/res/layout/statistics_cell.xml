@@ -36,7 +36,7 @@
         android:layout_marginHorizontal="@dimen/spacingMedium"
         android:layout_marginTop="@dimen/spacingTiny"
         android:layout_marginBottom="@dimen/spacingMedium"
-        android:alpha="@dimen/downPopLevel2"
+        android:alpha="@dimen/downPopLevel3"
         android:hyphenationFrequency="full"
         android:justificationMode="inter_word"
         android:text="@string/global.non_translatable.sample_sentence"

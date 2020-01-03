@@ -111,7 +111,8 @@ class EditWorkoutFragment : BackNavigationFragment() {
     }
 
     private fun showDatePickerDialog(date: DateTime, listener: DatePickerDialog.OnDateSetListener) {
-        DatePickerDialog(context!!, listener, date.year, date.monthOfYear, date.dayOfMonth).show()
+        // NOTE: `month - 1` is correct, see documentation: https://developer.android.com/reference/android/app/DatePickerDialog.OnDateSetListener
+        DatePickerDialog(context!!, listener, date.year, date.monthOfYear - 1, date.dayOfMonth).show()
     }
 
     private fun showTimePickerDialog(date: DateTime, listener: TimePickerDialog.OnTimeSetListener) {

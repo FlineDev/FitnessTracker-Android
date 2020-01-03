@@ -5,6 +5,7 @@ import android.content.Context
 import android.text.format.DateUtils
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.flinesoft.fitnesstracker.globals.WORKOUT_RECOMMENDATION_ADDITIONAL_HOURS
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.model.Workout
 import org.joda.time.DateTime
@@ -23,7 +24,10 @@ class WorkoutsViewModel(application: Application) : AndroidViewModel(application
     private fun suggestedNextWorkoutDate(): DateTime {
         val delayByDays: Int = 0 // TODO: read data from shared prefrences (last postpone button value)
         return workouts.value?.firstOrNull()?.let { latestWorkout ->
-            latestWorkout.endDate.plusDays(delayByDays).plus(latestWorkout.recoveryDuration.toLongMilliseconds())
+            latestWorkout.endDate
+                .plusDays(delayByDays)
+                .plus(latestWorkout.recoveryDuration.toLongMilliseconds())
+                .plusHours(WORKOUT_RECOMMENDATION_ADDITIONAL_HOURS)
         } ?: DateTime.now()
     }
 }
