@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">FitnessTracker</string>
+    <string name="app_name">Fit.Tracker</string>
 
     <string name="global.action.cancel">Cancel</string>
 
@@ -42,7 +42,7 @@
     <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
     <string name="statistics.body_shape_index.very_low_risk_max.legend">Very low risk maximum</string>
 
-    <string name="statistics.overflow.data">Change base data</string>
+    <string name="statistics.overflow.data">Change personal data</string>
 
     <string name="statistics.speed_dial.waist_circumference">New waist circumference</string>
     <string name="statistics.speed_dial.waist_circumference.hint">e.g. 90 cm</string>
@@ -68,7 +68,7 @@
 
     <string name="workouts.history.title">Recent Workouts</string>
 
-    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g> and <xliff:g example="14 hours" id="hours">%2$s</xliff:g> in between</string>
+    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g> <xliff:g example="14 hours" id="hours">%2$s</xliff:g> in between</string>
     <string name="workouts.history_cell.between_workouts_icon">time between workouts rating indicator</string>
     <string name="workouts.history_cell.workout_type_icon">workout type icon</string>
 
