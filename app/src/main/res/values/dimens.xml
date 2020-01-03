@@ -16,9 +16,9 @@
     <dimen name="alpha_emphasis_disabled">@dimen/material_emphasis_disabled</dimen>
 
     <!--Downpop levels.-->
-    <dimen name="downPopLevel1">0.85</dimen>
-    <dimen name="downPopLevel2">0.7</dimen>
-    <dimen name="downPopLevel3">0.5</dimen>
-    <dimen name="downPopLevel4">0.3</dimen>
-    <dimen name="downPopLevel5">0.15</dimen>
+    <dimen name="downPopLevel1">0.88</dimen>
+    <dimen name="downPopLevel2">0.72</dimen>
+    <dimen name="downPopLevel3">0.55</dimen>
+    <dimen name="downPopLevel4">0.28</dimen>
+    <dimen name="downPopLevel5">0.12</dimen>
 </resources>

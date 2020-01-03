@@ -10,7 +10,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.DownPopLevel
-import com.flinesoft.fitnesstracker.globals.extensions.withAlphaDownPoppedTo
+import com.flinesoft.fitnesstracker.globals.extensions.withAlphaDownPoppedToLevel
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.LimitLine
@@ -59,6 +59,9 @@ class StatisticsCell(context: Context, attributes: AttributeSet) : ConstraintLay
 
     @SuppressLint("ResourceType")
     private fun setupLineChart() {
+        lineChart.setGridBackgroundColor(ContextCompat.getColor(context, R.color.primary).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL5))
+        lineChart.setDrawGridBackground(true)
+
         lineChart.description.isEnabled = false
         lineChart.axisRight.isEnabled = false
 
@@ -66,9 +69,9 @@ class StatisticsCell(context: Context, attributes: AttributeSet) : ConstraintLay
         lineChart.legend.textSize = defaultTextSize
         lineChart.legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
 
-        lineChart.axisLeft.textColor = ContextCompat.getColor(context, R.color.onBackground).withAlphaDownPoppedTo(DownPopLevel.LEVEL2)
+        lineChart.axisLeft.textColor = ContextCompat.getColor(context, R.color.onBackground).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL2)
         lineChart.axisLeft.setDrawGridLines(false)
-        lineChart.xAxis.textColor = ContextCompat.getColor(context, R.color.onBackground).withAlphaDownPoppedTo(DownPopLevel.LEVEL2)
+        lineChart.xAxis.textColor = ContextCompat.getColor(context, R.color.onBackground).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL2)
         lineChart.xAxis.setDrawGridLines(false)
 
         lineChart.xAxis.granularity = 1.days.inMilliseconds.toFloat()
@@ -86,7 +89,7 @@ class StatisticsCell(context: Context, attributes: AttributeSet) : ConstraintLay
         val limitLine = LimitLine(tresholdEntry.value.toFloat(), tresholdEntry.legend)
 
         limitLine.lineColor = tresholdEntry.color
-        limitLine.textColor = ContextCompat.getColor(context, R.color.onBackground).withAlphaDownPoppedTo(DownPopLevel.LEVEL2)
+        limitLine.textColor = ContextCompat.getColor(context, R.color.onBackground).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL2)
         limitLine.textSize = defaultTextSize
         limitLine.lineWidth = 3.0f
 
