@@ -84,6 +84,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/historyRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacingSmall"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/historyTitleTextView">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
         <TextView
             android:id="@+id/historyTitleTextView"
             android:layout_width="match_parent"
@@ -96,15 +108,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/historyRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+        <TextView
+            android:id="@+id/historyEmptyStateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacingMedium"
             android:layout_marginTop="@dimen/spacingSmall"
+            android:text="@string/workouts.history.empty_state"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MyTheme.Body1"
+            android:textColor="@color/primary"
+            android:textStyle="italic"
+            app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/historyTitleTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/historyTitleTextView"
+            app:layout_constraintVertical_bias="0.382" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.leinardi.android.speeddial.SpeedDialView
@@ -113,6 +134,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:sdMainFabClosedSrc="@drawable/ic_fab_add" />
+        app:sdMainFabClosedSrc="@drawable/ic_fab_add" >
+
+    </com.leinardi.android.speeddial.SpeedDialView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

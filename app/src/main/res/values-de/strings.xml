@@ -31,7 +31,10 @@
     <string name="models.workout_type.muscle_building">Muskelaufbau</string>
 
     <string name="statistics.body_mass_index.empty_data">Keine Gewichtsmessungen verfügbar.</string>
-    <string name="statistics.body_mass_index.explanation"><![CDATA[Der klassische Index, hergeleitet aus Gewicht & Größe einer Person um als Indikator für Unter-/Übergewicht zu dienen. Bezieht weder das Alter, das Geschlecht, noch den Körperfettanteil/Muskelmasse einer Person mit ein.]]></string>
+    <string name="statistics.body_mass_index.explanation"><![CDATA[
+            Der klassische Index, hergeleitet aus Gewicht & Größe einer Person um als Indikator für Unter-/Übergewicht zu dienen.
+            Bezieht weder das Alter, das Geschlecht, noch den Körperfettanteil einer Person mit ein.
+        ]]></string>
     <string name="statistics.body_mass_index.healthy_max_treshold.legend">Gesunder Bereich Maximum</string>
     <string name="statistics.body_mass_index.healthy_min_treshold.legend">Gesunder Bereich Minimum</string>
     <string name="statistics.body_mass_index.legend">Dein BMI-Wert im Verlauf der Zeit</string>
@@ -40,7 +43,10 @@
     <string name="statistics.body_mass_index.upper_high_risk_treshold.legend">Hohes Risiko (Übergewicht)</string>
     <string name="statistics.body_shape_index.average_risk_max.legend">Durchschnittliches Risiko Maximum</string>
     <string name="statistics.body_shape_index.empty_data">Keine Gewichts- oder Taillenumfang-Messungen verfügbar.</string>
-    <string name="statistics.body_shape_index.explanation"><![CDATA[Der moderne Index, welcher den BMI weiterentwickelt und auch Alter, Geschlecht und Körperfett/Muskelmasse (via Taillenumfang) einer Person mit einbezieht. Ein Wert von 0 steht für das durchschnittliche Gesundheitsrisiko der Vergleichsgruppe in der US-Bevölkerung nach Alter und Geschlecht.]]></string>
+    <string name="statistics.body_shape_index.explanation"><![CDATA[
+            Der moderne Index, welcher den BMI weiterentwickelt und auch Alter, Geschlecht und Körperfett einer Person mit einbezieht.
+            Ein Wert von 0 steht für das durchschnittliche Gesundheitsrisiko der Vergleichsgruppe in der US-Bevölkerung.
+        ]]></string>
     <string name="statistics.body_shape_index.high_risk_max.legend">Hohes Risiko Maximum</string>
     <string name="statistics.body_shape_index.legend">Dein ABSI-Z-Wert im Verlauf der Zeit</string>
     <string name="statistics.body_shape_index.low_risk_max.legend">Geringes Risiko Maximum</string>
@@ -71,6 +77,8 @@
     <string name="workouts.header.postpone_button">Verschieben</string>
 
     <string name="workouts.header.title">Nächstes Training</string>
+
+    <string name="workouts.history.empty_state">Keine Trainingsdaten verfügbar.\n\nFüge mit dem Plus-Button unten dein erstes Training hinzu.</string>
 
     <string name="workouts.history.title">Letzte Trainings</string>
 

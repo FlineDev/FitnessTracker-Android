@@ -76,9 +76,10 @@ class WorkoutsFragment : Fragment() {
     }
 
     private fun setupViewModelBinding() {
-        viewModel.workouts.observe(this, Observer {
+        viewModel.workouts.observe(this, Observer { workouts ->
             historyAdapter.notifyDataSetChanged()
-            binding.nextWorkoutDateTextView.text = viewModel.suggestedNextWorkoutDateString(context!!)
+            binding.nextWorkoutDateTextView.text = viewModel.suggestedNextWorkoutDateString()
+            binding.historyEmptyStateTextView.visibility = if (workouts.isEmpty()) View.VISIBLE else View.GONE
         })
     }
 
