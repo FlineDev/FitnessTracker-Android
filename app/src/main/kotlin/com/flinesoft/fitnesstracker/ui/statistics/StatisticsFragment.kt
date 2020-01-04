@@ -115,7 +115,7 @@ class StatisticsFragment : Fragment() {
                     view?.snack(R.string.global_error_invalid_input)
                 }
             }
-            .setNegativeButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
+            .setNeutralButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
             .show()
     }
 
@@ -143,7 +143,7 @@ class StatisticsFragment : Fragment() {
                     view?.snack(R.string.global_error_invalid_input)
                 }
             }
-            .setNegativeButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
+            .setNeutralButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
             .show()
     }
 

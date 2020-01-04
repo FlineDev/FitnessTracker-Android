@@ -24,6 +24,13 @@
     <color name="onSurface">#ffffff</color>
     <color name="onError">#000000</color>
 
+    <!--"On" colors define how text, icons and strokes are colored in relation to the surface on which they appear.-->
+    <color name="onPrimaryGray">#4e4e4e</color>
+    <color name="onSecondaryGray">#4e4e4e</color>
+    <color name="onBackgroundGray">#b4b4b4</color>
+    <color name="onSurfaceGray">#b4b4b4</color>
+    <color name="onErrorGray">#4e4e4e</color>
+
     <!--limitZone colors in charts.-->
     <color name="limitZoneSevereWarning">#F38C8C</color>
     <color name="limitZoneWarning">#F9F986</color>
