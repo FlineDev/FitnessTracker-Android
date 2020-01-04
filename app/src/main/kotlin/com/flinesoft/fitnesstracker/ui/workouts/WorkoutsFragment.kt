@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.WorkoutsFragmentBinding
+import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.model.Workout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import kotlin.time.ExperimentalTime
 
@@ -61,7 +64,12 @@ class WorkoutsFragment : Fragment() {
 
     private fun setupRecyclerView() {
         historyManager = LinearLayoutManager(context)
-        historyAdapter = WorkoutsHistoryAdapter(activity!!.application, viewModel.workouts, View.OnClickListener { onItemClicked(it) })
+        historyAdapter = WorkoutsHistoryAdapter(
+            application = activity!!.application,
+            workouts = viewModel.workouts,
+            itemOnClickListener = View.OnClickListener { onItemClicked(it) },
+            itemOnLongClickListener = View.OnLongClickListener { onItemLongClick(it) }
+        )
 
         binding.historyRecyclerView.layoutManager = historyManager
         binding.historyRecyclerView.adapter = historyAdapter
@@ -119,5 +127,21 @@ class WorkoutsFragment : Fragment() {
         val itemIndex = binding.historyRecyclerView.getChildLayoutPosition(view)
         val workout = viewModel.workouts.value!![itemIndex]
         showEditWorkoutForm(workout)
+    }
+
+    private fun onItemLongClick(view: View): Boolean {
+        val itemIndex = binding.historyRecyclerView.getChildLayoutPosition(view)
+        val workout = viewModel.workouts.value!![itemIndex]
+
+        MaterialAlertDialogBuilder(context)
+            .setTitle(getString(R.string.global_common_dialogs_confirm_delete_title))
+            .setMessage(R.string.global_common_dialogs_confirm_delete_message)
+            .setNegativeButton(R.string.global_action_delete) { _, _ ->
+                GlobalScope.launch { database().workoutDao.delete(workout) }
+            }
+            .setNeutralButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
+            .show()
+
+        return true
     }
 }

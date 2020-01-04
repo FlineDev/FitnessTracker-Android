@@ -15,7 +15,8 @@ import kotlin.time.milliseconds
 class WorkoutsHistoryAdapter(
     private val application: Application,
     val workouts: LiveData<List<Workout>>,
-    private val itemOnClickListener: View.OnClickListener
+    private val itemOnClickListener: View.OnClickListener,
+    private val itemOnLongClickListener: View.OnLongClickListener
 ) : RecyclerView.Adapter<WorkoutsHistoryAdapter.WorkoutsHistoryViewHolder>() {
     @ExperimentalTime
     class WorkoutsHistoryViewHolder(val cell: WorkoutsHistoryCell) : RecyclerView.ViewHolder(cell)
@@ -24,6 +25,7 @@ class WorkoutsHistoryAdapter(
         val cell = WorkoutsHistoryCell(parent.context)
         cell.layoutParams = RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         cell.setOnClickListener(itemOnClickListener)
+        cell.setOnLongClickListener(itemOnLongClickListener)
         return WorkoutsHistoryViewHolder(cell)
     }
 

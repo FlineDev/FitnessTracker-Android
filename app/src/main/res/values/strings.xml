@@ -4,7 +4,12 @@
 
     <string name="global.action.cancel">Cancel</string>
 
+    <string name="global.action.delete">Delete</string>
+
     <string name="global.action.save">Save</string>
+
+    <string name="global.common_dialogs.confirm_delete.message">Are you sure that you want to delete the selected data?</string>
+    <string name="global.common_dialogs.confirm_delete.title">Confirm Deletion</string>
 
     <plurals name="global.duration.days">
         <item quantity="one">%d day</item>
