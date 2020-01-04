@@ -1,6 +1,7 @@
 package com.flinesoft.fitnesstracker.ui.workouts
 
 import android.app.Application
+import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +14,8 @@ import kotlin.time.milliseconds
 @ExperimentalTime
 class WorkoutsHistoryAdapter(
     private val application: Application,
-    val workouts: LiveData<List<Workout>>
+    val workouts: LiveData<List<Workout>>,
+    private val itemOnClickListener: View.OnClickListener
 ) : RecyclerView.Adapter<WorkoutsHistoryAdapter.WorkoutsHistoryViewHolder>() {
     @ExperimentalTime
     class WorkoutsHistoryViewHolder(val cell: WorkoutsHistoryCell) : RecyclerView.ViewHolder(cell)
@@ -21,6 +23,7 @@ class WorkoutsHistoryAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutsHistoryViewHolder {
         val cell = WorkoutsHistoryCell(parent.context)
         cell.layoutParams = RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        cell.setOnClickListener(itemOnClickListener)
         return WorkoutsHistoryViewHolder(cell)
     }
 

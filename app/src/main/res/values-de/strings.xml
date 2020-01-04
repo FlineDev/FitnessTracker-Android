@@ -57,7 +57,8 @@
     <string name="workouts.edit_workout.end_time.overline">Endzeit:</string>
     <string name="workouts.edit_workout.start_date.overline">Startdatum:</string>
     <string name="workouts.edit_workout.start_time.overline">Startzeit:</string>
-    <string name="workouts.edit_workout.title">Training bearbeiten</string>
+    <string name="workouts.edit_workout.title_edit">Training bearbeiten</string>
+    <string name="workouts.edit_workout.title_new">Training erstellen</string>
     <string name="workouts.edit_workout.workout_type.overline">Art des Trainings:</string>
 
     <string name="workouts.header.next_workout_date_icon">Kalender-Symbol</string>
@@ -68,7 +69,7 @@
 
     <string name="workouts.history.title">Letzte Trainings</string>
 
-    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g> <xliff:g example="14 hours" id="hours">%2$s</xliff:g> dazwischen</string>
+    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g><xliff:g example="14 hours" id="hours">%2$s</xliff:g> dazwischen</string>
     <string name="workouts.history_cell.between_workouts_icon">Indikator zur Bewertung der Zeit zwischen zwei Trainings</string>
     <string name="workouts.history_cell.workout_type_icon">Trainings-Typ Icon</string>
 

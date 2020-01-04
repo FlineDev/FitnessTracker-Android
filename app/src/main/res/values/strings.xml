@@ -57,7 +57,8 @@
     <string name="workouts.edit_workout.end_time.overline">End time:</string>
     <string name="workouts.edit_workout.start_date.overline">Start date:</string>
     <string name="workouts.edit_workout.start_time.overline">Start time:</string>
-    <string name="workouts.edit_workout.title">Edit Workout</string>
+    <string name="workouts.edit_workout.title_edit">Edit Workout</string>
+    <string name="workouts.edit_workout.title_new">Create Workout</string>
     <string name="workouts.edit_workout.workout_type.overline">Workout type:</string>
 
     <string name="workouts.header.next_workout_date_icon">calendar icon</string>
@@ -68,7 +69,7 @@
 
     <string name="workouts.history.title">Recent Workouts</string>
 
-    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g> <xliff:g example="14 hours" id="hours">%2$s</xliff:g> in between</string>
+    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g><xliff:g example="14 hours" id="hours">%2$s</xliff:g> in between</string>
     <string name="workouts.history_cell.between_workouts_icon">time between workouts rating indicator</string>
     <string name="workouts.history_cell.workout_type_icon">workout type icon</string>
 
@@ -79,10 +80,10 @@
     <string name="workouts.title">Workouts</string>
 
     <string name="global.non_translatable.sample_date_time" translatable="false"><![CDATA[<Friday, October 15th>]]></string>
+    <string name="global.non_translatable.sample_month_short" translatable="false"><![CDATA[<APR>]]></string>
     <string name="global.non_translatable.sample_number_short" translatable="false"><![CDATA[<15>]]></string>
     <string name="global.non_translatable.sample_sentence" translatable="false"><![CDATA[<This is a sample sentence.>]]></string>
     <string name="global.non_translatable.sample_time" translatable="false"><![CDATA[<2:37 PM>]]></string>
     <string name="global.non_translatable.sample_time_interval" translatable="false"><![CDATA[<4 days time>]]></string>
     <string name="global.non_translatable.sample_title" translatable="false"><![CDATA[<Title>]]></string>
-    <string name="global.non_translatable.sample_month_short" translatable="false"><![CDATA[<APR>]]></string>
 </resources>

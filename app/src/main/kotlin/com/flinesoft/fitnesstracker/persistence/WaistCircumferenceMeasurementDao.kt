@@ -13,5 +13,5 @@ abstract class WaistCircumferenceMeasurementDao : CrudDao<WaistCircumferenceMeas
     suspend fun create(measurement: WaistCircumferenceMeasurement): LiveData<WaistCircumferenceMeasurement> = read(insert(measurement))
 
     @Query("SELECT * FROM WaistCircumferenceMeasurements WHERE id = :id")
-    protected abstract fun read(id: Long): LiveData<WaistCircumferenceMeasurement>
+    abstract fun read(id: Long): LiveData<WaistCircumferenceMeasurement>
 }

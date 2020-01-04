@@ -18,5 +18,5 @@ abstract class WorkoutDao : CrudDao<Workout>() {
     suspend fun create(workout: Workout): LiveData<Workout> = read(insert(workout))
 
     @Query("SELECT * FROM Workouts WHERE id = :id")
-    protected abstract fun read(id: Long): LiveData<Workout>
+    abstract fun read(id: Long): LiveData<Workout>
 }

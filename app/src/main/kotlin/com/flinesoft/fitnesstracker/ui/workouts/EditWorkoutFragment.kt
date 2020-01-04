@@ -8,12 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.EditWorkoutFragmentBinding
 import com.flinesoft.fitnesstracker.globals.BackNavigationFragment
 import com.flinesoft.fitnesstracker.globals.extensions.DateFormatExt
+import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.globals.extensions.snack
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.MainScope
@@ -30,6 +33,7 @@ class EditWorkoutFragment : BackNavigationFragment() {
         binding = EditWorkoutFragmentBinding.inflate(inflater)
         viewModel = ViewModelProviders.of(this).get(EditWorkoutViewModel::class.java)
 
+        setupViewModelWithArguments()
         setupBackNavigation()
         setupViewModelBinding()
         setupOnClickListeners()
@@ -37,13 +41,20 @@ class EditWorkoutFragment : BackNavigationFragment() {
         return binding.root
     }
 
+    private fun setupViewModelWithArguments() {
+        val editWorkoutFragmentArgs: EditWorkoutFragmentArgs by navArgs()
+        if (editWorkoutFragmentArgs.existingWorkoutId >= 0) {
+            viewModel.existingWorkout = database().workoutDao.read(editWorkoutFragmentArgs.existingWorkoutId)
+        }
+    }
+
     private fun setupViewModelBinding() {
-        viewModel.startDate.observe(this, androidx.lifecycle.Observer { startDate ->
+        viewModel.startDate.observe(this, Observer { startDate ->
             binding.startDateEditText.setText(DateFormatExt.dateMedium().format(startDate.toDate()))
             binding.startTimeEditText.setText(DateFormatExt.timeShort().format(startDate.toDate()))
         })
 
-        viewModel.endDate.observe(this, androidx.lifecycle.Observer { endDate ->
+        viewModel.endDate.observe(this, Observer { endDate ->
             binding.endDateEditText.setText(DateFormatExt.dateMedium().format(endDate.toDate()))
             binding.endTimeEditText.setText(DateFormatExt.timeShort().format(endDate.toDate()))
         })

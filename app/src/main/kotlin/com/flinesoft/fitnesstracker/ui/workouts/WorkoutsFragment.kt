@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.WorkoutsFragmentBinding
+import com.flinesoft.fitnesstracker.model.Workout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
 import timber.log.Timber
@@ -60,7 +61,7 @@ class WorkoutsFragment : Fragment() {
 
     private fun setupRecyclerView() {
         historyManager = LinearLayoutManager(context)
-        historyAdapter = WorkoutsHistoryAdapter(activity!!.application, viewModel.workouts)
+        historyAdapter = WorkoutsHistoryAdapter(activity!!.application, viewModel.workouts, View.OnClickListener { onItemClicked(it) })
 
         binding.historyRecyclerView.layoutManager = historyManager
         binding.historyRecyclerView.adapter = historyAdapter
@@ -98,6 +99,25 @@ class WorkoutsFragment : Fragment() {
     }
 
     private fun showNewWorkoutForm() {
-        findNavController().navigate(R.id.action_workouts_to_edit_workout)
+        findNavController().navigate(
+            WorkoutsFragmentDirections.actionWorkoutsToEditWorkout(
+                title = getString(R.string.workouts_edit_workout_title_new)
+            )
+        )
+    }
+
+    private fun showEditWorkoutForm(workout: Workout) {
+        findNavController().navigate(
+            WorkoutsFragmentDirections.actionWorkoutsToEditWorkout(
+                existingWorkoutId = workout.id,
+                title = getString(R.string.workouts_edit_workout_title_edit)
+            )
+        )
+    }
+
+    private fun onItemClicked(view: View) {
+        val itemIndex = binding.historyRecyclerView.getChildLayoutPosition(view)
+        val workout = viewModel.workouts.value!![itemIndex]
+        showEditWorkoutForm(workout)
     }
 }

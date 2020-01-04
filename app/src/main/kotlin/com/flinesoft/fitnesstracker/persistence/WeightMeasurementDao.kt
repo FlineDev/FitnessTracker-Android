@@ -13,5 +13,5 @@ abstract class WeightMeasurementDao : CrudDao<WeightMeasurement>() {
     suspend fun create(measurement: WeightMeasurement): LiveData<WeightMeasurement> = read(insert(measurement))
 
     @Query("SELECT * FROM WeightMeasurements WHERE id = :id")
-    protected abstract fun read(id: Long): LiveData<WeightMeasurement>
+    abstract fun read(id: Long): LiveData<WeightMeasurement>
 }

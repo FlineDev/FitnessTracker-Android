@@ -22,5 +22,13 @@
     <fragment
         android:id="@+id/edit_workout"
         android:name="com.flinesoft.fitnesstracker.ui.workouts.EditWorkoutFragment"
-        android:label="@string/workouts.edit_workout.title" />
+        android:label="{title}" >
+        <argument
+            android:name="existingWorkoutId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 </navigation>

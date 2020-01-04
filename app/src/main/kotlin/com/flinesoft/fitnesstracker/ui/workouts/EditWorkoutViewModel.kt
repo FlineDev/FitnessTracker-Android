@@ -2,6 +2,7 @@ package com.flinesoft.fitnesstracker.ui.workouts
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.DEFAULT_WORKOUT_DURATION_MINUTES
@@ -16,8 +17,17 @@ import kotlin.time.milliseconds
 
 @ExperimentalTime
 class EditWorkoutViewModel(application: Application) : AndroidViewModel(application) {
-    var existingWorkoutId: Long? = null
-    var workoutType = Workout.Type.CARDIO
+    var existingWorkout: LiveData<Workout>? = null
+        set(value) {
+            field = value
+            value?.observeForever { existingWorkout ->
+                workoutType.value = existingWorkout.type
+                startDate.value = existingWorkout.startDate
+                endDate.value = existingWorkout.endDate
+            }
+        }
+
+    var workoutType = MutableLiveData<Workout.Type>(Workout.Type.CARDIO)
     var startDate = MutableLiveData<DateTime>(DateTime.now().minusMinutes(DEFAULT_WORKOUT_DURATION_MINUTES))
     var endDate = MutableLiveData<DateTime>(DateTime.now())
 
@@ -46,10 +56,10 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
     fun updateWorkoutType(spinnerItemLocalizedString: String) {
         when (spinnerItemLocalizedString) {
             getApplication<Application>().getString(R.string.models_workout_type_cardio) ->
-                workoutType = Workout.Type.CARDIO
+                workoutType.value = Workout.Type.CARDIO
 
             getApplication<Application>().getString(R.string.models_workout_type_muscle_building) ->
-                workoutType = Workout.Type.MUSCLE_BUILDING
+                workoutType.value = Workout.Type.MUSCLE_BUILDING
 
             else -> Timber.e("Found unexpected spinner item localized string: $spinnerItemLocalizedString")
         }
@@ -58,16 +68,20 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
     suspend fun save(): Boolean {
         if (dateIsFuture() || invalidDuration()) return false
 
-        if (existingWorkoutId == null) {
+        existingWorkout?.value?.let { workout ->
+            workout.type = workoutType.value!!
+            workout.startDate = startDate.value!!
+            workout.endDate = endDate.value!!
+
+            database().workoutDao.update(workout)
+        } ?: run {
             database().workoutDao.create(
                 Workout(
-                    type = workoutType,
+                    type = workoutType.value!!,
                     startDate = startDate.value!!,
                     endDate = endDate.value!!
                 )
             )
-        } else {
-            // TODO: updating exisitng objects not yet implemented
         }
 
         return true
