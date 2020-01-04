@@ -8,6 +8,7 @@ import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.DEFAULT_WORKOUT_DURATION_MINUTES
 import com.flinesoft.fitnesstracker.globals.MAX_WORKOUT_DURATION_HOURS
 import com.flinesoft.fitnesstracker.globals.extensions.database
+import com.flinesoft.fitnesstracker.globals.extensions.observeOnce
 import com.flinesoft.fitnesstracker.model.Workout
 import org.joda.time.DateTime
 import timber.log.Timber
@@ -20,14 +21,14 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
     var existingWorkout: LiveData<Workout>? = null
         set(value) {
             field = value
-            value?.observeForever { existingWorkout ->
+            value?.observeOnce { existingWorkout ->
                 workoutType.value = existingWorkout.type
                 startDate.value = existingWorkout.startDate
                 endDate.value = existingWorkout.endDate
             }
         }
 
-    var workoutType = MutableLiveData<Workout.Type>(Workout.Type.CARDIO)
+    private var workoutType = MutableLiveData<Workout.Type>(Workout.Type.CARDIO)
     var startDate = MutableLiveData<DateTime>(DateTime.now().minusMinutes(DEFAULT_WORKOUT_DURATION_MINUTES))
     var endDate = MutableLiveData<DateTime>(DateTime.now())
 
