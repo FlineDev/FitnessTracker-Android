@@ -6,16 +6,28 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.flinesoft.fitnesstracker.globals.AppPreferences
 import com.flinesoft.fitnesstracker.globals.Logger
 import com.flinesoft.fitnesstracker.globals.NotificationHelper
+import com.flinesoft.fitnesstracker.model.Gender
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlin.time.ExperimentalTime
+import kotlin.time.hours
 
+@ExperimentalTime
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         Logger.setup()
-        NotificationHelper.setup(application)
+        AppPreferences.setup(applicationContext)
+        NotificationHelper.setup(applicationContext)
+
+        // TODO: make configurable through user interface
+        AppPreferences.heightInCentimeters = 176
+        AppPreferences.birthYear = 1991
+        AppPreferences.gender = Gender.MALE
+        AppPreferences.onDayReminderDelay = 19.hours
 
         setContentView(R.layout.main_activity)
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)

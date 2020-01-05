@@ -9,7 +9,6 @@ import com.flinesoft.fitnesstracker.globals.*
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.globals.extensions.reduceToLatestMeasureDatePerDay
 import com.flinesoft.fitnesstracker.globals.extensions.reduceToLowestValuePerDay
-import com.flinesoft.fitnesstracker.model.Gender
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
 import org.joda.time.DateTime
@@ -17,11 +16,6 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 class StatisticsViewModel(application: Application) : AndroidViewModel(application) {
-    // TODO: store & load from shared preferences, make configurable through interface
-    private var heightInCentimeters: Int = 176
-    private var birthYear: Int = 1991
-    private var gender: Gender = Gender.MALE
-
     private var weightMeasurements: List<WeightMeasurement> = emptyList()
     private var waistCircumferenceMeasurements: List<WaistCircumferenceMeasurement> = emptyList()
 
@@ -99,7 +93,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         bodyMassIndexCellViewModel.dataEntries.value = weightMeasurements.map { weightMeasurement ->
             val bodyMassIndex = BodyMassIndexCalculator.calculateIndex(
                 weightInKilograms = weightMeasurement.weightInKilograms,
-                heightInMeters = heightInCentimeters / 100.0
+                heightInMeters = AppPreferences.heightInCentimeters!! / 100.0
             )
             StatisticsCellViewModel.DataEntry(weightMeasurement.measureDate, bodyMassIndex)
         }
@@ -114,10 +108,10 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             } ?: weightMeasurements.first()
             val bodyShapeZIndex = BodyShapeIndexCalculator.calculateZIndex(
                 weightInKilograms = relatedWeightMeasurement.weightInKilograms,
-                heightInMeters = heightInCentimeters / 100.0,
+                heightInMeters = AppPreferences.heightInCentimeters!! / 100.0,
                 waistCircumferenceInMeters = waistCircumferenceMeasurement.circumferenceInCentimeters / 100.0,
-                ageInYears = DateTime.now().year - birthYear,
-                gender = gender
+                ageInYears = DateTime.now().year - AppPreferences.birthYear!!,
+                gender = AppPreferences.gender!!
             )
             StatisticsCellViewModel.DataEntry(waistCircumferenceMeasurement.measureDate, bodyShapeZIndex)
         }
@@ -128,10 +122,10 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             } ?: waistCircumferenceMeasurements.first()
             val bodyShapeZIndex = BodyShapeIndexCalculator.calculateZIndex(
                 weightInKilograms = weightMeasurement.weightInKilograms,
-                heightInMeters = heightInCentimeters / 100.0,
+                heightInMeters = AppPreferences.heightInCentimeters!! / 100.0,
                 waistCircumferenceInMeters = relatedWaistCircumferenceMeasurement.circumferenceInCentimeters / 100.0,
-                ageInYears = DateTime.now().year - birthYear,
-                gender = gender
+                ageInYears = DateTime.now().year - AppPreferences.birthYear!!,
+                gender = AppPreferences.gender!!
             )
             StatisticsCellViewModel.DataEntry(weightMeasurement.measureDate, bodyShapeZIndex)
         }
