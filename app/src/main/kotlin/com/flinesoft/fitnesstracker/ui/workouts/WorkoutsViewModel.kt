@@ -4,6 +4,9 @@ import android.app.Application
 import android.text.format.DateUtils
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.globals.AppPreferences
+import com.flinesoft.fitnesstracker.globals.NotificationHelper
 import com.flinesoft.fitnesstracker.globals.WORKOUT_RECOMMENDATION_ADDITIONAL_HOURS
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.model.Workout
@@ -28,5 +31,26 @@ class WorkoutsViewModel(application: Application) : AndroidViewModel(application
                 .plus(latestWorkout.recoveryDuration.toLongMilliseconds())
                 .plusHours(WORKOUT_RECOMMENDATION_ADDITIONAL_HOURS)
         } ?: DateTime.now()
+    }
+
+    fun updateReminders() {
+        var nextReminderDate = suggestedNextWorkoutDate()
+            .withTimeAtStartOfDay()
+            .plus(AppPreferences.onDayReminderDelay!!.toLongMilliseconds())
+
+        while (nextReminderDate < DateTime.now()) {
+            nextReminderDate = nextReminderDate.plusDays(1)
+        }
+
+        if (AppPreferences.lastScheduledReminderDate != nextReminderDate) {
+            NotificationHelper.cancelScheduledNotificationsInChannel(getApplication(), NotificationHelper.Channel.WORKOUT_REMINDERS)
+            NotificationHelper.scheduleNotification(
+                getApplication(),
+                NotificationHelper.Channel.WORKOUT_REMINDERS,
+                getApplication<Application>().getString(R.string.notifications_workout_reminders_today_title),
+                getApplication<Application>().getString(R.string.notifications_workout_reminders_today_message),
+                nextReminderDate
+            )
+        }
     }
 }

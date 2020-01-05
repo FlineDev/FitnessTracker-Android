@@ -31,6 +31,9 @@
     <string name="models.workout_type.muscle_building">Muskelaufbau</string>
 
     <string name="notifications.workout_reminders.channel_name">Trainingserinnerungen</string>
+    <string name="notifications.workout_reminders.today_title">Training heute</string>
+
+    <string name="notifications_workout_reminders_today_message">Es ist Zeit für ein Training! &#128170; Du kannst das. &#128521;</string>
 
     <string name="statistics.body_mass_index.empty_data">Keine Gewichtsmessungen verfügbar.</string>
     <string name="statistics.body_mass_index.explanation"><![CDATA[
