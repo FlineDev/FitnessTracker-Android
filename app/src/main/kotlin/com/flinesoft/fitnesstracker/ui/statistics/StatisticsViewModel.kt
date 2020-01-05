@@ -9,6 +9,7 @@ import com.flinesoft.fitnesstracker.globals.*
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.globals.extensions.reduceToLatestMeasureDatePerDay
 import com.flinesoft.fitnesstracker.globals.extensions.reduceToLowestValuePerDay
+import com.flinesoft.fitnesstracker.model.Gender
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
 import org.joda.time.DateTime
@@ -19,7 +20,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
     // TODO: store & load from shared preferences, make configurable through interface
     private var heightInCentimeters: Int = 176
     private var birthYear: Int = 1991
-    private var gender: BodyShapeIndexCalculator.Gender = BodyShapeIndexCalculator.Gender.MALE
+    private var gender: Gender = Gender.MALE
 
     private var weightMeasurements: List<WeightMeasurement> = emptyList()
     private var waistCircumferenceMeasurements: List<WaistCircumferenceMeasurement> = emptyList()

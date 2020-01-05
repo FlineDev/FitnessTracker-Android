@@ -1,4 +1,4 @@
-package com.flinesoft.fitnesstracker.globals
+package com.flinesoft.fitnesstracker.ui.shared
 
 import android.view.MenuItem
 import androidx.fragment.app.Fragment

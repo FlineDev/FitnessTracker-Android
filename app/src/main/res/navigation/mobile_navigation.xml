@@ -21,7 +21,7 @@
         android:label="@string/statistics.title" />
     <fragment
         android:id="@+id/edit_workout"
-        android:name="com.flinesoft.fitnesstracker.ui.workouts.EditWorkoutFragment"
+        android:name="com.flinesoft.fitnesstracker.ui.workouts.editWorkout.EditWorkoutFragment"
         android:label="{title}" >
         <argument
             android:name="existingWorkoutId"

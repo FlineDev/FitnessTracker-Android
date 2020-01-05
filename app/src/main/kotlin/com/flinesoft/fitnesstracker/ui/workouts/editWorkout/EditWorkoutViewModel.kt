@@ -1,4 +1,4 @@
-package com.flinesoft.fitnesstracker.ui.workouts
+package com.flinesoft.fitnesstracker.ui.workouts.editWorkout
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

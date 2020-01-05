@@ -1,11 +1,10 @@
 package com.flinesoft.fitnesstracker.calculation
 
+import com.flinesoft.fitnesstracker.model.Gender
 import kotlin.math.pow
 import kotlin.math.sqrt
 
 object BodyShapeIndexCalculator {
-    enum class Gender { FEMALE, MALE }
-
     // Source: https://en.wikipedia.org/wiki/Body_Shape_Index
     fun calculateIndex(weightInKilograms: Double, heightInMeters: Double, waistCircumferenceInMeters: Double): Double {
         val bodyMassIndex = BodyMassIndexCalculator.calculateIndex(weightInKilograms, heightInMeters)

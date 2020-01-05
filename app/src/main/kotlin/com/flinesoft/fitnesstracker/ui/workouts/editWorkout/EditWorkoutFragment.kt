@@ -1,4 +1,4 @@
-package com.flinesoft.fitnesstracker.ui.workouts
+package com.flinesoft.fitnesstracker.ui.workouts.editWorkout
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -14,10 +14,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.EditWorkoutFragmentBinding
-import com.flinesoft.fitnesstracker.globals.BackNavigationFragment
 import com.flinesoft.fitnesstracker.globals.extensions.DateFormatExt
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.globals.extensions.snack
+import com.flinesoft.fitnesstracker.ui.shared.BackNavigationFragment
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
