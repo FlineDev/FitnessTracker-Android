@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.text.InputType
 import android.view.*
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsFragmentBinding
+import com.flinesoft.fitnesstracker.globals.HUMAN_WAIST_CIRCUMFERENCE_IN_CENTIMETERS
+import com.flinesoft.fitnesstracker.globals.HUMAN_WEIGHT_RANGE_IN_KILOGRAMS
 import com.flinesoft.fitnesstracker.globals.extensions.*
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
@@ -25,6 +28,8 @@ import kotlin.time.ExperimentalTime
 class StatisticsFragment : Fragment() {
     private lateinit var binding: StatisticsFragmentBinding
     private lateinit var statisticsViewModel: StatisticsViewModel
+
+    private var inputAlertDialog: AlertDialog? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = StatisticsFragmentBinding.inflate(inflater)
@@ -66,6 +71,8 @@ class StatisticsFragment : Fragment() {
     private fun configureFloatingActionButtonWithSpeedDial() {
         binding.statisticsSpeedDial.inflate(R.menu.statistics_speed_dial_menu)
         binding.statisticsSpeedDial.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
+            binding.statisticsSpeedDial.close()
+
             when (actionItem.id) {
                 R.id.statistics_speed_dial_waist_circumference -> {
                     showNewWaistCircumferenceForm()
@@ -86,7 +93,7 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun showBaseDataInput() {
-        MaterialAlertDialogBuilder(context)
+        inputAlertDialog = MaterialAlertDialogBuilder(context)
             .setTitle(R.string.statistics_overflow_data)
             // TODO: not yet implemented
             .show()
@@ -98,12 +105,13 @@ class StatisticsFragment : Fragment() {
             setHint(R.string.statistics_speed_dial_waist_circumference_hint)
             afterTextChanged(skipDeletion = NumberFormatExt.default.decimalSeparator()) { _, textWatcher ->
                 MeasureFormatExt.short().stringToDouble(text.toString(), MeasureUnit.CENTIMETER)?.let { newValue: Double ->
+                    inputAlertDialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = HUMAN_WAIST_CIRCUMFERENCE_IN_CENTIMETERS.contains(newValue)
                     setTextIgnoringTextWatcher(MeasureFormatExt.short().doubleToString(newValue, MeasureUnit.CENTIMETER), textWatcher)
                 }
             }
         }
 
-        MaterialAlertDialogBuilder(context)
+        inputAlertDialog = MaterialAlertDialogBuilder(context)
             .setTitle(R.string.statistics_speed_dial_waist_circumference)
             .setMessage(R.string.statistics_speed_dial_waist_circumference_input_message)
             .setView(inputTextField, 50, 0, 50, 0)
@@ -114,9 +122,11 @@ class StatisticsFragment : Fragment() {
                 } ?: run {
                     view?.snack(R.string.global_error_invalid_input)
                 }
+                inputAlertDialog = null
             }
-            .setNeutralButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
+            .setNeutralButton(R.string.global_action_cancel) { _, _ -> inputAlertDialog = null }
             .show()
+        inputAlertDialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
     }
 
     private fun showNewWeightForm() {
@@ -126,12 +136,13 @@ class StatisticsFragment : Fragment() {
             setHint(R.string.statistics_speed_dial_weight_hint)
             afterTextChanged(skipDeletion = NumberFormatExt.default.decimalSeparator()) { _, textWatcher ->
                 MeasureFormatExt.short().stringToDouble(text.toString(), MeasureUnit.KILOGRAM)?.let { newValue ->
+                    inputAlertDialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = HUMAN_WEIGHT_RANGE_IN_KILOGRAMS.contains(newValue)
                     setTextIgnoringTextWatcher(MeasureFormatExt.short().doubleToString(newValue, MeasureUnit.KILOGRAM), textWatcher)
                 }
             }
         }
 
-        MaterialAlertDialogBuilder(context)
+        inputAlertDialog = MaterialAlertDialogBuilder(context)
             .setTitle(R.string.statistics_speed_dial_weight)
             .setMessage(R.string.statistics_speed_dial_weight_input_message)
             .setView(inputTextField, 50, 0, 50, 0)
@@ -142,9 +153,11 @@ class StatisticsFragment : Fragment() {
                 } ?: run {
                     view?.snack(R.string.global_error_invalid_input)
                 }
+                inputAlertDialog = null
             }
-            .setNeutralButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
+            .setNeutralButton(R.string.global_action_cancel) { _, _ -> inputAlertDialog = null }
             .show()
+        inputAlertDialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
     }
 
     private fun saveNewWaistCircumference(waistCircumference: Double) {

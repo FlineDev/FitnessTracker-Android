@@ -35,7 +35,7 @@
     </style>
 
     <style name="Widget.MyTheme.CancelButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:backgroundTint">@color/cancelButton</item>
+        <item name="android:backgroundTint">@color/cancelButtonBackground</item>
         <item name="android:textColor">@color/onBackground</item>
         <item name="android:drawableTint">@color/onBackground</item>
     </style>
@@ -62,6 +62,6 @@
     </style>
 
     <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/primary</item>
+        <item name="android:textColor">@color/button_primary</item>
     </style>
 </resources>

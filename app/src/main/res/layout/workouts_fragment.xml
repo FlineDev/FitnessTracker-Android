@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="152dp"
         android:background="@color/primary"
-        android:backgroundTint="#33000000"
+        android:backgroundTint="#22000000"
         android:backgroundTintMode="src_atop"
         android:padding="@dimen/spacingMedium"
         app:layout_constraintEnd_toEndOf="parent"

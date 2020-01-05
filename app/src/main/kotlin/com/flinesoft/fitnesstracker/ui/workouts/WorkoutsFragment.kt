@@ -86,6 +86,8 @@ class WorkoutsFragment : Fragment() {
     private fun configureFloatingActionButtonWithSpeedDial() {
         binding.workoutsSpeedDial.inflate(R.menu.workouts_speed_dial_menu)
         binding.workoutsSpeedDial.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
+            binding.workoutsSpeedDial.close()
+
             when (actionItem.id) {
                 R.id.workouts_speed_dial_workout -> {
                     showNewWorkoutForm()

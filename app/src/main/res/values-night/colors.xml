@@ -37,5 +37,6 @@
     <color name="limitZoneSafe">#80FF80</color>
 
     <!--buttonColors-->
-    <color name="cancelButton">#2e2f30</color> <!-- slightly ligher variant of background -->
+    <color name="cancelButtonBackground">#2e2f30</color> <!-- slightly lighter variant of background -->
+    <color name="disabledButton">#575859</color> <!-- lighter variant of surface -->
 </resources>
