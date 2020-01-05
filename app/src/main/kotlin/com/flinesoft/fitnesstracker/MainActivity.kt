@@ -7,6 +7,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.flinesoft.fitnesstracker.globals.Logger
+import com.flinesoft.fitnesstracker.globals.NotificationHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         Logger.setup()
+        NotificationHelper.setup(application)
 
         setContentView(R.layout.main_activity)
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)

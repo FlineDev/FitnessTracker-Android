@@ -30,6 +30,8 @@
     <string name="models.workout_type.cardio">Cardio</string>
     <string name="models.workout_type.muscle_building">Muskelaufbau</string>
 
+    <string name="notifications.workout_reminders.channel_name">Trainingserinnerungen</string>
+
     <string name="statistics.body_mass_index.empty_data">Keine Gewichtsmessungen verfügbar.</string>
     <string name="statistics.body_mass_index.explanation"><![CDATA[
             Der klassische Index, hergeleitet aus Gewicht & Größe einer Person um als Indikator für Unter-/Übergewicht zu dienen.
@@ -45,7 +47,7 @@
     <string name="statistics.body_shape_index.empty_data">Keine Gewichts- oder Taillenumfang-Messungen verfügbar.</string>
     <string name="statistics.body_shape_index.explanation"><![CDATA[
             Der moderne Index, welcher den BMI weiterentwickelt und auch Alter, Geschlecht und Körperfett einer Person mit einbezieht.
-            Ein Wert von 0 steht für das durchschnittliche Gesundheitsrisiko der Vergleichsgruppe in der US-Bevölkerung.
+            Ein Wert von 0 steht für das durchschnittliche Gesundheitsrisiko der Vergleichsgruppe (nach Alter & Geschlecht) in der US-Bevölkerung.
         ]]></string>
     <string name="statistics.body_shape_index.high_risk_max.legend">Hohes Risiko Maximum</string>
     <string name="statistics.body_shape_index.legend">Dein ABSI-Z-Wert im Verlauf der Zeit</string>
@@ -82,7 +84,7 @@
 
     <string name="workouts.history.title">Letzte Trainings</string>
 
-    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g> <xliff:g example="14 hours" id="hours">%2$s</xliff:g> dazwischen</string>
+    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g> dazwischen</string>
     <string name="workouts.history_cell.between_workouts_icon">Indikator zur Bewertung der Zeit zwischen zwei Trainings</string>
     <string name="workouts.history_cell.workout_type_icon">Trainings-Typ Icon</string>
 
