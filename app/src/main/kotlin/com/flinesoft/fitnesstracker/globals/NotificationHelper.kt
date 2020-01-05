@@ -7,7 +7,12 @@ import android.content.Context
 import android.os.SystemClock
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 import com.flinesoft.fitnesstracker.R
+import org.joda.time.DateTime
+import java.util.concurrent.TimeUnit
 
 object NotificationHelper {
     enum class Channel { WORKOUT_REMINDERS }
@@ -25,6 +30,25 @@ object NotificationHelper {
         for (channel in notificationChannels) {
             notificationManager.createNotificationChannel(channel)
         }
+    }
+
+    fun scheduleNotification(context: Context, channel: Channel, title: String, message: String, date: DateTime) {
+        val notificationWorkRequest = OneTimeWorkRequestBuilder<NotificationWorker>().apply {
+            setInputData(
+                workDataOf(
+                    NotificationWorker.RequestParamKey.CHANNEL.name to channel.name,
+                    NotificationWorker.RequestParamKey.TITLE.name to title,
+                    NotificationWorker.RequestParamKey.MESSAGE.name to message
+                )
+            )
+            setInitialDelay(date.millis - DateTime.now().millis, TimeUnit.MILLISECONDS)
+            addTag(channel.name)
+        }.build()
+        WorkManager.getInstance(context).enqueue(notificationWorkRequest)
+    }
+
+    fun cancelScheduledNotificationsInChannel(context: Context, channel: Channel) {
+        WorkManager.getInstance(context).cancelAllWorkByTag(channel.name)
     }
 
     /**
