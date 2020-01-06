@@ -3,6 +3,7 @@ package com.flinesoft.fitnesstracker.globals
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.os.SystemClock
 import androidx.core.app.NotificationCompat
@@ -70,6 +71,10 @@ object NotificationHelper {
         setSmallIcon(R.drawable.ic_notification_small)
         setContentTitle(title)
         setContentText(message)
+
+        val appIntent = context.packageManager.getLaunchIntentForPackage(context.packageName)
+        setContentIntent(PendingIntent.getActivity(context, 0, appIntent, 0))
+        priority = NotificationCompat.PRIORITY_DEFAULT
 
         if (message.length > 25) {
             setStyle(NotificationCompat.BigTextStyle().bigText(message))
