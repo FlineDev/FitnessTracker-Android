@@ -29,12 +29,12 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_MASS_INDEX_HEALTHY_MIN,
                 legend = application.getString(R.string.statistics_body_mass_index_healthy_min_treshold_legend),
-                color = application.getColor(R.color.limitZoneWarning)
+                color = application.getColor(R.color.limitZoneSafe)
             ),
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_MASS_INDEX_HEALTHY_MAX,
                 legend = application.getString(R.string.statistics_body_mass_index_healthy_max_treshold_legend),
-                color = application.getColor(R.color.limitZoneWarning)
+                color = application.getColor(R.color.limitZoneSafe)
             ),
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_MASS_INDEX_UPPER_HIGH_RISK,
@@ -58,12 +58,12 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_SHAPE_INDEX_LOW_RISK_MAX,
                 legend = application.getString(R.string.statistics_body_shape_index_low_risk_max_legend),
-                color = application.getColor(R.color.limitZoneWarning)
+                color = application.getColor(R.color.limitZoneSafe)
             ),
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_SHAPE_INDEX_AVERAGE_RISK_MAX,
                 legend = application.getString(R.string.statistics_body_shape_index_average_risk_max_legend),
-                color = application.getColor(R.color.limitZoneSevereWarning)
+                color = application.getColor(R.color.limitZoneWarning)
             ),
             StatisticsCellViewModel.TresholdEntry(
                 value = BODY_SHAPE_INDEX_HIGH_RISK_MAX,
