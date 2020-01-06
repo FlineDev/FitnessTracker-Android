@@ -4,4 +4,9 @@
         android:id="@+id/workouts_overflow_reminder"
         android:icon="@drawable/ic_workouts_overflow_reminder"
         android:title="@string/workouts.overflow.reminder" />
+
+    <item
+        android:id="@+id/workouts_overflow_feedback"
+        android:icon="@drawable/ic_shared_overflow_forum"
+        android:title="@string/shared.overflow.feedback" />
 </menu>

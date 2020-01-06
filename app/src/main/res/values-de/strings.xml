@@ -35,6 +35,8 @@
 
     <string name="notifications_workout_reminders_today_message">Es ist Zeit für ein Training! &#128170; Du kannst das. &#128521;</string>
 
+    <string name="shared.overflow.feedback">Feedback geben</string>
+
     <string name="statistics.body_mass_index.empty_data">Keine Gewichtsmessungen verfügbar.</string>
     <string name="statistics.body_mass_index.explanation"><![CDATA[
             Der klassische Index, hergeleitet aus Gewicht & Größe einer Person um als Indikator für Unter-/Übergewicht zu dienen.

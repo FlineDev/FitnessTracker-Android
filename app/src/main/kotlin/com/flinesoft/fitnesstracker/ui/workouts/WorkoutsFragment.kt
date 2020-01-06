@@ -1,5 +1,6 @@
 package com.flinesoft.fitnesstracker.ui.workouts
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.view.menu.MenuBuilder
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.WorkoutsFragmentBinding
+import com.flinesoft.fitnesstracker.globals.APP_FEEDBACK_FORUM_URL
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.model.Workout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -52,6 +54,11 @@ class WorkoutsFragment : Fragment() {
         return when (item.itemId) {
             R.id.workouts_overflow_reminder -> {
                 showRemindersForm()
+                true
+            }
+
+            R.id.workouts_overflow_feedback -> {
+                showFeedbackForum()
                 true
             }
 
@@ -116,6 +123,10 @@ class WorkoutsFragment : Fragment() {
                 title = getString(R.string.workouts_edit_workout_title_new)
             )
         )
+    }
+
+    private fun showFeedbackForum() {
+        startActivity(Intent(Intent.ACTION_VIEW, APP_FEEDBACK_FORUM_URL))
     }
 
     private fun showEditWorkoutForm(workout: Workout) {

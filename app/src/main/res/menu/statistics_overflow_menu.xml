@@ -4,4 +4,9 @@
         android:id="@+id/statistics_overflow_data"
         android:icon="@drawable/ic_statistics_overflow_data"
         android:title="@string/statistics.overflow.data" />
+
+    <item
+        android:id="@+id/statistics_overflow_feedback"
+        android:icon="@drawable/ic_shared_overflow_forum"
+        android:title="@string/shared.overflow.feedback" />
 </menu>

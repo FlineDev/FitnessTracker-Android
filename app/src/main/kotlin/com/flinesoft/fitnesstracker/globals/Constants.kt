@@ -1,5 +1,7 @@
 package com.flinesoft.fitnesstracker.globals
 
+import android.net.Uri
+
 const val BOTTOM_NAVIGATION_VIEW_HEIGHT: Int = 52
 const val DIALOG_HORIZONTAL_SPACING: Int = 50
 
@@ -26,3 +28,5 @@ val HUMAN_WEIGHT_RANGE_IN_KILOGRAMS: ClosedRange<Double> = 0.2..600.0
 val HUMAN_AGE_RANGE: ClosedRange<Double> = 0.0..130.0
 val HUMAN_HEIGHT_RANGE_IN_CENTIMETERS: ClosedRange<Double> = 10.0..300.0
 val HUMAN_WAIST_CIRCUMFERENCE_IN_CENTIMETERS: ClosedRange<Double> = 10.0..300.0
+
+val APP_FEEDBACK_FORUM_URL: Uri = Uri.parse("https://community.flinesoft.com/c/fitness-tracker-app/")

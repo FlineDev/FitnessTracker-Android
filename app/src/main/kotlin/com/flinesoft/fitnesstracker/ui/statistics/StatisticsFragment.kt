@@ -1,5 +1,6 @@
 package com.flinesoft.fitnesstracker.ui.statistics
 
+import android.content.Intent
 import android.icu.util.MeasureUnit
 import android.os.Bundle
 import android.text.InputType
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsFragmentBinding
+import com.flinesoft.fitnesstracker.globals.APP_FEEDBACK_FORUM_URL
 import com.flinesoft.fitnesstracker.globals.HUMAN_WAIST_CIRCUMFERENCE_IN_CENTIMETERS
 import com.flinesoft.fitnesstracker.globals.HUMAN_WEIGHT_RANGE_IN_KILOGRAMS
 import com.flinesoft.fitnesstracker.globals.extensions.*
@@ -56,6 +58,11 @@ class StatisticsFragment : Fragment() {
             true
         }
 
+        R.id.statistics_overflow_feedback -> {
+            showFeedbackForum()
+            true
+        }
+
         else -> {
             Timber.e("unknown overflow item id clicked: '${item.itemId}'")
             false
@@ -97,6 +104,10 @@ class StatisticsFragment : Fragment() {
             .setTitle(R.string.statistics_overflow_data)
             // TODO: not yet implemented
             .show()
+    }
+
+    private fun showFeedbackForum() {
+        startActivity(Intent(Intent.ACTION_VIEW, APP_FEEDBACK_FORUM_URL))
     }
 
     private fun showNewWaistCircumferenceForm() {
