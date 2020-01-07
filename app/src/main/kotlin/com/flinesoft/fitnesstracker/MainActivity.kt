@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         AppPreferences.heightInCentimeters = 176
         AppPreferences.birthYear = 1991
         AppPreferences.gender = Gender.MALE
-        AppPreferences.onDayReminderDelay = 19.hours
+        AppPreferences.onDayReminderDelay = 6.hours
 
         setContentView(R.layout.main_activity)
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
