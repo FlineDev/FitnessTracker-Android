@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.AppPreferences
 import com.flinesoft.fitnesstracker.globals.NotificationHelper
-import com.flinesoft.fitnesstracker.globals.WORKOUT_RECOMMENDATION_ADDITIONAL_HOURS
+import com.flinesoft.fitnesstracker.globals.PREVENT_NEXT_DAY_WHEN_WORKOUT_WITHIN_HOURS
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.model.Workout
 import org.joda.time.DateTime
@@ -23,15 +23,11 @@ class WorkoutsViewModel(application: Application) : AndroidViewModel(application
         DateUtils.DAY_IN_MILLIS
     ).toString()
 
-    private fun suggestedNextWorkoutDate(): DateTime {
-        val delayByDays: Int = 0 // TODO: read data from shared prefrences (last postpone button value)
-        return workouts.value?.firstOrNull()?.let { latestWorkout ->
-            latestWorkout.endDate
-                .plusDays(delayByDays)
-                .plus(latestWorkout.recoveryDuration.toLongMilliseconds())
-                .plusHours(WORKOUT_RECOMMENDATION_ADDITIONAL_HOURS)
-        } ?: DateTime.now()
-    }
+    private fun suggestedNextWorkoutDate(): DateTime = workouts.value?.firstOrNull()?.let { latestWorkout ->
+        latestWorkout.endDate
+            .plus(latestWorkout.recoveryDuration.toLongMilliseconds())
+            .plusHours(24 - PREVENT_NEXT_DAY_WHEN_WORKOUT_WITHIN_HOURS)
+    } ?: DateTime.now()
 
     fun updateReminders() {
         var nextReminderDate = suggestedNextWorkoutDate()

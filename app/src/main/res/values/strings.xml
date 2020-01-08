@@ -89,7 +89,7 @@
 
     <string name="workouts.history.title">Recent Workouts</string>
 
-    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g> in between</string>
+    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g> break time</string>
     <string name="workouts.history_cell.between_workouts_icon">time between workouts rating indicator</string>
     <string name="workouts.history_cell.workout_type_icon">workout type icon</string>
 
