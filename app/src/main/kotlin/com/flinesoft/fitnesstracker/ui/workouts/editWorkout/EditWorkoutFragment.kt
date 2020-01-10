@@ -3,7 +3,6 @@ package com.flinesoft.fitnesstracker.ui.workouts.editWorkout
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
-import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,14 +13,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.EditWorkoutFragmentBinding
-import com.flinesoft.fitnesstracker.globals.extensions.DateFormatExt
-import com.flinesoft.fitnesstracker.globals.extensions.database
-import com.flinesoft.fitnesstracker.globals.extensions.snack
+import com.flinesoft.fitnesstracker.globals.extensions.*
 import com.flinesoft.fitnesstracker.ui.shared.BackNavigationFragment
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
-import org.joda.time.DateTime
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -49,6 +45,10 @@ class EditWorkoutFragment : BackNavigationFragment() {
     }
 
     private fun setupViewModelBinding() {
+        viewModel.workoutType.observe(this, Observer { workoutType ->
+            binding.workoutTypeSpinner.setSelection(workoutType.ordinal)
+        })
+
         viewModel.startDate.observe(this, Observer { startDate ->
             binding.startDateEditText.setText(DateFormatExt.dateMedium().format(startDate.toDate()))
             binding.startTimeEditText.setText(DateFormatExt.timeShort().format(startDate.toDate()))
@@ -119,14 +119,5 @@ class EditWorkoutFragment : BackNavigationFragment() {
                 }
             }
         }
-    }
-
-    private fun showDatePickerDialog(date: DateTime, listener: DatePickerDialog.OnDateSetListener) {
-        // NOTE: `month - 1` is correct, see documentation: https://developer.android.com/reference/android/app/DatePickerDialog.OnDateSetListener
-        DatePickerDialog(context!!, listener, date.year, date.monthOfYear - 1, date.dayOfMonth).show()
-    }
-
-    private fun showTimePickerDialog(date: DateTime, listener: TimePickerDialog.OnTimeSetListener) {
-        TimePickerDialog(context!!, listener, date.hourOfDay, date.minuteOfHour, DateFormat.is24HourFormat(context)).show()
     }
 }

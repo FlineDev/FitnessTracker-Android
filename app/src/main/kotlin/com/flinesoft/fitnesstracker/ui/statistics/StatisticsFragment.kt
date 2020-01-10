@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsFragmentBinding
 import com.flinesoft.fitnesstracker.globals.APP_FEEDBACK_FORUM_URL
@@ -29,19 +30,25 @@ import kotlin.time.ExperimentalTime
 @ExperimentalTime
 class StatisticsFragment : Fragment() {
     private lateinit var binding: StatisticsFragmentBinding
-    private lateinit var statisticsViewModel: StatisticsViewModel
+    private lateinit var viewModel: StatisticsViewModel
 
     private var inputAlertDialog: AlertDialog? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = StatisticsFragmentBinding.inflate(inflater)
-        statisticsViewModel = ViewModelProviders.of(this).get(StatisticsViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(StatisticsViewModel::class.java)
 
         setupViewModelBinding()
         setHasOptionsMenu(true)
         configureFloatingActionButtonWithSpeedDial()
 
         return binding.root
+    }
+
+    override fun onResume() {
+        viewModel.updateAllCharts()
+
+        super.onResume()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -54,7 +61,7 @@ class StatisticsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.statistics_overflow_data -> {
-            showBaseDataInput()
+            showPersonalDataInput()
             true
         }
 
@@ -99,11 +106,8 @@ class StatisticsFragment : Fragment() {
         })
     }
 
-    private fun showBaseDataInput() {
-        inputAlertDialog = MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.statistics_overflow_data)
-            // TODO: not yet implemented
-            .show()
+    private fun showPersonalDataInput() {
+        findNavController().navigate(StatisticsFragmentDirections.actionStatisticsToEditPersonalData())
     }
 
     private fun showFeedbackForum() {

@@ -25,8 +25,8 @@ const val MAX_WORKOUT_DURATION_HOURS: Int = 10
 const val PREVENT_NEXT_DAY_WHEN_WORKOUT_WITHIN_HOURS: Int = 4
 
 val HUMAN_WEIGHT_RANGE_IN_KILOGRAMS: ClosedRange<Double> = 0.2..600.0
-val HUMAN_AGE_RANGE: ClosedRange<Double> = 0.0..130.0
-val HUMAN_HEIGHT_RANGE_IN_CENTIMETERS: ClosedRange<Double> = 10.0..300.0
+val HUMAN_AGE_RANGE: IntRange = 0..130
+val HUMAN_HEIGHT_RANGE_IN_CENTIMETERS: IntRange = 10..300
 val HUMAN_WAIST_CIRCUMFERENCE_IN_CENTIMETERS: ClosedRange<Double> = 10.0..300.0
 
 val APP_FEEDBACK_FORUM_URL: Uri = Uri.parse("https://community.flinesoft.com/c/fitness-tracker-app/")

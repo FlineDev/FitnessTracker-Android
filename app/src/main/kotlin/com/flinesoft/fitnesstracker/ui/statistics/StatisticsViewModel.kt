@@ -89,6 +89,11 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
+    fun updateAllCharts() {
+        updateBodyMassIndexDataEntries()
+        updateBodyShapeIndexDataEntries()
+    }
+
     private fun updateBodyMassIndexDataEntries() {
         bodyMassIndexCellViewModel.dataEntries.value = weightMeasurements.map { weightMeasurement ->
             val bodyMassIndex = BodyMassIndexCalculator.calculateIndex(

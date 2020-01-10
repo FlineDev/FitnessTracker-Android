@@ -28,7 +28,7 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
             }
         }
 
-    private var workoutType = MutableLiveData<Workout.Type>(Workout.Type.CARDIO)
+    var workoutType = MutableLiveData<Workout.Type>(Workout.Type.CARDIO)
     var startDate = MutableLiveData<DateTime>(DateTime.now().minusMinutes(DEFAULT_WORKOUT_DURATION_MINUTES))
     var endDate = MutableLiveData<DateTime>(DateTime.now())
 
@@ -67,6 +67,7 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     suspend fun save(): Boolean {
+        // TODO: return more exact errors which point to the invalid field & have a message to show below the field
         if (dateIsFuture() || invalidDuration()) return false
 
         existingWorkout?.value?.let { workout ->

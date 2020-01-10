@@ -9,8 +9,8 @@
         android:name="com.flinesoft.fitnesstracker.ui.workouts.WorkoutsFragment"
         android:label="@string/workouts.title">
         <action
-            android:id="@+id/action_workouts_to_edit_workout"
-            app:destination="@id/edit_workout"
+            android:id="@+id/action_workouts_to_editWorkout"
+            app:destination="@id/editWorkout"
             app:enterAnim="@anim/sd_fade_and_translate_in"
             app:exitAnim="@anim/sd_fade_and_translate_out" />
     </fragment>
@@ -18,9 +18,16 @@
     <fragment
         android:id="@+id/statistics"
         android:name="com.flinesoft.fitnesstracker.ui.statistics.StatisticsFragment"
-        android:label="@string/statistics.title" />
+        android:label="@string/statistics.title" >
+        <action
+            android:id="@+id/action_statistics_to_editPersonalData"
+            app:destination="@id/editPersonalData"
+            app:enterAnim="@anim/sd_fade_and_translate_in"
+            app:exitAnim="@anim/sd_fade_and_translate_out" />
+    </fragment>
+
     <fragment
-        android:id="@+id/edit_workout"
+        android:id="@+id/editWorkout"
         android:name="com.flinesoft.fitnesstracker.ui.workouts.editWorkout.EditWorkoutFragment"
         android:label="{title}" >
         <argument
@@ -31,4 +38,9 @@
             android:name="title"
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/editPersonalData"
+        android:name="com.flinesoft.fitnesstracker.ui.statistics.editPersonalData.EditPersonalDataFragment"
+        android:label="@string/statistics.edit_personal_data.title" />
 </navigation>

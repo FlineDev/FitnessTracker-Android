@@ -9,7 +9,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.flinesoft.fitnesstracker.globals.AppPreferences
 import com.flinesoft.fitnesstracker.globals.Logger
 import com.flinesoft.fitnesstracker.globals.NotificationHelper
-import com.flinesoft.fitnesstracker.model.Gender
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.time.ExperimentalTime
 import kotlin.time.hours
@@ -23,10 +22,9 @@ class MainActivity : AppCompatActivity() {
         AppPreferences.setup(applicationContext)
         NotificationHelper.setup(applicationContext)
 
+        // TODO: show onboarding asking for height, gender and birth year first – app will crash otherwise
+
         // TODO: make configurable through user interface
-        AppPreferences.heightInCentimeters = 176
-        AppPreferences.birthYear = 1991
-        AppPreferences.gender = Gender.MALE
         AppPreferences.onDayReminderDelay = 6.hours
 
         setContentView(R.layout.main_activity)

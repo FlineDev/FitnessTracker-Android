@@ -22,25 +22,33 @@
             android:layout_margin="@dimen/spacingMedium"
             android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/spacingTiny"
-                android:labelFor="@id/workoutTypeSpinner"
-                android:text="@string/workouts.edit_workout.workout_type.overline"
-                android:textAppearance="@style/TextAppearance.MyTheme.Overline" />
+                android:layout_marginBottom="@dimen/spacingSmall"
+                android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/workoutTypeSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacingMedium"
-                android:entries="@array/workoutTypes"
-                android:spinnerMode="dropdown" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/spacingTiny"
+                    android:labelFor="@id/workoutTypeSpinner"
+                    android:text="@string/workouts.edit_workout.workout_type.overline"
+                    android:textAppearance="@style/TextAppearance.MyTheme.Overline" />
+
+                <Spinner
+                    android:id="@+id/workoutTypeSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/workoutTypes"
+                    android:spinnerMode="dropdown" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/spacingSmall"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -99,7 +107,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/spacingSmall"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -158,7 +167,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/spacingMedium">
 
                 <Button
@@ -184,6 +193,7 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/cancelButton"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

@@ -4,6 +4,8 @@
 
     <string name="global.action.cancel">Cancel</string>
 
+    <string name="global.action.confirm">OK</string>
+
     <string name="global.action.delete">Delete</string>
 
     <string name="global.action.save">Save</string>
@@ -26,6 +28,10 @@
     <string name="global.error.invalid_input">Invalid input data. Please check &amp; try again.</string>
 
     <string name="global.info.saved_successfully">Saved data successfully.</string>
+
+    <string name="models.gender.female">Female</string>
+
+    <string name="models.gender.male">Male</string>
 
     <string name="models.workout_type.cardio">Cardio</string>
     <string name="models.workout_type.muscle_building">Muscle building</string>
@@ -59,6 +65,13 @@
     <string name="statistics.body_shape_index.low_risk_max.legend">Low risk maximum</string>
     <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
     <string name="statistics.body_shape_index.very_low_risk_max.legend">Very low risk maximum</string>
+
+    <string name="statistics.edit_personal_data.birth_year.input_dialog_title">Choose birth year</string>
+    <string name="statistics.edit_personal_data.birth_year.overline">Birth year:</string>
+    <string name="statistics.edit_personal_data.gender.overline">Gender:</string>
+    <string name="statistics.edit_personal_data.height.input_dialog_title">Choose height</string>
+    <string name="statistics.edit_personal_data.height.overline">Height (in centimeters):</string>
+    <string name="statistics.edit_personal_data.title">Change Personal Data</string>
 
     <string name="statistics.overflow.data">Change personal data</string>
 
