@@ -57,7 +57,7 @@
     <string name="statistics.body_shape_index.average_risk_max.legend">Durchschnittliches Risiko Maximum</string>
     <string name="statistics.body_shape_index.empty_data">Keine Gewichts- oder Taillenumfang-Messungen verfügbar.</string>
     <string name="statistics.body_shape_index.explanation"><![CDATA[
-            Der moderne Index, welcher den BMI weiterentwickelt und auch Alter, Geschlecht und Körperfett einer Person mit einbezieht.
+            Der moderne Index, welcher den BMI weiterentwickelt und auch Alter, Geschlecht und geschätzten Körperfett einer Person mit einbezieht.
             Ein Wert von 0 steht für das durchschnittliche Gesundheitsrisiko der Vergleichsgruppe (nach Alter & Geschlecht) in der US-Bevölkerung.
         ]]></string>
     <string name="statistics.body_shape_index.high_risk_max.legend">Hohes Risiko Maximum</string>

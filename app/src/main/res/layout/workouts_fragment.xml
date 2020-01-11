@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:alpha="@dimen/downPopLevel1"
             android:text="@string/workouts.header.title"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.MyTheme.Headline4"
             android:textColor="@color/onPrimary"
             app:layout_constraintEnd_toEndOf="parent"
