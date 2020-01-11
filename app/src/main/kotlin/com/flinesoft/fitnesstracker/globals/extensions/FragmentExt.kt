@@ -7,6 +7,7 @@ import android.widget.NumberPicker
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.globals.DIALOG_HORIZONTAL_SPACING
 import com.flinesoft.fitnesstracker.persistence.FitnessTrackerDatabase
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.joda.time.DateTime
@@ -36,7 +37,7 @@ fun Fragment.showNumberPickerDialog(title: String, value: Int, range: IntRange, 
 
     MaterialAlertDialogBuilder(context)
         .setTitle(title)
-        .setView(numberPicker, 50, 0, 50, 0)
+        .setView(numberPicker, DIALOG_HORIZONTAL_SPACING, 0, DIALOG_HORIZONTAL_SPACING, 0)
         .setPositiveButton(R.string.global_action_confirm) { _, _ -> valueChangeAction(numberPicker.value) }
         .setNeutralButton(R.string.global_action_cancel) { _, _ -> /* do nothing, closes dialog automatically */ }
         .show()

@@ -30,7 +30,7 @@ class EditPersonalDataViewModel(application: Application) : AndroidViewModel(app
         }
     }
 
-    suspend fun save(): Boolean {
+    fun save(): Boolean {
         // TODO: return more exact errors which point to the invalid field & have a message to show below the field
         if (anyValueIsNull() || heightIsInhuman()!! || ageIsInhuman()!!) return false
 

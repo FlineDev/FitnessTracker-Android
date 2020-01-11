@@ -32,7 +32,7 @@ class EditWorkoutFragment : BackNavigationFragment() {
         setupViewModelWithArguments()
         setupBackNavigation()
         setupViewModelBinding()
-        setupOnClickListeners()
+        setupListeners()
 
         return binding.root
     }
@@ -60,7 +60,7 @@ class EditWorkoutFragment : BackNavigationFragment() {
         })
     }
 
-    private fun setupOnClickListeners() {
+    private fun setupListeners() {
         binding.cancelButton.setOnClickListener { cancelButtonPressed() }
         binding.saveButton.setOnClickListener { saveButtonPressed() }
 
@@ -74,38 +74,36 @@ class EditWorkoutFragment : BackNavigationFragment() {
 
         binding.startDateEditText.setOnClickListener {
             showDatePickerDialog(
-                viewModel.startDate.value!!,
+                date = viewModel.startDate.value!!,
                 // NOTE: `month + 1` is correct, see documentation: https://developer.android.com/reference/android/app/DatePickerDialog.OnDateSetListener
-                DatePickerDialog.OnDateSetListener { _, year, month, day -> viewModel.updateStartDate(year, month + 1, day) }
+                listener = DatePickerDialog.OnDateSetListener { _, year, month, day -> viewModel.updateStartDate(year, month + 1, day) }
             )
         }
 
         binding.startTimeEditText.setOnClickListener {
             showTimePickerDialog(
-                viewModel.startDate.value!!,
-                TimePickerDialog.OnTimeSetListener { _, hour, minute -> viewModel.updateStartTime(hour, minute) }
+                date = viewModel.startDate.value!!,
+                listener = TimePickerDialog.OnTimeSetListener { _, hour, minute -> viewModel.updateStartTime(hour, minute) }
             )
         }
 
         binding.endDateEditText.setOnClickListener {
             showDatePickerDialog(
-                viewModel.endDate.value!!,
+                date = viewModel.endDate.value!!,
                 // NOTE: `month + 1` is correct, see documentation: https://developer.android.com/reference/android/app/DatePickerDialog.OnDateSetListener
-                DatePickerDialog.OnDateSetListener { _, year, month, day -> viewModel.updateEndDate(year, month + 1, day) }
+                listener = DatePickerDialog.OnDateSetListener { _, year, month, day -> viewModel.updateEndDate(year, month + 1, day) }
             )
         }
 
         binding.endTimeEditText.setOnClickListener {
             showTimePickerDialog(
-                viewModel.endDate.value!!,
-                TimePickerDialog.OnTimeSetListener { _, hour, minute -> viewModel.updateEndTime(hour, minute) }
+                date = viewModel.endDate.value!!,
+                listener = TimePickerDialog.OnTimeSetListener { _, hour, minute -> viewModel.updateEndTime(hour, minute) }
             )
         }
     }
 
-    private fun cancelButtonPressed() {
-        findNavController().navigateUp()
-    }
+    private fun cancelButtonPressed() = findNavController().navigateUp()
 
     private fun saveButtonPressed() {
         GlobalScope.launch {

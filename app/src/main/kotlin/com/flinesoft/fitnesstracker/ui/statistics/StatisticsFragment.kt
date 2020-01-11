@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsFragmentBinding
 import com.flinesoft.fitnesstracker.globals.APP_FEEDBACK_FORUM_URL
+import com.flinesoft.fitnesstracker.globals.DIALOG_HORIZONTAL_SPACING
 import com.flinesoft.fitnesstracker.globals.HUMAN_WAIST_CIRCUMFERENCE_IN_CENTIMETERS
 import com.flinesoft.fitnesstracker.globals.HUMAN_WEIGHT_RANGE_IN_KILOGRAMS
 import com.flinesoft.fitnesstracker.globals.extensions.*
@@ -129,7 +130,7 @@ class StatisticsFragment : Fragment() {
         inputAlertDialog = MaterialAlertDialogBuilder(context)
             .setTitle(R.string.statistics_speed_dial_waist_circumference)
             .setMessage(R.string.statistics_speed_dial_waist_circumference_input_message)
-            .setView(inputTextField, 50, 0, 50, 0)
+            .setView(inputTextField, DIALOG_HORIZONTAL_SPACING, 0, DIALOG_HORIZONTAL_SPACING, 0)
             .setPositiveButton(R.string.global_action_save) { _, _ ->
                 MeasureFormatExt.short().stringToDouble(inputTextField.text.toString(), MeasureUnit.CENTIMETER)?.let { value: Double ->
                     saveNewWaistCircumference(value)
@@ -160,7 +161,7 @@ class StatisticsFragment : Fragment() {
         inputAlertDialog = MaterialAlertDialogBuilder(context)
             .setTitle(R.string.statistics_speed_dial_weight)
             .setMessage(R.string.statistics_speed_dial_weight_input_message)
-            .setView(inputTextField, 50, 0, 50, 0)
+            .setView(inputTextField, DIALOG_HORIZONTAL_SPACING, 0, DIALOG_HORIZONTAL_SPACING, 0)
             .setPositiveButton(R.string.global_action_save) { _, _ ->
                 MeasureFormatExt.short().stringToDouble(inputTextField.text.toString(), MeasureUnit.KILOGRAM)?.let { value: Double ->
                     saveNewWeight(value)

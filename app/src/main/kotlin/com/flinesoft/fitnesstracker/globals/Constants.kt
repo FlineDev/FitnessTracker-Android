@@ -30,3 +30,6 @@ val HUMAN_HEIGHT_RANGE_IN_CENTIMETERS: IntRange = 10..300
 val HUMAN_WAIST_CIRCUMFERENCE_IN_CENTIMETERS: ClosedRange<Double> = 10.0..300.0
 
 val APP_FEEDBACK_FORUM_URL: Uri = Uri.parse("https://community.flinesoft.com/c/fitness-tracker-app/")
+
+const val DEFAULT_ON_DAY_REMINDER_HOUR: Int = 6
+const val DEFAULT_REMINDERS_ON: Boolean = true

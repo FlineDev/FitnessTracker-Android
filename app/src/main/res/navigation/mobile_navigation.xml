@@ -13,6 +13,9 @@
             app:destination="@id/editWorkout"
             app:enterAnim="@anim/sd_fade_and_translate_in"
             app:exitAnim="@anim/sd_fade_and_translate_out" />
+        <action
+            android:id="@+id/action_workouts_to_editReminders"
+            app:destination="@id/editReminders" />
     </fragment>
 
     <fragment
@@ -43,4 +46,8 @@
         android:id="@+id/editPersonalData"
         android:name="com.flinesoft.fitnesstracker.ui.statistics.editPersonalData.EditPersonalDataFragment"
         android:label="@string/statistics.edit_personal_data.title" />
+    <fragment
+        android:id="@+id/editReminders"
+        android:name="com.flinesoft.fitnesstracker.ui.workouts.editReminders.EditRemindersFragment"
+        android:label="@string/workouts.edit_reminders.title" />
 </navigation>

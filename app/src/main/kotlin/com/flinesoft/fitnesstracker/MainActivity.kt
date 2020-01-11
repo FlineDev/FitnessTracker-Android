@@ -11,7 +11,6 @@ import com.flinesoft.fitnesstracker.globals.Logger
 import com.flinesoft.fitnesstracker.globals.NotificationHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.time.ExperimentalTime
-import kotlin.time.hours
 
 @ExperimentalTime
 class MainActivity : AppCompatActivity() {
@@ -22,21 +21,22 @@ class MainActivity : AppCompatActivity() {
         AppPreferences.setup(applicationContext)
         NotificationHelper.setup(applicationContext)
 
-        // TODO: show onboarding asking for height, gender and birth year first – app will crash otherwise
-
-        // TODO: make configurable through user interface
-        AppPreferences.onDayReminderDelay = 6.hours
+        handleSetupsOnFirstStart()
+        AppPreferences.lastStartedVersionCode = BuildConfig.VERSION_CODE
 
         setContentView(R.layout.main_activity)
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
 
         val navController = findNavController(R.id.navigationHostFragment)
-        // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.workouts, R.id.statistics)
-        )
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.workouts, R.id.statistics))
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    private fun handleSetupsOnFirstStart() {
+        if (AppPreferences.lastStartedVersionCode == null) {
+            // TODO: show onboarding asking for height, gender and birth year first – app will crash otherwise
+        }
     }
 }

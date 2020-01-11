@@ -84,6 +84,9 @@
 
     <string name="statistics.title">Statistiken</string>
 
+    <string name="workouts.edit_reminders.reminder_on_title">Erinnere mich 1x pro Tag ans Training</string>
+    <string name="workouts.edit_reminders.reminder_time.overline">Zeit der Erinnerung:</string>
+    <string name="workouts.edit_reminders.title">Erinnerungen einstellen</string>
     <string name="workouts.edit_workout.end_date.overline">Enddatum:</string>
     <string name="workouts.edit_workout.end_time.overline">Endzeit:</string>
     <string name="workouts.edit_workout.start_date.overline">Startdatum:</string>

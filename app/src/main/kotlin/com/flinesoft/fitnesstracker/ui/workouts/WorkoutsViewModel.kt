@@ -30,23 +30,27 @@ class WorkoutsViewModel(application: Application) : AndroidViewModel(application
     } ?: DateTime.now()
 
     fun updateReminders() {
-        var nextReminderDate = suggestedNextWorkoutDate()
-            .withTimeAtStartOfDay()
-            .plus(AppPreferences.onDayReminderDelay!!.toLongMilliseconds())
+        if (AppPreferences.onDayReminderOn) {
+            var nextReminderDate = suggestedNextWorkoutDate()
+                .withTimeAtStartOfDay()
+                .plus(AppPreferences.onDayReminderDelay.toLongMilliseconds())
 
-        while (nextReminderDate < DateTime.now()) {
-            nextReminderDate = nextReminderDate.plusDays(1)
-        }
+            while (nextReminderDate < DateTime.now()) {
+                nextReminderDate = nextReminderDate.plusDays(1)
+            }
 
-        if (AppPreferences.lastScheduledReminderDate != nextReminderDate) {
+            if (AppPreferences.lastScheduledReminderDate != nextReminderDate) {
+                NotificationHelper.cancelScheduledNotificationsInChannel(getApplication(), NotificationHelper.Channel.WORKOUT_REMINDERS)
+                NotificationHelper.scheduleNotification(
+                    getApplication(),
+                    NotificationHelper.Channel.WORKOUT_REMINDERS,
+                    getApplication<Application>().getString(R.string.notifications_workout_reminders_today_title),
+                    getApplication<Application>().getString(R.string.notifications_workout_reminders_today_message),
+                    nextReminderDate
+                )
+            }
+        } else {
             NotificationHelper.cancelScheduledNotificationsInChannel(getApplication(), NotificationHelper.Channel.WORKOUT_REMINDERS)
-            NotificationHelper.scheduleNotification(
-                getApplication(),
-                NotificationHelper.Channel.WORKOUT_REMINDERS,
-                getApplication<Application>().getString(R.string.notifications_workout_reminders_today_title),
-                getApplication<Application>().getString(R.string.notifications_workout_reminders_today_message),
-                nextReminderDate
-            )
         }
     }
 }

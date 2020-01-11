@@ -15,9 +15,6 @@ import com.flinesoft.fitnesstracker.globals.HUMAN_HEIGHT_RANGE_IN_CENTIMETERS
 import com.flinesoft.fitnesstracker.globals.extensions.showNumberPickerDialog
 import com.flinesoft.fitnesstracker.globals.extensions.snack
 import com.flinesoft.fitnesstracker.ui.shared.BackNavigationFragment
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 import kotlin.time.ExperimentalTime
 
@@ -32,7 +29,7 @@ class EditPersonalDataFragment : BackNavigationFragment() {
 
         setupBackNavigation()
         setupViewModelBinding()
-        setupOnClickListeners()
+        setupListeners()
 
         return binding.root
     }
@@ -51,7 +48,7 @@ class EditPersonalDataFragment : BackNavigationFragment() {
         })
     }
 
-    private fun setupOnClickListeners() {
+    private fun setupListeners() {
         binding.cancelButton.setOnClickListener { cancelButtonPressed() }
         binding.saveButton.setOnClickListener { saveButtonPressed() }
 
@@ -82,21 +79,6 @@ class EditPersonalDataFragment : BackNavigationFragment() {
         }
     }
 
-    private fun cancelButtonPressed() {
-        findNavController().navigateUp()
-    }
-
-    private fun saveButtonPressed() {
-        GlobalScope.launch {
-            val saveSuccess = viewModel.save()
-
-            MainScope().launch {
-                if (saveSuccess) {
-                    findNavController().navigateUp()
-                } else {
-                    view?.snack(R.string.global_error_invalid_input)
-                }
-            }
-        }
-    }
+    private fun cancelButtonPressed() = findNavController().navigateUp()
+    private fun saveButtonPressed() = if (viewModel.save()) findNavController().navigateUp() else view?.snack(R.string.global_error_invalid_input)
 }

@@ -42,6 +42,12 @@ class WorkoutsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        viewModel.updateReminders()
+
+        super.onResume()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.workouts_overflow_menu, menu)
 
@@ -111,10 +117,7 @@ class WorkoutsFragment : Fragment() {
     }
 
     private fun showRemindersForm() {
-        MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.workouts_overflow_reminder)
-            // TODO: not yet implemented
-            .show()
+        findNavController().navigate(WorkoutsFragmentDirections.actionWorkoutsToEditReminders())
     }
 
     private fun showNewWorkoutForm() {

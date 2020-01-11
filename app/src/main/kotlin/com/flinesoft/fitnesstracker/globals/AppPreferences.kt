@@ -8,6 +8,7 @@ import com.flinesoft.fitnesstracker.model.Gender
 import org.joda.time.DateTime
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
+import kotlin.time.hours
 import kotlin.time.milliseconds
 
 @ExperimentalTime
@@ -17,6 +18,10 @@ object AppPreferences {
     fun setup(context: Context) {
         sharedPreferences = context.getSharedPreferences("FitnessTracker.sharedprefs", MODE_PRIVATE)
     }
+
+    var lastStartedVersionCode: Int?
+        get() = Key.LAST_SARTED_VERSION_CODE.getInt()
+        set(value) = Key.LAST_SARTED_VERSION_CODE.setInt(value)
 
     var heightInCentimeters: Int?
         get() = Key.HEIGHT.getInt()
@@ -30,16 +35,20 @@ object AppPreferences {
         get() = Key.GENDER_FEMALE.getBoolean()?.let { if (it) Gender.FEMALE else Gender.MALE }
         set(value) = value?.let { Key.GENDER_FEMALE.setBoolean(it == Gender.FEMALE) } ?: Key.GENDER_FEMALE.remove()
 
-    var onDayReminderDelay: Duration?
-        get() = Key.REMINDER_DAY_TIME.getLong()?.milliseconds
-        set(value) = value?.let { Key.REMINDER_DAY_TIME.setLong(it.toLongMilliseconds()) } ?: Key.REMINDER_DAY_TIME.remove()
+    var onDayReminderOn: Boolean
+        get() = Key.REMINDER_ON.getBoolean() ?: DEFAULT_REMINDERS_ON
+        set(value) = Key.REMINDER_ON.setBoolean(value)
+
+    var onDayReminderDelay: Duration
+        get() = Key.REMINDER_DAY_TIME.getLong()?.milliseconds ?: DEFAULT_ON_DAY_REMINDER_HOUR.hours
+        set(value) = Key.REMINDER_DAY_TIME.setLong(value.toLongMilliseconds())
 
     var lastScheduledReminderDate: DateTime?
         get() = Key.REMINDER_DATE.getLong()?.let { DateTime(it) }
         set(value) = value?.let { Key.REMINDER_DATE.setLong(it.millis) } ?: Key.REMINDER_DATE.remove()
 
     private enum class Key {
-        HEIGHT, BIRTH_YEAR, GENDER_FEMALE, REMINDER_DAY_TIME, REMINDER_DATE;
+        LAST_SARTED_VERSION_CODE, HEIGHT, BIRTH_YEAR, GENDER_FEMALE, REMINDER_DAY_TIME, REMINDER_DATE, REMINDER_ON;
 
         fun getBoolean(): Boolean? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getBoolean(name, false) else null
         fun getFloat(): Float? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getFloat(name, 0f) else null
@@ -53,6 +62,7 @@ object AppPreferences {
         fun setLong(value: Long?) = value?.let { sharedPreferences!!.edit { putLong(name, value) } } ?: remove()
         fun setString(value: String?) = value?.let { sharedPreferences!!.edit { putString(name, value) } } ?: remove()
 
+        fun exists(): Boolean = sharedPreferences!!.contains(name)
         fun remove() = sharedPreferences!!.edit { remove(name) }
     }
 }
