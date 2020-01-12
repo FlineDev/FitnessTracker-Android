@@ -2,9 +2,6 @@ package com.flinesoft.fitnesstracker.globals
 
 import android.net.Uri
 
-const val BOTTOM_NAVIGATION_VIEW_HEIGHT: Int = 52
-const val DIALOG_HORIZONTAL_SPACING: Int = 50
-
 // Source: https://en.wikipedia.org/wiki/Body_mass_index
 const val BODY_MASS_INDEX_LOWER_HIGH_RISK: Double = 16.0
 const val BODY_MASS_INDEX_HEALTHY_MIN: Double = 18.5

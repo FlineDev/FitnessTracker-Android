@@ -73,6 +73,8 @@
     <string name="statistics.edit_personal_data.height.overline">Größe (in Centimetern):</string>
     <string name="statistics.edit_personal_data.title">Personendaten ändern</string>
 
+    <string name="statistics.missing_personal.data_hint">Bitte gib deine Personendaten ein, um die Statistik-Funktion zu benutzen.</string>
+
     <string name="statistics.overflow.data">Personendaten ändern</string>
 
     <string name="statistics.speed_dial.waist_circumference">Neuer Taillenumfang</string>

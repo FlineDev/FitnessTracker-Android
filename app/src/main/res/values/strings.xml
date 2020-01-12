@@ -73,6 +73,8 @@
     <string name="statistics.edit_personal_data.height.overline">Height (in centimeters):</string>
     <string name="statistics.edit_personal_data.title">Change Personal Data</string>
 
+    <string name="statistics.missing_personal.data_hint">Please enter your personal data to use the statistics feature.</string>
+
     <string name="statistics.overflow.data">Change personal data</string>
 
     <string name="statistics.speed_dial.waist_circumference">New waist circumference</string>

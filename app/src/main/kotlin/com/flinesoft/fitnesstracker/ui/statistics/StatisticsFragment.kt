@@ -14,8 +14,11 @@ import com.flinesoft.fitnesstracker.globals.*
 import com.flinesoft.fitnesstracker.globals.extensions.*
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
+import com.google.android.material.snackbar.Snackbar
 import com.leinardi.android.speeddial.SpeedDialView
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 import timber.log.Timber
@@ -39,6 +42,11 @@ class StatisticsFragment : Fragment() {
 
     override fun onResume() {
         viewModel.updateAllCharts()
+
+        GlobalScope.launch {
+            delay(300)
+            MainScope().launch { requirePersonalDataAppPreferences() }
+        }
 
         super.onResume()
     }
@@ -65,6 +73,13 @@ class StatisticsFragment : Fragment() {
         else -> {
             Timber.e("unknown overflow item id clicked: '${item.itemId}'")
             false
+        }
+    }
+
+    private fun requirePersonalDataAppPreferences() {
+        if (AppPreferences.heightInCentimeters == null || AppPreferences.birthYear == null || AppPreferences.gender == null) {
+            view?.snack(R.string.statistics_missing_personal_data_hint, Snackbar.LENGTH_LONG)
+            showPersonalDataInput()
         }
     }
 
