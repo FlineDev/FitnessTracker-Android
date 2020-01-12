@@ -1,48 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Fit.Tracker</string>
-
     <string name="global.action.cancel">Cancel</string>
-
     <string name="global.action.confirm">OK</string>
-
     <string name="global.action.delete">Delete</string>
-
     <string name="global.action.save">Save</string>
-
     <string name="global.common_dialogs.confirm_delete.message">Are you sure that you want to delete the selected data?</string>
     <string name="global.common_dialogs.confirm_delete.title">Confirm Deletion</string>
-
     <plurals name="global.duration.days">
         <item quantity="one">%d day</item>
         <item quantity="other">%d days</item>
     </plurals>
-
     <plurals name="global.duration.hours">
         <item quantity="one">%d hour</item>
         <item quantity="other">%d hours</item>
     </plurals>
-
     <string name="global.duration.time_interval"><xliff:g example="14:00" id="from">%1$s</xliff:g> - <xliff:g example="16:00" id="to">%2$s</xliff:g></string>
-
     <string name="global.error.invalid_input">Invalid input data. Please check &amp; try again.</string>
-
     <string name="global.info.saved_successfully">Saved data successfully.</string>
-
     <string name="models.gender.female">Female</string>
-
     <string name="models.gender.male">Male</string>
-
     <string name="models.workout_type.cardio">Cardio</string>
     <string name="models.workout_type.muscle_building">Muscle building</string>
-
     <string name="notifications.workout_reminders.channel_name">Workout reminders</string>
     <string name="notifications.workout_reminders.today_title">Workout today</string>
-
     <string name="notifications_workout_reminders_today_message">It\'s time for a workout! &#128170; You can do it. &#128521;</string>
-
+    <string name="onboarding.body_mass_index.description">Measure your weight every morning to track the development of your Body Mass Index over time.</string>
+    <string name="onboarding.body_mass_index.title">Body Mass Index</string>
+    <string name="onboarding.body_shape_index.description">Track your progress in the more sophisticated \"A Body Shape Index\" by also measuring your waist circumference regularly.</string>
+    <string name="onboarding.body_shape_index.title">A Body Shape Index</string>
+    <string name="onboarding.workout_reminders.description">Get notified to workout again once your muscles have recovered from your last workout.</string>
+    <string name="onboarding.workout_reminders.title">Workout Reminders</string>
+    <string name="onboarding.workouts.description">Enter all your future workouts to get a timeline overview of your progress.</string>
+    <string name="onboarding.workouts.title">Track Workouts</string>
     <string name="shared.overflow.feedback">Give feedback</string>
-
     <string name="statistics.body_mass_index.empty_data">No weight measurements available.</string>
     <string name="statistics.body_mass_index.explanation"><![CDATA[
             The classical index derived from weight & height of a person to serve as an indicator for under-/overweight.
@@ -65,23 +56,17 @@
     <string name="statistics.body_shape_index.low_risk_max.legend">Low risk maximum</string>
     <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
     <string name="statistics.body_shape_index.very_low_risk_max.legend">Very low risk maximum</string>
-
     <string name="statistics.edit_personal_data.birth_year.input_dialog_title">Choose birth year</string>
     <string name="statistics.edit_personal_data.birth_year.overline">Birth year:</string>
     <string name="statistics.edit_personal_data.gender.overline">Gender:</string>
     <string name="statistics.edit_personal_data.height.input_dialog_title">Choose height</string>
     <string name="statistics.edit_personal_data.height.overline">Height (in centimeters):</string>
     <string name="statistics.edit_personal_data.title">Change Personal Data</string>
-
     <string name="statistics.missing_personal.data_hint">Please enter your personal data to use the statistics feature.</string>
-
     <string name="statistics.overflow.data">Change personal data</string>
-
     <string name="statistics.speed_dial.waist_circumference">New waist circumference</string>
     <string name="statistics.speed_dial.weight">New weight</string>
-
     <string name="statistics.title">Statistics</string>
-
     <string name="workouts.edit_reminders.reminder_on_title">Remind me to workout once a day</string>
     <string name="workouts.edit_reminders.reminder_time.overline">Time for the reminder:</string>
     <string name="workouts.edit_reminders.title">Configure reminders</string>
@@ -92,27 +77,17 @@
     <string name="workouts.edit_workout.title_edit">Edit Workout</string>
     <string name="workouts.edit_workout.title_new">Create Workout</string>
     <string name="workouts.edit_workout.workout_type.overline">Workout type:</string>
-
     <string name="workouts.header.next_workout_date_icon">calendar icon</string>
-
     <string name="workouts.header.postpone_button">Postpone</string>
-
     <string name="workouts.header.title">Next Workout</string>
-
     <string name="workouts.history.empty_state">No workout data available.\n\nAdd your first workout using the plus button below.</string>
-
     <string name="workouts.history.title">Recent Workouts</string>
-
     <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g> break time</string>
     <string name="workouts.history_cell.between_workouts_icon">time between workouts rating indicator</string>
     <string name="workouts.history_cell.workout_type_icon">workout type icon</string>
-
     <string name="workouts.overflow.reminder">Configure reminders</string>
-
     <string name="workouts.speed_dial.workout">New workout</string>
-
     <string name="workouts.title">Workouts</string>
-
     <string name="global.non_translatable.sample_date_time" translatable="false"><![CDATA[<Friday, October 15th>]]></string>
     <string name="global.non_translatable.sample_month_short" translatable="false"><![CDATA[<APR>]]></string>
     <string name="global.non_translatable.sample_number_short" translatable="false"><![CDATA[<15>]]></string>

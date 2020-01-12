@@ -1,48 +1,39 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Fit.Tracker</string>
-
     <string name="global.action.cancel">Abbrechen</string>
-
     <string name="global.action.confirm">OK</string>
-
     <string name="global.action.delete">Löschen</string>
-
     <string name="global.action.save">Speichern</string>
-
     <string name="global.common_dialogs.confirm_delete.message">Bist du sicher, dass du die gewählten Daten löschen möchtest?</string>
     <string name="global.common_dialogs.confirm_delete.title">Löschen bestätigen</string>
-
     <plurals name="global.duration.days">
         <item quantity="one">%d Tag</item>
         <item quantity="other">%d Tage</item>
     </plurals>
-
     <plurals name="global.duration.hours">
         <item quantity="one">%d Stunde</item>
         <item quantity="other">%d Stunden</item>
     </plurals>
-
     <string name="global.duration.time_interval"><xliff:g example="14:00" id="from">%1$s</xliff:g> - <xliff:g example="16:00" id="to">%2$s</xliff:g></string>
-
     <string name="global.error.invalid_input">Ungültige Daten. Bitte prüfe sie &amp; versuche es erneut.</string>
-
     <string name="global.info.saved_successfully">Daten erfolgreich gespeichert.</string>
-
     <string name="models.gender.female">Weiblich</string>
-
     <string name="models.gender.male">Männlich</string>
-
     <string name="models.workout_type.cardio">Cardio</string>
     <string name="models.workout_type.muscle_building">Muskelaufbau</string>
-
     <string name="notifications.workout_reminders.channel_name">Trainingserinnerungen</string>
     <string name="notifications.workout_reminders.today_title">Training heute</string>
-
     <string name="notifications_workout_reminders_today_message">Es ist Zeit für ein Training! &#128170; Du kannst das. &#128521;</string>
-
+    <string name="onboarding.body_mass_index.description">Wiege dich jeden Morgen, um die Entwicklung deines Body-Mass-Indexes im Laufe der Zeit zu verfolgen.</string>
+    <string name="onboarding.body_mass_index.title">Body-Mass-Index</string>
+    <string name="onboarding.body_shape_index.description">Halte deinen Fortschritt im moderneren \"A Body Shape Index\" fest, indem du regelmäßig auch deinen Taillenumfang misst.</string>
+    <string name="onboarding.body_shape_index.title">A Body Shape Index</string>
+    <string name="onboarding.workout_reminders.description">Lass dich ans nächste Training erinnern, sobald deine Muskeln sich vom letzten Training erholt haben.</string>
+    <string name="onboarding.workout_reminders.title">Trainings-Erinnerungen</string>
+    <string name="onboarding.workouts.description">Gib all deine künftigen Trainings ein, um eine übersichtliche Chronik deines Fortschitts zu haben.</string>
+    <string name="onboarding.workouts.title">Trainingsverfolgung</string>
     <string name="shared.overflow.feedback">Feedback geben</string>
-
     <string name="statistics.body_mass_index.empty_data">Keine Gewichtsmessungen verfügbar.</string>
     <string name="statistics.body_mass_index.explanation"><![CDATA[
             Der klassische Index, hergeleitet aus Gewicht & Größe einer Person um als Indikator für Unter-/Übergewicht zu dienen.
@@ -65,23 +56,17 @@
     <string name="statistics.body_shape_index.low_risk_max.legend">Geringes Risiko Maximum</string>
     <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
     <string name="statistics.body_shape_index.very_low_risk_max.legend">Sehr geringes Risiko Maximum</string>
-
     <string name="statistics.edit_personal_data.birth_year.input_dialog_title">Geburtsjahr auswählen</string>
     <string name="statistics.edit_personal_data.birth_year.overline">Geburtsjahr:</string>
     <string name="statistics.edit_personal_data.gender.overline">Geschlecht:</string>
     <string name="statistics.edit_personal_data.height.input_dialog_title">Größe auswählen</string>
     <string name="statistics.edit_personal_data.height.overline">Größe (in Centimetern):</string>
     <string name="statistics.edit_personal_data.title">Personendaten ändern</string>
-
     <string name="statistics.missing_personal.data_hint">Bitte gib deine Personendaten ein, um die Statistik-Funktion zu benutzen.</string>
-
     <string name="statistics.overflow.data">Personendaten ändern</string>
-
     <string name="statistics.speed_dial.waist_circumference">Neuer Taillenumfang</string>
     <string name="statistics.speed_dial.weight">Neues Gewicht</string>
-
     <string name="statistics.title">Statistiken</string>
-
     <string name="workouts.edit_reminders.reminder_on_title">Erinnere mich 1x pro Tag ans Training</string>
     <string name="workouts.edit_reminders.reminder_time.overline">Zeit der Erinnerung:</string>
     <string name="workouts.edit_reminders.title">Erinnerungen einstellen</string>
@@ -92,24 +77,15 @@
     <string name="workouts.edit_workout.title_edit">Training bearbeiten</string>
     <string name="workouts.edit_workout.title_new">Training erstellen</string>
     <string name="workouts.edit_workout.workout_type.overline">Art des Trainings:</string>
-
     <string name="workouts.header.next_workout_date_icon">Kalender-Symbol</string>
-
     <string name="workouts.header.postpone_button">Verschieben</string>
-
     <string name="workouts.header.title">Nächstes Training</string>
-
     <string name="workouts.history.empty_state">Keine Trainingsdaten verfügbar.\n\nFüge mit dem Plus-Button unten dein erstes Training hinzu.</string>
-
     <string name="workouts.history.title">Letzte Trainings</string>
-
     <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g> Pause</string>
     <string name="workouts.history_cell.between_workouts_icon">Indikator zur Bewertung der Zeit zwischen zwei Trainings</string>
     <string name="workouts.history_cell.workout_type_icon">Trainings-Typ Icon</string>
-
     <string name="workouts.overflow.reminder">Erinnerungen einstellen</string>
-
     <string name="workouts.speed_dial.workout">Neues Training</string>
-
     <string name="workouts.title">Trainings</string>
 </resources>

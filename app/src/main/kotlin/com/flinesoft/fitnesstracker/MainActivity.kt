@@ -10,7 +10,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.flinesoft.fitnesstracker.globals.AppPreferences
 import com.flinesoft.fitnesstracker.globals.Logger
 import com.flinesoft.fitnesstracker.globals.NotificationHelper
-import com.flinesoft.fitnesstracker.ui.OnboardingActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.time.ExperimentalTime
 
