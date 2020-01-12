@@ -3,24 +3,17 @@ package com.flinesoft.fitnesstracker.ui.statistics
 import android.content.Intent
 import android.icu.util.MeasureUnit
 import android.os.Bundle
-import android.text.InputType
 import android.view.*
-import android.widget.EditText
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsFragmentBinding
-import com.flinesoft.fitnesstracker.globals.APP_FEEDBACK_FORUM_URL
-import com.flinesoft.fitnesstracker.globals.DIALOG_HORIZONTAL_SPACING
-import com.flinesoft.fitnesstracker.globals.HUMAN_WAIST_CIRCUMFERENCE_IN_CENTIMETERS
-import com.flinesoft.fitnesstracker.globals.HUMAN_WEIGHT_RANGE_IN_KILOGRAMS
+import com.flinesoft.fitnesstracker.globals.*
 import com.flinesoft.fitnesstracker.globals.extensions.*
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -32,8 +25,6 @@ import kotlin.time.ExperimentalTime
 class StatisticsFragment : Fragment() {
     private lateinit var binding: StatisticsFragmentBinding
     private lateinit var viewModel: StatisticsViewModel
-
-    private var inputAlertDialog: AlertDialog? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = StatisticsFragmentBinding.inflate(inflater)
@@ -116,64 +107,31 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun showNewWaistCircumferenceForm() {
-        val inputTextField = EditText(context).apply {
-            inputType = InputType.TYPE_CLASS_NUMBER + InputType.TYPE_NUMBER_FLAG_DECIMAL
-            setHint(R.string.statistics_speed_dial_waist_circumference_hint)
-            afterTextChanged(skipDeletion = NumberFormatExt.default.decimalSeparator()) { _, textWatcher ->
-                MeasureFormatExt.short().stringToDouble(text.toString(), MeasureUnit.CENTIMETER)?.let { newValue: Double ->
-                    inputAlertDialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = HUMAN_WAIST_CIRCUMFERENCE_IN_CENTIMETERS.contains(newValue)
-                    setTextIgnoringTextWatcher(MeasureFormatExt.short().doubleToString(newValue, MeasureUnit.CENTIMETER), textWatcher)
-                }
+        showNumberPickerDialog(
+            title = getString(R.string.statistics_speed_dial_waist_circumference),
+            value = viewModel.latestWaistCircumferenceMeasurement()?.value ?: DEFAULT_INPUT_VALUE_WAIST_CIRCUMFERENCE_IN_CENTIMETERS,
+            range = HUMAN_WAIST_CIRCUMFERENCE_RANGE_IN_CENTIMETERS,
+            stepSize = 0.5,
+            formatToString = { MeasureFormatExt.short().doubleToString(it, MeasureUnit.CENTIMETER) },
+            valueChooseAction = {
+                saveNewWaistCircumference(it)
+                view?.snack(R.string.global_info_saved_successfully)
             }
-        }
-
-        inputAlertDialog = MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.statistics_speed_dial_waist_circumference)
-            .setMessage(R.string.statistics_speed_dial_waist_circumference_input_message)
-            .setView(inputTextField, DIALOG_HORIZONTAL_SPACING, 0, DIALOG_HORIZONTAL_SPACING, 0)
-            .setPositiveButton(R.string.global_action_save) { _, _ ->
-                MeasureFormatExt.short().stringToDouble(inputTextField.text.toString(), MeasureUnit.CENTIMETER)?.let { value: Double ->
-                    saveNewWaistCircumference(value)
-                    view?.snack(R.string.global_info_saved_successfully)
-                } ?: run {
-                    view?.snack(R.string.global_error_invalid_input)
-                }
-                inputAlertDialog = null
-            }
-            .setNeutralButton(R.string.global_action_cancel) { _, _ -> inputAlertDialog = null }
-            .show()
-        inputAlertDialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
+        )
     }
 
     private fun showNewWeightForm() {
-        val inputTextField = EditText(context).apply {
-            inputType = InputType.TYPE_CLASS_NUMBER + InputType.TYPE_NUMBER_FLAG_DECIMAL
-
-            setHint(R.string.statistics_speed_dial_weight_hint)
-            afterTextChanged(skipDeletion = NumberFormatExt.default.decimalSeparator()) { _, textWatcher ->
-                MeasureFormatExt.short().stringToDouble(text.toString(), MeasureUnit.KILOGRAM)?.let { newValue ->
-                    inputAlertDialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = HUMAN_WEIGHT_RANGE_IN_KILOGRAMS.contains(newValue)
-                    setTextIgnoringTextWatcher(MeasureFormatExt.short().doubleToString(newValue, MeasureUnit.KILOGRAM), textWatcher)
-                }
+        showNumberPickerDialog(
+            title = getString(R.string.statistics_speed_dial_weight),
+            value = viewModel.latestWeightMeasurement()?.value ?: DEFAULT_INPUT_VALUE_WEIGHT_IN_KILOGRAMS,
+            range = HUMAN_WEIGHT_RANGE_IN_KILOGRAMS,
+            stepSize = 0.1,
+            formatToString = { MeasureFormatExt.short().doubleToString(it, MeasureUnit.KILOGRAM) },
+            valueChooseAction = {
+                saveNewWeight(it)
+                view?.snack(R.string.global_info_saved_successfully)
             }
-        }
-
-        inputAlertDialog = MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.statistics_speed_dial_weight)
-            .setMessage(R.string.statistics_speed_dial_weight_input_message)
-            .setView(inputTextField, DIALOG_HORIZONTAL_SPACING, 0, DIALOG_HORIZONTAL_SPACING, 0)
-            .setPositiveButton(R.string.global_action_save) { _, _ ->
-                MeasureFormatExt.short().stringToDouble(inputTextField.text.toString(), MeasureUnit.KILOGRAM)?.let { value: Double ->
-                    saveNewWeight(value)
-                    view?.snack(R.string.global_info_saved_successfully)
-                } ?: run {
-                    view?.snack(R.string.global_error_invalid_input)
-                }
-                inputAlertDialog = null
-            }
-            .setNeutralButton(R.string.global_action_cancel) { _, _ -> inputAlertDialog = null }
-            .show()
-        inputAlertDialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
+        )
     }
 
     private fun saveNewWaistCircumference(waistCircumference: Double) {

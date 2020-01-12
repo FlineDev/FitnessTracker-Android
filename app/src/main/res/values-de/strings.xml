@@ -76,11 +76,7 @@
     <string name="statistics.overflow.data">Personendaten ändern</string>
 
     <string name="statistics.speed_dial.waist_circumference">Neuer Taillenumfang</string>
-    <string name="statistics.speed_dial.waist_circumference.hint">z.B. 90 cm</string>
-    <string name="statistics.speed_dial.waist_circumference.input_message">Gib dein Taillenumfang in Centimetern an.</string>
     <string name="statistics.speed_dial.weight">Neues Gewicht</string>
-    <string name="statistics.speed_dial.weight.hint">z.B. 75 kg</string>
-    <string name="statistics.speed_dial.weight.input_message">Gib dein Gewicht in Kilogramm an.</string>
 
     <string name="statistics.title">Statistiken</string>
 

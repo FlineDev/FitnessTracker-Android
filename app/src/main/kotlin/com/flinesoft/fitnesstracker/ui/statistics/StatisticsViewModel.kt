@@ -89,6 +89,9 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
+    fun latestWeightMeasurement(): WeightMeasurement? = weightMeasurements.lastOrNull()
+    fun latestWaistCircumferenceMeasurement(): WaistCircumferenceMeasurement? = waistCircumferenceMeasurements.lastOrNull()
+
     fun updateAllCharts() {
         updateBodyMassIndexDataEntries()
         updateBodyShapeIndexDataEntries()
