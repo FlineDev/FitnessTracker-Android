@@ -1,5 +1,6 @@
 package com.flinesoft.fitnesstracker
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -9,6 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.flinesoft.fitnesstracker.globals.AppPreferences
 import com.flinesoft.fitnesstracker.globals.Logger
 import com.flinesoft.fitnesstracker.globals.NotificationHelper
+import com.flinesoft.fitnesstracker.ui.OnboardingActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.time.ExperimentalTime
 
@@ -35,8 +37,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleSetupsOnFirstStart() {
-        if (AppPreferences.lastStartedVersionCode == null) {
-            // TODO: show onboarding asking for height, gender and birth year first – app will crash otherwise
+        if (!AppPreferences.onboardingCompleted) {
+            val onboardingIntent = Intent(this, OnboardingActivity::class.java)
+            startActivity(onboardingIntent)
+            finish()
         }
     }
 }

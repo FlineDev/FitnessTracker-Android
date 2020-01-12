@@ -44,7 +44,7 @@ class StatisticsFragment : Fragment() {
         viewModel.updateAllCharts()
 
         GlobalScope.launch {
-            delay(300)
+            delay(DEFAULT_MODAL_PRESENTATION_DELAY)
             MainScope().launch { requirePersonalDataAppPreferences() }
         }
 

@@ -2,6 +2,7 @@
 
 buildscript {
     ext {
+        version_app_intro = '5.1.0'
         version_appcompat = '1.1.0'
         version_chart = 'v3.1.0'
         version_constraint_layout = '2.0.0-beta4'

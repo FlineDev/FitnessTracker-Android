@@ -19,6 +19,10 @@ object AppPreferences {
         sharedPreferences = context.getSharedPreferences("FitnessTracker.sharedprefs", MODE_PRIVATE)
     }
 
+    var onboardingCompleted: Boolean
+        get() = Key.ONBOARDING_COMPLETED.getBoolean() ?: false
+        set(value) = Key.ONBOARDING_COMPLETED.setBoolean(value)
+
     var lastStartedVersionCode: Int?
         get() = Key.LAST_SARTED_VERSION_CODE.getInt()
         set(value) = Key.LAST_SARTED_VERSION_CODE.setInt(value)
@@ -48,7 +52,7 @@ object AppPreferences {
         set(value) = value?.let { Key.REMINDER_DATE.setLong(it.millis) } ?: Key.REMINDER_DATE.remove()
 
     private enum class Key {
-        LAST_SARTED_VERSION_CODE, HEIGHT, BIRTH_YEAR, GENDER_FEMALE, REMINDER_DAY_TIME, REMINDER_DATE, REMINDER_ON;
+        ONBOARDING_COMPLETED, LAST_SARTED_VERSION_CODE, HEIGHT, BIRTH_YEAR, GENDER_FEMALE, REMINDER_DAY_TIME, REMINDER_DATE, REMINDER_ON;
 
         fun getBoolean(): Boolean? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getBoolean(name, false) else null
         fun getFloat(): Float? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getFloat(name, 0f) else null

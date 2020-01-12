@@ -155,6 +155,9 @@ dependencies {
     // A powerful 🚀 Android chart view / graph view library
     implementation "com.github.PhilJay:MPAndroidChart:$version_chart"
 
+    // Make a cool intro for your Android app
+    implementation "com.github.AppIntro:AppIntro:$version_app_intro"
+
     // Testing
     testImplementation "junit:junit:$version_junit"
     testImplementation "androidx.room:room-testing:$version_room"
