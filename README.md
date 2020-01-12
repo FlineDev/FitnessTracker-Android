@@ -10,6 +10,15 @@ This is the FitnessTracker app project for the Android platform.
 
 Just open the project in Android Studio 3.5+ and let Gradle do it's work. :)
 
+## Screenshots
+
+You can update the app screenshots by just running:
+
+```bash
+fastlane build_for_screengrab
+fastlane screengrab
+```
+
 ## Contributing
 
 When contributing to this project, please make sure to follow the guidelines in the Rules & Conventions section in the [Mobile Developer Docs](https://www.notion.so/Mobile-Developer-Docs-7070e4bbd66744ad85a9a72411bcc81f).
