@@ -33,5 +33,6 @@ val APP_FEEDBACK_FORUM_URL: Uri = Uri.parse("https://community.flinesoft.com/c/f
 
 const val DEFAULT_ON_DAY_REMINDER_HOUR: Int = 6
 const val DEFAULT_REMINDERS_ON: Boolean = true
+const val DEFAULT_REMINDER_DAYS_COUNT: Int = 7
 
 const val DEFAULT_MODAL_PRESENTATION_DELAY: Long = 300

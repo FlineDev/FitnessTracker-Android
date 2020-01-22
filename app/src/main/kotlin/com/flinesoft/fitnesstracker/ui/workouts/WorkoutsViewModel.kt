@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.AppPreferences
+import com.flinesoft.fitnesstracker.globals.DEFAULT_REMINDER_DAYS_COUNT
 import com.flinesoft.fitnesstracker.globals.NotificationHelper
 import com.flinesoft.fitnesstracker.globals.PREVENT_NEXT_DAY_WHEN_WORKOUT_WITHIN_HOURS
 import com.flinesoft.fitnesstracker.globals.extensions.database
@@ -41,16 +42,22 @@ class WorkoutsViewModel(application: Application) : AndroidViewModel(application
 
             if (AppPreferences.lastScheduledReminderDate != nextReminderDate) {
                 NotificationHelper.cancelScheduledNotificationsInChannel(getApplication(), NotificationHelper.Channel.WORKOUT_REMINDERS)
-                NotificationHelper.scheduleNotification(
-                    getApplication(),
-                    NotificationHelper.Channel.WORKOUT_REMINDERS,
-                    getApplication<Application>().getString(R.string.notifications_workout_reminders_today_title),
-                    getApplication<Application>().getString(R.string.notifications_workout_reminders_today_message),
-                    nextReminderDate
-                )
+
+                for (reminderDayIndex in 0 until DEFAULT_REMINDER_DAYS_COUNT) {
+                    NotificationHelper.scheduleNotification(
+                        getApplication(),
+                        NotificationHelper.Channel.WORKOUT_REMINDERS,
+                        getApplication<Application>().getString(R.string.notifications_workout_reminders_today_title),
+                        getApplication<Application>().getString(R.string.notifications_workout_reminders_today_message),
+                        nextReminderDate.plusDays(reminderDayIndex)
+                    )
+                }
+
+                AppPreferences.lastScheduledReminderDate = nextReminderDate
             }
         } else {
             NotificationHelper.cancelScheduledNotificationsInChannel(getApplication(), NotificationHelper.Channel.WORKOUT_REMINDERS)
+            AppPreferences.lastScheduledReminderDate = null
         }
     }
 }
