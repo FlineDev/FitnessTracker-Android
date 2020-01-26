@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.flinesoft.fitnesstracker.model.Impediment
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
 import com.flinesoft.fitnesstracker.model.Workout
@@ -15,7 +16,15 @@ import com.flinesoft.fitnesstracker.persistence.converters.EnumConverters
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
-@Database(entities = [WaistCircumferenceMeasurement::class, WeightMeasurement::class, Workout::class], version = 2)
+@Database(
+    entities = [
+        Impediment::class,
+        WaistCircumferenceMeasurement::class,
+        WeightMeasurement::class,
+        Workout::class
+    ],
+    version = 3
+)
 @TypeConverters(DateTimeConverter::class, EnumConverters::class)
 abstract class FitnessTrackerDatabase : RoomDatabase() {
     abstract val waistCircumferenceMeasurementDao: WaistCircumferenceMeasurementDao
@@ -36,7 +45,10 @@ abstract class FitnessTrackerDatabase : RoomDatabase() {
                         FitnessTrackerDatabase::class.java,
                         "FitnessTrackerDatabase"
                     )
-                        .addMigrations(migrationFrom1To2)
+                        .addMigrations(
+                            migrationFrom1To2,
+                            migrationFrom2To3
+                        )
                         .build()
 
                     INSTANCE = instance
@@ -49,6 +61,21 @@ abstract class FitnessTrackerDatabase : RoomDatabase() {
         private val migrationFrom1To2 = object : Migration(1, 2) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL("DROP TABLE Impediments")
+            }
+        }
+
+        private val migrationFrom2To3 = object : Migration(2, 3) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS `Impediments`
+                    (
+                        `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+                        `startDate` TEXT NOT NULL, 
+                        `endDate` TEXT NOT NULL
+                    )
+                    """
+                )
             }
         }
     }
