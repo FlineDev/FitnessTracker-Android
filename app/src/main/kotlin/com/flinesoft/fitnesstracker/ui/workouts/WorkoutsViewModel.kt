@@ -34,7 +34,7 @@ class WorkoutsViewModel(application: Application) : AndroidViewModel(application
     ).toString()
 
     private fun mergedRecoverables(workouts: List<Workout>, impediments: List<Impediment>): List<Recoverable> =
-            (workouts + impediments).sortedByDescending { it.startDate }
+            (workouts + impediments).sortedByDescending { it.endDate }
 
     private fun suggestedNextWorkoutDate(): DateTime = latestRecoverables.value?.firstOrNull()?.let { latestRecoverable ->
         latestRecoverable.recoveryEndDate.plusHours(24 - PREVENT_NEXT_DAY_WHEN_WORKOUT_WITHIN_HOURS)

@@ -9,9 +9,15 @@ import kotlin.time.milliseconds
 
 @ExperimentalTime
 @Entity(tableName = "Impediments")
-data class Impediment(override var startDate: DateTime, var endDate: DateTime) : Recoverable {
+class Impediment(startDate: DateTime, endDate: DateTime) : Recoverable {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L
+
+    override var startDate: DateTime = startDate
+        set(value) { field = value.withTimeAtStartOfDay() }
+
+    override var endDate: DateTime = endDate
+        set(value) { field = value.withTimeAtStartOfDay().plusDays(1).minusSeconds(1) }
 
     override val recoveryStartDate: DateTime
         get() = startDate

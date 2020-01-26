@@ -15,7 +15,7 @@
         <item quantity="one">%d Stunde</item>
         <item quantity="other">%d Stunden</item>
     </plurals>
-    <string name="global.duration.time_interval"><xliff:g example="14:00" id="from">%1$s</xliff:g> - <xliff:g example="16:00" id="to">%2$s</xliff:g></string>
+    <string name="global.duration.time_interval"><xliff:g example="14:00" id="from">%1$s</xliff:g> – <xliff:g example="16:00" id="to">%2$s</xliff:g></string>
     <string name="global.error.invalid_input">Ungültige Daten. Bitte prüfe sie &amp; versuche es erneut.</string>
     <string name="global.info.saved_successfully">Daten erfolgreich gespeichert.</string>
     <string name="models.gender.female">Weiblich</string>
@@ -67,6 +67,8 @@
     <string name="statistics.speed_dial.waist_circumference">Neuer Taillenumfang</string>
     <string name="statistics.speed_dial.weight">Neues Gewicht</string>
     <string name="statistics.title">Statistiken</string>
+    <string name="workouts.edit_impediment.title_edit">Verhinderung bearbeiten</string>
+    <string name="workouts.edit_impediment.title_new">Neue Verhinderung</string>
     <string name="workouts.edit_reminders.reminder_on_title">Erinnere mich 1x pro Tag ans Training</string>
     <string name="workouts.edit_reminders.reminder_time.overline">Zeit der Erinnerung:</string>
     <string name="workouts.edit_reminders.title">Erinnerungen einstellen</string>
@@ -82,7 +84,8 @@
     <string name="workouts.header.title">Nächstes Training</string>
     <string name="workouts.history.empty_state">Keine Trainingsdaten verfügbar.\n\nFüge mit dem Plus-Button unten dein erstes Training hinzu.</string>
     <string name="workouts.history.title">Letzte Trainings</string>
-    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g> Pause</string>
+    <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g> ohne Training</string>
+    <string name="workouts.history_cell.between_workouts_duration.overlapping">Überschneidung von <xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g></string>
     <string name="workouts.history_cell.between_workouts_icon">Indikator zur Bewertung der Zeit zwischen zwei Trainings</string>
     <string name="workouts.history_cell.impediment_title">Verhinderung</string>
     <string name="workouts.history_cell.workout_type_icon">Trainings-Typ Icon</string>

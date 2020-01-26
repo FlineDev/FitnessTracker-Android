@@ -3,6 +3,7 @@ package com.flinesoft.fitnesstracker.ui.workouts
 import android.content.Context
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isGone
 import com.flinesoft.fitnesstracker.R
 import kotlinx.android.synthetic.main.workouts_history_impediment_cell.view.*
 import kotlinx.android.synthetic.main.workouts_history_workout_cell.view.betweenWorkoutsIconImageView
@@ -20,6 +21,8 @@ class WorkoutsHistoryImpedimentCell(context: Context) : ConstraintLayout(context
     fun updateViewModel(viewModel: WorkoutsHistoryImpedimentCellViewModel) {
         betweenWorkoutsIconImageView.setImageDrawable(viewModel.betweenRecoverablesIconDrawable())
         betweenWorkoutsTextView.text = viewModel.betweenRecoverablesText(context)
+
+        betweenWorkoutsEntry.isGone = viewModel.hideBetweenRecoverablesEntry
 
         monthTextView.text = viewModel.monthText()
         dayTextView.text = viewModel.dayText()

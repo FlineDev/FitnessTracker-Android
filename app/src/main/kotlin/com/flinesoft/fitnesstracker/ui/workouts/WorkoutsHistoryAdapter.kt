@@ -66,7 +66,8 @@ class WorkoutsHistoryAdapter(
                 val viewModel = WorkoutsHistoryWorkoutCellViewModel(
                     application = application,
                     recoverable = workout,
-                    betweenRecoverablesDuration = betweenRecoverablesDuration
+                    betweenRecoverablesDuration = betweenRecoverablesDuration,
+                    hideBetweenRecoverablesEntry = position == 0
                 )
                 holder.cell.updateViewModel(viewModel)
             }
@@ -79,7 +80,8 @@ class WorkoutsHistoryAdapter(
                 val viewModel = WorkoutsHistoryImpedimentCellViewModel(
                     application = application,
                     recoverable = impediment,
-                    betweenRecoverablesDuration = betweenRecoverablesDuration
+                    betweenRecoverablesDuration = betweenRecoverablesDuration,
+                    hideBetweenRecoverablesEntry = position == 0
                 )
                 holder.cell.updateViewModel(viewModel)
             }

@@ -14,8 +14,14 @@ import kotlin.time.ExperimentalTime
 class WorkoutsHistoryWorkoutCellViewModel(
     application: Application,
     override val recoverable: Workout,
-    override val betweenRecoverablesDuration: Duration
-) : WorkoutsHistoryRecoverableCellViewModel<Workout>(application, recoverable, betweenRecoverablesDuration) {
+    override val betweenRecoverablesDuration: Duration,
+    override val hideBetweenRecoverablesEntry: Boolean
+) : WorkoutsHistoryRecoverableCellViewModel<Workout>(
+    application,
+    recoverable,
+    betweenRecoverablesDuration,
+    hideBetweenRecoverablesEntry
+) {
     fun workoutTypeIconDrawable(context: Context): Drawable? = when (recoverable.type) {
         Workout.Type.CARDIO ->
             ContextCompat.getDrawable(context, R.drawable.ic_workouts_cardio)

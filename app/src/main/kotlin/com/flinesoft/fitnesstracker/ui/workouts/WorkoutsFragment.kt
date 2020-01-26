@@ -135,7 +135,11 @@ class WorkoutsFragment : Fragment() {
     }
 
     private fun showNewImpedimentForm() {
-        // TODO: not yet implemented
+        findNavController().navigate(
+            WorkoutsFragmentDirections.actionWorkoutsToEditImpediment(
+                title = getString(R.string.workouts_edit_impediment_title_new)
+            )
+        )
     }
 
     private fun showFeedbackForum() {
@@ -143,7 +147,12 @@ class WorkoutsFragment : Fragment() {
     }
 
     private fun showEditImpedimentForm(impediment: Impediment) {
-        // TODO: not yet implemented
+        findNavController().navigate(
+            WorkoutsFragmentDirections.actionWorkoutsToEditImpediment(
+                existingImpedimentId = impediment.id,
+                title = getString(R.string.workouts_edit_impediment_title_edit)
+            )
+        )
     }
 
     private fun showEditWorkoutForm(workout: Workout) {
@@ -158,8 +167,8 @@ class WorkoutsFragment : Fragment() {
     private fun onItemClicked(view: View) {
         val itemIndex = binding.historyRecyclerView.getChildLayoutPosition(view)
         when (val recoverable = viewModel.latestRecoverables.value!![itemIndex]) {
-            is Workout -> showEditWorkoutForm(recoverable as Workout)
-            is Impediment -> showEditImpedimentForm(recoverable as Impediment)
+            is Workout -> showEditWorkoutForm(recoverable)
+            is Impediment -> showEditImpedimentForm(recoverable)
             else -> Timber.e("Found unknown recoverable type in object $recoverable")
         }
     }
