@@ -29,6 +29,8 @@
     <string name="onboarding.body_mass_index.title">Body-Mass-Index</string>
     <string name="onboarding.body_shape_index.description">Halte deinen Fortschritt im moderneren \"A Body Shape Index\" fest, indem du regelmäßig auch deinen Taillenumfang misst.</string>
     <string name="onboarding.body_shape_index.title">A Body Shape Index</string>
+    <string name="onboarding.impediments.description">TODO: Not yet implemented!</string>
+    <string name="onboarding.impediments.title">TODO: Not yet implemented!</string>
     <string name="onboarding.workout_reminders.description">Lass dich ans nächste Training erinnern, sobald deine Muskeln sich vom letzten Training erholt haben.</string>
     <string name="onboarding.workout_reminders.title">Trainings-Erinnerungen</string>
     <string name="onboarding.workouts.description">Gib all deine künftigen Trainings ein, um eine übersichtliche Chronik deines Fortschitts zu haben.</string>

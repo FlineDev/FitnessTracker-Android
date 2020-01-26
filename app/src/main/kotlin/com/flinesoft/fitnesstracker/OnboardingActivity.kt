@@ -28,6 +28,7 @@ class OnboardingActivity : AppIntro() {
     private fun setupSlides() {
         addSlide(AppIntroFragment.newInstance(workoutsSliderPage()))
         addSlide(AppIntroFragment.newInstance(workoutRemindersSliderPage()))
+        addSlide(AppIntroFragment.newInstance(impedimentsSliderPage()))
         addSlide(AppIntroFragment.newInstance(bodyMassIndexSliderPage()))
         addSlide(AppIntroFragment.newInstance(bodyShapeIndexSliderPage()))
     }
@@ -57,6 +58,12 @@ class OnboardingActivity : AppIntro() {
         title = getString(R.string.onboarding_workouts_title),
         description = getString(R.string.onboarding_workouts_description),
         imageDrawable = R.drawable.ic_workouts
+    )
+
+    private fun impedimentsSliderPage(): SliderPage = sliderPage(
+        title = getString(R.string.onboarding_impediments_title),
+        description = getString(R.string.onboarding_impediments_description),
+        imageDrawable = R.drawable.ic_workouts_impediment
     )
 
     private fun workoutRemindersSliderPage(): SliderPage = sliderPage(

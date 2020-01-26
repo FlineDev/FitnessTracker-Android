@@ -29,6 +29,8 @@
     <string name="onboarding.body_mass_index.title">Body Mass Index</string>
     <string name="onboarding.body_shape_index.description">Track your progress in the more sophisticated \"A Body Shape Index\" by also measuring your waist circumference regularly.</string>
     <string name="onboarding.body_shape_index.title">A Body Shape Index</string>
+    <string name="onboarding.impediments.description">TODO: Not yet implemented!</string>
+    <string name="onboarding.impediments.title">TODO: Not yet implemented!</string>
     <string name="onboarding.workout_reminders.description">Get notified to workout again once your muscles have recovered from your last workout.</string>
     <string name="onboarding.workout_reminders.title">Workout Reminders</string>
     <string name="onboarding.workouts.description">Enter all your future workouts to get a timeline overview of your progress.</string>
