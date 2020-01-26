@@ -27,6 +27,7 @@ import kotlin.time.ExperimentalTime
 )
 @TypeConverters(DateTimeConverter::class, EnumConverters::class)
 abstract class FitnessTrackerDatabase : RoomDatabase() {
+    abstract val impedimentDao: ImpedimentDao
     abstract val waistCircumferenceMeasurementDao: WaistCircumferenceMeasurementDao
     abstract val weightMeasurementDao: WeightMeasurementDao
     abstract val workoutDao: WorkoutDao

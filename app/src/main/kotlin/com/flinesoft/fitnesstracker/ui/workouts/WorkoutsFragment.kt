@@ -14,6 +14,7 @@ import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.WorkoutsFragmentBinding
 import com.flinesoft.fitnesstracker.globals.APP_FEEDBACK_FORUM_URL
 import com.flinesoft.fitnesstracker.globals.extensions.database
+import com.flinesoft.fitnesstracker.model.Impediment
 import com.flinesoft.fitnesstracker.model.Workout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leinardi.android.speeddial.SpeedDialView
@@ -79,7 +80,7 @@ class WorkoutsFragment : Fragment() {
         historyManager = LinearLayoutManager(context)
         historyAdapter = WorkoutsHistoryAdapter(
             application = activity!!.application,
-            workouts = viewModel.workouts,
+            recoverables = viewModel.latestRecoverables,
             itemOnClickListener = View.OnClickListener { onItemClicked(it) },
             itemOnLongClickListener = View.OnLongClickListener { onItemLongClick(it) }
         )
@@ -89,11 +90,11 @@ class WorkoutsFragment : Fragment() {
     }
 
     private fun setupViewModelBinding() {
-        viewModel.workouts.observe(this, Observer { workouts ->
+        viewModel.latestRecoverables.observe(this, Observer { recoverables ->
             historyAdapter.notifyDataSetChanged()
             binding.nextWorkoutDateTextView.text = viewModel.suggestedNextWorkoutDateString()
             viewModel.updateReminders()
-            binding.historyEmptyStateTextView.visibility = if (workouts.isEmpty()) View.VISIBLE else View.GONE
+            binding.historyEmptyStateTextView.visibility = if (recoverables.isEmpty()) View.VISIBLE else View.GONE
         })
     }
 
@@ -105,6 +106,11 @@ class WorkoutsFragment : Fragment() {
             when (actionItem.id) {
                 R.id.workouts_speed_dial_workout -> {
                     showNewWorkoutForm()
+                    return@OnActionSelectedListener true
+                }
+
+                R.id.workouts_speed_dial_impediment -> {
+                    showNewImpedimentForm()
                     return@OnActionSelectedListener true
                 }
 
@@ -128,8 +134,16 @@ class WorkoutsFragment : Fragment() {
         )
     }
 
+    private fun showNewImpedimentForm() {
+        // TODO: not yet implemented
+    }
+
     private fun showFeedbackForum() {
         startActivity(Intent(Intent.ACTION_VIEW, APP_FEEDBACK_FORUM_URL))
+    }
+
+    private fun showEditImpedimentForm(impediment: Impediment) {
+        // TODO: not yet implemented
     }
 
     private fun showEditWorkoutForm(workout: Workout) {
@@ -143,19 +157,28 @@ class WorkoutsFragment : Fragment() {
 
     private fun onItemClicked(view: View) {
         val itemIndex = binding.historyRecyclerView.getChildLayoutPosition(view)
-        val workout = viewModel.workouts.value!![itemIndex]
-        showEditWorkoutForm(workout)
+        when (val recoverable = viewModel.latestRecoverables.value!![itemIndex]) {
+            is Workout -> showEditWorkoutForm(recoverable as Workout)
+            is Impediment -> showEditImpedimentForm(recoverable as Impediment)
+            else -> Timber.e("Found unknown recoverable type in object $recoverable")
+        }
     }
 
     private fun onItemLongClick(view: View): Boolean {
         val itemIndex = binding.historyRecyclerView.getChildLayoutPosition(view)
-        val workout = viewModel.workouts.value!![itemIndex]
+        val recoverable = viewModel.latestRecoverables.value!![itemIndex]
 
         MaterialAlertDialogBuilder(context)
             .setTitle(getString(R.string.global_common_dialogs_confirm_delete_title))
             .setMessage(R.string.global_common_dialogs_confirm_delete_message)
             .setNegativeButton(R.string.global_action_delete) { _, _ ->
-                GlobalScope.launch { database().workoutDao.delete(workout) }
+                GlobalScope.launch {
+                    when (recoverable) {
+                        is Workout -> database().workoutDao.delete(recoverable)
+                        is Impediment -> database().impedimentDao.delete(recoverable)
+                        else -> Timber.e("Found unknown recoverable type in object $recoverable while deleting")
+                    }
+                }
             }
             .setNeutralButton(R.string.global_action_cancel) { _, _ -> /* will auto-cancel */ }
             .show()

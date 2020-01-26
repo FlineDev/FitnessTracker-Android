@@ -9,13 +9,19 @@ import kotlin.time.hours
 
 @ExperimentalTime
 @Entity(tableName = "Workouts")
-data class Workout(var type: Type, var startDate: DateTime, var endDate: DateTime) : Recoverable {
+data class Workout(var type: Type, override var startDate: DateTime, var endDate: DateTime) : Recoverable {
     enum class Type {
         CARDIO, MUSCLE_BUILDING
     }
 
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L
+
+    override val recoveryStartDate: DateTime
+        get() = endDate
+
+    override val recoveryEndDate: DateTime
+        get() = endDate.plus(recoveryDuration.toLongMilliseconds())
 
     override val recoveryDuration: Duration
         get() = when (type) {

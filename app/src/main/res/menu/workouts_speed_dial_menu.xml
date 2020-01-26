@@ -4,4 +4,8 @@
         android:id="@+id/workouts_speed_dial_workout"
         android:icon="@drawable/ic_workouts_speed_dial_workout"
         android:title="@string/workouts.speed_dial.workout" />
+    <item
+        android:id="@+id/workouts_speed_dial_impediment"
+        android:icon="@drawable/ic_workouts_speed_dial_impediment"
+        android:title="@string/workouts.speed_dial.impediment" />
 </menu>

@@ -9,9 +9,15 @@ import kotlin.time.milliseconds
 
 @ExperimentalTime
 @Entity(tableName = "Impediments")
-data class Impediment(var startDate: DateTime, var endDate: DateTime) : Recoverable {
+data class Impediment(override var startDate: DateTime, var endDate: DateTime) : Recoverable {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L
+
+    override val recoveryStartDate: DateTime
+        get() = startDate
+
+    override val recoveryEndDate: DateTime
+        get() = endDate
 
     override val recoveryDuration: Duration
         get() = (endDate.millis - startDate.millis).milliseconds

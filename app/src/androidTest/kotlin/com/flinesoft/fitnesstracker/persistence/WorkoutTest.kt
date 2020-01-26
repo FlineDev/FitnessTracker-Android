@@ -17,9 +17,9 @@ class WorkoutTest: PersistenceTest() {
     @Test
     @Throws(Exception::class)
     fun runBasicCRUDOperations() = runBlocking {
-        val allWorkoutsOrderedByStartDate = database.workoutDao.allOrderedByStartDateDescending()
-        assertNotNull(allWorkoutsOrderedByStartDate.awaitValue())
-        assert(allWorkoutsOrderedByStartDate.awaitValue()!!.isEmpty())
+        val latestWorkouts = database.workoutDao.allOrderedByEndDateDescending()
+        assertNotNull(latestWorkouts.awaitValue())
+        assert(latestWorkouts.awaitValue()!!.isEmpty())
 
         val workout = database.workoutDao.create(
             Workout(
@@ -28,15 +28,15 @@ class WorkoutTest: PersistenceTest() {
                 DateTime(2019, 12, 18, 16, 50)
             )
         ).awaitValue()!!
-        assertEquals(workout.id, allWorkoutsOrderedByStartDate.awaitValue()!!.first().id)
-        assertEquals(1, allWorkoutsOrderedByStartDate.awaitValue()!!.size)
+        assertEquals(workout.id, latestWorkouts.awaitValue()!!.first().id)
+        assertEquals(1, latestWorkouts.awaitValue()!!.size)
 
         val newType = Workout.Type.MUSCLE_BUILDING
         workout.type = newType
         database.workoutDao.update(workout)
-        assertEquals(newType, allWorkoutsOrderedByStartDate.awaitValue()!!.first().type)
+        assertEquals(newType, latestWorkouts.awaitValue()!!.first().type)
 
         database.workoutDao.delete(workout)
-        assert(allWorkoutsOrderedByStartDate.awaitValue()!!.isEmpty())
+        assert(latestWorkouts.awaitValue()!!.isEmpty())
     }
 }

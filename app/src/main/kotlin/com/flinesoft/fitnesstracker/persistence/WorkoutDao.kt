@@ -9,9 +9,7 @@ import kotlin.time.ExperimentalTime
 @ExperimentalTime
 @Dao
 abstract class WorkoutDao : CrudDao<Workout>() {
-    @Query("SELECT * FROM Workouts ORDER BY startDate DESC")
-    abstract fun allOrderedByStartDateDescending(): LiveData<List<Workout>>
-
+    // TODO: fetch only the latest workouts (up to 1 year back)
     @Query("SELECT * FROM Workouts ORDER BY endDate DESC")
     abstract fun allOrderedByEndDateDescending(): LiveData<List<Workout>>
 

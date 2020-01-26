@@ -4,19 +4,28 @@ import android.app.Application
 import android.text.format.DateUtils
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.AppPreferences
 import com.flinesoft.fitnesstracker.globals.DEFAULT_REMINDER_DAYS_COUNT
 import com.flinesoft.fitnesstracker.globals.NotificationHelper
 import com.flinesoft.fitnesstracker.globals.PREVENT_NEXT_DAY_WHEN_WORKOUT_WITHIN_HOURS
 import com.flinesoft.fitnesstracker.globals.extensions.database
+import com.flinesoft.fitnesstracker.model.Impediment
+import com.flinesoft.fitnesstracker.model.Recoverable
 import com.flinesoft.fitnesstracker.model.Workout
 import org.joda.time.DateTime
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 class WorkoutsViewModel(application: Application) : AndroidViewModel(application) {
-    val workouts: LiveData<List<Workout>> = database().workoutDao.allOrderedByEndDateDescending()
+    private val latestWorkouts = database().workoutDao.allOrderedByEndDateDescending()
+    private val latestImpediments = database().impedimentDao.allOrderedByEndDateDescending()
+
+    val latestRecoverables: LiveData<List<Recoverable>> = MediatorLiveData<List<Recoverable>>().apply {
+        addSource(latestWorkouts) { value = mergedRecoverables(workouts = it, impediments = latestImpediments.value ?: emptyList()) }
+        addSource(latestImpediments) { value = mergedRecoverables(workouts = latestWorkouts.value ?: emptyList(), impediments = it) }
+    }
 
     fun suggestedNextWorkoutDateString(): String = DateUtils.getRelativeTimeSpanString(
         suggestedNextWorkoutDate().millis,
@@ -24,10 +33,11 @@ class WorkoutsViewModel(application: Application) : AndroidViewModel(application
         DateUtils.DAY_IN_MILLIS
     ).toString()
 
-    private fun suggestedNextWorkoutDate(): DateTime = workouts.value?.firstOrNull()?.let { latestWorkout ->
-        latestWorkout.endDate
-            .plus(latestWorkout.recoveryDuration.toLongMilliseconds())
-            .plusHours(24 - PREVENT_NEXT_DAY_WHEN_WORKOUT_WITHIN_HOURS)
+    private fun mergedRecoverables(workouts: List<Workout>, impediments: List<Impediment>): List<Recoverable> =
+            (workouts + impediments).sortedByDescending { it.startDate }
+
+    private fun suggestedNextWorkoutDate(): DateTime = latestRecoverables.value?.firstOrNull()?.let { latestRecoverable ->
+        latestRecoverable.recoveryEndDate.plusHours(24 - PREVENT_NEXT_DAY_WHEN_WORKOUT_WITHIN_HOURS)
     } ?: DateTime.now()
 
     fun updateReminders() {

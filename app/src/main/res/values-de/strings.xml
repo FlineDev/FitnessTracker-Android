@@ -84,8 +84,10 @@
     <string name="workouts.history.title">Letzte Trainings</string>
     <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g> Pause</string>
     <string name="workouts.history_cell.between_workouts_icon">Indikator zur Bewertung der Zeit zwischen zwei Trainings</string>
+    <string name="workouts.history_cell.impediment_title">Verhinderung</string>
     <string name="workouts.history_cell.workout_type_icon">Trainings-Typ Icon</string>
     <string name="workouts.overflow.reminder">Erinnerungen einstellen</string>
+    <string name="workouts.speed_dial.impediment">Neue Verhinderung</string>
     <string name="workouts.speed_dial.workout">Neues Training</string>
     <string name="workouts.title">Trainings</string>
 </resources>
