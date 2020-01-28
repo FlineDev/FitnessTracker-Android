@@ -6,15 +6,11 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import com.flinesoft.fitnesstracker.R
-import com.flinesoft.fitnesstracker.globals.BETWEEN_WORKOUTS_POSITIVE_DAYS
-import com.flinesoft.fitnesstracker.globals.BETWEEN_WORKOUTS_POSITIVE_PLUS_WARNING_DAYS
 import com.flinesoft.fitnesstracker.model.Recoverable
 import java.text.DateFormatSymbols
 import java.util.*
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
-import kotlin.time.days
-import kotlin.time.hours
 
 @ExperimentalTime
 abstract class WorkoutsHistoryRecoverableCellViewModel<T : Recoverable>(
@@ -23,21 +19,14 @@ abstract class WorkoutsHistoryRecoverableCellViewModel<T : Recoverable>(
     open val betweenRecoverablesDuration: Duration,
     open val hideBetweenRecoverablesEntry: Boolean
 ) : AndroidViewModel(application) {
-    fun betweenRecoverablesIconDrawable(): Drawable? = when (betweenRecoverablesDuration) {
-        in 0.hours..recoverable.recoveryDuration.div(2) ->
-            ContextCompat.getDrawable(getApplication(), R.drawable.ic_workouts_time_between_negative)
-
-        in recoverable.recoveryDuration.div(2)..recoverable.recoveryDuration ->
-            ContextCompat.getDrawable(getApplication(), R.drawable.ic_workouts_time_between_warning)
-
-        in recoverable.recoveryDuration..(recoverable.recoveryDuration + BETWEEN_WORKOUTS_POSITIVE_DAYS.days) ->
+    fun betweenRecoverablesIconDrawable(): Drawable? = when (recoverable.betweenRecoverablesDurationRating(betweenRecoverablesDuration)) {
+        Recoverable.BetweenDurationRating.POSITIVE ->
             ContextCompat.getDrawable(getApplication(), R.drawable.ic_workouts_time_between_positive)
 
-        in (recoverable.recoveryDuration + BETWEEN_WORKOUTS_POSITIVE_DAYS.days)
-                ..(recoverable.recoveryDuration + BETWEEN_WORKOUTS_POSITIVE_PLUS_WARNING_DAYS.days) ->
+        Recoverable.BetweenDurationRating.WARNING ->
             ContextCompat.getDrawable(getApplication(), R.drawable.ic_workouts_time_between_warning)
 
-        else ->
+        Recoverable.BetweenDurationRating.NEGATIVE ->
             ContextCompat.getDrawable(getApplication(), R.drawable.ic_workouts_time_between_negative)
     }
 

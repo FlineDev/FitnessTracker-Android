@@ -286,7 +286,7 @@ formatting:
     active: true
     autoCorrect: true
   SpacingAroundRangeOperator:
-    active: false
+    active: true
     autoCorrect: true
   StringTemplate:
     active: true
