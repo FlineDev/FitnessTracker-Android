@@ -16,6 +16,7 @@ import com.flinesoft.fitnesstracker.model.Recoverable
 import com.flinesoft.fitnesstracker.model.Workout
 import org.joda.time.DateTime
 import kotlin.time.ExperimentalTime
+import kotlin.time.hours
 
 @ExperimentalTime
 class WorkoutsViewModel(application: Application) : AndroidViewModel(application) {
@@ -55,11 +56,13 @@ class WorkoutsViewModel(application: Application) : AndroidViewModel(application
 
                 for (reminderDayIndex in 0 until DEFAULT_REMINDER_DAYS_COUNT) {
                     NotificationHelper.scheduleNotification(
-                        getApplication(),
-                        NotificationHelper.Channel.WORKOUT_REMINDERS,
-                        getApplication<Application>().getString(R.string.notifications_workout_reminders_today_title),
-                        getApplication<Application>().getString(R.string.notifications_workout_reminders_today_message),
-                        nextReminderDate.plusDays(reminderDayIndex)
+                        context = getApplication(),
+                        channel = NotificationHelper.Channel.WORKOUT_REMINDERS,
+                        title = getApplication<Application>().getString(R.string.notifications_workout_reminders_today_title),
+                        message = getApplication<Application>().getString(R.string.notifications_workout_reminders_today_message),
+                        date = nextReminderDate.plusDays(reminderDayIndex),
+                        autoCancel = true,
+                        timeoutAfter = 18.hours
                     )
                 }
 
