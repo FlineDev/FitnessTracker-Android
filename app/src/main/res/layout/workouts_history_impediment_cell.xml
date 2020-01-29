@@ -119,11 +119,12 @@
                 app:srcCompat="@drawable/ic_workouts_impediment" />
 
             <TextView
+                android:id="@+id/impedimentNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacingSmall"
                 android:labelFor="@id/workoutTypeIconImageView"
-                android:text="@string/workouts.history_cell.impediment_title"
+                android:text="@string/global.non_translatable.sample_title"
                 android:textAppearance="@style/TextAppearance.MyTheme.Body1"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -1,5 +1,6 @@
 package com.flinesoft.fitnesstracker.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.flinesoft.fitnesstracker.globals.BETWEEN_WORKOUTS_POSITIVE_DAYS
@@ -9,7 +10,7 @@ import kotlin.time.*
 
 @ExperimentalTime
 @Entity(tableName = "Impediments")
-class Impediment(startDate: DateTime, endDate: DateTime) : Recoverable {
+class Impediment(@ColumnInfo(defaultValue = "Impediment") var name: String, startDate: DateTime, endDate: DateTime) : Recoverable {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L
 

@@ -23,7 +23,7 @@ import kotlin.time.ExperimentalTime
         WeightMeasurement::class,
         Workout::class
     ],
-    version = 3
+    version = 4
 )
 @TypeConverters(DateTimeConverter::class, EnumConverters::class)
 abstract class FitnessTrackerDatabase : RoomDatabase() {
@@ -48,7 +48,8 @@ abstract class FitnessTrackerDatabase : RoomDatabase() {
                     )
                         .addMigrations(
                             migrationFrom1To2,
-                            migrationFrom2To3
+                            migrationFrom2To3,
+                            migrationFrom3To4
                         )
                         .build()
 
@@ -77,6 +78,12 @@ abstract class FitnessTrackerDatabase : RoomDatabase() {
                     )
                     """
                 )
+            }
+        }
+
+        private val migrationFrom3To4 = object : Migration(3, 4) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE `Impediments` ADD COLUMN `name` TEXT NOT NULL DEFAULT 'Impediment'")
             }
         }
     }

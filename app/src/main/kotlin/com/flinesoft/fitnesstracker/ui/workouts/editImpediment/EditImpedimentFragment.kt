@@ -5,16 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.EditImpedimentFragmentBinding
-import com.flinesoft.fitnesstracker.globals.extensions.DateFormatExt
-import com.flinesoft.fitnesstracker.globals.extensions.database
-import com.flinesoft.fitnesstracker.globals.extensions.showDatePickerDialog
-import com.flinesoft.fitnesstracker.globals.extensions.snack
+import com.flinesoft.fitnesstracker.globals.extensions.*
 import com.flinesoft.fitnesstracker.ui.shared.BackNavigationFragment
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.MainScope
@@ -46,11 +44,13 @@ class EditImpedimentFragment : BackNavigationFragment() {
     }
 
     private fun setupViewModelBinding() {
-        viewModel.startDate.observe(this, Observer { startDate ->
+        viewModel.name.observeOnce(viewLifecycleOwner) { binding.nameEditText.setText(it) }
+
+        viewModel.startDate.observe(viewLifecycleOwner, Observer { startDate ->
             binding.startDateEditText.setText(DateFormatExt.dateMedium().format(startDate.toDate()))
         })
 
-        viewModel.endDate.observe(this, Observer { endDate ->
+        viewModel.endDate.observe(viewLifecycleOwner, Observer { endDate ->
             binding.endDateEditText.setText(DateFormatExt.dateMedium().format(endDate.toDate()))
         })
     }
@@ -58,6 +58,8 @@ class EditImpedimentFragment : BackNavigationFragment() {
     private fun setupListeners() {
         binding.cancelButton.setOnClickListener { cancelButtonPressed() }
         binding.saveButton.setOnClickListener { saveButtonPressed() }
+
+        binding.nameEditText.addTextChangedListener { viewModel.name.value = it.toString() }
 
         binding.startDateEditText.setOnClickListener {
             showDatePickerDialog(

@@ -38,15 +38,15 @@ class EditPersonalDataFragment : BackNavigationFragment() {
     }
 
     private fun setupViewModelBinding() {
-        viewModel.heightInCentimeters.observe(this, Observer { heightInCentimeters ->
+        viewModel.heightInCentimeters.observe(viewLifecycleOwner, Observer { heightInCentimeters ->
             heightInCentimeters?.let { binding.heightEditText.setText(it.toString()) } ?: run { binding.heightEditText.text?.clear() }
         })
 
-        viewModel.gender.observe(this, Observer { gender ->
+        viewModel.gender.observe(viewLifecycleOwner, Observer { gender ->
             gender?.let { binding.genderSpinner.setSelection(gender.ordinal) }
         })
 
-        viewModel.birthYear.observe(this, Observer { birthYear ->
+        viewModel.birthYear.observe(viewLifecycleOwner, Observer { birthYear ->
             birthYear?.let { binding.birthYearEditText.setText(it.toString()) } ?: run { binding.birthYearEditText.text?.clear() }
         })
     }

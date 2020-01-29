@@ -69,6 +69,7 @@
     <string name="statistics.speed_dial.waist_circumference">New waist circumference</string>
     <string name="statistics.speed_dial.weight">New weight</string>
     <string name="statistics.title">Statistics</string>
+    <string name="workouts.edit_impediment.name_hint">e.g. Cold</string>
     <string name="workouts.edit_impediment.title_edit">Edit Impediment</string>
     <string name="workouts.edit_impediment.title_new">New Impediment</string>
     <string name="workouts.edit_reminders.reminder_on_title">Remind me to workout once a day</string>
@@ -76,6 +77,7 @@
     <string name="workouts.edit_reminders.title">Configure reminders</string>
     <string name="workouts.edit_workout.end_date.overline">End date:</string>
     <string name="workouts.edit_workout.end_time.overline">End time:</string>
+    <string name="workouts.edit_workout.name.overline">Name:</string>
     <string name="workouts.edit_workout.start_date.overline">Start date:</string>
     <string name="workouts.edit_workout.start_time.overline">Start time:</string>
     <string name="workouts.edit_workout.title_edit">Edit Workout</string>
@@ -89,7 +91,6 @@
     <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g> without a workout</string>
     <string name="workouts.history_cell.between_workouts_duration.overlapping">Overlapping of <xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g></string>
     <string name="workouts.history_cell.between_workouts_icon">time between workouts rating indicator</string>
-    <string name="workouts.history_cell.impediment_title">Impediment</string>
     <string name="workouts.history_cell.workout_type_icon">workout type icon</string>
     <string name="workouts.overflow.reminder">Configure reminders</string>
     <string name="workouts.speed_dial.impediment">New impediment</string>

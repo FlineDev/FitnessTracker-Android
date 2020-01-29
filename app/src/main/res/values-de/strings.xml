@@ -69,6 +69,7 @@
     <string name="statistics.speed_dial.waist_circumference">Neuer Taillenumfang</string>
     <string name="statistics.speed_dial.weight">Neues Gewicht</string>
     <string name="statistics.title">Statistiken</string>
+    <string name="workouts.edit_impediment.name_hint">z.B. Erkältung</string>
     <string name="workouts.edit_impediment.title_edit">Verhinderung bearbeiten</string>
     <string name="workouts.edit_impediment.title_new">Neue Verhinderung</string>
     <string name="workouts.edit_reminders.reminder_on_title">Erinnere mich 1x pro Tag ans Training</string>
@@ -76,6 +77,7 @@
     <string name="workouts.edit_reminders.title">Erinnerungen einstellen</string>
     <string name="workouts.edit_workout.end_date.overline">Enddatum:</string>
     <string name="workouts.edit_workout.end_time.overline">Endzeit:</string>
+    <string name="workouts.edit_workout.name.overline">Name:</string>
     <string name="workouts.edit_workout.start_date.overline">Startdatum:</string>
     <string name="workouts.edit_workout.start_time.overline">Startzeit:</string>
     <string name="workouts.edit_workout.title_edit">Training bearbeiten</string>
@@ -89,7 +91,6 @@
     <string name="workouts.history_cell.between_workouts_duration"><xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g> ohne Training</string>
     <string name="workouts.history_cell.between_workouts_duration.overlapping">Überschneidung von <xliff:g example="2 days" id="days">%1$s</xliff:g>\u0020<xliff:g example="14 hours" id="hours">%2$s</xliff:g></string>
     <string name="workouts.history_cell.between_workouts_icon">Indikator zur Bewertung der Zeit zwischen zwei Trainings</string>
-    <string name="workouts.history_cell.impediment_title">Verhinderung</string>
     <string name="workouts.history_cell.workout_type_icon">Trainings-Typ Icon</string>
     <string name="workouts.overflow.reminder">Erinnerungen einstellen</string>
     <string name="workouts.speed_dial.impediment">Neue Verhinderung</string>

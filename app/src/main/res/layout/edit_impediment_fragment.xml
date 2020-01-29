@@ -33,6 +33,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/spacingTiny"
+                    android:text="@string/workouts.edit_workout.name.overline"
+                    android:textAppearance="@style/TextAppearance.MyTheme.Overline" />
+
+                <EditText
+                    android:id="@+id/nameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/workouts.edit_impediment.name_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="textAutoComplete" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/spacingSmall"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/spacingTiny"
                     android:labelFor="@id/startDateEditText"
                     android:text="@string/workouts.edit_workout.start_date.overline"
                     android:textAppearance="@style/TextAppearance.MyTheme.Overline" />

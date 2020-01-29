@@ -31,12 +31,12 @@ class EditRemindersFragment : BackNavigationFragment() {
     }
 
     private fun setupViewModelBinding() {
-        viewModel.remindersOn.observe(this, Observer { remindersOn ->
+        viewModel.remindersOn.observe(viewLifecycleOwner, Observer { remindersOn ->
             binding.reminderOnCheckBox.isChecked = remindersOn
             binding.reminderTimeEditText.isEnabled = remindersOn
         })
 
-        viewModel.remindersDayDelay.observe(this, Observer { remindersDayDelay ->
+        viewModel.remindersDayDelay.observe(viewLifecycleOwner, Observer { remindersDayDelay ->
             val dateWithDelay = viewModel.dateWithDayDelay(remindersDayDelay)
             val formattedTimeText = DateFormatExt.timeShort().format(dateWithDelay.toDate())
             binding.reminderTimeEditText.setText(formattedTimeText)

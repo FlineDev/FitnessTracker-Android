@@ -45,16 +45,16 @@ class EditWorkoutFragment : BackNavigationFragment() {
     }
 
     private fun setupViewModelBinding() {
-        viewModel.workoutType.observe(this, Observer { workoutType ->
+        viewModel.workoutType.observe(viewLifecycleOwner, Observer { workoutType ->
             binding.workoutTypeSpinner.setSelection(workoutType.ordinal)
         })
 
-        viewModel.startDate.observe(this, Observer { startDate ->
+        viewModel.startDate.observe(viewLifecycleOwner, Observer { startDate ->
             binding.startDateEditText.setText(DateFormatExt.dateMedium().format(startDate.toDate()))
             binding.startTimeEditText.setText(DateFormatExt.timeShort().format(startDate.toDate()))
         })
 
-        viewModel.endDate.observe(this, Observer { endDate ->
+        viewModel.endDate.observe(viewLifecycleOwner, Observer { endDate ->
             binding.endDateEditText.setText(DateFormatExt.dateMedium().format(endDate.toDate()))
             binding.endTimeEditText.setText(DateFormatExt.timeShort().format(endDate.toDate()))
         })

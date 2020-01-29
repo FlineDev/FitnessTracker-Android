@@ -20,11 +20,13 @@ class EditImpedimentViewModel(application: Application) : AndroidViewModel(appli
         set(value) {
             field = value
             value?.observeOnce { existingImpediment ->
+                name.value = existingImpediment.name
                 startDate.value = existingImpediment.startDate
                 endDate.value = existingImpediment.endDate
             }
         }
 
+    var name = MutableLiveData<String>()
     var startDate = MutableLiveData<DateTime>(DateTime.now())
     var endDate = MutableLiveData<DateTime>(DateTime.now().plusDays(DEFAULT_IMPEDIMENT_DAYS))
 
@@ -42,9 +44,10 @@ class EditImpedimentViewModel(application: Application) : AndroidViewModel(appli
 
     suspend fun save(): Boolean {
         // TODO: return more exact errors which point to the invalid field & have a message to show below the field
-        if (invalidDuration()) return false
+        if (invalidDuration() || name.value.isNullOrBlank()) return false
 
         existingImpediment?.value?.let { impediment ->
+            impediment.name = name.value!!
             impediment.startDate = startDate.value!!
             impediment.endDate = endDate.value!!
 
@@ -52,6 +55,7 @@ class EditImpedimentViewModel(application: Application) : AndroidViewModel(appli
         } ?: run {
             database().impedimentDao.create(
                 Impediment(
+                    name = name.value!!,
                     startDate = startDate.value!!,
                     endDate = endDate.value!!
                 )

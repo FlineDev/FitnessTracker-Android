@@ -27,6 +27,7 @@ class WorkoutsHistoryImpedimentCell(context: Context) : ConstraintLayout(context
         monthTextView.text = viewModel.monthText()
         dayTextView.text = viewModel.dayText()
 
+        impedimentNameTextView.text = viewModel.recoverable.name
         timeIntervalTextView.text = viewModel.timeIntervalText(context)
     }
 }

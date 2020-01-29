@@ -90,7 +90,7 @@ class WorkoutsFragment : Fragment() {
     }
 
     private fun setupViewModelBinding() {
-        viewModel.latestRecoverables.observe(this, Observer { recoverables ->
+        viewModel.latestRecoverables.observe(viewLifecycleOwner, Observer { recoverables ->
             historyAdapter.notifyDataSetChanged()
             binding.nextWorkoutDateTextView.text = viewModel.suggestedNextWorkoutDateString()
             viewModel.updateReminders()
