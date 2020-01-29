@@ -10,6 +10,9 @@ import com.flinesoft.fitnesstracker.globals.MAX_WORKOUT_DURATION_HOURS
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.globals.extensions.observeOnce
 import com.flinesoft.fitnesstracker.model.Workout
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 import timber.log.Timber
 import kotlin.time.Duration
@@ -28,7 +31,14 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
             }
         }
 
-    var workoutType = MutableLiveData<Workout.Type>(Workout.Type.CARDIO)
+    var workoutType = MutableLiveData<Workout.Type>(Workout.Type.CARDIO).apply {
+        GlobalScope.launch {
+            val latestWorkout = database().workoutDao.latest()
+            if (existingWorkout == null) {
+                MainScope().launch { value = latestWorkout.type }
+            }
+        }
+    }
     var startDate = MutableLiveData<DateTime>(DateTime.now().minusMinutes(DEFAULT_WORKOUT_DURATION_MINUTES))
     var endDate = MutableLiveData<DateTime>(DateTime.now())
 
