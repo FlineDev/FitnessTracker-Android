@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,7 +10,7 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacingMedium"
+        android:layout_margin="@dimen/spacingMedium"
         android:text="@string/global.non_translatable.sample_title"
         android:textAppearance="@style/TextAppearance.MyTheme.Headline5"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,9 +20,8 @@
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart"
         android:layout_width="0dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="@dimen/spacingMedium"
-        android:layout_marginBottom="@dimen/spacingSmall"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/spacingMedium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,9 +32,7 @@
         android:id="@+id/explanationTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacingMedium"
-        android:layout_marginTop="@dimen/spacingTiny"
-        android:layout_marginBottom="@dimen/spacingMedium"
+        android:layout_margin="@dimen/spacingMedium"
         android:alpha="@dimen/downPopLevel3"
         android:hyphenationFrequency="full"
         android:justificationMode="inter_word"
@@ -45,4 +42,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
-</merge>
+</androidx.constraintlayout.widget.ConstraintLayout>

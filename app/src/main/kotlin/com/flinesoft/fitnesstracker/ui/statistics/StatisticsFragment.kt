@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsFragmentBinding
@@ -31,9 +31,8 @@ class StatisticsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = StatisticsFragmentBinding.inflate(inflater)
-        viewModel = ViewModelProviders.of(this).get(StatisticsViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(StatisticsViewModel::class.java)
 
-        setupViewModelBinding()
         setHasOptionsMenu(true)
         configureFloatingActionButtonWithSpeedDial()
 
@@ -41,14 +40,14 @@ class StatisticsFragment : Fragment() {
     }
 
     override fun onResume() {
+        super.onResume()
+
         viewModel.updateAllCharts()
 
         GlobalScope.launch {
             delay(DEFAULT_MODAL_PRESENTATION_DELAY)
             MainScope().launch { requirePersonalDataAppPreferences() }
         }
-
-        super.onResume()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -81,12 +80,6 @@ class StatisticsFragment : Fragment() {
             view?.snack(R.string.statistics_missing_personal_data_hint, Snackbar.LENGTH_LONG)
             showPersonalDataInput()
         }
-    }
-
-    private fun setupViewModelBinding() {
-        val viewModel = ViewModelProviders.of(this)[StatisticsViewModel::class.java]
-        binding.bodyMassIndexCell.setup(viewModel.bodyMassIndexCellViewModel, viewLifecycleOwner)
-        binding.bodyShapeIndexCell.setup(viewModel.bodyShapeIndexCellViewModel, viewLifecycleOwner)
     }
 
     private fun configureFloatingActionButtonWithSpeedDial() {

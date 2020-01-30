@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.EditPersonalDataBinding
@@ -28,7 +28,7 @@ class EditPersonalDataFragment : BackNavigationFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = EditPersonalDataBinding.inflate(inflater)
-        viewModel = ViewModelProviders.of(this).get(EditPersonalDataViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(EditPersonalDataViewModel::class.java)
 
         setupBackNavigation()
         setupViewModelBinding()

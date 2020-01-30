@@ -6,7 +6,7 @@ import android.view.*
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,7 +33,7 @@ class WorkoutsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = WorkoutsFragmentBinding.inflate(inflater)
-        viewModel = ViewModelProviders.of(this).get(WorkoutsViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(WorkoutsViewModel::class.java)
 
         setupRecyclerView()
         setupViewModelBinding()

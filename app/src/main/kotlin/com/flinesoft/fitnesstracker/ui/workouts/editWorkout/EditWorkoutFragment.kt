@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.flinesoft.fitnesstracker.R
@@ -27,7 +27,7 @@ class EditWorkoutFragment : BackNavigationFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = EditWorkoutFragmentBinding.inflate(inflater)
-        viewModel = ViewModelProviders.of(this).get(EditWorkoutViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(EditWorkoutViewModel::class.java)
 
         setupViewModelWithArguments()
         setupBackNavigation()

@@ -5,36 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/statisticsViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/statisticsTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="top" />
 
-            <com.flinesoft.fitnesstracker.ui.statistics.StatisticsCell
-                android:id="@+id/bodyMassIndexCell"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacingMedium"
-                app:title="@string/statistics.body_mass_index.title" />
-
-            <com.flinesoft.fitnesstracker.ui.statistics.StatisticsCell
-                android:id="@+id/bodyShapeIndexCell"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacingMedium"
-                app:title="@string/statistics.body_shape_index.title" />
-
-        </LinearLayout>
-
-    </ScrollView>
+    </androidx.viewpager.widget.ViewPager>
 
     <com.leinardi.android.speeddial.SpeedDialView
         android:id="@+id/statisticsSpeedDial"
