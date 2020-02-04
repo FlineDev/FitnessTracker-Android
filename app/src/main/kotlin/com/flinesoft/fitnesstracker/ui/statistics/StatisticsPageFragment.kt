@@ -140,6 +140,7 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
         valueTextSize = defaultTextSize
 
         lineWidth = 2.0f
+        setDrawValues(false)
     }
 
     private fun dataEntryToEntry(dataEntry: StatisticsPageViewModel.DataEntry): Entry {
