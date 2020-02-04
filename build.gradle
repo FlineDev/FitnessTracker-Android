@@ -31,6 +31,7 @@ buildscript {
         version_speed_dial = '3.1.1'
         version_test_runner = '1.2.0'
         version_timber = '4.7.1'
+        version_viewpager = '1.0.0'
         version_work = '2.3.0'
     }
 

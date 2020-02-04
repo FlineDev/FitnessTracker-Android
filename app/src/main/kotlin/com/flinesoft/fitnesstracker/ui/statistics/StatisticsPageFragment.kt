@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsPageFragmentBinding
 import com.flinesoft.fitnesstracker.globals.DownPopLevel
@@ -27,9 +26,8 @@ import kotlin.time.ExperimentalTime
 import kotlin.time.days
 
 @ExperimentalTime
-class StatisticsPageFragment : Fragment() {
+class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment() {
     private lateinit var binding: StatisticsPageFragmentBinding
-    private lateinit var viewModel: StatisticsPageViewModel
 
     private val dataEntriesSet: LineDataSet = LineDataSet(emptyList(), "TODO")
 
@@ -40,11 +38,9 @@ class StatisticsPageFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = StatisticsPageFragmentBinding.inflate(inflater)
-        viewModel = ViewModelProvider(this).get(StatisticsPageViewModel::class.java)
 
         setupTextViews()
         setupLineChart()
-        // TODO: continue here by configuring https://developer.android.com/reference/androidx/fragment/app/FragmentPagerAdapter
 
         return binding.root
     }

@@ -20,6 +20,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
     private var waistCircumferenceMeasurements: List<WaistCircumferenceMeasurement> = emptyList()
 
     val bodyMassIndexPageViewModel = StatisticsPageViewModel(
+        tabName = application.getString(R.string.statistics_body_mass_index_tab_name),
         title = application.getString(R.string.statistics_body_mass_index_title),
         tresholdEntries = listOf(
             StatisticsPageViewModel.TresholdEntry(
@@ -50,6 +51,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
 
     // Source: https://www.mytecbits.com/tools/medical/absi-calculator
     val bodyShapeIndexPageViewModel = StatisticsPageViewModel(
+        tabName = application.getString(R.string.statistics_body_shape_index_tab_name),
         title = application.getString(R.string.statistics_body_shape_index_title),
         tresholdEntries = listOf(
             StatisticsPageViewModel.TresholdEntry(
@@ -89,6 +91,14 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             waistCircumferenceMeasurements = it.reduceToLowestValuePerDay()
             updateBodyShapeIndexDataEntries()
         }
+    }
+
+    fun pageViewModel(page: StatisticsPagerAdapter.Page): StatisticsPageViewModel = when (page) {
+        StatisticsPagerAdapter.Page.BODY_MASS_INDEX ->
+            bodyMassIndexPageViewModel
+
+        StatisticsPagerAdapter.Page.BODY_SHAPE_INDEX ->
+            bodyShapeIndexPageViewModel
     }
 
     fun latestWeightMeasurement(): WeightMeasurement? = weightMeasurements.lastOrNull()

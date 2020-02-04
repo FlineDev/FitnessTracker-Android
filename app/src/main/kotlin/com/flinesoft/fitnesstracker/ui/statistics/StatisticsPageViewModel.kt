@@ -6,6 +6,7 @@ import com.flinesoft.fitnesstracker.model.Measurement
 import org.joda.time.DateTime
 
 class StatisticsPageViewModel(
+    val tabName: String,
     val title: String,
     val tresholdEntries: List<TresholdEntry>,
     val explanation: String,

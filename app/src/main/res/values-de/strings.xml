@@ -45,8 +45,10 @@
     <string name="statistics.body_mass_index.healthy_min_treshold.legend">Gesunder Bereich Minimum</string>
     <string name="statistics.body_mass_index.legend">Dein BMI-Wert im Verlauf der Zeit</string>
     <string name="statistics.body_mass_index.lower_high_risk_treshold.legend">Hohes Risiko (Untergewicht)</string>
+    <string name="statistics.body_mass_index.tab_name">BMI</string>
     <string name="statistics.body_mass_index.title">Body-Mass-Index (BMI)</string>
     <string name="statistics.body_mass_index.upper_high_risk_treshold.legend">Hohes Risiko (Übergewicht)</string>
+    <string name="statistics.body_shape.index_tab_name">ABSI</string>
     <string name="statistics.body_shape_index.average_risk_max.legend">Durchschnittliches Risiko Maximum</string>
     <string name="statistics.body_shape_index.empty_data">Keine Gewichts- oder Taillenumfang-Messungen verfügbar.</string>
     <string name="statistics.body_shape_index.explanation"><![CDATA[

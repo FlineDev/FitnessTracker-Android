@@ -28,12 +28,15 @@ import kotlin.time.ExperimentalTime
 class StatisticsFragment : Fragment() {
     private lateinit var binding: StatisticsFragmentBinding
     private lateinit var viewModel: StatisticsViewModel
+    private lateinit var pagerAdapter: StatisticsPagerAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = StatisticsFragmentBinding.inflate(inflater)
         viewModel = ViewModelProvider(this).get(StatisticsViewModel::class.java)
+        pagerAdapter = StatisticsPagerAdapter(viewModel, childFragmentManager)
 
         setHasOptionsMenu(true)
+        setupViewBinding()
         configureFloatingActionButtonWithSpeedDial()
 
         return binding.root
@@ -73,6 +76,10 @@ class StatisticsFragment : Fragment() {
             Timber.e("unknown overflow item id clicked: '${item.itemId}'")
             false
         }
+    }
+
+    private fun setupViewBinding() {
+        binding.statisticsViewPager.adapter = pagerAdapter
     }
 
     private fun requirePersonalDataAppPreferences() {
