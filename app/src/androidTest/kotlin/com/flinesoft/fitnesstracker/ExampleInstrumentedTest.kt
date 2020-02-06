@@ -9,7 +9,7 @@ import org.junit.ClassRule
 import org.junit.Test
 import org.junit.runner.RunWith
 import tools.fastlane.screengrab.Screengrab
-//import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
+import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
 import tools.fastlane.screengrab.locale.LocaleTestRule
 
 
@@ -31,12 +31,12 @@ class ExampleInstrumentedTest {
 
         @BeforeClass
         fun beforeAll() {
-//            CleanStatusBar.enableWithDefaults()
+            CleanStatusBar.enableWithDefaults()
         }
 
         @AfterClass
         fun afterAll() {
-//            CleanStatusBar.disable()
+            CleanStatusBar.disable()
         }
     }
 }
