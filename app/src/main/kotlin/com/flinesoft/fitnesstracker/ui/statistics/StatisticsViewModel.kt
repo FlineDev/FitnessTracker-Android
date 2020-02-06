@@ -9,6 +9,7 @@ import com.flinesoft.fitnesstracker.globals.*
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.globals.extensions.reduceToLatestMeasureDatePerDay
 import com.flinesoft.fitnesstracker.globals.extensions.reduceToLowestValuePerDay
+import com.flinesoft.fitnesstracker.model.Gender
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
 import org.joda.time.DateTime
@@ -19,7 +20,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
     private var weightMeasurements: List<WeightMeasurement> = emptyList()
     private var waistCircumferenceMeasurements: List<WaistCircumferenceMeasurement> = emptyList()
 
-    val bodyMassIndexPageViewModel = StatisticsPageViewModel(
+    private val bodyMassIndexPageViewModel = StatisticsPageViewModel(
         tabName = application.getString(R.string.statistics_body_mass_index_tab_name),
         title = application.getString(R.string.statistics_body_mass_index_title),
         tresholdEntries = listOf(
@@ -50,7 +51,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
     )
 
     // Source: https://www.mytecbits.com/tools/medical/absi-calculator
-    val bodyShapeIndexPageViewModel = StatisticsPageViewModel(
+    private val bodyShapeIndexPageViewModel = StatisticsPageViewModel(
         tabName = application.getString(R.string.statistics_body_shape_index_tab_name),
         title = application.getString(R.string.statistics_body_shape_index_title),
         tresholdEntries = listOf(
@@ -80,16 +81,49 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         legend = application.getString(R.string.statistics_body_shape_index_legend)
     )
 
+    private val weightPageViewModel = StatisticsPageViewModel(
+        tabName = application.getString(R.string.statistics_weight_tab_name),
+        title = application.getString(R.string.statistics_weight_title),
+        tresholdEntries = emptyList(),
+        explanation = null,
+        emptyStateText = application.getString(R.string.statistics_weight_empty_data),
+        legend = application.getString(R.string.statistics_weight_legend)
+    )
+
+    private val waistCircumferencePageViewModel = StatisticsPageViewModel(
+        tabName = application.getString(R.string.statistics_waist_circumference_tab_name),
+        title = application.getString(R.string.statistics_waist_circumference_title),
+        tresholdEntries = listOf(
+            StatisticsPageViewModel.TresholdEntry(
+                // TODO: [2020-02-06] make sure that the value changes together with the gender
+                value = if (AppPreferences.gender == Gender.FEMALE) WAIST_CIRCUMFERENCE_FEMALE_HEALTHY_MAX else WAIST_CIRCUMFERENCE_MALE_HEALTHY_MAX,
+                legend = application.getString(R.string.statistics_waist_circumference_healthy_max_legend),
+                color = application.getColor(R.color.limitZoneWarning)
+            ),
+            StatisticsPageViewModel.TresholdEntry(
+                // TODO: [2020-02-06] make sure that the value changes together with the gender
+                value = if (AppPreferences.gender == Gender.FEMALE) WAIST_CIRCUMFERENCE_FEMALE_HIGH_RISK else WAIST_CIRCUMFERENCE_MALE_HIGH_RISK,
+                legend = application.getString(R.string.statistics_waist_circumference_high_risk_legend),
+                color = application.getColor(R.color.limitZoneSevereWarning)
+            )
+        ),
+        explanation = null,
+        emptyStateText = application.getString(R.string.statistics_waist_circumference_empty_data),
+        legend = application.getString(R.string.statistics_waist_circumference_legend)
+    )
+
     init {
         database().weightMeasurementDao.allOrderedByMeasureDate().observeForever {
             weightMeasurements = it.reduceToLowestValuePerDay()
             updateBodyMassIndexDataEntries()
             updateBodyShapeIndexDataEntries()
+            updateWeightDataEntries()
         }
 
         database().waistCircumferenceMeasurementDao.allOrderedByMeasureDate().observeForever {
             waistCircumferenceMeasurements = it.reduceToLowestValuePerDay()
             updateBodyShapeIndexDataEntries()
+            updateWaistCircumferenceDataEntries()
         }
     }
 
@@ -99,6 +133,12 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
 
         StatisticsPagerAdapter.Page.BODY_SHAPE_INDEX ->
             bodyShapeIndexPageViewModel
+
+        StatisticsPagerAdapter.Page.WEIGHT ->
+            weightPageViewModel
+
+        StatisticsPagerAdapter.Page.WAIST_CIRCUMFERENCE ->
+            waistCircumferencePageViewModel
     }
 
     fun latestWeightMeasurement(): WeightMeasurement? = weightMeasurements.lastOrNull()
@@ -107,6 +147,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
     fun updateAllCharts() {
         updateBodyMassIndexDataEntries()
         updateBodyShapeIndexDataEntries()
+        updateWeightDataEntries()
+        updateWaistCircumferenceDataEntries()
     }
 
     private fun updateBodyMassIndexDataEntries() {
@@ -152,5 +194,17 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
 
         val combinedOrderedDataEntries = (waistCircumferenceDataEntries + weightDataEntries).sortedBy { it.dateTime }
         bodyShapeIndexPageViewModel.dataEntries.value = combinedOrderedDataEntries.reduceToLatestMeasureDatePerDay()
+    }
+
+    private fun updateWeightDataEntries() {
+        weightPageViewModel.dataEntries.value = weightMeasurements
+            .map { StatisticsPageViewModel.DataEntry(it.measureDate, it.value) }
+            .reduceToLowestValuePerDay()
+    }
+
+    private fun updateWaistCircumferenceDataEntries() {
+        waistCircumferencePageViewModel.dataEntries.value = waistCircumferenceMeasurements
+            .map { StatisticsPageViewModel.DataEntry(it.measureDate, it.value) }
+            .reduceToLowestValuePerDay()
     }
 }

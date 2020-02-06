@@ -9,7 +9,7 @@ class StatisticsPageViewModel(
     val tabName: String,
     val title: String,
     val tresholdEntries: List<TresholdEntry>,
-    val explanation: String,
+    val explanation: String?,
     val emptyStateText: String,
     val legend: String
 ) : ViewModel() {

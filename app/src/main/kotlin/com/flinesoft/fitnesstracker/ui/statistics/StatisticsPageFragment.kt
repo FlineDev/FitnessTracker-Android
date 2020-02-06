@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.flinesoft.fitnesstracker.R
@@ -47,6 +48,7 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
 
     private fun setupTextViews() {
         binding.titleTextView.text = viewModel.title
+        binding.explanationTextView.isGone = viewModel.explanation.isNullOrBlank()
         binding.explanationTextView.text = viewModel.explanation
     }
 

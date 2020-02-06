@@ -10,7 +10,7 @@ class StatisticsPagerAdapter(
     val viewModel: StatisticsViewModel,
     manager: FragmentManager
 ) : FragmentPagerAdapter(manager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-    enum class Page { BODY_MASS_INDEX, BODY_SHAPE_INDEX }
+    enum class Page { BODY_MASS_INDEX, BODY_SHAPE_INDEX, WEIGHT, WAIST_CIRCUMFERENCE }
 
     override fun getItem(position: Int): Fragment = StatisticsPageFragment(pageViewModel(position))
 
