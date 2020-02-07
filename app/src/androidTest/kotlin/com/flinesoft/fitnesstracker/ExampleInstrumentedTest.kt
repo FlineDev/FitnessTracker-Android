@@ -3,11 +3,10 @@ package com.flinesoft.fitnesstracker
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import org.junit.Assert.assertEquals
-import org.junit.ClassRule
 import org.junit.Test
 import org.junit.runner.RunWith
 import tools.fastlane.screengrab.Screengrab
-import tools.fastlane.screengrab.locale.LocaleTestRule
+//import tools.fastlane.screengrab.locale.LocaleTestRule
 
 
 @RunWith(AndroidJUnit4::class)
@@ -21,11 +20,11 @@ class ExampleInstrumentedTest {
         Screengrab.screenshot("MainScreen");
     }
 
-    companion object {
-        @ClassRule
-        @JvmField
-        public val localeTestRule = LocaleTestRule()
-
+//    companion object {
+//        @ClassRule
+//        @JvmField
+//        public val localeTestRule = LocaleTestRule()
+//
 //        @BeforeClass
 //        fun beforeAll() {
 //            CleanStatusBar.enableWithDefaults()
@@ -35,5 +34,5 @@ class ExampleInstrumentedTest {
 //        fun afterAll() {
 //            CleanStatusBar.disable()
 //        }
-    }
+//    }
 }
