@@ -19,6 +19,8 @@ object AppPreferences {
         sharedPreferences = context.getSharedPreferences("FitnessTracker.sharedprefs", MODE_PRIVATE)
     }
 
+    fun clear() = sharedPreferences?.edit { clear() }
+
     var onboardingCompleted: Boolean
         get() = Key.ONBOARDING_COMPLETED.getBoolean() ?: false
         set(value) = Key.ONBOARDING_COMPLETED.setBoolean(value)

@@ -31,11 +31,11 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
             }
         }
 
-    var workoutType = MutableLiveData<Workout.Type>(Workout.Type.CARDIO).apply {
+    var workoutType = MutableLiveData<Workout.Type>().apply {
         GlobalScope.launch {
             val latestWorkout = database().workoutDao.latest()
             if (existingWorkout == null) {
-                MainScope().launch { value = latestWorkout.type }
+                MainScope().launch { value = latestWorkout?.type ?: Workout.Type.CARDIO }
             }
         }
     }
