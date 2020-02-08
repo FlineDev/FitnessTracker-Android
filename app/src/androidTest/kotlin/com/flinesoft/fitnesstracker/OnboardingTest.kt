@@ -19,7 +19,6 @@ import org.hamcrest.TypeSafeMatcher
 import org.junit.*
 import org.junit.runner.RunWith
 import tools.fastlane.screengrab.Screengrab
-import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
 import tools.fastlane.screengrab.locale.LocaleTestRule
 import kotlin.time.ExperimentalTime
 
@@ -34,15 +33,17 @@ class OnboardingTest {
     }
 
     @Before
-    fun setup() {
-        CleanStatusBar.enableWithDefaults()
+    fun setUp() {
+        // TODO: [2020-02-08] waiting for https://github.com/fastlane/fastlane/issues/15777 being fixed
+//        CleanStatusBar.enableWithDefaults()
         AppPreferences.setup(InstrumentationRegistry.getInstrumentation().targetContext.applicationContext)
         AppPreferences.clear()
     }
 
     @After
     fun tearDown() {
-        CleanStatusBar.disable()
+        // TODO: [2020-02-08] waiting for https://github.com/fastlane/fastlane/issues/15777 being fixed
+//        CleanStatusBar.disable()
         AppPreferences.clear()
     }
 

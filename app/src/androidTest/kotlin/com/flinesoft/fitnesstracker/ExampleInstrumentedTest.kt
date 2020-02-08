@@ -21,7 +21,7 @@ class ExampleInstrumentedTest {
     }
 
     @Before
-    fun setup() {
+    fun setUp() {
         CleanStatusBar.enableWithDefaults()
     }
 
