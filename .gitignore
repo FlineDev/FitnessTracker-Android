@@ -169,8 +169,6 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
-fastlane/metadata/android/phoneScreenshots
-fastlane/metadata/android/screenshots.html
 Gemfile*
 
 # Version control

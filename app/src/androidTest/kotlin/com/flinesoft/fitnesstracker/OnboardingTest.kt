@@ -34,10 +34,12 @@ class OnboardingTest {
 
     @Before
     fun setUp() {
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        AppPreferences.setup(appContext)
+        AppPreferences.clear()
+
         // TODO: [2020-02-08] waiting for https://github.com/fastlane/fastlane/issues/15777 being fixed
 //        CleanStatusBar.enableWithDefaults()
-        AppPreferences.setup(InstrumentationRegistry.getInstrumentation().targetContext.applicationContext)
-        AppPreferences.clear()
     }
 
     @After
@@ -129,7 +131,7 @@ class OnboardingTest {
         )
         appCompatImageButton4.perform(click())
 
-        Screengrab.screenshot("Onboarding_Page6")
+        Screengrab.screenshot("Onboarding_Page5")
         val materialButton = onView(
             allOf(
                 withId(R.id.done),
