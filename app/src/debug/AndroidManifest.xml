@@ -16,10 +16,9 @@
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"
         tools:ignore="ProtectedPermissions" />
 
-<!--    // TODO: [2020-02-08] waiting for https://github.com/fastlane/fastlane/issues/15777 being fixed-->
-<!--    &lt;!&ndash; Indicates the use of the clean status bar feature &ndash;&gt;-->
-<!--    <uses-feature android:name="tools.fastlane.screengrab.cleanstatusbar"/>-->
-<!--    &lt;!&ndash; Allows for changing the status bar &ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.DUMP"-->
-<!--        tools:ignore="ProtectedPermissions" />-->
+    <!-- Indicates the use of the clean status bar feature -->
+    <uses-feature android:name="tools.fastlane.screengrab.cleanstatusbar"/>
+    <!-- Allows for changing the status bar -->
+    <uses-permission android:name="android.permission.DUMP"
+        tools:ignore="ProtectedPermissions" />
 </manifest>

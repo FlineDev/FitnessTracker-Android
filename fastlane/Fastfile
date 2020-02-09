@@ -38,14 +38,14 @@ platform :android do
 
   # 0 = portrait, 1 = landscape left, 2 = upside down, 3 = landscape right
   def force_device_rotation(rotation)
-    sleep 1
+    sleep 2
     system('adb shell settings put system accelerometer_rotation 0')
     system("adb shell settings put system user_rotation #{rotation}")
   end
 
   def reset_to_auto_rotation
     system('adb shell settings put system accelerometer_rotation 1')
-    sleep 1
+    sleep 2
   end
 
   def build_for_screengrab
