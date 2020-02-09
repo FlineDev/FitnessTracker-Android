@@ -10,6 +10,14 @@ This is the FitnessTracker app project for the Android platform.
 
 Just open the project in Android Studio 3.5+ and let Gradle do it's work. :)
 
+## Code Coverage
+
+You can get code coverage reports by just running:
+
+```bash
+./gradlew jacocoTestReport
+```
+
 ## Screenshots
 
 You can update the app screenshots by just running:
