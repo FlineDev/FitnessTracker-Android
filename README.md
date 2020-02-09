@@ -23,7 +23,7 @@ You can get code coverage reports by just running:
 You can update the app screenshots by just running:
 
 ```bash
-fastlane screengrab_phone_tablet
+fastlane screengrab_phone_tablets
 ```
 
 ## Contributing

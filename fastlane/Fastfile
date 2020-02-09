@@ -4,7 +4,7 @@ default_platform(:android)
 
 platform :android do
   desc 'Take phone and tablet screenshots using UI tests'
-  lane :screengrab_phone_tablet do
+  lane :screengrab_phone_tablets do
     build_for_screengrab
     device_types_to_avds = {
       phone: 'Pixel_3a_XL_API_29',
