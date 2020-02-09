@@ -27,29 +27,33 @@ platform :android do
 
   def start_emulator(avd_name)
     # system('adb devices | grep emulator | cut -f1 | while read line; do adb -s $line emu kill; done')
-    system('adb emu kill')
+    bash('adb emu kill')
     sleep 5
 
     emulator_path = File.join(ENV['ANDROID_HOME'], 'emulator/emulator')
-    system("#{emulator_path} @#{avd_name} &")
-    puts("Waiting for emulator to start ...")
-    system('adb wait-for-device')
+    bash("#{emulator_path} @#{avd_name} &")
+    bash('adb wait-for-device')
   end
 
   # 0 = portrait, 1 = landscape left, 2 = upside down, 3 = landscape right
   def force_device_rotation(rotation)
     sleep 2
-    system('adb shell settings put system accelerometer_rotation 0')
-    system("adb shell settings put system user_rotation #{rotation}")
+    bash('adb shell settings put system accelerometer_rotation 0')
+    bash("adb shell settings put system user_rotation #{rotation}")
   end
 
   def reset_to_auto_rotation
-    system('adb shell settings put system accelerometer_rotation 1')
+    bash('adb shell settings put system accelerometer_rotation 1')
     sleep 2
   end
 
   def build_for_screengrab
     build_android_app(task: 'assemble', build_type: 'Debug')
     build_android_app(task: 'assemble', build_type: 'AndroidTest')
+  end
+
+  def bash(command)
+    puts("$ #{command}")
+    system(command)
   end
 end
