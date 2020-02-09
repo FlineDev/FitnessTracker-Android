@@ -15,8 +15,7 @@ Just open the project in Android Studio 3.5+ and let Gradle do it's work. :)
 You can update the app screenshots by just running:
 
 ```bash
-fastlane build_for_screengrab
-fastlane screengrab
+fastlane screengrab_phone_tablet
 ```
 
 ## Contributing
