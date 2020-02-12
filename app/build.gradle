@@ -163,6 +163,7 @@ dependencies {
     testImplementation "androidx.room:room-testing:$version_room"
     androidTestImplementation "androidx.test:runner:$version_test_runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$version_espresso"
     androidTestImplementation "android.arch.core:core-testing:$version_core_testing"
     androidTestImplementation "tools.fastlane:screengrab:$version_screengrab"
 
