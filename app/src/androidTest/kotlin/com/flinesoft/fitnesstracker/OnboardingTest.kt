@@ -7,7 +7,7 @@ import com.flinesoft.fitnesstracker.helpers.EspressoTest
 import com.flinesoft.fitnesstracker.helpers.extensions.TestContext
 import org.junit.Test
 import org.junit.runner.RunWith
-import tools.fastlane.screengrab.Screengrab.screenshot
+//import tools.fastlane.screengrab.Screengrab.screenshot
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -22,27 +22,27 @@ class OnboardingTest: EspressoTest() {
     fun onboardingTest() {
         checkStringsAreFullyVisible(R.string.onboarding_workouts_title)
         checkStringsAreFullyVisible(R.string.onboarding_workouts_description)
-        screenshot("Onboarding_Page1")
+//        screenshot("Onboarding_Page1")
         clickOnFullyVisibleView(R.id.next)
 
         checkStringsAreFullyVisible(R.string.onboarding_workout_reminders_title)
         checkStringsAreFullyVisible(R.string.onboarding_workout_reminders_description)
-        screenshot("Onboarding_Page2")
+//        screenshot("Onboarding_Page2")
         clickOnFullyVisibleView(R.id.next)
 
         checkStringsAreFullyVisible(R.string.onboarding_impediments_title)
         checkStringsAreFullyVisible(R.string.onboarding_impediments_description)
-        screenshot("Onboarding_Page3")
+//        screenshot("Onboarding_Page3")
         clickOnFullyVisibleView(R.id.next)
 
         checkStringsAreFullyVisible(R.string.onboarding_body_mass_index_title)
         checkStringsAreFullyVisible(R.string.onboarding_body_mass_index_description)
-        screenshot("Onboarding_Page4")
+//        screenshot("Onboarding_Page4")
         clickOnFullyVisibleView(R.id.next)
 
         checkStringsAreFullyVisible(R.string.onboarding_body_shape_index_title)
         checkStringsAreFullyVisible(R.string.onboarding_body_shape_index_description)
-        screenshot("Onboarding_Page5")
+//        screenshot("Onboarding_Page5")
         clickOnFullyVisibleView(R.id.done)
 
         checkStringsAreFullyVisible(R.string.workouts_header_title, R.string.workouts_history_empty_state)

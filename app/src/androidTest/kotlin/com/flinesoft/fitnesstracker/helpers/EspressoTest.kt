@@ -1,5 +1,7 @@
 package com.flinesoft.fitnesstracker.helpers
 
+//import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
+//import tools.fastlane.screengrab.locale.LocaleTestRule
 import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.annotation.IdRes
@@ -19,20 +21,17 @@ import com.flinesoft.fitnesstracker.helpers.extensions.TestContext
 import org.hamcrest.Matchers.*
 import org.junit.After
 import org.junit.Before
-import org.junit.ClassRule
 import org.junit.Rule
-import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
-import tools.fastlane.screengrab.locale.LocaleTestRule
 import kotlin.time.ExperimentalTime
 
 
 @ExperimentalTime
 open class EspressoTest {
-    companion object {
-        @ClassRule
-        @JvmField
-        public val localeTestRule = LocaleTestRule()
-    }
+//    companion object {
+//        @ClassRule
+//        @JvmField
+//        public val localeTestRule = LocaleTestRule()
+//    }
 
     @Rule
     @JvmField
@@ -51,12 +50,12 @@ open class EspressoTest {
     open fun setUp() {
         prepareContext()
         launchApplication()
-        CleanStatusBar.enableWithDefaults()
+//        CleanStatusBar.enableWithDefaults()
     }
 
     @After
     open fun tearDown() {
-        CleanStatusBar.disable()
+//        CleanStatusBar.disable()
         TestContext.resetAll()
     }
 
