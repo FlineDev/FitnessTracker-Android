@@ -2,6 +2,7 @@ package com.flinesoft.fitnesstracker.helpers
 
 //import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
 //import tools.fastlane.screengrab.locale.LocaleTestRule
+import android.content.Intent
 import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.annotation.IdRes
@@ -61,6 +62,8 @@ open class EspressoTest {
 
     private fun launchApplication() {
         mainActivityTestRule.launchActivity(null)
+        Thread.sleep(1_000)
+        mainActivityTestRule.activity?.let { it.sendBroadcast(Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) }
         Thread.sleep(1_000)
     }
 

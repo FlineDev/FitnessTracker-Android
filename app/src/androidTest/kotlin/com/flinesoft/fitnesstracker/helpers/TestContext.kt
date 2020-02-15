@@ -2,6 +2,7 @@ package com.flinesoft.fitnesstracker.helpers.extensions
 
 import androidx.test.platform.app.InstrumentationRegistry
 import com.flinesoft.fitnesstracker.globals.AppPreferences
+import com.flinesoft.fitnesstracker.model.Gender
 import com.flinesoft.fitnesstracker.persistence.FitnessTrackerDatabase
 import kotlin.time.ExperimentalTime
 
@@ -18,6 +19,12 @@ object TestContext {
 
     fun skipOnboarding() {
         AppPreferences.onboardingCompleted = true
+    }
+
+    fun skipInitialPersonalDataModal() {
+        AppPreferences.heightInCentimeters = 170
+        AppPreferences.birthYear = 1985
+        AppPreferences.gender = Gender.FEMALE
     }
 
     fun withSampleData() {
