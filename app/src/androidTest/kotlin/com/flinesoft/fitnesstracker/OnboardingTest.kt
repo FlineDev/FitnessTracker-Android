@@ -19,7 +19,7 @@ class OnboardingTest: EspressoTest() {
 
     @Test
     fun onboardingTest() {
-//        checkStringsAreFullyVisible(R.string.onboarding_workouts_title)
+        checkStringsAreFullyVisible(R.string.onboarding_workouts_title)
 //        checkStringsAreFullyVisible(R.string.onboarding_workouts_description)
 //        screenshot("Onboarding_Page1")
 //        clickOnFullyVisibleView(R.id.next)
