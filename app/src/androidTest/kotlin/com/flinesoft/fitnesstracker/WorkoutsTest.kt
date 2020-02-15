@@ -47,7 +47,7 @@ class WorkoutsTest: EspressoTest() {
         clickOnFullyVisibleString(R.string.global_action_save)
         checkStringsAreFullyVisible(R.string.global_error_invalid_input, R.string.workouts_edit_impediment_title_new)
         screenshot("Workouts_NewImpediment_InvalidInput")
-        Thread.sleep(3_000)
+        waitForSnackBarToDisappear()
 
         typeTextInFullyVisibleView("Cold", R.id.nameEditText)
         clickOnFullyVisibleString(R.string.global_action_save)

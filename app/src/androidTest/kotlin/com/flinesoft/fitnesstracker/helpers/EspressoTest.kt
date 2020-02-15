@@ -96,8 +96,16 @@ open class EspressoTest {
     fun checkStringsAreFullyVisible(@IdRes vararg ids: Int) = ids.forEach { onView(withText(it)).check(matches(isCompletelyDisplayed())) }
     fun checkTextsAreFullyVisible(vararg texts: String) = texts.forEach { onView(withText(it)).check(matches(isCompletelyDisplayed())) }
 
+    fun checkStringIsFullyVisibleInView(@IdRes stringId: Int, @IdRes viewId: Int) = onView(
+        allOf(withId(viewId), withText(stringId))
+    ).check(
+        matches(isCompletelyDisplayed())
+    )
+
     fun checkEditTextsAreEnabled(@IdRes vararg ids: Int) = ids.forEach { onView(withId(it)).check(matches(isEnabled())) }
     fun checkEditTextsAreDisabled(@IdRes vararg ids: Int) = ids.forEach { onView(withId(it)).check(matches(not(isEnabled()))) }
+
+    fun waitForSnackBarToDisappear() = Thread.sleep(3_000)
 
     private fun isNotDisplayed(): ViewAssertion? {
         return ViewAssertion { view, _ ->
