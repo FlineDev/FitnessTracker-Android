@@ -173,7 +173,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$version_espresso"
     androidTestImplementation "android.arch.core:core-testing:$version_core_testing"
-//    androidTestImplementation "tools.fastlane:screengrab:$version_screengrab"
+    androidTestImplementation "tools.fastlane:screengrab:$version_screengrab"
 
     // Linting
     detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$version_detekt"
