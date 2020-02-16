@@ -57,31 +57,31 @@ class OnboardingActivity : AppIntro() {
     private fun workoutsSliderPage(): SliderPage = sliderPage(
         title = getString(R.string.onboarding_workouts_title),
         description = getString(R.string.onboarding_workouts_description),
-        imageDrawable = R.drawable.ic_workouts
+        imageDrawable = R.drawable.onboarding_workouts
     )
 
     private fun impedimentsSliderPage(): SliderPage = sliderPage(
         title = getString(R.string.onboarding_impediments_title),
         description = getString(R.string.onboarding_impediments_description),
-        imageDrawable = R.drawable.ic_workouts_impediment
+        imageDrawable = R.drawable.onboarding_impediment
     )
 
     private fun workoutRemindersSliderPage(): SliderPage = sliderPage(
         title = getString(R.string.onboarding_workout_reminders_title),
         description = getString(R.string.onboarding_workout_reminders_description),
-        imageDrawable = R.drawable.ic_workouts
+        imageDrawable = R.drawable.onboarding_reminders
     )
 
     private fun bodyMassIndexSliderPage(): SliderPage = sliderPage(
         title = getString(R.string.onboarding_body_mass_index_title),
         description = getString(R.string.onboarding_body_mass_index_description),
-        imageDrawable = R.drawable.ic_statistics
+        imageDrawable = R.drawable.onboarding_bmi
     )
 
     private fun bodyShapeIndexSliderPage(): SliderPage = sliderPage(
         title = getString(R.string.onboarding_body_shape_index_title),
         description = getString(R.string.onboarding_body_shape_index_description),
-        imageDrawable = R.drawable.ic_statistics
+        imageDrawable = R.drawable.onboarding_absi
     )
 
     private fun sliderPage(title: String, description: String, imageDrawable: Int): SliderPage = SliderPage().apply {
