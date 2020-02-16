@@ -18,7 +18,6 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.espresso.util.HumanReadables
 import androidx.test.rule.ActivityTestRule
 import com.flinesoft.fitnesstracker.MainActivity
-import com.flinesoft.fitnesstracker.helpers.extensions.TestContext
 import org.hamcrest.Matchers.*
 import org.junit.After
 import org.junit.Before

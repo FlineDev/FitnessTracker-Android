@@ -24,6 +24,7 @@ platform :android do
           screengrab(
             output_directory: "fastlane/metadata/#{ui_mode}",
             device_type: device_type.to_s,
+            clear_previous_screenshots: false,
             skip_open_summary: device_types_to_avds.keys.last != device_type,
             use_tests_in_classes: ["com.flinesoft.fitnesstracker.#{options[:class]}"]
           )
@@ -31,6 +32,7 @@ platform :android do
           screengrab(
             output_directory: "fastlane/metadata/#{ui_mode}",
             device_type: device_type.to_s,
+            clear_previous_screenshots: true,
             skip_open_summary: device_types_to_avds.keys.last != device_type
           )
         end

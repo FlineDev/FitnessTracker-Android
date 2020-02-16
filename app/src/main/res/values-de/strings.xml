@@ -81,6 +81,8 @@
     <string name="statistics.weight.legend">Dein Gewicht im Verlauf der Zeit</string>
     <string name="statistics.weight.tab_name">Gewicht</string>
     <string name="statistics.weight.title">Gewicht</string>
+    <string name="tests_sample_data_cold">Erkältung</string>
+    <string name="tests_sample_data_stiffness">Muskelkater</string>
     <string name="workouts.edit_impediment.name_hint">z.B. Erkältung</string>
     <string name="workouts.edit_impediment.title_edit">Verhinderung bearbeiten</string>
     <string name="workouts.edit_impediment.title_new">Neue Verhinderung</string>

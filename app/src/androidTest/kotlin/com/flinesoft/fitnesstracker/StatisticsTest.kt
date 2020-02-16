@@ -1,7 +1,7 @@
 package com.flinesoft.fitnesstracker
 
 import com.flinesoft.fitnesstracker.helpers.EspressoTest
-import com.flinesoft.fitnesstracker.helpers.extensions.TestContext
+import com.flinesoft.fitnesstracker.helpers.TestContext
 import org.junit.Test
 import tools.fastlane.screengrab.Screengrab.screenshot
 import kotlin.time.ExperimentalTime

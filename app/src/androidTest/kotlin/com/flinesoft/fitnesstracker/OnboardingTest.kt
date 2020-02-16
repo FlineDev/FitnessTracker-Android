@@ -4,7 +4,7 @@ package com.flinesoft.fitnesstracker
 import androidx.test.filters.LargeTest
 import androidx.test.runner.AndroidJUnit4
 import com.flinesoft.fitnesstracker.helpers.EspressoTest
-import com.flinesoft.fitnesstracker.helpers.extensions.TestContext
+import com.flinesoft.fitnesstracker.helpers.TestContext
 import org.junit.Test
 import org.junit.runner.RunWith
 import tools.fastlane.screengrab.Screengrab.screenshot
