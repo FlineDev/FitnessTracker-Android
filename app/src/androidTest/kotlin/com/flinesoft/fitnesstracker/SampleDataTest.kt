@@ -15,6 +15,7 @@ class SampleDataTest: EspressoTest() {
 
     @Test
     fun workoutsHistoryTest() {
+        clickOnFullyVisibleString(R.string.workouts_header_title) // workaround to fix pre-selected first item
         screenshot("1_SampleData_WorkoutsHistory")
     }
 

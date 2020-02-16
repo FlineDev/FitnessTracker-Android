@@ -18,7 +18,7 @@ platform :android do
 
       ['light', 'dark'].each do |ui_mode|
         force_ui_mode(ui_mode)
-        force_device_rotation(device_type == :phone ? 0 : 3)
+        force_device_rotation(0)
 
         if options[:class]
           screengrab(

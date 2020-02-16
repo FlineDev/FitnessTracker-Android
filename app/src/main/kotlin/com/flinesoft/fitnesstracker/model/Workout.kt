@@ -5,10 +5,7 @@ import androidx.room.PrimaryKey
 import com.flinesoft.fitnesstracker.globals.BETWEEN_WORKOUTS_POSITIVE_DAYS
 import com.flinesoft.fitnesstracker.globals.BETWEEN_WORKOUTS_POSITIVE_PLUS_WARNING_DAYS
 import org.joda.time.DateTime
-import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
-import kotlin.time.days
-import kotlin.time.hours
+import kotlin.time.*
 
 @ExperimentalTime
 @Entity(tableName = "Workouts")
@@ -32,20 +29,22 @@ data class Workout(var type: Type, override var startDate: DateTime, override va
             Type.MUSCLE_BUILDING -> 48.hours
         }
 
-    override fun betweenRecoverablesDurationRating(duration: Duration): Recoverable.BetweenDurationRating = when (duration) {
-        in 0.hours..recoveryDuration.div(2) ->
-            Recoverable.BetweenDurationRating.NEGATIVE
+    override fun betweenRecoverablesDurationRating(recoverableAbove: Recoverable): Recoverable.BetweenDurationRating {
+        return when ((recoverableAbove.endDate.millis - endDate.millis).milliseconds) {
+            in 0.hours..recoveryDuration.div(2) ->
+                if (recoverableAbove is Impediment) Recoverable.BetweenDurationRating.POSITIVE else Recoverable.BetweenDurationRating.NEGATIVE
 
-        in recoveryDuration.div(2)..recoveryDuration ->
-            Recoverable.BetweenDurationRating.WARNING
+            in recoveryDuration.div(2)..recoveryDuration ->
+                if (recoverableAbove is Impediment) Recoverable.BetweenDurationRating.POSITIVE else Recoverable.BetweenDurationRating.WARNING
 
-        in recoveryDuration..(recoveryDuration + BETWEEN_WORKOUTS_POSITIVE_DAYS.days) ->
-            Recoverable.BetweenDurationRating.POSITIVE
+            in recoveryDuration..(recoveryDuration + BETWEEN_WORKOUTS_POSITIVE_DAYS.days) ->
+                Recoverable.BetweenDurationRating.POSITIVE
 
-        in (recoveryDuration + BETWEEN_WORKOUTS_POSITIVE_DAYS.days)..(recoveryDuration + BETWEEN_WORKOUTS_POSITIVE_PLUS_WARNING_DAYS.days) ->
-            Recoverable.BetweenDurationRating.WARNING
+            in (recoveryDuration + BETWEEN_WORKOUTS_POSITIVE_DAYS.days)..(recoveryDuration + BETWEEN_WORKOUTS_POSITIVE_PLUS_WARNING_DAYS.days) ->
+                Recoverable.BetweenDurationRating.WARNING
 
-        else ->
-            Recoverable.BetweenDurationRating.NEGATIVE
+            else ->
+                Recoverable.BetweenDurationRating.NEGATIVE
+        }
     }
 }

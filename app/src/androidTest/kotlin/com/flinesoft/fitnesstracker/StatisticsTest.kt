@@ -113,6 +113,7 @@ class StatisticsTest: EspressoTest() {
         checkStringsAreFullyVisible(R.string.statistics_speed_dial_weight, R.string.global_action_cancel, R.string.global_action_confirm)
 
         clickOnFullyVisibleString(R.string.global_action_confirm)
+        waitForSnackBarToDisappear()
         clickOnFullyVisibleString(R.string.statistics_body_mass_index_tab_name)
         checkStringsAreFullyVisible(R.string.statistics_body_mass_index_title, R.string.statistics_body_mass_index_explanation)
         screenshot("Statistics_FirstWeightEntry_BodyMassIndex")
@@ -137,6 +138,7 @@ class StatisticsTest: EspressoTest() {
         checkStringsAreFullyVisible(R.string.statistics_speed_dial_waist_circumference, R.string.global_action_cancel, R.string.global_action_confirm)
 
         clickOnFullyVisibleString(R.string.global_action_confirm)
+        waitForSnackBarToDisappear()
         clickOnFullyVisibleString(R.string.statistics_body_mass_index_tab_name)
         checkStringsAreFullyVisible(R.string.statistics_body_mass_index_title, R.string.statistics_body_mass_index_explanation)
         screenshot("Statistics_FirstBothEntries_BodyMassIndex")

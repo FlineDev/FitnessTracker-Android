@@ -14,5 +14,5 @@ interface Recoverable {
     val recoveryEndDate: DateTime
     val recoveryDuration: Duration
 
-    fun betweenRecoverablesDurationRating(duration: Duration): BetweenDurationRating
+    fun betweenRecoverablesDurationRating(recoverableAbove: Recoverable): BetweenDurationRating
 }

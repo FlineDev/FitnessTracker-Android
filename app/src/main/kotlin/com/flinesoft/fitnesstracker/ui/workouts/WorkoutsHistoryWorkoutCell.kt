@@ -18,7 +18,7 @@ class WorkoutsHistoryWorkoutCell(context: Context) : ConstraintLayout(context) {
         betweenWorkoutsIconImageView.setImageDrawable(viewModel.betweenRecoverablesIconDrawable())
         betweenWorkoutsTextView.text = viewModel.betweenRecoverablesText(context)
 
-        betweenWorkoutsEntry.isGone = viewModel.hideBetweenRecoverablesEntry
+        betweenWorkoutsEntry.isGone = viewModel.hideBetweenRecoverablesEntry()
 
         monthTextView.text = viewModel.monthText()
         dayTextView.text = viewModel.dayText()

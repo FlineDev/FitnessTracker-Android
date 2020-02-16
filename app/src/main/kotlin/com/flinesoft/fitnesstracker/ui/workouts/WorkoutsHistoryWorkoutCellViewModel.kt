@@ -6,21 +6,19 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.extensions.DateFormatExt
+import com.flinesoft.fitnesstracker.model.Recoverable
 import com.flinesoft.fitnesstracker.model.Workout
-import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 class WorkoutsHistoryWorkoutCellViewModel(
     application: Application,
     override val recoverable: Workout,
-    override val betweenRecoverablesDuration: Duration,
-    override val hideBetweenRecoverablesEntry: Boolean
+    override val recoverableAbove: Recoverable?
 ) : WorkoutsHistoryRecoverableCellViewModel<Workout>(
     application,
     recoverable,
-    betweenRecoverablesDuration,
-    hideBetweenRecoverablesEntry
+    recoverableAbove
 ) {
     fun workoutTypeIconDrawable(context: Context): Drawable? = when (recoverable.type) {
         Workout.Type.CARDIO ->

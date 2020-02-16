@@ -8,11 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.flinesoft.fitnesstracker.model.Impediment
 import com.flinesoft.fitnesstracker.model.Recoverable
 import com.flinesoft.fitnesstracker.model.Workout
-import org.joda.time.DateTime
 import timber.log.Timber
-import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
-import kotlin.time.milliseconds
 
 @ExperimentalTime
 class WorkoutsHistoryAdapter(
@@ -60,28 +57,24 @@ class WorkoutsHistoryAdapter(
         when (holder) {
             is WorkoutViewHolder -> {
                 val workout = recoverables.value!![position] as Workout
-                val startDateOfNextRecoverable: DateTime = if (position > 0) recoverables.value!![position - 1].startDate else DateTime.now()
-                val betweenRecoverablesDuration: Duration = (startDateOfNextRecoverable.millis - workout.endDate.millis).milliseconds
+                val recoverableAbove: Recoverable? = if (position > 0) recoverables.value!![position - 1] else null
 
                 val viewModel = WorkoutsHistoryWorkoutCellViewModel(
                     application = application,
                     recoverable = workout,
-                    betweenRecoverablesDuration = betweenRecoverablesDuration,
-                    hideBetweenRecoverablesEntry = position == 0
+                    recoverableAbove = recoverableAbove
                 )
                 holder.cell.updateViewModel(viewModel)
             }
 
             is ImpedimentViewHolder -> {
                 val impediment = recoverables.value!![position] as Impediment
-                val startDateOfNextRecoverable: DateTime = if (position > 0) recoverables.value!![position - 1].startDate else DateTime.now()
-                val betweenRecoverablesDuration: Duration = (startDateOfNextRecoverable.millis - impediment.endDate.millis).milliseconds
+                val recoverableAbove: Recoverable? = if (position > 0) recoverables.value!![position - 1] else null
 
                 val viewModel = WorkoutsHistoryImpedimentCellViewModel(
                     application = application,
                     recoverable = impediment,
-                    betweenRecoverablesDuration = betweenRecoverablesDuration,
-                    hideBetweenRecoverablesEntry = position == 0
+                    recoverableAbove = recoverableAbove
                 )
                 holder.cell.updateViewModel(viewModel)
             }
