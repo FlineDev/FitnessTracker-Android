@@ -22,17 +22,20 @@ import com.flinesoft.fitnesstracker.helpers.extensions.TestContext
 import org.hamcrest.Matchers.*
 import org.junit.After
 import org.junit.Before
+import org.junit.ClassRule
 import org.junit.Rule
+import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
+import tools.fastlane.screengrab.locale.LocaleTestRule
 import kotlin.time.ExperimentalTime
 
 
 @ExperimentalTime
 open class EspressoTest {
-//    companion object {
-//        @ClassRule
-//        @JvmField
-//        public val localeTestRule = LocaleTestRule()
-//    }
+    companion object {
+        @ClassRule
+        @JvmField
+        public val localeTestRule = LocaleTestRule()
+    }
 
     @Rule
     @JvmField
@@ -51,12 +54,12 @@ open class EspressoTest {
     open fun setUp() {
         prepareContext()
         launchApplication()
-//        CleanStatusBar.enableWithDefaults()
+        CleanStatusBar.enableWithDefaults()
     }
 
     @After
     open fun tearDown() {
-//        CleanStatusBar.disable()
+        CleanStatusBar.disable()
         TestContext.resetAll()
     }
 
@@ -96,7 +99,7 @@ open class EspressoTest {
     fun checkStringsAreFullyVisible(@IdRes vararg ids: Int) = ids.forEach { onView(withText(it)).check(matches(isCompletelyDisplayed())) }
     fun checkTextsAreFullyVisible(vararg texts: String) = texts.forEach { onView(withText(it)).check(matches(isCompletelyDisplayed())) }
 
-    fun checkStringIsFullyVisibleInView(@IdRes stringId: Int, @IdRes viewId: Int) = onView(
+    fun checkStringIsFullyVisibleInView(@IdRes stringId: Int, @IdRes viewId: Int): ViewInteraction = onView(
         allOf(withId(viewId), withText(stringId))
     ).check(
         matches(isCompletelyDisplayed())

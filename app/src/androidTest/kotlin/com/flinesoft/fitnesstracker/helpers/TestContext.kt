@@ -29,6 +29,8 @@ object TestContext {
 
     fun withSampleData() {
         skipOnboarding()
+        skipInitialPersonalDataModal()
+
         // TODO: [2020-02-09] setup some data in database
     }
 }

@@ -20,10 +20,16 @@ You can get code coverage reports by just running:
 
 ## Screenshots
 
-You can update the app screenshots by just running:
+You can update the all the app screenshots by just running:
 
 ```bash
-fastlane screengrab_phone_tablets
+fastlane screengrab_variants
+```
+
+Or if you just need updated Play Store screenshots, instead run:
+
+```bash
+fastlane screengrab_variants class:SampleDataTest
 ```
 
 ## Contributing

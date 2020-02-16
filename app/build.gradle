@@ -14,10 +14,6 @@ apply from: file("detekt.gradle")
 android {
     compileSdkVersion 29
 
-    dataBinding {
-        enabled = true
-    }
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         test.java.srcDirs += 'src/test/kotlin'
@@ -80,6 +76,10 @@ android {
             task.dependsOn check
             task.mustRunAfter check
         }
+    }
+
+    dataBinding {
+        enabled = true
     }
 
     viewBinding {

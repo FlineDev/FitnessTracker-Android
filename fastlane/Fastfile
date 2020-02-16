@@ -3,8 +3,8 @@ update_fastlane
 default_platform(:android)
 
 platform :android do
-  desc 'Take phone and tablet screenshots using UI tests'
-  lane :screengrab_phone_tablets do
+  desc 'Take phone and tablet screenshots using all UI tests'
+  lane :screengrab_variants do |options|
     build_for_screengrab
     device_types_to_avds = {
       phone: 'Pixel_3a_XL_API_29',
@@ -16,11 +16,26 @@ platform :android do
       avd_name = device_types_to_avds[device_type]
       start_emulator(avd_name)
 
-      force_device_rotation(device_type == :phone ? 0 : 3)
-      screengrab(
-        device_type: device_type.to_s,
-        skip_open_summary: device_types_to_avds.keys.last != device_type
-      )
+      ['light', 'dark'].each do |ui_mode|
+        force_ui_mode(ui_mode)
+        force_device_rotation(device_type == :phone ? 0 : 3)
+
+        if options[:class]
+          screengrab(
+            output_directory: "fastlane/metadata/#{ui_mode}",
+            device_type: device_type.to_s,
+            skip_open_summary: device_types_to_avds.keys.last != device_type,
+            use_tests_in_classes: ["com.flinesoft.fitnesstracker.#{options[:class]}"]
+          )
+        else
+          screengrab(
+            output_directory: "fastlane/metadata/#{ui_mode}",
+            device_type: device_type.to_s,
+            skip_open_summary: device_types_to_avds.keys.last != device_type
+          )
+        end
+      end
+
       reset_to_auto_rotation
     end
   end
@@ -32,14 +47,42 @@ platform :android do
 
     emulator_path = File.join(ENV['ANDROID_HOME'], 'emulator/emulator')
     bash("#{emulator_path} @#{avd_name} &")
-    bash('adb wait-for-device')
+    wait_for_device_boot_completed
   end
 
   # 0 = portrait, 1 = landscape left, 2 = upside down, 3 = landscape right
   def force_device_rotation(rotation)
-    sleep 2
+    sleep 3
     bash('adb shell settings put system accelerometer_rotation 0')
     bash("adb shell settings put system user_rotation #{rotation}")
+  end
+
+  # 0 = auto, 1 = light, 2 = dark
+  def force_ui_mode(mode)
+    case mode
+    when 'light'
+      mode_num = 1
+    when 'dark'
+      mode_num = 2
+    end
+
+    # change UI mode only if needed
+    if `adb shell settings get secure ui_night_mode`.to_i != mode_num
+      puts "Changing UI mode of emulator to '#{mode}', requires reboot ..."
+      bash("adb shell settings put secure ui_night_mode #{mode_num}")
+      sleep 1
+      bash("adb reboot")
+      wait_for_device_boot_completed
+    else
+      puts "Emulator already in '#{mode}' UI mode"
+    end
+  end
+
+  def wait_for_device_boot_completed
+    # source: https://android.stackexchange.com/a/164050
+    boot_wait_loop = 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
+    bash("adb wait-for-device shell '#{boot_wait_loop}'")
+    sleep 3
   end
 
   def reset_to_auto_rotation

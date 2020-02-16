@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>fastlane/screengrab</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+      * {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 300;
+      }
+      .language {
+
+      }
+      .deviceName {
+        display: block;
+        font-size: 30px;
+        padding-bottom: 24px;
+        padding-top: 45px;
+      }
+      .screenshot {
+        cursor: pointer;
+        border: 1px #EEE solid;
+        z-index: 0;
+      }
+      th {
+        text-align: left;
+      }
+      td {
+        text-align: center;
+        min-width: 200px;
+      }
+      #overlay {
+        position:fixed;
+        top:0;
+        left:0;
+        background:rgba(0,0,0,0.8);
+        z-index:5;
+        width:100%;
+        height:100%;
+        display:none;
+        cursor: zoom-out;
+        text-align: center;
+      }
+      #imageDisplay {
+        height: auto;
+        width: auto;
+        z-index: 10;
+        cursor: pointer;
+      }
+      #imageInfo {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        color: white;
+        margin: 20px;
+        padding: 10px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 250px;
+        z-index: -1;
+      }
+      #imageInfo:hover {
+        z-index: 20;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="de-DE" class="language">de-DE</h1>
+    <hr>
+    <table>
+      <tr>
+        <th colspan="42">
+          <a id="de-DE-phoneScreenshots" class="deviceName" href="#de-DE-phoneScreenshots">phoneScreenshots</a>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/1_SampleData_WorkoutsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/1_SampleData_WorkoutsHistory.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="1">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/2_SampleData_StatisticsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/2_SampleData_StatisticsHistory.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="2">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Onboarding_Page1.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Onboarding_Page1.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="3">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Onboarding_Page2.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Onboarding_Page2.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="4">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Onboarding_Page3.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Onboarding_Page3.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="5">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Onboarding_Page4.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Onboarding_Page4.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="6">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Onboarding_Page5.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Onboarding_Page5.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="7">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_BodyMassIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_BodyMassIndex_EmptyState.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="8">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_BodyShapeIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_BodyShapeIndex_EmptyState.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="9">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_EmptyState_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_EmptyState_OpenSpeedDial.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="10">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="11">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="12">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="13">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_FirstBothEntries_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_FirstBothEntries_Weight.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="14">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="15">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="16">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="17">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="18">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_FirstWeightEntry_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_FirstWeightEntry_Weight.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="19">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_PersonalData_ChooseBirthYear.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_PersonalData_ChooseBirthYear.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="20">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_PersonalData_ChooseHeight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_PersonalData_ChooseHeight.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="21">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_PersonalData_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_PersonalData_EmptyState.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="22">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_PersonalData_Filled.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_PersonalData_Filled.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="23">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_PersonalData_InvalidData.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_PersonalData_InvalidData.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="24">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_WaistCircumference_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_WaistCircumference_EmptyState.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="25">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Statistics_Weight_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Statistics_Weight_EmptyState.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="26">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_ConfigureReminders.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_ConfigureReminders.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="27">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_ConfigureReminders_TurnedOff.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_ConfigureReminders_TurnedOff.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="28">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_EditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_EditImpediment.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="29">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_EditImpediment_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_EditImpediment_EndTime.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="30">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_EditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_EditWorkout.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="31">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_EditWorkout_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_EditWorkout_EndTime.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="32">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_EmptyHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_EmptyHistory.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="33">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="34">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_FirstEntryHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_FirstEntryHistory.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="35">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_NewImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_NewImpediment.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="36">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_NewImpediment_InvalidInput.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_NewImpediment_InvalidInput.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="37">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_NewWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_NewWorkout.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="38">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_OverflowMenuOpened.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_OverflowMenuOpened.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="39">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_TwoEntriesHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_TwoEntriesHistory.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="40">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="41">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/phoneScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/phoneScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" style="width: 100%;" alt="de-DE phoneScreenshots" data-counter="42">
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="42">
+          <a id="de-DE-sevenInchScreenshots" class="deviceName" href="#de-DE-sevenInchScreenshots">sevenInchScreenshots</a>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/1_SampleData_WorkoutsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/1_SampleData_WorkoutsHistory.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="43">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/2_SampleData_StatisticsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/2_SampleData_StatisticsHistory.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="44">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Onboarding_Page1.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Onboarding_Page1.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="45">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Onboarding_Page2.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Onboarding_Page2.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="46">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Onboarding_Page3.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Onboarding_Page3.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="47">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Onboarding_Page4.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Onboarding_Page4.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="48">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Onboarding_Page5.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Onboarding_Page5.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="49">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_BodyMassIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_BodyMassIndex_EmptyState.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="50">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_BodyShapeIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_BodyShapeIndex_EmptyState.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="51">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_EmptyState_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_EmptyState_OpenSpeedDial.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="52">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="53">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="54">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="55">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_FirstBothEntries_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_FirstBothEntries_Weight.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="56">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="57">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="58">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="59">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="60">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_FirstWeightEntry_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_FirstWeightEntry_Weight.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="61">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_PersonalData_ChooseBirthYear.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_PersonalData_ChooseBirthYear.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="62">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_PersonalData_ChooseHeight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_PersonalData_ChooseHeight.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="63">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_PersonalData_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_PersonalData_EmptyState.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="64">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_PersonalData_Filled.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_PersonalData_Filled.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="65">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_PersonalData_InvalidData.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_PersonalData_InvalidData.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="66">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_WaistCircumference_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_WaistCircumference_EmptyState.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="67">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Statistics_Weight_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Statistics_Weight_EmptyState.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="68">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_ConfigureReminders.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_ConfigureReminders.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="69">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_ConfigureReminders_TurnedOff.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_ConfigureReminders_TurnedOff.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="70">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_EditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_EditImpediment.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="71">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_EditImpediment_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_EditImpediment_EndTime.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="72">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_EditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_EditWorkout.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="73">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_EditWorkout_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_EditWorkout_EndTime.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="74">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_EmptyHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_EmptyHistory.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="75">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="76">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_FirstEntryHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_FirstEntryHistory.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="77">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_NewImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_NewImpediment.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="78">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_NewImpediment_InvalidInput.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_NewImpediment_InvalidInput.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="79">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_NewWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_NewWorkout.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="80">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_OverflowMenuOpened.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_OverflowMenuOpened.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="81">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_TwoEntriesHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_TwoEntriesHistory.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="82">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="83">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/sevenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/sevenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" style="width: 100%;" alt="de-DE sevenInchScreenshots" data-counter="84">
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="42">
+          <a id="de-DE-tenInchScreenshots" class="deviceName" href="#de-DE-tenInchScreenshots">tenInchScreenshots</a>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/1_SampleData_WorkoutsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/1_SampleData_WorkoutsHistory.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="85">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/2_SampleData_StatisticsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/2_SampleData_StatisticsHistory.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="86">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Onboarding_Page1.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Onboarding_Page1.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="87">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Onboarding_Page2.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Onboarding_Page2.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="88">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Onboarding_Page3.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Onboarding_Page3.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="89">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Onboarding_Page4.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Onboarding_Page4.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="90">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Onboarding_Page5.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Onboarding_Page5.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="91">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_BodyMassIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_BodyMassIndex_EmptyState.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="92">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_BodyShapeIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_BodyShapeIndex_EmptyState.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="93">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_EmptyState_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_EmptyState_OpenSpeedDial.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="94">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="95">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="96">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="97">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_FirstBothEntries_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_FirstBothEntries_Weight.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="98">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="99">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="100">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="101">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="102">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_FirstWeightEntry_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_FirstWeightEntry_Weight.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="103">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_PersonalData_ChooseBirthYear.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_PersonalData_ChooseBirthYear.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="104">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_PersonalData_ChooseHeight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_PersonalData_ChooseHeight.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="105">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_PersonalData_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_PersonalData_EmptyState.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="106">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_PersonalData_Filled.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_PersonalData_Filled.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="107">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_PersonalData_InvalidData.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_PersonalData_InvalidData.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="108">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_WaistCircumference_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_WaistCircumference_EmptyState.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="109">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Statistics_Weight_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Statistics_Weight_EmptyState.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="110">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_ConfigureReminders.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_ConfigureReminders.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="111">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_ConfigureReminders_TurnedOff.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_ConfigureReminders_TurnedOff.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="112">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_EditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_EditImpediment.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="113">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_EditImpediment_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_EditImpediment_EndTime.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="114">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_EditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_EditWorkout.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="115">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_EditWorkout_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_EditWorkout_EndTime.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="116">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_EmptyHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_EmptyHistory.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="117">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="118">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_FirstEntryHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_FirstEntryHistory.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="119">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_NewImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_NewImpediment.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="120">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_NewImpediment_InvalidInput.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_NewImpediment_InvalidInput.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="121">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_NewWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_NewWorkout.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="122">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_OverflowMenuOpened.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_OverflowMenuOpened.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="123">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_TwoEntriesHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_TwoEntriesHistory.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="124">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="125">
+          </a>
+        </td>
+        <td>
+          <a href="./de-DE/images/tenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./de-DE/images/tenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" style="width: 100%;" alt="de-DE tenInchScreenshots" data-counter="126">
+          </a>
+        </td>
+      </tr>
+    </table>
+    <h1 id="en-US" class="language">en-US</h1>
+    <hr>
+    <table>
+      <tr>
+        <th colspan="42">
+          <a id="en-US-phoneScreenshots" class="deviceName" href="#en-US-phoneScreenshots">phoneScreenshots</a>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/1_SampleData_WorkoutsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/1_SampleData_WorkoutsHistory.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="127">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/2_SampleData_StatisticsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/2_SampleData_StatisticsHistory.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="128">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Onboarding_Page1.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Onboarding_Page1.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="129">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Onboarding_Page2.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Onboarding_Page2.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="130">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Onboarding_Page3.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Onboarding_Page3.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="131">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Onboarding_Page4.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Onboarding_Page4.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="132">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Onboarding_Page5.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Onboarding_Page5.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="133">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_BodyMassIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_BodyMassIndex_EmptyState.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="134">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_BodyShapeIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_BodyShapeIndex_EmptyState.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="135">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_EmptyState_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_EmptyState_OpenSpeedDial.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="136">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="137">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="138">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="139">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_FirstBothEntries_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_FirstBothEntries_Weight.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="140">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="141">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="142">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="143">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="144">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_FirstWeightEntry_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_FirstWeightEntry_Weight.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="145">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_PersonalData_ChooseBirthYear.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_PersonalData_ChooseBirthYear.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="146">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_PersonalData_ChooseHeight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_PersonalData_ChooseHeight.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="147">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_PersonalData_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_PersonalData_EmptyState.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="148">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_PersonalData_Filled.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_PersonalData_Filled.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="149">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_PersonalData_InvalidData.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_PersonalData_InvalidData.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="150">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_WaistCircumference_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_WaistCircumference_EmptyState.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="151">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Statistics_Weight_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Statistics_Weight_EmptyState.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="152">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_ConfigureReminders.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_ConfigureReminders.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="153">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_ConfigureReminders_TurnedOff.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_ConfigureReminders_TurnedOff.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="154">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_EditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_EditImpediment.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="155">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_EditImpediment_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_EditImpediment_EndTime.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="156">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_EditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_EditWorkout.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="157">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_EditWorkout_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_EditWorkout_EndTime.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="158">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_EmptyHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_EmptyHistory.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="159">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="160">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_FirstEntryHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_FirstEntryHistory.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="161">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_NewImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_NewImpediment.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="162">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_NewImpediment_InvalidInput.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_NewImpediment_InvalidInput.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="163">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_NewWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_NewWorkout.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="164">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_OverflowMenuOpened.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_OverflowMenuOpened.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="165">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_TwoEntriesHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_TwoEntriesHistory.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="166">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="167">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/phoneScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/phoneScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" style="width: 100%;" alt="en-US phoneScreenshots" data-counter="168">
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="42">
+          <a id="en-US-sevenInchScreenshots" class="deviceName" href="#en-US-sevenInchScreenshots">sevenInchScreenshots</a>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/1_SampleData_WorkoutsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/1_SampleData_WorkoutsHistory.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="169">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/2_SampleData_StatisticsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/2_SampleData_StatisticsHistory.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="170">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Onboarding_Page1.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Onboarding_Page1.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="171">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Onboarding_Page2.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Onboarding_Page2.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="172">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Onboarding_Page3.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Onboarding_Page3.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="173">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Onboarding_Page4.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Onboarding_Page4.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="174">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Onboarding_Page5.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Onboarding_Page5.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="175">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_BodyMassIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_BodyMassIndex_EmptyState.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="176">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_BodyShapeIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_BodyShapeIndex_EmptyState.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="177">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_EmptyState_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_EmptyState_OpenSpeedDial.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="178">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="179">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="180">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="181">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_FirstBothEntries_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_FirstBothEntries_Weight.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="182">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="183">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="184">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="185">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="186">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_FirstWeightEntry_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_FirstWeightEntry_Weight.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="187">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_PersonalData_ChooseBirthYear.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_PersonalData_ChooseBirthYear.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="188">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_PersonalData_ChooseHeight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_PersonalData_ChooseHeight.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="189">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_PersonalData_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_PersonalData_EmptyState.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="190">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_PersonalData_Filled.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_PersonalData_Filled.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="191">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_PersonalData_InvalidData.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_PersonalData_InvalidData.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="192">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_WaistCircumference_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_WaistCircumference_EmptyState.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="193">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Statistics_Weight_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Statistics_Weight_EmptyState.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="194">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_ConfigureReminders.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_ConfigureReminders.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="195">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_ConfigureReminders_TurnedOff.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_ConfigureReminders_TurnedOff.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="196">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_EditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_EditImpediment.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="197">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_EditImpediment_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_EditImpediment_EndTime.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="198">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_EditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_EditWorkout.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="199">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_EditWorkout_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_EditWorkout_EndTime.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="200">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_EmptyHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_EmptyHistory.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="201">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="202">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_FirstEntryHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_FirstEntryHistory.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="203">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_NewImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_NewImpediment.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="204">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_NewImpediment_InvalidInput.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_NewImpediment_InvalidInput.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="205">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_NewWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_NewWorkout.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="206">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_OverflowMenuOpened.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_OverflowMenuOpened.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="207">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_TwoEntriesHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_TwoEntriesHistory.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="208">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="209">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/sevenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/sevenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" style="width: 100%;" alt="en-US sevenInchScreenshots" data-counter="210">
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="42">
+          <a id="en-US-tenInchScreenshots" class="deviceName" href="#en-US-tenInchScreenshots">tenInchScreenshots</a>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/1_SampleData_WorkoutsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/1_SampleData_WorkoutsHistory.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="211">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/2_SampleData_StatisticsHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/2_SampleData_StatisticsHistory.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="212">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Onboarding_Page1.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Onboarding_Page1.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="213">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Onboarding_Page2.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Onboarding_Page2.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="214">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Onboarding_Page3.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Onboarding_Page3.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="215">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Onboarding_Page4.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Onboarding_Page4.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="216">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Onboarding_Page5.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Onboarding_Page5.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="217">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_BodyMassIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_BodyMassIndex_EmptyState.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="218">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_BodyShapeIndex_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_BodyShapeIndex_EmptyState.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="219">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_EmptyState_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_EmptyState_OpenSpeedDial.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="220">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_FirstBothEntries_BodyMassIndex.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="221">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_FirstBothEntries_BodyShapeIndex.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="222">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_FirstBothEntries_WaistCircumference.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="223">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_FirstBothEntries_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_FirstBothEntries_Weight.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="224">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_FirstWeightEntry_BodyMassIndex.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="225">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_FirstWeightEntry_BodyShapeIndex.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="226">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_FirstWeightEntry_OpenSpeedDial.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="227">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_FirstWeightEntry_WaistCircumference.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="228">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_FirstWeightEntry_Weight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_FirstWeightEntry_Weight.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="229">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_PersonalData_ChooseBirthYear.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_PersonalData_ChooseBirthYear.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="230">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_PersonalData_ChooseHeight.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_PersonalData_ChooseHeight.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="231">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_PersonalData_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_PersonalData_EmptyState.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="232">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_PersonalData_Filled.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_PersonalData_Filled.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="233">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_PersonalData_InvalidData.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_PersonalData_InvalidData.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="234">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_WaistCircumference_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_WaistCircumference_EmptyState.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="235">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Statistics_Weight_EmptyState.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Statistics_Weight_EmptyState.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="236">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_ConfigureReminders.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_ConfigureReminders.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="237">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_ConfigureReminders_TurnedOff.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_ConfigureReminders_TurnedOff.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="238">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_EditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_EditImpediment.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="239">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_EditImpediment_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_EditImpediment_EndTime.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="240">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_EditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_EditWorkout.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="241">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_EditWorkout_EndTime.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_EditWorkout_EndTime.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="242">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_EmptyHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_EmptyHistory.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="243">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_EmptyHistory_OpenSpeedDial.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="244">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_FirstEntryHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_FirstEntryHistory.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="245">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_NewImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_NewImpediment.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="246">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_NewImpediment_InvalidInput.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_NewImpediment_InvalidInput.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="247">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_NewWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_NewWorkout.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="248">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_OverflowMenuOpened.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_OverflowMenuOpened.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="249">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_TwoEntriesHistory.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_TwoEntriesHistory.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="250">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditImpediment.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="251">
+          </a>
+        </td>
+        <td>
+          <a href="./en-US/images/tenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" target="_blank" class="screenshotLink">
+            <img class="screenshot" src="./en-US/images/tenInchScreenshots/Workouts_TwoEntriesHistory_AfterEditWorkout.png" style="width: 100%;" alt="en-US tenInchScreenshots" data-counter="252">
+          </a>
+        </td>
+      </tr>
+    </table>
+    <div id="overlay">
+      <img id="imageDisplay" src="" alt="" />
+      <div id="imageInfo"></div>
+    </div>
+    <script type="text/javascript">
+      var overlay        = document.getElementById('overlay');
+      var imageDisplay   = document.getElementById('imageDisplay');
+      var imageInfo      = document.getElementById('imageInfo');
+      var screenshotLink = document.getElementsByClassName('screenshotLink');
+
+      function doClick(el) {
+        if (document.createEvent) {
+          var evObj = document.createEvent('MouseEvents', true);
+          evObj.initMouseEvent("click", false, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+          el.dispatchEvent(evObj);
+        } else if (document.createEventObject) { //IE
+          var evObj = document.createEventObject();
+          el.fireEvent('onclick', evObj);
+        }
+      }
+
+      for (index = 0; index < screenshotLink.length; ++index) {
+        screenshotLink[index].addEventListener('click', function(e) {
+          e.preventDefault();
+
+          var img = e.target;
+          if (e.target.tagName == 'A') {
+            img = e.target.children[0];
+          }
+
+          // beautify
+          var tmpImg = new Image();
+          tmpImg.src = img.src;
+          imageDisplay.style.height     = 'auto';
+          imageDisplay.style.width     = 'auto';
+          if (window.innerHeight < tmpImg.height) {
+            imageDisplay.style.height = document.documentElement.clientHeight+'px';
+          } else if (window.innerWidth < tmpImg.width) {
+            imageDisplay.style.width = document.documentElement.clientWidth;+'px';
+          } else {
+            imageDisplay.style.paddingTop = parseInt((window.innerHeight - tmpImg.height) / 2)+'px';
+          }
+
+          imageDisplay.src             = img.src;
+          imageDisplay.alt             = img.alt;
+          imageDisplay.dataset.counter = img.dataset.counter;
+
+          imageInfo.innerHTML          = '<h3>'+img.alt+'</h3>';
+          imageInfo.innerHTML         += decodeURI(img.src.split("/").pop());
+          imageInfo.innerHTML         += '<br />'+tmpImg.height+'&times;'+tmpImg.width+'px';
+
+          overlay.style.display        = "block";
+        });
+      }
+
+      imageDisplay.addEventListener('click', function(e) {
+        e.stopPropagation(); // !
+
+        overlay.style.display = "none";
+
+        img_counter = parseInt(e.target.dataset.counter) + 1;
+        try {
+          link = document.body.querySelector('img[data-counter="'+img_counter+'"]').parentNode;
+        } catch (e) {
+          try {
+            link = document.body.querySelector('img[data-counter="0"]').parentNode;
+          } catch (e) {
+            return false;
+          }
+        }
+        doClick(link);
+      });
+
+      overlay.addEventListener('click', function(e) {
+        overlay.style.display = "none";
+      })
+
+      function keyPressed(e) {
+        e = e || window.event;
+        var charCode = e.keyCode || e.which;
+        switch(charCode) {
+          case 27: // Esc
+            overlay.style.display = "none";
+            break;
+          case 34: // Page Down
+          case 39: // Right arrow
+          case 54: // Keypad right
+          case 76: // l
+          case 102: // Keypad right
+            e.preventDefault();
+            doClick(imageDisplay);
+            break;
+          case 33: // Page up
+          case 37: // Left arrow
+          case 52: // Keypad left
+          case 72: // h
+          case 100: // Keypad left
+            e.preventDefault();
+            document.getElementById('imageDisplay').dataset.counter -= 2; // hacky
+            doClick(imageDisplay);
+            break;
+         }
+      };
+      document.body.addEventListener('keydown', keyPressed);
+    </script>
+  </body>
+</html>
