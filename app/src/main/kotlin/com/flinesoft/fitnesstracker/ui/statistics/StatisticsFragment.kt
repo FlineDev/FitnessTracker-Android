@@ -1,7 +1,6 @@
 package com.flinesoft.fitnesstracker.ui.statistics
 
 import android.content.Intent
-import android.icu.util.MeasureUnit
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.view.menu.MenuBuilder
@@ -11,7 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsFragmentBinding
 import com.flinesoft.fitnesstracker.globals.*
-import com.flinesoft.fitnesstracker.globals.extensions.*
+import com.flinesoft.fitnesstracker.globals.extensions.database
+import com.flinesoft.fitnesstracker.globals.extensions.showWaistCircumferencePickerDialog
+import com.flinesoft.fitnesstracker.globals.extensions.showWeightPickerDialog
+import com.flinesoft.fitnesstracker.globals.extensions.snack
 import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
 import com.flinesoft.fitnesstracker.model.WeightMeasurement
 import com.google.android.material.snackbar.Snackbar
@@ -122,12 +124,9 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun showNewWaistCircumferenceForm() {
-        showNumberPickerDialog(
+        showWaistCircumferencePickerDialog(
             title = getString(R.string.statistics_speed_dial_waist_circumference),
             value = viewModel.latestWaistCircumferenceMeasurement()?.value ?: DEFAULT_INPUT_VALUE_WAIST_CIRCUMFERENCE_IN_CENTIMETERS,
-            range = HUMAN_WAIST_CIRCUMFERENCE_RANGE_IN_CENTIMETERS,
-            stepSize = 0.5,
-            formatToString = { MeasureFormatExt.short().doubleToString(it, MeasureUnit.CENTIMETER) },
             valueChooseAction = {
                 saveNewWaistCircumference(it)
                 view?.snack(R.string.global_info_saved_successfully)
@@ -136,12 +135,9 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun showNewWeightForm() {
-        showNumberPickerDialog(
+        showWeightPickerDialog(
             title = getString(R.string.statistics_speed_dial_weight),
             value = viewModel.latestWeightMeasurement()?.value ?: DEFAULT_INPUT_VALUE_WEIGHT_IN_KILOGRAMS,
-            range = HUMAN_WEIGHT_RANGE_IN_KILOGRAMS,
-            stepSize = 0.1,
-            formatToString = { MeasureFormatExt.short().doubleToString(it, MeasureUnit.KILOGRAM) },
             valueChooseAction = {
                 saveNewWeight(it)
                 view?.snack(R.string.global_info_saved_successfully)

@@ -1,5 +1,6 @@
 package com.flinesoft.fitnesstracker.model
 
+import android.icu.util.MeasureUnit
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.joda.time.DateTime
@@ -14,4 +15,7 @@ data class WaistCircumferenceMeasurement(
 
     override val value: Double
         get() = circumferenceInCentimeters
+
+    override val unit: MeasureUnit
+        get() = MeasureUnit.KILOGRAM
 }

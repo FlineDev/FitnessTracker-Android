@@ -107,7 +107,7 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
 
     private fun updateDataEntries(dataEntries: List<StatisticsPageViewModel.DataEntry>) {
         // NOTE: Workaround for this issue: https://github.com/PhilJay/MPAndroidChart/issues/2203
-        xAxisOffsetMillis = dataEntries.firstOrNull()?.dateTime?.millis
+        xAxisOffsetMillis = dataEntries.firstOrNull()?.measureDate?.millis
 
         dataEntriesSet.values = dataEntries.map { dataEntryToEntry(it) }
 
@@ -158,6 +158,6 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
 
     private fun dataEntryToEntry(dataEntry: StatisticsPageViewModel.DataEntry): Entry {
         // NOTE: Workaround for this issue: https://github.com/PhilJay/MPAndroidChart/issues/2203 (the `- xAxisOffsetMillis!!` part)
-        return Entry((dataEntry.dateTime.millis - xAxisOffsetMillis!!).toFloat(), dataEntry.value.toFloat())
+        return Entry((dataEntry.measureDate.millis - xAxisOffsetMillis!!).toFloat(), dataEntry.value.toFloat())
     }
 }

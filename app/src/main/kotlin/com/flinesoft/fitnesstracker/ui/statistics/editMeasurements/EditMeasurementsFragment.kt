@@ -17,8 +17,6 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import kotlin.time.ExperimentalTime
 
-enum class MeasurementType { WEIGHT, WAIST_CIRCUMFERENCE }
-
 @ExperimentalTime
 abstract class EditMeasurementsFragment<T : Measurement> : BackNavigationFragment() {
     protected lateinit var binding: EditMeasurementsFragmentBinding
@@ -44,9 +42,7 @@ abstract class EditMeasurementsFragment<T : Measurement> : BackNavigationFragmen
         viewModel.measurements.observe(viewLifecycleOwner, Observer { adapter.notifyDataSetChanged() })
     }
 
-    private fun showEditMeasurementForm(measurement: T) {
-        // TODO: [2020-02-23] not yet implemented
-    }
+    protected abstract fun showEditMeasurementForm(measurement: T)
 
     private fun onItemClicked(view: View) {
         val itemIndex = binding.measurementsRecyclerView.getChildLayoutPosition(view)

@@ -2,12 +2,15 @@ package com.flinesoft.fitnesstracker.globals.extensions
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.icu.util.MeasureUnit
 import android.text.format.DateFormat
 import android.widget.EditText
 import android.widget.NumberPicker
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.globals.HUMAN_WAIST_CIRCUMFERENCE_RANGE_IN_CENTIMETERS
+import com.flinesoft.fitnesstracker.globals.HUMAN_WEIGHT_RANGE_IN_KILOGRAMS
 import com.flinesoft.fitnesstracker.persistence.FitnessTrackerDatabase
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.joda.time.DateTime
@@ -71,4 +74,26 @@ fun Fragment.showNumberPickerDialog(
         .setPositiveButton(R.string.global_action_confirm) { _, _ -> valueChooseAction(numberPicker.value.toDouble() * stepSize) }
         .setNeutralButton(R.string.global_action_cancel) { _, _ -> /* do nothing, closes dialog automatically */ }
         .show()
+}
+
+fun Fragment.showWaistCircumferencePickerDialog(title: String, value: Double, valueChooseAction: (Double) -> Unit) {
+    showNumberPickerDialog(
+        title = title,
+        value = value,
+        range = HUMAN_WAIST_CIRCUMFERENCE_RANGE_IN_CENTIMETERS,
+        stepSize = 0.5,
+        formatToString = { MeasureFormatExt.short().doubleToString(it, MeasureUnit.CENTIMETER) },
+        valueChooseAction = valueChooseAction
+    )
+}
+
+fun Fragment.showWeightPickerDialog(title: String, value: Double, valueChooseAction: (Double) -> Unit) {
+    showNumberPickerDialog(
+        title = title,
+        value = value,
+        range = HUMAN_WEIGHT_RANGE_IN_KILOGRAMS,
+        stepSize = 0.1,
+        formatToString = { MeasureFormatExt.short().doubleToString(it, MeasureUnit.KILOGRAM) },
+        valueChooseAction = valueChooseAction
+    )
 }

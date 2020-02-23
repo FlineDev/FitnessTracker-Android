@@ -61,6 +61,7 @@
     <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
     <string name="statistics.body_shape_index.very_low_risk_max.legend">Geringes Risiko</string>
     <string name="statistics.edit_data_set_button.title">Datensatz bearbeiten</string>
+    <string name="statistics.edit_measurements.edit_value_title">Wert ändern</string>
     <string name="statistics.edit_personal_data.birth_year.input_dialog_title">Geburtsjahr auswählen</string>
     <string name="statistics.edit_personal_data.birth_year.overline">Geburtsjahr:</string>
     <string name="statistics.edit_personal_data.gender.overline">Geschlecht:</string>
@@ -84,8 +85,8 @@
     <string name="statistics.weight.legend">Dein Gewicht im Verlauf der Zeit</string>
     <string name="statistics.weight.tab_name">Gewicht</string>
     <string name="statistics.weight.title">Gewicht</string>
-    <string name="tests_sample_data_cold">Erkältung</string>
-    <string name="tests_sample_data_stiffness">Muskelkater</string>
+    <string name="tests.sample_data.cold">Erkältung</string>
+    <string name="tests.sample_data.stiffness">Muskelkater</string>
     <string name="workouts.edit_impediment.name_hint">z.B. Erkältung</string>
     <string name="workouts.edit_impediment.title_edit">Verhinderung bearbeiten</string>
     <string name="workouts.edit_impediment.title_new">Neue Verhinderung</string>

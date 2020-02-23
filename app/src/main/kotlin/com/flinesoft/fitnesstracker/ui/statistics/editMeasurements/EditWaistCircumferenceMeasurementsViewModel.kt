@@ -8,5 +8,5 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 class EditWaistCircumferenceMeasurementsViewModel(application: Application) : EditMeasurementsViewModel<WaistCircumferenceMeasurement>(application) {
-    override val measurements: LiveData<List<WaistCircumferenceMeasurement>> = database().waistCircumferenceMeasurementDao.allOrderedByMeasureDate()
+    override val measurements: LiveData<List<WaistCircumferenceMeasurement>> = database().waistCircumferenceMeasurementDao.allOrderedByMeasureDateDescending()
 }

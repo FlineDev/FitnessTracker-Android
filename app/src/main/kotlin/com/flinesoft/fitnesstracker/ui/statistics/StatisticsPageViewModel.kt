@@ -1,5 +1,6 @@
 package com.flinesoft.fitnesstracker.ui.statistics
 
+import android.icu.util.MeasureUnit
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
@@ -15,9 +16,9 @@ class StatisticsPageViewModel(
     val legend: String,
     val editDataNavDirections: NavDirections?
 ) : ViewModel() {
-    data class DataEntry(val dateTime: DateTime, override val value: Double) : Measurement {
-        override val measureDate: DateTime
-            get() = dateTime
+    data class DataEntry(override val measureDate: DateTime, override val value: Double) : Measurement {
+        override val unit: MeasureUnit
+            get() = MeasureUnit.BIT // not relevant here
     }
     data class TresholdEntry(val value: Double, val legend: String, val color: Int)
 

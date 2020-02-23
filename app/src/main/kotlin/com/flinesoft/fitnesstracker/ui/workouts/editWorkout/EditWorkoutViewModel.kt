@@ -77,7 +77,7 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     suspend fun save(): Boolean {
-        // TODO: return more exact errors which point to the invalid field & have a message to show below the field
+        // TODO: [2020-01-20] return more exact errors which point to the invalid field & have a message to show below the field
         if (dateIsFuture() || invalidDuration()) return false
 
         existingWorkout?.value?.let { workout ->

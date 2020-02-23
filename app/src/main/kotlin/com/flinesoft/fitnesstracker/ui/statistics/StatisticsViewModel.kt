@@ -196,7 +196,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             StatisticsPageViewModel.DataEntry(weightMeasurement.measureDate, bodyShapeZIndex)
         }
 
-        val combinedOrderedDataEntries = (waistCircumferenceDataEntries + weightDataEntries).sortedBy { it.dateTime }
+        val combinedOrderedDataEntries = (waistCircumferenceDataEntries + weightDataEntries).sortedBy { it.measureDate }
         bodyShapeIndexPageViewModel.dataEntries.value = combinedOrderedDataEntries.reduceToLatestMeasureDatePerDay()
     }
 

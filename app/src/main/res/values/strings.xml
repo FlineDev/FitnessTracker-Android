@@ -61,6 +61,7 @@
     <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
     <string name="statistics.body_shape_index.very_low_risk_max.legend">Low risk</string>
     <string name="statistics.edit_data_set_button.title">Edit data set</string>
+    <string name="statistics.edit_measurements.edit_value_title">Edit value</string>
     <string name="statistics.edit_personal_data.birth_year.input_dialog_title">Choose birth year</string>
     <string name="statistics.edit_personal_data.birth_year.overline">Birth year:</string>
     <string name="statistics.edit_personal_data.gender.overline">Gender:</string>
@@ -84,8 +85,8 @@
     <string name="statistics.weight.legend">Your weight over time</string>
     <string name="statistics.weight.tab_name">Weight</string>
     <string name="statistics.weight.title">Weight</string>
-    <string name="tests_sample_data_cold">Cold</string>
-    <string name="tests_sample_data_stiffness">Stiffness</string>
+    <string name="tests.sample_data.cold">Cold</string>
+    <string name="tests.sample_data.stiffness">Stiffness</string>
     <string name="workouts.edit_impediment.name_hint">e.g. Cold</string>
     <string name="workouts.edit_impediment.title_edit">Edit Impediment</string>
     <string name="workouts.edit_impediment.title_new">New Impediment</string>
@@ -114,6 +115,7 @@
     <string name="workouts.speed_dial.workout">New workout</string>
     <string name="workouts.title">Workouts</string>
     <string name="global.non_translatable.sample_date_time" translatable="false"><![CDATA[<Friday, October 15th>]]></string>
+    <string name="global.non_translatable.sample_measure_value" translatable="false"><![CDATA[<75.2 kg>]]></string>
     <string name="global.non_translatable.sample_month_short" translatable="false"><![CDATA[<APR>]]></string>
     <string name="global.non_translatable.sample_number_short" translatable="false"><![CDATA[<15>]]></string>
     <string name="global.non_translatable.sample_sentence" translatable="false"><![CDATA[<This is a sample sentence.>]]></string>
