@@ -2,6 +2,8 @@ package com.flinesoft.fitnesstracker.helpers
 
 //import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
 //import tools.fastlane.screengrab.locale.LocaleTestRule
+
+import android.content.Context
 import android.content.Intent
 import android.widget.DatePicker
 import android.widget.TimePicker
@@ -16,6 +18,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.PickerActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.espresso.util.HumanReadables
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.flinesoft.fitnesstracker.MainActivity
 import org.hamcrest.Matchers.*
@@ -94,20 +97,42 @@ open class EspressoTest {
     fun checkStringsDoNotExist(@IdRes vararg ids: Int) = ids.forEach { onView(withText(it)).check(isNotDisplayed()) }
     fun checkTextsDoNotExist(vararg texts: String) = texts.forEach { onView(withText(it)).check(isNotDisplayed()) }
 
+    fun checkStringDoesNotExistInStringTag(@IdRes stringId: Int, @IdRes tagId: Int): ViewInteraction = onView(
+        allOf(withText(stringId), isDescendantOfA(withTagValue(`is`(getString(tagId)))))
+    ).check(isNotDisplayed())
+
     fun checkViewsAreFullyVisible(@IdRes vararg ids: Int) = ids.forEach { onView(withId(it)).check(matches(isCompletelyDisplayed())) }
     fun checkStringsAreFullyVisible(@IdRes vararg ids: Int) = ids.forEach { onView(withText(it)).check(matches(isCompletelyDisplayed())) }
     fun checkTextsAreFullyVisible(vararg texts: String) = texts.forEach { onView(withText(it)).check(matches(isCompletelyDisplayed())) }
 
-    fun checkStringIsFullyVisibleInView(@IdRes stringId: Int, @IdRes viewId: Int): ViewInteraction = onView(
-        allOf(withId(viewId), withText(stringId))
+    fun checkStringIsFullyVisibleInStringTag(@IdRes stringId: Int, @IdRes tagId: Int): ViewInteraction = onView(
+        allOf(withText(stringId), isDescendantOfA(withTagValue(`is`(getString(tagId)))))
+    ).check(matches(isCompletelyDisplayed()))
+
+    fun checkStringIsFullyVisibleOnView(@IdRes stringId: Int, @IdRes viewId: Int): ViewInteraction = onView(
+        allOf(withText(stringId), withId(viewId))
+    ).check(matches(isCompletelyDisplayed()))
+
+    fun checkViewsAreEnabled(@IdRes vararg ids: Int) = ids.forEach { onView(withId(it)).check(matches(isEnabled())) }
+    fun checkViewsAreDisabled(@IdRes vararg ids: Int) = ids.forEach { onView(withId(it)).check(matches(not(isEnabled()))) }
+
+    fun checkViewIsEnabledInStringTag(@IdRes viewId: Int, @IdRes tagId: Int) = onView(
+        allOf(withId(viewId), isDescendantOfA(withTagValue(`is`(getString(tagId)))))
     ).check(
-        matches(isCompletelyDisplayed())
+        matches(isEnabled())
+    )
+    fun checkViewIsDisabledInStringTag(@IdRes viewId: Int, @IdRes tagId: Int) = onView(
+        allOf(withId(viewId), isDescendantOfA(withTagValue(`is`(getString(tagId)))))
+    ).check(
+        matches(not(isEnabled()))
     )
 
-    fun checkEditTextsAreEnabled(@IdRes vararg ids: Int) = ids.forEach { onView(withId(it)).check(matches(isEnabled())) }
-    fun checkEditTextsAreDisabled(@IdRes vararg ids: Int) = ids.forEach { onView(withId(it)).check(matches(not(isEnabled()))) }
-
     fun waitForSnackBarToDisappear() = Thread.sleep(3_000)
+
+    private fun getString(@IdRes stringId: Int): String {
+        val targetContext: Context = InstrumentationRegistry.getInstrumentation().targetContext
+        return targetContext.resources.getString(stringId)
+    }
 
     private fun isNotDisplayed(): ViewAssertion? {
         return ViewAssertion { view, _ ->

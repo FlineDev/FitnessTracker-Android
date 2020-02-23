@@ -14,6 +14,7 @@ import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsPageFragmentBinding
 import com.flinesoft.fitnesstracker.globals.DownPopLevel
 import com.flinesoft.fitnesstracker.globals.extensions.withAlphaDownPoppedToLevel
+import com.flinesoft.fitnesstracker.globals.runIfDebugForTesting
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.LimitLine
@@ -52,6 +53,10 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
         binding.titleTextView.text = viewModel.title
         binding.explanationTextView.isGone = viewModel.explanation.isNullOrBlank()
         binding.explanationTextView.text = viewModel.explanation
+
+        runIfDebugForTesting {
+            binding.root.tag = viewModel.tabName
+        }
     }
 
     @SuppressLint("ResourceType")

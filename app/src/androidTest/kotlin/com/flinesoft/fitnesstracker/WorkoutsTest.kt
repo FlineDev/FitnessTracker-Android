@@ -98,11 +98,11 @@ class WorkoutsTest: EspressoTest() {
 
         checkStringsAreFullyVisible(R.string.workouts_overflow_reminder, R.string.shared_overflow_feedback)
         clickOnFullyVisibleString(R.string.workouts_overflow_reminder)
-        checkEditTextsAreEnabled(R.id.reminderTimeEditText)
+        checkViewsAreEnabled(R.id.reminderTimeEditText)
         screenshot("Workouts_ConfigureReminders")
 
         clickOnFullyVisibleString(R.string.workouts_edit_reminders_reminder_on_title)
-        checkEditTextsAreDisabled(R.id.reminderTimeEditText)
+        checkViewsAreDisabled(R.id.reminderTimeEditText)
         screenshot("Workouts_ConfigureReminders_TurnedOff")
 
         clickOnFullyVisibleString(R.string.global_action_save)

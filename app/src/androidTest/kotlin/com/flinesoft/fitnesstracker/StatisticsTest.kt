@@ -91,18 +91,24 @@ class StatisticsTest: EspressoTest() {
             R.string.global_action_cancel,
             R.string.global_action_save
         )
+        checkStringDoesNotExistInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_body_mass_index_tab_name)
         screenshot("Statistics_BodyMassIndex_EmptyState")
 
         clickOnFullyVisibleString(R.string.statistics_body_shape_index_tab_name)
         checkStringsAreFullyVisible(R.string.statistics_body_shape_index_title, R.string.statistics_body_shape_index_explanation)
+        checkStringDoesNotExistInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_body_shape_index_tab_name)
         screenshot("Statistics_BodyShapeIndex_EmptyState")
 
         clickOnFullyVisibleString(R.string.statistics_weight_tab_name)
-        checkStringIsFullyVisibleInView(R.string.statistics_weight_title, R.id.titleTextView)
+        checkStringIsFullyVisibleOnView(R.string.statistics_weight_title, R.id.titleTextView)
+        checkStringIsFullyVisibleInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_weight_tab_name)
+        checkViewIsDisabledInStringTag(R.id.editDataButton, R.string.statistics_weight_tab_name)
         screenshot("Statistics_Weight_EmptyState")
 
         clickOnFullyVisibleString(R.string.statistics_waist_circumference_tab_name)
         checkStringsAreFullyVisible(R.string.statistics_waist_circumference_title)
+        checkStringIsFullyVisibleInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_waist_circumference_tab_name)
+        checkViewIsDisabledInStringTag(R.id.editDataButton, R.string.statistics_waist_circumference_tab_name)
         screenshot("Statistics_WaistCircumference_EmptyState")
 
         clickOnFullyVisibleView(R.id.statisticsSpeedDial)
@@ -116,18 +122,24 @@ class StatisticsTest: EspressoTest() {
         waitForSnackBarToDisappear()
         clickOnFullyVisibleString(R.string.statistics_body_mass_index_tab_name)
         checkStringsAreFullyVisible(R.string.statistics_body_mass_index_title, R.string.statistics_body_mass_index_explanation)
+        checkStringDoesNotExistInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_body_mass_index_tab_name)
         screenshot("Statistics_FirstWeightEntry_BodyMassIndex")
 
         clickOnFullyVisibleString(R.string.statistics_body_shape_index_tab_name)
         checkStringsAreFullyVisible(R.string.statistics_body_shape_index_title, R.string.statistics_body_shape_index_explanation)
+        checkStringDoesNotExistInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_body_shape_index_tab_name)
         screenshot("Statistics_FirstWeightEntry_BodyShapeIndex")
 
         clickOnFullyVisibleString(R.string.statistics_weight_tab_name)
-        checkStringIsFullyVisibleInView(R.string.statistics_weight_title, R.id.titleTextView)
+        checkStringIsFullyVisibleOnView(R.string.statistics_weight_title, R.id.titleTextView)
+        checkStringIsFullyVisibleInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_weight_tab_name)
+        checkViewIsEnabledInStringTag(R.id.editDataButton, R.string.statistics_weight_tab_name)
         screenshot("Statistics_FirstWeightEntry_Weight")
 
         clickOnFullyVisibleString(R.string.statistics_waist_circumference_tab_name)
         checkStringsAreFullyVisible(R.string.statistics_waist_circumference_title)
+        checkStringIsFullyVisibleInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_waist_circumference_tab_name)
+        checkViewIsDisabledInStringTag(R.id.editDataButton, R.string.statistics_waist_circumference_tab_name)
         screenshot("Statistics_FirstWeightEntry_WaistCircumference")
 
         clickOnFullyVisibleView(R.id.statisticsSpeedDial)
@@ -141,18 +153,23 @@ class StatisticsTest: EspressoTest() {
         waitForSnackBarToDisappear()
         clickOnFullyVisibleString(R.string.statistics_body_mass_index_tab_name)
         checkStringsAreFullyVisible(R.string.statistics_body_mass_index_title, R.string.statistics_body_mass_index_explanation)
+        checkStringDoesNotExistInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_body_mass_index_tab_name)
         screenshot("Statistics_FirstBothEntries_BodyMassIndex")
 
         clickOnFullyVisibleString(R.string.statistics_body_shape_index_tab_name)
         checkStringsAreFullyVisible(R.string.statistics_body_shape_index_title, R.string.statistics_body_shape_index_explanation)
+        checkStringDoesNotExistInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_body_shape_index_tab_name)
         screenshot("Statistics_FirstBothEntries_BodyShapeIndex")
 
         clickOnFullyVisibleString(R.string.statistics_weight_tab_name)
-        checkStringIsFullyVisibleInView(R.string.statistics_weight_title, R.id.titleTextView)
+        checkStringIsFullyVisibleOnView(R.string.statistics_weight_title, R.id.titleTextView)
+        checkStringIsFullyVisibleInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_weight_tab_name)
+        checkViewIsEnabledInStringTag(R.id.editDataButton, R.string.statistics_waist_circumference_tab_name)
         screenshot("Statistics_FirstBothEntries_Weight")
 
         clickOnFullyVisibleString(R.string.statistics_waist_circumference_tab_name)
-        checkStringsAreFullyVisible(R.string.statistics_waist_circumference_title)
+        checkStringIsFullyVisibleInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_waist_circumference_tab_name)
+        checkViewIsEnabledInStringTag(R.id.editDataButton, R.string.statistics_waist_circumference_tab_name)
         screenshot("Statistics_FirstBothEntries_WaistCircumference")
     }
 }
