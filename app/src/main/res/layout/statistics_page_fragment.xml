@@ -24,11 +24,10 @@
         android:layout_marginHorizontal="@dimen/spacingTiny"
         android:layout_marginTop="@dimen/spacingLarge"
         android:layout_marginBottom="@dimen/spacingMedium"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editDataButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/explanationTextView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/explanationTextView" />
 
     <TextView
         android:id="@+id/explanationTextView"
@@ -43,5 +42,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+    <Button
+        android:id="@+id/editDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_margin="@dimen/spacingMedium"
+        android:text="@string/statistics.edit_data_set_button.title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,6 +32,16 @@
             app:destination="@id/editPersonalData"
             app:enterAnim="@anim/sd_fade_and_translate_in"
             app:exitAnim="@anim/sd_fade_and_translate_out" />
+        <action
+            android:id="@+id/action_statistics_to_editWaistCircumferenceMeasurements"
+            app:destination="@id/editWaistCircumferenceMeasurements"
+            app:enterAnim="@anim/sd_fade_and_translate_in"
+            app:exitAnim="@anim/sd_fade_and_translate_out" />
+        <action
+            android:id="@+id/action_statistics_to_editWeightMeasurements"
+            app:destination="@id/editWeightMeasurements"
+            app:enterAnim="@anim/sd_fade_and_translate_in"
+            app:exitAnim="@anim/sd_fade_and_translate_out" />
     </fragment>
 
     <fragment
@@ -67,4 +77,12 @@
             android:name="title"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/editWaistCircumferenceMeasurements"
+        android:name="com.flinesoft.fitnesstracker.ui.statistics.editMeasurements.EditWaistCircumferenceMeasurementsFragment"
+        android:label="@string/statistics.edit_waist_circumference_measurements.title" />
+    <fragment
+        android:id="@+id/editWeightMeasurements"
+        android:name="com.flinesoft.fitnesstracker.ui.statistics.editMeasurements.EditWeightMeasurementsFragment"
+        android:label="@string/statistics.edit_weight_measurements.title" />
 </navigation>

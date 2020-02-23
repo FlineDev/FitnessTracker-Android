@@ -60,12 +60,15 @@
     <string name="statistics.body_shape_index.low_risk_max.legend">Average risk</string>
     <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
     <string name="statistics.body_shape_index.very_low_risk_max.legend">Low risk</string>
+    <string name="statistics.edit_data_set_button.title">Edit data set</string>
     <string name="statistics.edit_personal_data.birth_year.input_dialog_title">Choose birth year</string>
     <string name="statistics.edit_personal_data.birth_year.overline">Birth year:</string>
     <string name="statistics.edit_personal_data.gender.overline">Gender:</string>
     <string name="statistics.edit_personal_data.height.input_dialog_title">Choose height</string>
     <string name="statistics.edit_personal_data.height.overline">Height (in centimeters):</string>
     <string name="statistics.edit_personal_data.title">Change Personal Data</string>
+    <string name="statistics.edit_waist_circumference_measurements.title">Edit Waist Circumferences</string>
+    <string name="statistics.edit_weight_measurements.title">Edit Weights</string>
     <string name="statistics.missing_personal.data_hint">Please enter your personal data to use the statistics feature.</string>
     <string name="statistics.overflow.data">Change personal data</string>
     <string name="statistics.speed_dial.waist_circumference">New waist circumference</string>

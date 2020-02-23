@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsPageFragmentBinding
 import com.flinesoft.fitnesstracker.globals.DownPopLevel
@@ -42,6 +43,7 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
 
         setupTextViews()
         setupLineChart()
+        setupNoDataSetButtonBinding()
 
         return binding.root
     }
@@ -56,7 +58,7 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
     private fun setupLineChart() {
         dataEntriesSet.label = viewModel.legend
 
-        binding.lineChart.setNoDataTextColor(ContextCompat.getColor(context!!, R.color.primaryVariant))
+        binding.lineChart.setNoDataTextColor(ContextCompat.getColor(requireContext(), R.color.primaryVariant))
         binding.lineChart.setNoDataText(viewModel.emptyStateText)
 
         binding.lineChart.data = LineData(styledDataSet(dataEntriesSet))
@@ -65,19 +67,19 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
         viewModel.tresholdEntries.forEach { addTresholdEntry(it) }
         viewModel.dataEntries.observe(viewLifecycleOwner, Observer { updateDataEntries(it) })
 
-        binding.lineChart.setGridBackgroundColor(ContextCompat.getColor(context!!, R.color.primary).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL5))
+        binding.lineChart.setGridBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primary).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL5))
         binding.lineChart.setDrawGridBackground(true)
 
         binding.lineChart.description.isEnabled = false
         binding.lineChart.axisRight.isEnabled = false
 
-        binding.lineChart.legend.textColor = ContextCompat.getColor(context!!, R.color.primary)
+        binding.lineChart.legend.textColor = ContextCompat.getColor(requireContext(), R.color.primary)
         binding.lineChart.legend.textSize = defaultTextSize
         binding.lineChart.legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
 
-        binding.lineChart.axisLeft.textColor = ContextCompat.getColor(context!!, R.color.onBackground).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL2)
+        binding.lineChart.axisLeft.textColor = ContextCompat.getColor(requireContext(), R.color.onBackground).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL2)
         binding.lineChart.axisLeft.setDrawGridLines(false)
-        binding.lineChart.xAxis.textColor = ContextCompat.getColor(context!!, R.color.onBackground).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL2)
+        binding.lineChart.xAxis.textColor = ContextCompat.getColor(requireContext(), R.color.onBackground).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL2)
         binding.lineChart.xAxis.setDrawGridLines(false)
 
         binding.lineChart.xAxis.granularity = 1.days.inMilliseconds.toFloat()
@@ -88,14 +90,14 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
             }
         }
 
-        binding.lineChart.setBorderColor(ContextCompat.getColor(context!!, R.color.onBackground))
+        binding.lineChart.setBorderColor(ContextCompat.getColor(requireContext(), R.color.onBackground))
     }
 
     private fun addTresholdEntry(tresholdEntry: StatisticsPageViewModel.TresholdEntry) {
         val limitLine = LimitLine(tresholdEntry.value.toFloat(), tresholdEntry.legend)
 
         limitLine.lineColor = tresholdEntry.color
-        limitLine.textColor = ContextCompat.getColor(context!!, R.color.onBackground).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL2)
+        limitLine.textColor = ContextCompat.getColor(requireContext(), R.color.onBackground).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL2)
         limitLine.textSize = defaultTextSize
         limitLine.lineWidth = 3.0f
 
@@ -130,15 +132,24 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
         binding.lineChart.invalidate()
     }
 
+    private fun setupNoDataSetButtonBinding() {
+        viewModel.editDataNavDirections?.let { editDataNavDirections ->
+            viewModel.dataEntries.observe(viewLifecycleOwner, Observer { binding.editDataButton.isEnabled = it.isNotEmpty() })
+            binding.editDataButton.setOnClickListener { findNavController().navigate(editDataNavDirections) }
+        } ?: run {
+            binding.editDataButton.isGone = true
+        }
+    }
+
     private fun styledDataSet(dataSet: LineDataSet): LineDataSet = dataSet.apply {
-        setCircleColor(ContextCompat.getColor(context!!, R.color.primary))
-        circleHoleColor = ContextCompat.getColor(context!!, R.color.background)
+        setCircleColor(ContextCompat.getColor(requireContext(), R.color.primary))
+        circleHoleColor = ContextCompat.getColor(requireContext(), R.color.background)
         circleRadius = 5f
         circleHoleRadius = 3f
 
-        color = ContextCompat.getColor(context!!, R.color.primary)
-        valueTextColor = ContextCompat.getColor(context!!, R.color.primary)
-        highLightColor = ContextCompat.getColor(context!!, R.color.secondary)
+        color = ContextCompat.getColor(requireContext(), R.color.primary)
+        valueTextColor = ContextCompat.getColor(requireContext(), R.color.primary)
+        highLightColor = ContextCompat.getColor(requireContext(), R.color.secondary)
         valueTextSize = defaultTextSize
 
         lineWidth = 2.0f

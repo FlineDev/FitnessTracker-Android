@@ -79,7 +79,7 @@ class WorkoutsFragment : Fragment() {
     private fun setupRecyclerView() {
         historyManager = LinearLayoutManager(context)
         historyAdapter = WorkoutsHistoryAdapter(
-            application = activity!!.application,
+            application = requireActivity().application,
             recoverables = viewModel.latestRecoverables,
             itemOnClickListener = View.OnClickListener { onItemClicked(it) },
             itemOnLongClickListener = View.OnLongClickListener { onItemLongClick(it) }

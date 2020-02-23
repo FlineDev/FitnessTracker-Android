@@ -47,7 +47,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         ),
         explanation = application.getString(R.string.statistics_body_mass_index_explanation),
         emptyStateText = application.getString(R.string.statistics_body_mass_index_empty_data),
-        legend = application.getString(R.string.statistics_body_mass_index_legend)
+        legend = application.getString(R.string.statistics_body_mass_index_legend),
+        editDataNavDirections = null
     )
 
     // Source: https://www.mytecbits.com/tools/medical/absi-calculator
@@ -78,7 +79,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         ),
         explanation = application.getString(R.string.statistics_body_shape_index_explanation),
         emptyStateText = application.getString(R.string.statistics_body_shape_index_empty_data),
-        legend = application.getString(R.string.statistics_body_shape_index_legend)
+        legend = application.getString(R.string.statistics_body_shape_index_legend),
+        editDataNavDirections = null
     )
 
     private val weightPageViewModel = StatisticsPageViewModel(
@@ -87,7 +89,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         tresholdEntries = emptyList(),
         explanation = null,
         emptyStateText = application.getString(R.string.statistics_weight_empty_data),
-        legend = application.getString(R.string.statistics_weight_legend)
+        legend = application.getString(R.string.statistics_weight_legend),
+        editDataNavDirections = StatisticsFragmentDirections.actionStatisticsToEditWeightMeasurements()
     )
 
     private val waistCircumferencePageViewModel = StatisticsPageViewModel(
@@ -109,7 +112,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         ),
         explanation = null,
         emptyStateText = application.getString(R.string.statistics_waist_circumference_empty_data),
-        legend = application.getString(R.string.statistics_waist_circumference_legend)
+        legend = application.getString(R.string.statistics_waist_circumference_legend),
+        editDataNavDirections = StatisticsFragmentDirections.actionStatisticsToEditWaistCircumferenceMeasurements()
     )
 
     init {
