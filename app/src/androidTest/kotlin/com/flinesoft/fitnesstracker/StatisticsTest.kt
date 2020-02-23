@@ -1,5 +1,6 @@
 package com.flinesoft.fitnesstracker
 
+import androidx.test.espresso.Espresso.pressBack
 import com.flinesoft.fitnesstracker.helpers.EspressoTest
 import com.flinesoft.fitnesstracker.helpers.TestContext
 import org.junit.Test
@@ -171,5 +172,15 @@ class StatisticsTest: EspressoTest() {
         checkStringIsFullyVisibleInStringTag(R.string.statistics_edit_data_set_button_title, R.string.statistics_waist_circumference_tab_name)
         checkViewIsEnabledInStringTag(R.id.editDataButton, R.string.statistics_waist_circumference_tab_name)
         screenshot("Statistics_FirstBothEntries_WaistCircumference")
+
+        clickOnFullyVisibleString(R.string.statistics_edit_data_set_button_title)
+        checkStringsAreFullyVisible(R.string.statistics_edit_waist_circumference_measurements_title)
+        screenshot("Statistics_FirstBothEntries_EditWaistCircumferences")
+
+        pressBack()
+        clickOnFullyVisibleString(R.string.statistics_weight_tab_name)
+        clickOnFullyVisibleString(R.string.statistics_edit_data_set_button_title)
+        checkStringsAreFullyVisible(R.string.statistics_edit_weight_measurements_title)
+        screenshot("Statistics_FirstBothEntries_EditWeights")
     }
 }
