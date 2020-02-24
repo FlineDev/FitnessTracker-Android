@@ -1,6 +1,9 @@
 package com.flinesoft.fitnesstracker.globals
 
 import android.net.Uri
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
+import kotlin.time.days
 
 // Source: https://en.wikipedia.org/wiki/Body_mass_index
 const val BODY_MASS_INDEX_LOWER_HIGH_RISK: Double = 16.0
@@ -44,3 +47,7 @@ const val DEFAULT_REMINDERS_ON: Boolean = true
 const val DEFAULT_REMINDER_DAYS_COUNT: Int = 7
 
 const val DEFAULT_MODAL_PRESENTATION_DELAY: Long = 300
+
+@ExperimentalTime
+val MOVING_AVERAGE_WEIGHT_STEP_DURATION: Duration = 1.days
+const val MOVING_AVERAGE_MIN_DATA_ENTRIES: Int = 4

@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.flinesoft.fitnesstracker.globals.BETWEEN_WORKOUTS_POSITIVE_DAYS
 import com.flinesoft.fitnesstracker.globals.BETWEEN_WORKOUTS_POSITIVE_PLUS_WARNING_DAYS
+import com.flinesoft.fitnesstracker.globals.extensions.plusKt
 import org.joda.time.DateTime
 import kotlin.time.*
 
@@ -21,7 +22,7 @@ data class Workout(var type: Type, override var startDate: DateTime, override va
         get() = endDate
 
     override val recoveryEndDate: DateTime
-        get() = endDate.plus(recoveryDuration.toLongMilliseconds())
+        get() = endDate.plusKt(recoveryDuration)
 
     override val recoveryDuration: Duration
         get() = when (type) {

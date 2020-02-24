@@ -11,6 +11,7 @@ import com.flinesoft.fitnesstracker.globals.DEFAULT_REMINDER_DAYS_COUNT
 import com.flinesoft.fitnesstracker.globals.NotificationHelper
 import com.flinesoft.fitnesstracker.globals.PREVENT_NEXT_DAY_WHEN_WORKOUT_WITHIN_HOURS
 import com.flinesoft.fitnesstracker.globals.extensions.database
+import com.flinesoft.fitnesstracker.globals.extensions.plusKt
 import com.flinesoft.fitnesstracker.model.Impediment
 import com.flinesoft.fitnesstracker.model.Recoverable
 import com.flinesoft.fitnesstracker.model.Workout
@@ -45,7 +46,7 @@ class WorkoutsViewModel(application: Application) : AndroidViewModel(application
         if (AppPreferences.onDayReminderOn) {
             var nextReminderDate = suggestedNextWorkoutDate()
                 .withTimeAtStartOfDay()
-                .plus(AppPreferences.onDayReminderDelay.toLongMilliseconds())
+                .plusKt(AppPreferences.onDayReminderDelay)
 
             while (nextReminderDate < DateTime.now()) {
                 nextReminderDate = nextReminderDate.plusDays(1)
