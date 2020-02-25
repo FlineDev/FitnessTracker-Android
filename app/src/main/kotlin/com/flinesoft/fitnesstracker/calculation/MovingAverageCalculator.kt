@@ -52,7 +52,7 @@ object MovingAverageCalculator {
         dataEntries: List<DataEntry>,
         minDataEntriesCount: Int
     ): List<DataEntry>? {
-        val firstEntryAfterDate = dataEntries.firstOrNull { it.measureDate.isAfter(toDate) } ?: return null
+        val firstEntryAfterDate = dataEntries.firstOrNull { it.measureDate.isAfter(toDate) }
         val lastEntryBeforeInterval = dataEntries.lastOrNull { it.measureDate.isBefore(fromDate) }
 
         val dataEntriesInInterval = dataEntries
@@ -72,7 +72,7 @@ object MovingAverageCalculator {
         }
         projectedFirstDataEntry?.let { dataEntriesInInterval.add(0, it) }
 
-        val projectedLastDataEntry = firstEntryAfterDate.run {
+        val projectedLastDataEntry = firstEntryAfterDate?.run {
             val lastEntry = dataEntriesInInterval.last()
             DataEntry(
                 measureDate = toDate,
@@ -80,7 +80,7 @@ object MovingAverageCalculator {
                             measureDate.durationSince(lastEntry.measureDate).inSeconds
             )
         }
-        dataEntriesInInterval.add(projectedLastDataEntry)
+        projectedLastDataEntry?.let { dataEntriesInInterval.add(it) }
 
         return dataEntriesInInterval
     }

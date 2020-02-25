@@ -48,6 +48,9 @@ const val DEFAULT_REMINDER_DAYS_COUNT: Int = 7
 
 const val DEFAULT_MODAL_PRESENTATION_DELAY: Long = 300
 
-@ExperimentalTime
-val MOVING_AVERAGE_WEIGHT_STEP_DURATION: Duration = 1.days
 const val MOVING_AVERAGE_MIN_DATA_ENTRIES: Int = 3
+@ExperimentalTime
+val MOVING_AVERAGE_DATE_ENTRY_STEP_DURATION: Duration = 3.days
+@ExperimentalTime
+val MOVING_AVERAGE_TIME_INTERVAL_TO_CONSIDER: Duration = 14.days
+const val MOVING_AVERAGE_MAX_WEIGHT_FACTOR: Double = 15.0

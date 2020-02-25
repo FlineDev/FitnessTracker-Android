@@ -11,10 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.calculation.MovingAverageCalculator
 import com.flinesoft.fitnesstracker.databinding.StatisticsPageFragmentBinding
-import com.flinesoft.fitnesstracker.globals.DownPopLevel
+import com.flinesoft.fitnesstracker.globals.*
+import com.flinesoft.fitnesstracker.globals.extensions.durationSince
+import com.flinesoft.fitnesstracker.globals.extensions.minusKt
 import com.flinesoft.fitnesstracker.globals.extensions.withAlphaDownPoppedToLevel
-import com.flinesoft.fitnesstracker.globals.runIfDebugForTesting
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.LimitLine
@@ -22,6 +24,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
+import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import kotlin.math.max
 import kotlin.math.min
@@ -32,7 +35,8 @@ import kotlin.time.days
 class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment() {
     private lateinit var binding: StatisticsPageFragmentBinding
 
-    private val dataEntriesSet: LineDataSet = LineDataSet(emptyList(), "TODO")
+    private val measurementsDataEntriesSet: LineDataSet = LineDataSet(emptyList(), "TODO")
+    private val movingAveragesDataEntriesSet: LineDataSet = LineDataSet(emptyList(), "TODO")
 
     private val defaultTextSize: Float = 13.0f
 
@@ -61,12 +65,13 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
 
     @SuppressLint("ResourceType")
     private fun setupLineChart() {
-        dataEntriesSet.label = viewModel.legend
+        measurementsDataEntriesSet.label = viewModel.measurementsLegend
+        movingAveragesDataEntriesSet.label = viewModel.movingAveragesLegend
 
         binding.lineChart.setNoDataTextColor(ContextCompat.getColor(requireContext(), R.color.primaryVariant))
         binding.lineChart.setNoDataText(viewModel.emptyStateText)
 
-        binding.lineChart.data = LineData(styledDataSet(dataEntriesSet))
+        binding.lineChart.data = LineData(styledMeasurementsDataSet(measurementsDataEntriesSet), styledMovingAveragesDataSet(movingAveragesDataEntriesSet))
         binding.lineChart.invalidate()
 
         viewModel.tresholdEntries.forEach { addTresholdEntry(it) }
@@ -114,7 +119,8 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
         // NOTE: Workaround for this issue: https://github.com/PhilJay/MPAndroidChart/issues/2203
         xAxisOffsetMillis = dataEntries.firstOrNull()?.measureDate?.millis
 
-        dataEntriesSet.values = dataEntries.map { dataEntryToEntry(it) }
+        measurementsDataEntriesSet.values = dataEntries.map { dataEntryToEntry(it) }
+        movingAveragesDataEntriesSet.values = buildMovingAveragesDataEntries(dataEntries).map { dataEntryToEntry(it) }
 
         if (dataEntries.isNotEmpty() && binding.lineChart.axisLeft.limitLines.isNotEmpty()) {
             binding.lineChart.axisLeft.axisMinimum =
@@ -128,13 +134,36 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
             binding.lineChart.axisLeft.axisMaximum += binding.lineChart.axisLeft.mAxisRange / 10f
         }
 
-        if (dataEntriesSet.values.isNotEmpty()) {
-            binding.lineChart.data = LineData(styledDataSet(dataEntriesSet))
+        if (measurementsDataEntriesSet.values.isNotEmpty()) {
+            binding.lineChart.data = LineData(styledMeasurementsDataSet(measurementsDataEntriesSet), styledMovingAveragesDataSet(movingAveragesDataEntriesSet))
         } else {
             binding.lineChart.clear()
         }
 
         binding.lineChart.invalidate()
+    }
+
+    private fun buildMovingAveragesDataEntries(dataEntries: List<StatisticsPageViewModel.DataEntry>): List<StatisticsPageViewModel.DataEntry> {
+        dataEntries.firstOrNull()?.let { firstDataEntry ->
+            val movingAverageDataEntries = dataEntries.map { MovingAverageCalculator.DataEntry(measureDate = it.measureDate, value = it.value) }
+            val durationSinceFirstDataEntry = DateTime.now().durationSince(firstDataEntry.measureDate)
+            val dataEntriesCount = (durationSinceFirstDataEntry / MOVING_AVERAGE_DATE_ENTRY_STEP_DURATION).toInt()
+            var entries: MutableList<StatisticsPageViewModel.DataEntry> = mutableListOf()
+
+            for (step in 0..dataEntriesCount) {
+                val date = DateTime.now().minusKt(MOVING_AVERAGE_DATE_ENTRY_STEP_DURATION.times(dataEntriesCount - step))
+                val movingAverage = MovingAverageCalculator.calculateMovingAverageAt(
+                    date = date,
+                    timeIntervalToConsider = MOVING_AVERAGE_TIME_INTERVAL_TO_CONSIDER,
+                    dataEntries = movingAverageDataEntries,
+                    minDataEntriesCount = MOVING_AVERAGE_MIN_DATA_ENTRIES,
+                    maxWeightFactor = MOVING_AVERAGE_MAX_WEIGHT_FACTOR
+                )
+                movingAverage?.let { entries.add(StatisticsPageViewModel.DataEntry(measureDate = date, value = it)) }
+            }
+
+            return entries
+        } ?: return emptyList()
     }
 
     private fun setupNoDataSetButtonBinding() {
@@ -146,7 +175,7 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
         }
     }
 
-    private fun styledDataSet(dataSet: LineDataSet): LineDataSet = dataSet.apply {
+    private fun styledMeasurementsDataSet(dataSet: LineDataSet): LineDataSet = dataSet.apply {
         setCircleColor(ContextCompat.getColor(requireContext(), R.color.primary))
         circleHoleColor = ContextCompat.getColor(requireContext(), R.color.background)
         circleRadius = 5f
@@ -157,7 +186,20 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
         highLightColor = ContextCompat.getColor(requireContext(), R.color.secondary)
         valueTextSize = defaultTextSize
 
-        lineWidth = 2.0f
+        lineWidth = 1.5f
+        mode = LineDataSet.Mode.LINEAR
+        setDrawValues(false)
+    }
+
+    private fun styledMovingAveragesDataSet(dataSet: LineDataSet): LineDataSet = dataSet.apply {
+        color = ContextCompat.getColor(requireContext(), R.color.secondary)
+        valueTextColor = ContextCompat.getColor(requireContext(), R.color.secondary)
+        highLightColor = ContextCompat.getColor(requireContext(), R.color.primary)
+        valueTextSize = defaultTextSize
+
+        lineWidth = 3.0f
+        mode = LineDataSet.Mode.CUBIC_BEZIER
+        setDrawCircles(false)
         setDrawValues(false)
     }
 

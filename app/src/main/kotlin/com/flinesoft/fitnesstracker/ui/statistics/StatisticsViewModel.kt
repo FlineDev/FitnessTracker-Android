@@ -47,7 +47,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         ),
         explanation = application.getString(R.string.statistics_body_mass_index_explanation),
         emptyStateText = application.getString(R.string.statistics_body_mass_index_empty_data),
-        legend = application.getString(R.string.statistics_body_mass_index_legend),
+        measurementsLegend = application.getString(R.string.statistics_body_mass_index_measurements_legend),
+        movingAveragesLegend = application.getString(R.string.statistics_body_mass_index_moving_averages_legend),
         editDataNavDirections = null
     )
 
@@ -79,7 +80,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         ),
         explanation = application.getString(R.string.statistics_body_shape_index_explanation),
         emptyStateText = application.getString(R.string.statistics_body_shape_index_empty_data),
-        legend = application.getString(R.string.statistics_body_shape_index_legend),
+        measurementsLegend = application.getString(R.string.statistics_body_shape_index_measurements_legend),
+        movingAveragesLegend = application.getString(R.string.statistics_body_shape_index_moving_averages_legend),
         editDataNavDirections = null
     )
 
@@ -89,7 +91,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         tresholdEntries = emptyList(),
         explanation = null,
         emptyStateText = application.getString(R.string.statistics_weight_empty_data),
-        legend = application.getString(R.string.statistics_weight_legend),
+        measurementsLegend = application.getString(R.string.statistics_weight_measurements_legend),
+        movingAveragesLegend = application.getString(R.string.statistics_weight_moving_averages_legend),
         editDataNavDirections = StatisticsFragmentDirections.actionStatisticsToEditWeightMeasurements()
     )
 
@@ -112,7 +115,8 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         ),
         explanation = null,
         emptyStateText = application.getString(R.string.statistics_waist_circumference_empty_data),
-        legend = application.getString(R.string.statistics_waist_circumference_legend),
+        measurementsLegend = application.getString(R.string.statistics_waist_circumference_measurements_legend),
+        movingAveragesLegend = application.getString(R.string.statistics_waist_circumference_moving_averages_legend),
         editDataNavDirections = StatisticsFragmentDirections.actionStatisticsToEditWaistCircumferenceMeasurements()
     )
 

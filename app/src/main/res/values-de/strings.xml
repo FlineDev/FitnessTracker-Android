@@ -43,8 +43,9 @@
         ]]></string>
     <string name="statistics.body_mass_index.healthy_max_treshold.legend">Gesunder Bereich Maximum</string>
     <string name="statistics.body_mass_index.healthy_min_treshold.legend">Gesunder Bereich Minimum</string>
-    <string name="statistics.body_mass_index.legend">Dein BMI-Wert im Verlauf der Zeit</string>
     <string name="statistics.body_mass_index.lower_high_risk_treshold.legend">Hohes Risiko (Untergewicht)</string>
+    <string name="statistics.body_mass_index.measurements_legend">Dein BMI-Wert im Verlauf der Zeit</string>
+    <string name="statistics.body_mass_index.moving_averages_legend">Trendlinie</string>
     <string name="statistics.body_mass_index.tab_name">BMI</string>
     <string name="statistics.body_mass_index.title">Body-Mass-Index (BMI)</string>
     <string name="statistics.body_mass_index.upper_high_risk_treshold.legend">Hohes Risiko (Übergewicht)</string>
@@ -56,8 +57,9 @@
             Ein Wert von 0 steht für das durchschnittliche Gesundheitsrisiko der Vergleichsgruppe (nach Alter & Geschlecht) in der US-Bevölkerung.
         ]]></string>
     <string name="statistics.body_shape_index.high_risk_max.legend">Sehr hohes Risiko</string>
-    <string name="statistics.body_shape_index.legend">Dein ABSI-Z-Wert im Verlauf der Zeit</string>
     <string name="statistics.body_shape_index.low_risk_max.legend">Durchschnittliches Risiko</string>
+    <string name="statistics.body_shape_index.measurements_legend">Dein ABSI-Z-Wert im Verlauf der Zeit</string>
+    <string name="statistics.body_shape_index.moving_averages_legend">Trendlinie</string>
     <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
     <string name="statistics.body_shape_index.very_low_risk_max.legend">Geringes Risiko</string>
     <string name="statistics.edit_data_set_button.title">Datensatz bearbeiten</string>
@@ -78,11 +80,13 @@
     <string name="statistics.waist_circumference.empty_data">Keine Taillenmessungen verfügbar.</string>
     <string name="statistics.waist_circumference.healthy_max.legend">Erhöhtes Risiko</string>
     <string name="statistics.waist_circumference.high_risk.legend">Hohes Risiko</string>
-    <string name="statistics.waist_circumference.legend">Dein Taillenumfang im Verlauf der Zeit</string>
+    <string name="statistics.waist_circumference.measurements_legend">Dein Taillenumfang im Verlauf der Zeit</string>
+    <string name="statistics.waist_circumference.moving_averages_legend">Trendlinie</string>
     <string name="statistics.waist_circumference.tab_name">Taille</string>
     <string name="statistics.waist_circumference.title">Taillenumfang</string>
     <string name="statistics.weight.empty_data">Keine Gewichtsmessungen verfügbar.</string>
-    <string name="statistics.weight.legend">Dein Gewicht im Verlauf der Zeit</string>
+    <string name="statistics.weight.measurements_legend">Dein Gewicht im Verlauf der Zeit</string>
+    <string name="statistics.weight.moving_averages_legend">Trendlinie</string>
     <string name="statistics.weight.tab_name">Gewicht</string>
     <string name="statistics.weight.title">Gewicht</string>
     <string name="tests.sample_data.cold">Erkältung</string>

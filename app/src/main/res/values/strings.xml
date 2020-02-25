@@ -43,8 +43,9 @@
         ]]></string>
     <string name="statistics.body_mass_index.healthy_max_treshold.legend">Healthy range maximum</string>
     <string name="statistics.body_mass_index.healthy_min_treshold.legend">Healthy range minimum</string>
-    <string name="statistics.body_mass_index.legend">Your BMI value over time</string>
     <string name="statistics.body_mass_index.lower_high_risk_treshold.legend">High risk (underweight)</string>
+    <string name="statistics.body_mass_index.measurements_legend">Your BMI value over time</string>
+    <string name="statistics.body_mass_index.moving_averages_legend">Trendline</string>
     <string name="statistics.body_mass_index.tab_name">BMI</string>
     <string name="statistics.body_mass_index.title">Body Mass Index (BMI)</string>
     <string name="statistics.body_mass_index.upper_high_risk_treshold.legend">High risk (overweight)</string>
@@ -56,8 +57,9 @@
             A value of 0 represents the average health risk of the reference group (by age & gender) within the US population.
         ]]></string>
     <string name="statistics.body_shape_index.high_risk_max.legend">Very high risk</string>
-    <string name="statistics.body_shape_index.legend">Your ABSI z score over time</string>
     <string name="statistics.body_shape_index.low_risk_max.legend">Average risk</string>
+    <string name="statistics.body_shape_index.measurements_legend">Your ABSI Z score over time</string>
+    <string name="statistics.body_shape_index.moving_averages_legend">Trendline</string>
     <string name="statistics.body_shape_index.title">A Body Shape Index (ABSI)</string>
     <string name="statistics.body_shape_index.very_low_risk_max.legend">Low risk</string>
     <string name="statistics.edit_data_set_button.title">Edit data set</string>
@@ -78,11 +80,13 @@
     <string name="statistics.waist_circumference.empty_data">No waist measurements available.</string>
     <string name="statistics.waist_circumference.healthy_max.legend">Increased Risk</string>
     <string name="statistics.waist_circumference.high_risk.legend">High Risk</string>
-    <string name="statistics.waist_circumference.legend">Your waist circumference over time</string>
+    <string name="statistics.waist_circumference.measurements_legend">Your waist circumference over time</string>
+    <string name="statistics.waist_circumference.moving_averages_legend">Trendline</string>
     <string name="statistics.waist_circumference.tab_name">Waist</string>
     <string name="statistics.waist_circumference.title">Waist Circumference</string>
     <string name="statistics.weight.empty_data">No weight measurements available.</string>
-    <string name="statistics.weight.legend">Your weight over time</string>
+    <string name="statistics.weight.measurements_legend">Your weight over time</string>
+    <string name="statistics.weight.moving_averages_legend">Trendline</string>
     <string name="statistics.weight.tab_name">Weight</string>
     <string name="statistics.weight.title">Weight</string>
     <string name="tests.sample_data.cold">Cold</string>

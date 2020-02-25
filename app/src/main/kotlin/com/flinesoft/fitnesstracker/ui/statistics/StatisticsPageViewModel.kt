@@ -13,7 +13,8 @@ class StatisticsPageViewModel(
     val tresholdEntries: List<TresholdEntry>,
     val explanation: String?,
     val emptyStateText: String,
-    val legend: String,
+    val measurementsLegend: String,
+    val movingAveragesLegend: String,
     val editDataNavDirections: NavDirections?
 ) : ViewModel() {
     data class DataEntry(override val measureDate: DateTime, override val value: Double) : Measurement {
