@@ -71,13 +71,6 @@ android {
         }
     }
 
-    tasks.whenTaskAdded { task ->
-        if (task.name == 'compileDebugSources' || task.name == 'compileReleaseSources') {
-            task.dependsOn check
-            task.mustRunAfter check
-        }
-    }
-
     dataBinding {
         enabled = true
     }
