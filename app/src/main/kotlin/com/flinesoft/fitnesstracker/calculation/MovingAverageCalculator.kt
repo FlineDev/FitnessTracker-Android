@@ -19,17 +19,25 @@ object MovingAverageCalculator {
         minDataEntriesCount: Int,
         maxWeightFactor: Double
     ): Double? {
+        val fromDate = date.minusKt(timeIntervalToConsider)
+
         val filteredDataEntries = filteredDataEntries(
-            fromDate = date.minusKt(timeIntervalToConsider),
+            fromDate = fromDate,
             toDate = date,
             dataEntries = dataEntries,
             minDataEntriesCount = minDataEntriesCount
         ) ?: return null
 
-        // TODO: [2020-02-23] calculate weighted moving averages – the weighting should be done using the time difference to the requested data
-        // TODO: [2020-02-23] start at 0 (0.1?) for (date - timeIntervalToConsider) and go linearly up to 1 for the projected end value at exactly date
+        var sumOfWeights: Double = 0.0
+        var sumOfWeightedValues: Double = 0.0
 
-        return null // TODO: [2020-02-23] not yet implemented
+        for (dataEntry in filteredDataEntries) {
+            val weight = weightAt(date = dataEntry.measureDate, fromDate = fromDate, toDate = date, maxWeightFactor = maxWeightFactor)
+            sumOfWeights += weight
+            sumOfWeightedValues += weight * dataEntry.value
+        }
+
+        return sumOfWeightedValues / sumOfWeights
     }
 
     fun weightAt(date: DateTime, fromDate: DateTime, toDate: DateTime, maxWeightFactor: Double): Double {

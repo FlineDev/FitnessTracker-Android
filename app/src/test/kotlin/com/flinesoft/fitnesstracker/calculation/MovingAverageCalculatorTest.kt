@@ -2,6 +2,7 @@ package com.flinesoft.fitnesstracker.calculation
 
 import com.flinesoft.fitnesstracker.globals.extensions.minusKt
 import com.flinesoft.fitnesstracker.globals.extensions.plusKt
+import junit.framework.Assert.assertNull
 import org.joda.time.DateTime
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -13,7 +14,35 @@ import kotlin.time.days
 class MovingAverageCalculatorTest {
     @Test
     fun calculateMovingAverageAt() {
-        // TODO: [2020-02-24] not yet implemented
+        val date = DateTime.now().minusYears(1)
+        val dataEntries: List<MovingAverageCalculator.DataEntry> = listOf(
+            MovingAverageCalculator.DataEntry(measureDate = date.minusDays(20), value = 100.0),
+            MovingAverageCalculator.DataEntry(measureDate = date.minusDays(10), value = 200.0),
+            MovingAverageCalculator.DataEntry(measureDate = date.minusDays(5), value = 150.0),
+            MovingAverageCalculator.DataEntry(measureDate = date.minusDays(1), value = 175.0),
+            MovingAverageCalculator.DataEntry(measureDate = date.plusDays(4), value = 200.0)
+        )
+
+        // Expected: (1 * 160 + 5 * 200 + 10 * 150 + 14 * 175 + 15 * 180) / (1 + 5 + 10 + 14 + 15) = 173.555
+
+        val movingAverage = MovingAverageCalculator.calculateMovingAverageAt(
+            date = date,
+            timeIntervalToConsider = 14.days,
+            dataEntries = dataEntries,
+            minDataEntriesCount = 3,
+            maxWeightFactor = 15.0
+        )
+        assertNotNull(movingAverage)
+        assertEquals(movingAverage!!, 173.555, 0.001)
+
+        val tooFewEntriesMovingAverage = MovingAverageCalculator.calculateMovingAverageAt(
+            date = date,
+            timeIntervalToConsider = 14.days,
+            dataEntries = dataEntries,
+            minDataEntriesCount = 4,
+            maxWeightFactor = 15.0
+        )
+        assertNull(tooFewEntriesMovingAverage)
     }
 
     @Test
