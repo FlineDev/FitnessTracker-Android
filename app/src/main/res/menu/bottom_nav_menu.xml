@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/workouts"
+        android:icon="@drawable/ic_workouts"
+        android:title="@string/workouts.title" />
+
+    <item
+        android:id="@+id/statistics"
+        android:icon="@drawable/ic_statistics"
+        android:title="@string/statistics.title" />
+</menu>

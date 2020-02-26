@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/statistics_speed_dial_weight"
+        android:icon="@drawable/ic_statistics_speed_dial_weight"
+        android:title="@string/statistics.speed_dial.weight" />
+
+    <item
+        android:id="@+id/statistics_speed_dial_waist_circumference"
+        android:icon="@drawable/ic_statistics_speed_dial_waist_circumference"
+        android:title="@string/statistics.speed_dial.waist_circumference" />
+</menu>

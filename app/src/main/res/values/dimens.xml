@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spacingTiny">5dp</dimen>
+    <dimen name="spacingSmall">10dp</dimen>
+    <dimen name="spacingMedium">20dp</dimen>
+    <dimen name="spacingLarge">30dp</dimen>
+    <dimen name="spacingHuge">50dp</dimen>
+
+    <dimen name="component_label_horizontal_margin">@dimen/spacingMedium</dimen>
+
+    <dimen name="elevation_default_top_app_bar">4dp</dimen>
+
+    <!--Emphasis modifiers for "on" colors-->
+    <dimen name="alpha_emphasis_high">@dimen/material_emphasis_high_type</dimen>
+    <dimen name="alpha_emphasis_medium">@dimen/material_emphasis_medium</dimen>
+    <dimen name="alpha_emphasis_disabled">@dimen/material_emphasis_disabled</dimen>
+
+    <!--Downpop levels.-->
+    <dimen name="downPopLevel1">0.88</dimen>
+    <dimen name="downPopLevel2">0.72</dimen>
+    <dimen name="downPopLevel3">0.55</dimen>
+    <dimen name="downPopLevel4">0.28</dimen>
+    <dimen name="downPopLevel5">0.12</dimen>
+</resources>

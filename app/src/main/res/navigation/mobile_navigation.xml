@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/workouts">
+
+    <fragment
+        android:id="@+id/workouts"
+        android:name="com.flinesoft.fitnesstracker.ui.workouts.WorkoutsFragment"
+        android:label="@string/workouts.title">
+        <action
+            android:id="@+id/action_workouts_to_editWorkout"
+            app:destination="@id/editWorkout"
+            app:enterAnim="@anim/sd_fade_and_translate_in"
+            app:exitAnim="@anim/sd_fade_and_translate_out" />
+        <action
+            android:id="@+id/action_workouts_to_editReminders"
+            app:destination="@id/editReminders" />
+        <action
+            android:id="@+id/action_workouts_to_editImpediment"
+            app:destination="@id/editImpediment"
+            app:enterAnim="@anim/sd_fade_and_translate_in"
+            app:exitAnim="@anim/sd_fade_and_translate_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/statistics"
+        android:name="com.flinesoft.fitnesstracker.ui.statistics.StatisticsFragment"
+        android:label="@string/statistics.title" >
+        <action
+            android:id="@+id/action_statistics_to_editPersonalData"
+            app:destination="@id/editPersonalData"
+            app:enterAnim="@anim/sd_fade_and_translate_in"
+            app:exitAnim="@anim/sd_fade_and_translate_out" />
+        <action
+            android:id="@+id/action_statistics_to_editWaistCircumferenceMeasurements"
+            app:destination="@id/editWaistCircumferenceMeasurements"
+            app:enterAnim="@anim/sd_fade_and_translate_in"
+            app:exitAnim="@anim/sd_fade_and_translate_out" />
+        <action
+            android:id="@+id/action_statistics_to_editWeightMeasurements"
+            app:destination="@id/editWeightMeasurements"
+            app:enterAnim="@anim/sd_fade_and_translate_in"
+            app:exitAnim="@anim/sd_fade_and_translate_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editWorkout"
+        android:name="com.flinesoft.fitnesstracker.ui.workouts.editWorkout.EditWorkoutFragment"
+        android:label="{title}" >
+        <argument
+            android:name="existingWorkoutId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editPersonalData"
+        android:name="com.flinesoft.fitnesstracker.ui.statistics.editPersonalData.EditPersonalDataFragment"
+        android:label="@string/statistics.edit_personal_data.title" />
+    <fragment
+        android:id="@+id/editReminders"
+        android:name="com.flinesoft.fitnesstracker.ui.workouts.editReminders.EditRemindersFragment"
+        android:label="@string/workouts.edit_reminders.title" />
+    <fragment
+        android:id="@+id/editImpediment"
+        android:name="com.flinesoft.fitnesstracker.ui.workouts.editImpediment.EditImpedimentFragment"
+        android:label="{title}">
+        <argument
+            android:name="existingImpedimentId"
+            android:defaultValue="-1L"
+            app:argType="long" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/editWaistCircumferenceMeasurements"
+        android:name="com.flinesoft.fitnesstracker.ui.statistics.editMeasurements.EditWaistCircumferenceMeasurementsFragment"
+        android:label="@string/statistics.edit_waist_circumference_measurements.title" />
+    <fragment
+        android:id="@+id/editWeightMeasurements"
+        android:name="com.flinesoft.fitnesstracker.ui.statistics.editMeasurements.EditWeightMeasurementsFragment"
+        android:label="@string/statistics.edit_weight_measurements.title" />
+</navigation>

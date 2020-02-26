@@ -1,0 +1,15 @@
+package com.flinesoft.fitnesstracker.globals.extensions
+
+import android.view.View
+import android.view.ViewGroup.MarginLayoutParams
+import androidx.annotation.StringRes
+import com.google.android.material.snackbar.Snackbar
+
+fun View.snack(@StringRes resId: Int, duration: Int = Snackbar.LENGTH_SHORT) {
+    Snackbar.make(this, resId, duration).apply {
+        (view.layoutParams as? MarginLayoutParams)?.apply {
+            // TODO: changing bottom margin doesn't work, left & right are working though ...
+            setMargins(leftMargin, topMargin, rightMargin, bottomMargin + height / 5)
+        }
+    }.show()
+}

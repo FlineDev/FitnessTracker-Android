@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="workoutTypes">
+        <item>@string/models.workout_type.cardio</item>
+        <item>@string/models.workout_type.muscle_building</item>
+    </string-array>
+
+    <string-array name="genders">
+        <item>@string/models.gender.female</item>
+        <item>@string/models.gender.male</item>
+    </string-array>
+
+</resources>

@@ -1,35 +1,173 @@
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.2.2"
+}
+
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+apply from: file("jacoco.gradle")
+apply from: file("detekt.gradle")
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
-    defaultConfig {
-        applicationId "com.example.fitnesstracker"
-        minSdkVersion 26
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        applicationId "com.flinesoft.fitnesstracker"
+        minSdkVersion 28
+        targetSdkVersion 29
+        versionCode 2
+        versionName "1.0.0-beta1"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString(), "room.incremental": "true"]
+            }
+        }
+    }
+
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        warningsAsErrors true
+        abortOnError true
+
+        lintConfig file("lint.xml")
+    }
+
+    testOptions {
+        animationsDisabled true
+
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
+    // Basics
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version_kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$version_kotlin"
+
+    // Support libraries
+    implementation "androidx.appcompat:appcompat:$version_appcompat"
+    implementation "androidx.fragment:fragment:$version_fragment"
+    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+
+    // Android KTX
+    implementation "androidx.core:core-ktx:$version_core"
+
+    // Room
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+    implementation "androidx.room:room-ktx:$version_room"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutine"
+
+    // Material Design
+    implementation "com.google.android.material:material:$version_material"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
+
+    // RecyclerView
+    implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
+
+    // WorkManager
+    implementation "androidx.work:work-runtime-ktx:$version_work"
+
+    // Paging
+    implementation "androidx.paging:paging-runtime-ktx:$version_paging"
+
+    // Logging
+    implementation "com.jakewharton.timber:timber:$version_timber"
+
+    // Moshi
+    implementation "com.squareup.moshi:moshi:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    // Retrofit with Moshi Converter
+    implementation "com.squareup.retrofit2:retrofit:${version_retrofit}"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+
+    // Retrofit Coroutines Support
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+
+    // A Floating Action Button Speed Dial implementation for Android that follows the Material Design specification
+    implementation "com.leinardi.android:speed-dial:$version_speed_dial"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$version_glide"
+
+    // Joda time library for dealing with time
+    implementation "joda-time:joda-time:$version_joda"
+
+    // A powerful 🚀 Android chart view / graph view library
+    implementation "com.github.PhilJay:MPAndroidChart:$version_chart"
+
+    // Make a cool intro for your Android app
+    implementation "com.github.AppIntro:AppIntro:$version_app_intro"
+
+    // Testing
+    testImplementation "junit:junit:$version_junit"
+    testImplementation "androidx.room:room-testing:$version_room"
+
+    testImplementation "androidx.test:core:$version_core_testing"
+    testImplementation "androidx.test.ext:junit:$version_junit_ext"
+
+    androidTestImplementation "androidx.test:core:$version_core_testing"
+    androidTestImplementation "androidx.test:runner:$version_test_runner"
+    androidTestImplementation "androidx.test:rules:$version_test_rules"
+    androidTestImplementation "androidx.test.ext:junit:$version_junit_ext"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$version_junit_ext"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$version_espresso"
+    androidTestImplementation "android.arch.core:core-testing:$version_core_testing"
+    androidTestImplementation "tools.fastlane:screengrab:$version_screengrab"
+
+    // Linting
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$version_detekt"
 }
