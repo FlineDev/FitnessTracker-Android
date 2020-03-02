@@ -3,9 +3,9 @@
         <img src="https://app.bitrise.io/app/f42a1e81bd77a859/status.svg?token=TnM9D2t2Acm9d3J5cpSv0w&branch=main"
             alt="Build Status">
     </a>
-    <a href="https://codeclimate.com/github/Flinesoft/FitnessTracker-Android/maintainability">
-        <img src="https://api.codeclimate.com/v1/badges/d1a64335934171d77a4c/maintainability"
-             alt="Maintainability"/>
+    <a href="https://www.codacy.com/gh/Flinesoft/FitnessTracker-Android">
+        <img src="https://api.codacy.com/project/badge/Grade/b283bc9b62c446b9a3166f707ae8f5a8"
+             alt="Code Quality"/>
     </a>
     <img src="https://img.shields.io/badge/Coverage-79%25-green.svg"
          alt="Coverage: 79%">
@@ -13,10 +13,6 @@
         <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg"
              alt="Version: 1.0.0">
     </a>
-    <img src="https://img.shields.io/badge/Kotlin-1.3-FFAC45.svg"
-         alt="Kotlin: 1.3">
-    <img src="https://img.shields.io/badge/Platforms-Android-FF69B4.svg"
-        alt="Platforms: Android">
     <a href="https://github.com/Flinesoft/FitnessTracker-Android/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-GPL--3.0-lightgrey.svg"
              alt="License: GPL-3.0">
