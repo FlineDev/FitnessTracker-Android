@@ -7,7 +7,7 @@
         <img src="https://api.codeclimate.com/v1/badges/d1a64335934171d77a4c/maintainability"
              alt="Maintainability"/>
     </a>
-    <img src="https://img.shields.io/badge/Coverage-79%25-cyan.svg"
+    <img src="https://img.shields.io/badge/Coverage-79%25-green.svg"
          alt="Coverage: 79%">
     <a href="https://github.com/Flinesoft/FitnessTracker-Android/releases">
         <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg"
