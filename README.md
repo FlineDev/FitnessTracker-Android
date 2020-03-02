@@ -7,7 +7,7 @@
         <img src="https://api.codeclimate.com/v1/badges/d1a64335934171d77a4c/maintainability"
              alt="Maintainability"/>
     </a>
-    <img src="https://img.shields.io/badge/Coverage-79%-cyan.svg"
+    <img src="https://img.shields.io/badge/Coverage-79%25-cyan.svg"
          alt="Coverage: 79%">
     <a href="https://github.com/Flinesoft/FitnessTracker-Android/releases">
         <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg"
@@ -57,7 +57,7 @@ Just open the project in Android Studio 3.6+ and let Gradle do it's work. :)
 You can get code coverage reports by just running:
 
 ```bash
-./gradlew jacocoTestReport
+./gradlew jacocoTestReport && ./update_coverage_badge.rb
 ```
 
 ## Screenshots
