@@ -13,7 +13,7 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 @RunWith(AndroidJUnit4::class)
-class WorkoutTest: PersistenceTest() {
+class WorkoutTest : PersistenceTest() {
     @Test
     @Throws(Exception::class)
     fun runBasicCRUDOperations() = runBlocking {

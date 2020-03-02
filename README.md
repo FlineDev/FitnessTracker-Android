@@ -7,8 +7,10 @@
         <img src="https://api.codacy.com/project/badge/Grade/b283bc9b62c446b9a3166f707ae8f5a8"
              alt="Code Quality"/>
     </a>
-    <img src="https://img.shields.io/badge/Coverage-79%25-green.svg"
-         alt="Coverage: 79%">
+    <a href="https://www.codacy.com/gh/Flinesoft/FitnessTracker-Android">
+        <img src="https://api.codacy.com/project/badge/Coverage/b283bc9b62c446b9a3166f707ae8f5a8"
+             alt="Coverage"/>
+    </a>
     <a href="https://github.com/Flinesoft/FitnessTracker-Android/releases">
         <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg"
              alt="Version: 1.0.0">
@@ -53,7 +55,7 @@ Just open the project in Android Studio 3.6+ and let Gradle do it's work. :)
 You can get code coverage reports by just running:
 
 ```bash
-./gradlew jacocoTestReport && ./update_coverage_badge.rb
+./gradlew jacocoTestReport && bash <(curl -Ls https://coverage.codacy.com/get.sh)
 ```
 
 ## Screenshots
@@ -75,7 +77,6 @@ fastlane screengrab_variants class:SampleDataTest
 FitnessTracker was brought to you by [Cihat Gündüz](https://github.com/Jeehut) in his free time. If you want to thank me and support the development of this project, please **make a small donation on [PayPal](https://paypal.me/Dschee/5EUR)**. In case you also like my other [open source contributions](https://github.com/Flinesoft) and [articles](https://medium.com/@Jeehut), please consider motivating me by **becoming a sponsor on [GitHub](https://github.com/sponsors/Jeehut)** or a **patron on [Patreon](https://www.patreon.com/Jeehut)**.
 
 Thank you very much for any donation, it really helps out a lot! 💯
-
 
 ## Contributing
 

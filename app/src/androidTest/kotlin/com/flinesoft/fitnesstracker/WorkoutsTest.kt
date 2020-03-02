@@ -8,7 +8,7 @@ import tools.fastlane.screengrab.Screengrab.screenshot
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
-class WorkoutsTest: EspressoTest() {
+class WorkoutsTest : EspressoTest() {
     override fun prepareContext() {
         TestContext.resetAll()
         TestContext.skipOnboarding()
