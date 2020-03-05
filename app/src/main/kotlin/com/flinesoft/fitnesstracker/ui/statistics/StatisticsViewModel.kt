@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.calculation.BodyMassIndexCalculator
 import com.flinesoft.fitnesstracker.calculation.BodyShapeIndexCalculator
-import com.flinesoft.fitnesstracker.globals.*
+import com.flinesoft.fitnesstracker.globals.AppPreferences
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.globals.extensions.reduceToLatestMeasureDatePerDay
 import com.flinesoft.fitnesstracker.globals.extensions.reduceToLowestValuePerDay

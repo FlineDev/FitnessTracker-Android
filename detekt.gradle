@@ -1,0 +1,14 @@
+apply plugin: 'io.gitlab.arturbosch.detekt'
+
+detekt {
+    toolVersion = version_detekt
+    buildUponDefaultConfig = true
+    input = files("$projectDir/app/src/main/kotlin", "$projectDir/app/src/main/java")
+    config = files("$rootDir/config/detekt.yml")
+    autoCorrect = true
+}
+
+dependencies {
+    // Linting
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$version_detekt"
+}

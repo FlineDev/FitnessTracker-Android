@@ -1,0 +1,27 @@
+complexity:
+  LongParameterList:
+    threshold: 8
+  TooManyFunctions:
+    active: true
+    excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
+    thresholdInFiles: 16
+    thresholdInClasses: 16
+    thresholdInInterfaces: 16
+    thresholdInObjects: 16
+    thresholdInEnums: 16
+    ignoreDeprecated: false
+    ignorePrivate: true
+    ignoreOverridden: true
+
+formatting:
+  android: true
+  MaximumLineLength:
+    maxLineLength: 160
+
+style:
+  ForbiddenComment:
+    active: false
+  MagicNumber:
+    active: false
+  MaxLineLength:
+    maxLineLength: 160

@@ -8,7 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.model.Recoverable
 import java.text.DateFormatSymbols
-import java.util.*
+import java.util.Locale
 import kotlin.time.ExperimentalTime
 import kotlin.time.milliseconds
 

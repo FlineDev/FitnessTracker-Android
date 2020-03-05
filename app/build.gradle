@@ -1,7 +1,3 @@
-plugins {
-    id 'io.gitlab.arturbosch.detekt' version '1.2.2'
-}
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -9,7 +5,6 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 apply from: file("jacoco.gradle")
-apply from: file("detekt.gradle")
 
 android {
     compileSdkVersion 29
@@ -60,7 +55,7 @@ android {
         warningsAsErrors true
         abortOnError true
 
-        lintConfig file("lint.xml")
+        lintConfig file("$rootDir/config/lint.xml")
     }
 
     testOptions {
@@ -167,7 +162,4 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$version_espresso"
     androidTestImplementation "android.arch.core:core-testing:$version_core_testing"
     androidTestImplementation "tools.fastlane:screengrab:$version_screengrab"
-
-    // Linting
-    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$version_detekt"
 }

@@ -13,10 +13,11 @@ import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.calculation.MovingAverageCalculator
 import com.flinesoft.fitnesstracker.databinding.StatisticsPageFragmentBinding
-import com.flinesoft.fitnesstracker.globals.*
+import com.flinesoft.fitnesstracker.globals.DownPopLevel
 import com.flinesoft.fitnesstracker.globals.extensions.durationSince
 import com.flinesoft.fitnesstracker.globals.extensions.minusKt
 import com.flinesoft.fitnesstracker.globals.extensions.withAlphaDownPoppedToLevel
+import com.flinesoft.fitnesstracker.globals.runIfDebugForTesting
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.LimitLine

@@ -2,14 +2,20 @@ package com.flinesoft.fitnesstracker.ui.statistics
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsFragmentBinding
-import com.flinesoft.fitnesstracker.globals.*
+import com.flinesoft.fitnesstracker.globals.AppPreferences
+import com.flinesoft.fitnesstracker.globals.DEFAULT_MODAL_PRESENTATION_DELAY
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.globals.extensions.showWaistCircumferencePickerDialog
 import com.flinesoft.fitnesstracker.globals.extensions.showWeightPickerDialog
