@@ -111,7 +111,6 @@ fabric.properties
 # Generated files
 bin/
 gen/
-out/
 release/
 
 # Gradle files

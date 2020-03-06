@@ -6,5 +6,6 @@
     <issue id="RestrictedApi" severity="ignore" />
     <issue id="Typos" severity="ignore" />
     <issue id="UnusedResources" severity="ignore" />
+    <issue id="UnusedSymbol" severity="ignore" />
     <issue id="VectorPath" severity="ignore" />
 </lint>

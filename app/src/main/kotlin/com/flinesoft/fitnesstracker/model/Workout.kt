@@ -6,7 +6,11 @@ import com.flinesoft.fitnesstracker.globals.BETWEEN_WORKOUTS_POSITIVE_DAYS
 import com.flinesoft.fitnesstracker.globals.BETWEEN_WORKOUTS_POSITIVE_PLUS_WARNING_DAYS
 import com.flinesoft.fitnesstracker.globals.extensions.plusKt
 import org.joda.time.DateTime
+import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
+import kotlin.time.days
+import kotlin.time.hours
+import kotlin.time.milliseconds
 
 @ExperimentalTime
 @Entity(tableName = "Workouts")

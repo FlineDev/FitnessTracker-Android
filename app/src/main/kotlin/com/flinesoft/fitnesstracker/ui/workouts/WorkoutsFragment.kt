@@ -1,5 +1,6 @@
 package com.flinesoft.fitnesstracker.ui.workouts
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -54,6 +55,7 @@ class WorkoutsFragment : Fragment() {
         super.onResume()
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.workouts_overflow_menu, menu)
 

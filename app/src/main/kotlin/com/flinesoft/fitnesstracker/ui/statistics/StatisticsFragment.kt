@@ -1,5 +1,6 @@
 package com.flinesoft.fitnesstracker.ui.statistics
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +15,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsFragmentBinding
+import com.flinesoft.fitnesstracker.globals.APP_FEEDBACK_FORUM_URL
 import com.flinesoft.fitnesstracker.globals.AppPreferences
+import com.flinesoft.fitnesstracker.globals.DEFAULT_INPUT_VALUE_WAIST_CIRCUMFERENCE_IN_CENTIMETERS
+import com.flinesoft.fitnesstracker.globals.DEFAULT_INPUT_VALUE_WEIGHT_IN_KILOGRAMS
 import com.flinesoft.fitnesstracker.globals.DEFAULT_MODAL_PRESENTATION_DELAY
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.globals.extensions.showWaistCircumferencePickerDialog
@@ -61,6 +65,7 @@ class StatisticsFragment : Fragment() {
         }
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.statistics_overflow_menu, menu)
 
