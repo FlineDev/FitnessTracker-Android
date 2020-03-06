@@ -10,7 +10,7 @@
         android:background="?android:attr/selectableItemBackground"
         android:clipToPadding="false"
         android:paddingHorizontal="@dimen/spacingMedium"
-        android:paddingVertical="@dimen/spacingSmall"
+        android:paddingVertical="@dimen/spacingMedium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

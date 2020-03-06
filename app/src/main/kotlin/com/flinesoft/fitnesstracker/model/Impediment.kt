@@ -34,7 +34,7 @@ class Impediment(@ColumnInfo(defaultValue = "Impediment") var name: String, star
         get() = (endDate.millis - startDate.millis).milliseconds
 
     override fun betweenRecoverablesDurationRating(recoverableAbove: Recoverable): Recoverable.BetweenDurationRating {
-        return when ((recoverableAbove.endDate.millis - endDate.millis).milliseconds) {
+        return when (betweenRecoverablesDuration(recoverableAbove)) {
             in 0.hours..BETWEEN_WORKOUTS_POSITIVE_DAYS.days ->
                 Recoverable.BetweenDurationRating.POSITIVE
 

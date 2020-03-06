@@ -39,8 +39,8 @@ class EditWorkoutViewModel(application: Application) : AndroidViewModel(applicat
             }
         }
     }
-    var startDate = MutableLiveData<DateTime>(DateTime.now().minusMinutes(DEFAULT_WORKOUT_DURATION_MINUTES))
-    var endDate = MutableLiveData<DateTime>(DateTime.now())
+    var startDate = MutableLiveData(DateTime.now().minusMinutes(DEFAULT_WORKOUT_DURATION_MINUTES))
+    var endDate = MutableLiveData(DateTime.now())
 
     fun updateStartDate(year: Int, month: Int, day: Int) {
         startDate.value = startDate.value!!.withYear(year).withMonthOfYear(month).withDayOfMonth(day)

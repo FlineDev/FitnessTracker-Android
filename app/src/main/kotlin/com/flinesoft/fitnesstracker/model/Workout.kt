@@ -10,7 +10,6 @@ import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 import kotlin.time.days
 import kotlin.time.hours
-import kotlin.time.milliseconds
 
 @ExperimentalTime
 @Entity(tableName = "Workouts")
@@ -35,7 +34,7 @@ data class Workout(var type: Type, override var startDate: DateTime, override va
         }
 
     override fun betweenRecoverablesDurationRating(recoverableAbove: Recoverable): Recoverable.BetweenDurationRating {
-        return when ((recoverableAbove.endDate.millis - endDate.millis).milliseconds) {
+        return when (betweenRecoverablesDuration(recoverableAbove)) {
             in 0.hours..recoveryDuration.div(2) ->
                 if (recoverableAbove is Impediment) Recoverable.BetweenDurationRating.POSITIVE else Recoverable.BetweenDurationRating.NEGATIVE
 

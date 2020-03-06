@@ -28,8 +28,8 @@ object MovingAverageCalculator {
             minDataEntriesCount = minDataEntriesCount
         ) ?: return null
 
-        var sumOfWeights: Double = 0.0
-        var sumOfWeightedValues: Double = 0.0
+        var sumOfWeights = 0.0
+        var sumOfWeightedValues = 0.0
 
         for (dataEntry in filteredDataEntries) {
             val weight = weightAt(date = dataEntry.measureDate, fromDate = fromDate, toDate = date, maxWeightFactor = maxWeightFactor)
