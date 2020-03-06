@@ -17,5 +17,5 @@ data class WaistCircumferenceMeasurement(
         get() = circumferenceInCentimeters
 
     override val unit: MeasureUnit
-        get() = MeasureUnit.KILOGRAM
+        get() = MeasureUnit.CENTIMETER
 }

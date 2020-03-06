@@ -13,15 +13,29 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.ViewInteraction
-import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.action.ViewActions.clearText
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
+import androidx.test.espresso.action.ViewActions.scrollTo
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.PickerActions
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.isEnabled
+import androidx.test.espresso.matcher.ViewMatchers.withClassName
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withTagValue
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.espresso.util.HumanReadables
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.flinesoft.fitnesstracker.MainActivity
-import org.hamcrest.Matchers.*
+import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.allOf
+import org.hamcrest.Matchers.equalTo
+import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.ClassRule
@@ -68,7 +82,7 @@ open class EspressoTest {
     private fun launchApplication() {
         mainActivityTestRule.launchActivity(null)
         Thread.sleep(1_000)
-        mainActivityTestRule.activity?.let { it.sendBroadcast(Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) }
+        mainActivityTestRule.activity?.sendBroadcast(Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS))
         Thread.sleep(1_000)
     }
 
@@ -116,12 +130,12 @@ open class EspressoTest {
     fun checkViewsAreEnabled(@IdRes vararg ids: Int) = ids.forEach { onView(withId(it)).check(matches(isEnabled())) }
     fun checkViewsAreDisabled(@IdRes vararg ids: Int) = ids.forEach { onView(withId(it)).check(matches(not(isEnabled()))) }
 
-    fun checkViewIsEnabledInStringTag(@IdRes viewId: Int, @IdRes tagId: Int) = onView(
+    fun checkViewIsEnabledInStringTag(@IdRes viewId: Int, @IdRes tagId: Int): ViewInteraction = onView(
         allOf(withId(viewId), isDescendantOfA(withTagValue(`is`(getString(tagId)))))
     ).check(
         matches(isEnabled())
     )
-    fun checkViewIsDisabledInStringTag(@IdRes viewId: Int, @IdRes tagId: Int) = onView(
+    fun checkViewIsDisabledInStringTag(@IdRes viewId: Int, @IdRes tagId: Int): ViewInteraction = onView(
         allOf(withId(viewId), isDescendantOfA(withTagValue(`is`(getString(tagId)))))
     ).check(
         matches(not(isEnabled()))

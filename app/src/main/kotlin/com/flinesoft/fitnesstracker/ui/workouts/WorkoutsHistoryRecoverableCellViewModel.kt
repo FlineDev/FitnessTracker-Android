@@ -8,9 +8,8 @@ import androidx.lifecycle.AndroidViewModel
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.model.Recoverable
 import java.text.DateFormatSymbols
-import java.util.*
+import java.util.Locale
 import kotlin.time.ExperimentalTime
-import kotlin.time.milliseconds
 
 @ExperimentalTime
 abstract class WorkoutsHistoryRecoverableCellViewModel<T : Recoverable>(
@@ -32,7 +31,7 @@ abstract class WorkoutsHistoryRecoverableCellViewModel<T : Recoverable>(
     }
 
     fun betweenRecoverablesText(context: Context): String? = recoverableAbove?.let { recoverableAbove ->
-        val betweenRecoverablesDuration = (recoverableAbove.endDate.millis - recoverable.endDate.millis).milliseconds
+        val betweenRecoverablesDuration = recoverable.betweenRecoverablesDuration(recoverableAbove)
 
         if (betweenRecoverablesDuration.isPositive()) {
             betweenRecoverablesDuration.toComponents { days, hours, _, _, _ ->

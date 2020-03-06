@@ -1,7 +1,7 @@
 package com.flinesoft.fitnesstracker.globals.extensions
 
 import java.text.DateFormat
-import java.util.*
+import java.util.Locale
 
 object DateFormatExt {
     fun dateMedium(): DateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())

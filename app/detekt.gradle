@@ -1,8 +1,0 @@
-apply plugin: 'io.gitlab.arturbosch.detekt'
-
-detekt {
-    toolVersion = version_detekt
-    input = files("src/main/kotlin")
-    config = files("detekt.yml")
-    autoCorrect = true
-}

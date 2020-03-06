@@ -27,8 +27,8 @@ class EditImpedimentViewModel(application: Application) : AndroidViewModel(appli
         }
 
     var name = MutableLiveData<String>()
-    var startDate = MutableLiveData<DateTime>(DateTime.now())
-    var endDate = MutableLiveData<DateTime>(DateTime.now().plusDays(DEFAULT_IMPEDIMENT_DAYS))
+    var startDate = MutableLiveData(DateTime.now())
+    var endDate = MutableLiveData(DateTime.now().plusDays(DEFAULT_IMPEDIMENT_DAYS))
 
     fun updateStartDate(year: Int, month: Int, day: Int) {
         startDate.value = startDate.value!!.withYear(year).withMonthOfYear(month).withDayOfMonth(day)

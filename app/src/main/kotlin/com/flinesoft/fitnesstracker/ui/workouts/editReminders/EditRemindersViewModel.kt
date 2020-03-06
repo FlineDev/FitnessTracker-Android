@@ -13,8 +13,8 @@ import kotlin.time.minutes
 
 @ExperimentalTime
 class EditRemindersViewModel(application: Application) : AndroidViewModel(application) {
-    var remindersOn = MutableLiveData<Boolean>(AppPreferences.onDayReminderOn)
-    var remindersDayDelay = MutableLiveData<Duration>(AppPreferences.onDayReminderDelay)
+    var remindersOn = MutableLiveData(AppPreferences.onDayReminderOn)
+    var remindersDayDelay = MutableLiveData(AppPreferences.onDayReminderDelay)
 
     fun dateWithDayDelay(delay: Duration): DateTime = DateTime.now().withTimeAtStartOfDay().plusKt(delay)
     fun dateWithRemindersDayDelay(): DateTime = dateWithDayDelay(remindersDayDelay.value!!)

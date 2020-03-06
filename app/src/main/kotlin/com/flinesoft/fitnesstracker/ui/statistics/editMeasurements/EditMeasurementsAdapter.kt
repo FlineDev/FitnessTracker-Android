@@ -28,7 +28,7 @@ class EditMeasurementsAdapter<T : Measurement>(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val measurement = measurements.value!![position] as T
+        val measurement = measurements.value!![position]
         val viewModel = EditMeasurementsCellViewModel(application = application, measurement = measurement)
         (holder as MeasurementViewHolder).cell.updateViewModel(viewModel)
     }

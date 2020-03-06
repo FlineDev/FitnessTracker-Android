@@ -13,7 +13,7 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 @RunWith(AndroidJUnit4::class)
-class WeightMeasurementTest: PersistenceTest() {
+class WeightMeasurementTest : PersistenceTest() {
     @Test
     @Throws(Exception::class)
     fun runBasicCRUDOperations() = runBlocking {

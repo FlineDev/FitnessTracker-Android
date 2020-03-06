@@ -6,7 +6,11 @@ import androidx.room.PrimaryKey
 import com.flinesoft.fitnesstracker.globals.BETWEEN_WORKOUTS_POSITIVE_DAYS
 import com.flinesoft.fitnesstracker.globals.BETWEEN_WORKOUTS_POSITIVE_PLUS_WARNING_DAYS
 import org.joda.time.DateTime
-import kotlin.time.*
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
+import kotlin.time.days
+import kotlin.time.hours
+import kotlin.time.milliseconds
 
 @ExperimentalTime
 @Entity(tableName = "Impediments")
@@ -30,7 +34,7 @@ class Impediment(@ColumnInfo(defaultValue = "Impediment") var name: String, star
         get() = (endDate.millis - startDate.millis).milliseconds
 
     override fun betweenRecoverablesDurationRating(recoverableAbove: Recoverable): Recoverable.BetweenDurationRating {
-        return when ((recoverableAbove.endDate.millis - endDate.millis).milliseconds) {
+        return when (betweenRecoverablesDuration(recoverableAbove)) {
             in 0.hours..BETWEEN_WORKOUTS_POSITIVE_DAYS.days ->
                 Recoverable.BetweenDurationRating.POSITIVE
 

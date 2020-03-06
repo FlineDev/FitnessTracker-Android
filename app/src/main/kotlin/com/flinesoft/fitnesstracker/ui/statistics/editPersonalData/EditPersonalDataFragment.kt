@@ -66,7 +66,7 @@ class EditPersonalDataFragment : BackNavigationFragment() {
         }
 
         binding.genderSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onNothingSelected(parent: AdapterView<*>?) { /* no-op */ }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 parent?.getItemAtPosition(position).toString().let { viewModel.updateGender(it) }

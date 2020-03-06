@@ -13,10 +13,15 @@ import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.calculation.MovingAverageCalculator
 import com.flinesoft.fitnesstracker.databinding.StatisticsPageFragmentBinding
-import com.flinesoft.fitnesstracker.globals.*
+import com.flinesoft.fitnesstracker.globals.DownPopLevel
+import com.flinesoft.fitnesstracker.globals.MOVING_AVERAGE_DATE_ENTRY_STEP_DURATION
+import com.flinesoft.fitnesstracker.globals.MOVING_AVERAGE_MAX_WEIGHT_FACTOR
+import com.flinesoft.fitnesstracker.globals.MOVING_AVERAGE_MIN_DATA_ENTRIES
+import com.flinesoft.fitnesstracker.globals.MOVING_AVERAGE_TIME_INTERVAL_TO_CONSIDER
 import com.flinesoft.fitnesstracker.globals.extensions.durationSince
 import com.flinesoft.fitnesstracker.globals.extensions.minusKt
 import com.flinesoft.fitnesstracker.globals.extensions.withAlphaDownPoppedToLevel
+import com.flinesoft.fitnesstracker.globals.runIfDebugForTesting
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.LimitLine
@@ -148,7 +153,7 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
             val movingAverageDataEntries = dataEntries.map { MovingAverageCalculator.DataEntry(measureDate = it.measureDate, value = it.value) }
             val durationSinceFirstDataEntry = DateTime.now().durationSince(firstDataEntry.measureDate)
             val dataEntriesCount = (durationSinceFirstDataEntry / MOVING_AVERAGE_DATE_ENTRY_STEP_DURATION).toInt()
-            var entries: MutableList<StatisticsPageViewModel.DataEntry> = mutableListOf()
+            val entries: MutableList<StatisticsPageViewModel.DataEntry> = mutableListOf()
 
             for (step in 0..dataEntriesCount) {
                 val date = DateTime.now().minusKt(MOVING_AVERAGE_DATE_ENTRY_STEP_DURATION.times(dataEntriesCount - step))

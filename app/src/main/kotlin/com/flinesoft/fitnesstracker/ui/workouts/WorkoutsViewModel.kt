@@ -38,9 +38,11 @@ class WorkoutsViewModel(application: Application) : AndroidViewModel(application
     private fun mergedRecoverables(workouts: List<Workout>, impediments: List<Impediment>): List<Recoverable> =
             (workouts + impediments).sortedByDescending { it.endDate }
 
-    private fun suggestedNextWorkoutDate(): DateTime = latestRecoverables.value?.firstOrNull()?.let { latestRecoverable ->
-        latestRecoverable.recoveryEndDate.plusHours(24 - PREVENT_NEXT_DAY_WHEN_WORKOUT_WITHIN_HOURS)
-    } ?: DateTime.now()
+    private fun suggestedNextWorkoutDate(): DateTime {
+        return latestRecoverables.value?.firstOrNull()
+            ?.recoveryEndDate?.plusHours(24 - PREVENT_NEXT_DAY_WHEN_WORKOUT_WITHIN_HOURS)
+            ?: DateTime.now()
+    }
 
     fun updateReminders() {
         if (AppPreferences.onDayReminderOn) {

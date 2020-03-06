@@ -13,7 +13,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.EditWorkoutFragmentBinding
-import com.flinesoft.fitnesstracker.globals.extensions.*
+import com.flinesoft.fitnesstracker.globals.extensions.DateFormatExt
+import com.flinesoft.fitnesstracker.globals.extensions.database
+import com.flinesoft.fitnesstracker.globals.extensions.showDatePickerDialog
+import com.flinesoft.fitnesstracker.globals.extensions.showTimePickerDialog
+import com.flinesoft.fitnesstracker.globals.extensions.snack
 import com.flinesoft.fitnesstracker.ui.shared.BackNavigationFragment
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.MainScope
@@ -65,7 +69,7 @@ class EditWorkoutFragment : BackNavigationFragment() {
         binding.saveButton.setOnClickListener { saveButtonPressed() }
 
         binding.workoutTypeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onNothingSelected(parent: AdapterView<*>?) { /* no-op */ }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 parent?.getItemAtPosition(position).toString().let { viewModel.updateWorkoutType(it) }

@@ -7,7 +7,7 @@ import tools.fastlane.screengrab.Screengrab.screenshot
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
-class SampleDataTest: EspressoTest() {
+class SampleDataTest : EspressoTest() {
     override fun prepareContext() {
         TestContext.resetAll()
         TestContext.withSampleData()

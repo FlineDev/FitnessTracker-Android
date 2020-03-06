@@ -111,7 +111,6 @@ fabric.properties
 # Generated files
 bin/
 gen/
-out/
 release/
 
 # Gradle files
@@ -180,3 +179,7 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# direnv
+.envrc
+.codacy-coverage
