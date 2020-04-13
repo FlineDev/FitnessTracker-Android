@@ -2,7 +2,7 @@ package com.flinesoft.fitnesstracker.globals
 
 import com.flinesoft.fitnesstracker.BuildConfig
 
-// TODO: [2020-02-23] code using this methods should not be committed – a lint rules hould check that
+// TODO: [2020-02-23] code using this methods should not be committed – a lint rule should check that
 /** Use for trying out some code temporarily that you don't want to accidentally commit or ship. Will be automatically excluded from release builds. */
 fun runIfDebugTemporarily(closure: () -> Unit) = runIfDebug(closure)
 
