@@ -17,8 +17,6 @@ import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.databinding.StatisticsFragmentBinding
 import com.flinesoft.fitnesstracker.globals.APP_FEEDBACK_FORUM_URL
 import com.flinesoft.fitnesstracker.globals.AppPreferences
-import com.flinesoft.fitnesstracker.globals.DEFAULT_INPUT_VALUE_WAIST_CIRCUMFERENCE_IN_CENTIMETERS
-import com.flinesoft.fitnesstracker.globals.DEFAULT_INPUT_VALUE_WEIGHT_IN_KILOGRAMS
 import com.flinesoft.fitnesstracker.globals.DEFAULT_MODAL_PRESENTATION_DELAY
 import com.flinesoft.fitnesstracker.globals.extensions.database
 import com.flinesoft.fitnesstracker.globals.extensions.showWaistCircumferencePickerDialog
@@ -137,7 +135,7 @@ class StatisticsFragment : Fragment() {
     private fun showNewWaistCircumferenceForm() {
         showWaistCircumferencePickerDialog(
             title = getString(R.string.statistics_speed_dial_waist_circumference),
-            value = viewModel.latestWaistCircumferenceMeasurement()?.value ?: DEFAULT_INPUT_VALUE_WAIST_CIRCUMFERENCE_IN_CENTIMETERS,
+            value = viewModel.latestWaistCircumferenceMeasurement()?.value,
             valueChooseAction = {
                 saveNewWaistCircumference(it)
                 view?.snack(R.string.global_info_saved_successfully)
@@ -148,7 +146,7 @@ class StatisticsFragment : Fragment() {
     private fun showNewWeightForm() {
         showWeightPickerDialog(
             title = getString(R.string.statistics_speed_dial_weight),
-            value = viewModel.latestWeightMeasurement()?.value ?: DEFAULT_INPUT_VALUE_WEIGHT_IN_KILOGRAMS,
+            value = viewModel.latestWeightMeasurement()?.value,
             valueChooseAction = {
                 saveNewWeight(it)
                 view?.snack(R.string.global_info_saved_successfully)
