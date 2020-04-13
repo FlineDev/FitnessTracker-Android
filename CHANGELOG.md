@@ -21,7 +21,8 @@ If needed, pluralize to `Tasks`, `PRs` or `Authors` and list multiple entries se
 ### Added
 - None.
 ### Changed
-- None.
+- Automatically zoom in statistics to data of last 30 days, still being scrollable to view all data.  
+  PR: [#1](https://github.com/Flinesoft/FitnessTracker-Android/pull/1) | Author: [Cihat Gündüz](https://github.com/Jeehut)
 ### Deprecated
 - None.
 ### Removed

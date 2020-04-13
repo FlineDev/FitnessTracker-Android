@@ -33,7 +33,7 @@ class MovingAverageCalculatorTest {
             maxWeightFactor = 15.0
         )
         assertNotNull(movingAverage)
-        assertEquals(movingAverage!!, 173.555, 0.001)
+        assertEquals(movingAverage!!, 173.555, 0.01)
 
         val tooFewEntriesMovingAverage = MovingAverageCalculator.calculateMovingAverageAt(
             date = date,
@@ -56,7 +56,7 @@ class MovingAverageCalculatorTest {
             toDate = toDate,
             maxWeightFactor = 10.0
         )
-        assertEquals(1.0, minWeight, 0.001)
+        assertEquals(1.0, minWeight, 0.01)
 
         val thirdWeight = MovingAverageCalculator.weightAt(
             date = DateTime.now().minusKt(66.666.days),
@@ -64,7 +64,7 @@ class MovingAverageCalculatorTest {
             toDate = toDate,
             maxWeightFactor = 10.0
         )
-        assertEquals(4.0, thirdWeight, 0.001)
+        assertEquals(4.0, thirdWeight, 0.01)
 
         val halfWeight = MovingAverageCalculator.weightAt(
             date = DateTime.now().minusDays(50),
@@ -72,7 +72,7 @@ class MovingAverageCalculatorTest {
             toDate = toDate,
             maxWeightFactor = 10.0
         )
-        assertEquals(5.5, halfWeight, 0.001)
+        assertEquals(5.5, halfWeight, 0.01)
 
         val maxWeight = MovingAverageCalculator.weightAt(
             date = toDate,
@@ -80,7 +80,7 @@ class MovingAverageCalculatorTest {
             toDate = toDate,
             maxWeightFactor = 5.0
         )
-        assertEquals(5.0, maxWeight, 0.001)
+        assertEquals(5.0, maxWeight, 0.01)
     }
 
     @Test

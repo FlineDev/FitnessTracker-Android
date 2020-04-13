@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.calculation.MovingAverageCalculator
 import com.flinesoft.fitnesstracker.databinding.StatisticsPageFragmentBinding
+import com.flinesoft.fitnesstracker.globals.DEFAULT_MAX_STATISTIC_ENTRIES
 import com.flinesoft.fitnesstracker.globals.DownPopLevel
 import com.flinesoft.fitnesstracker.globals.MOVING_AVERAGE_DATE_ENTRY_STEP_DURATION
 import com.flinesoft.fitnesstracker.globals.MOVING_AVERAGE_MAX_WEIGHT_FACTOR
@@ -25,6 +26,7 @@ import com.flinesoft.fitnesstracker.globals.runIfDebugForTesting
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.LimitLine
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -96,6 +98,7 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
         binding.lineChart.axisLeft.setDrawGridLines(false)
         binding.lineChart.xAxis.textColor = ContextCompat.getColor(requireContext(), R.color.onBackground).withAlphaDownPoppedToLevel(DownPopLevel.LEVEL2)
         binding.lineChart.xAxis.setDrawGridLines(false)
+        binding.lineChart.xAxis.setDrawLimitLinesBehindData(true)
 
         binding.lineChart.xAxis.granularity = 1.days.inMilliseconds.toFloat()
         binding.lineChart.xAxis.valueFormatter = object : ValueFormatter() {
@@ -120,6 +123,7 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
         binding.lineChart.invalidate()
     }
 
+    // TODO: [cg_2020-04-13] simplify this method, moving to the latest entries automatically is too complicated
     private fun updateDataEntries(dataEntries: List<StatisticsPageViewModel.DataEntry>) {
         // NOTE: Workaround for this issue: https://github.com/PhilJay/MPAndroidChart/issues/2203
         xAxisOffsetMillis = dataEntries.firstOrNull()?.measureDate?.millis
@@ -127,12 +131,22 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
         measurementsDataEntriesSet.values = dataEntries.map { dataEntryToEntry(it) }
         movingAveragesDataEntriesSet.values = buildMovingAveragesDataEntries(dataEntries).map { dataEntryToEntry(it) }
 
-        if (dataEntries.isNotEmpty() && binding.lineChart.axisLeft.limitLines.isNotEmpty()) {
-            binding.lineChart.axisLeft.axisMinimum =
-                min(dataEntries.map { it.value.toFloat() }.min()!!, binding.lineChart.axisLeft.limitLines.map { it.limit }.min()!!)
+        if (dataEntries.isNotEmpty()) {
+            val limitLineYValues = binding.lineChart.axisLeft.limitLines.map { it.limit }
+            val dataEntryValues = dataEntries.map { it.value.toFloat() }
 
-            binding.lineChart.axisLeft.axisMaximum =
-                max(dataEntries.map { it.value.toFloat() }.max()!!, binding.lineChart.axisLeft.limitLines.map { it.limit }.max()!!)
+            binding.lineChart.axisLeft.axisMinimum = dataEntryValues.min()!!
+            binding.lineChart.axisLeft.axisMaximum = dataEntryValues.max()!!
+
+            // NOTE: fixes an issue where big numbers with decimals don't fit into the axis space
+            if (binding.lineChart.axisLeft.mAxisRange > 10) {
+                binding.lineChart.axisLeft.granularity = 1f
+            }
+
+            if (limitLineYValues.isNotEmpty()) {
+                binding.lineChart.axisLeft.axisMinimum = min(binding.lineChart.axisLeft.axisMinimum, limitLineYValues.min()!!)
+                binding.lineChart.axisLeft.axisMaximum = max(binding.lineChart.axisLeft.axisMaximum, limitLineYValues.max()!!)
+            }
 
             // add 10 percent of extra space to top and bottom of left axis range
             binding.lineChart.axisLeft.axisMinimum -= binding.lineChart.axisLeft.mAxisRange / 10f
@@ -143,6 +157,31 @@ class StatisticsPageFragment(val viewModel: StatisticsPageViewModel) : Fragment(
             binding.lineChart.data = LineData(styledMeasurementsDataSet(measurementsDataEntriesSet), styledMovingAveragesDataSet(movingAveragesDataEntriesSet))
         } else {
             binding.lineChart.clear()
+        }
+
+        if (dataEntries.size > DEFAULT_MAX_STATISTIC_ENTRIES) {
+            val visibleDataEntries = dataEntries.takeLast(DEFAULT_MAX_STATISTIC_ENTRIES)
+            val limitLineYValues = binding.lineChart.axisLeft.limitLines.map { it.limit }
+
+            var minVisibleYValue = visibleDataEntries.map { it.value.toFloat() }.min()!!
+            var maxVisibleYValue = visibleDataEntries.map { it.value.toFloat() }.max()!!
+
+            if (limitLineYValues.isNotEmpty()) {
+                minVisibleYValue = min(minVisibleYValue, limitLineYValues.min()!!)
+                maxVisibleYValue = max(maxVisibleYValue, limitLineYValues.max()!!)
+            }
+
+            val minVisibleXValue = dataEntryToEntry(visibleDataEntries.first()!!).x
+            val maxVisibleXValue = dataEntryToEntry(visibleDataEntries.last()!!).x
+
+            binding.lineChart.zoom(
+                binding.lineChart.xRange / (maxVisibleXValue - minVisibleXValue) * 0.9f,
+                binding.lineChart.axisLeft.mAxisRange / (maxVisibleYValue - minVisibleYValue) * 0.9f,
+                0f,
+                0f
+            )
+
+            binding.lineChart.moveViewTo(binding.lineChart.xChartMax, (minVisibleYValue + maxVisibleYValue) / 2, YAxis.AxisDependency.LEFT)
         }
 
         binding.lineChart.invalidate()
