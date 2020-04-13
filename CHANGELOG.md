@@ -28,7 +28,8 @@ If needed, pluralize to `Tasks`, `PRs` or `Authors` and list multiple entries se
 ### Removed
 - None.
 ### Fixed
-- None.
+- Choosing an initial weight or waist circumference is much faster now (10x / 2x) by just increasing the step size on initial value choosing.  
+  PR: [#2](https://github.com/Flinesoft/FitnessTracker-Android/pull/2) | Author: [Cihat Gündüz](https://github.com/Jeehut)  
 ### Security
 - None.
 
