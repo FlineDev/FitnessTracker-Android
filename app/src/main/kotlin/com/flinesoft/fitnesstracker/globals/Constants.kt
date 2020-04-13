@@ -47,6 +47,7 @@ const val DEFAULT_REMINDERS_ON: Boolean = true
 const val DEFAULT_REMINDER_DAYS_COUNT: Int = 7
 
 const val DEFAULT_MODAL_PRESENTATION_DELAY: Long = 300
+const val DEFAULT_MAX_STATISTIC_ENTRIES: Int = 30
 
 const val MOVING_AVERAGE_MIN_DATA_ENTRIES: Int = 3
 @ExperimentalTime
