@@ -9,6 +9,8 @@ import android.widget.NumberPicker
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import com.flinesoft.fitnesstracker.R
+import com.flinesoft.fitnesstracker.globals.DEFAULT_INPUT_VALUE_WAIST_CIRCUMFERENCE_IN_CENTIMETERS
+import com.flinesoft.fitnesstracker.globals.DEFAULT_INPUT_VALUE_WEIGHT_IN_KILOGRAMS
 import com.flinesoft.fitnesstracker.globals.HUMAN_WAIST_CIRCUMFERENCE_RANGE_IN_CENTIMETERS
 import com.flinesoft.fitnesstracker.globals.HUMAN_WEIGHT_RANGE_IN_KILOGRAMS
 import com.flinesoft.fitnesstracker.persistence.FitnessTrackerDatabase
@@ -76,23 +78,23 @@ fun Fragment.showNumberPickerDialog(
         .show()
 }
 
-fun Fragment.showWaistCircumferencePickerDialog(title: String, value: Double, valueChooseAction: (Double) -> Unit) {
+fun Fragment.showWaistCircumferencePickerDialog(title: String, value: Double?, valueChooseAction: (Double) -> Unit) {
     showNumberPickerDialog(
         title = title,
-        value = value,
+        value = value ?: DEFAULT_INPUT_VALUE_WAIST_CIRCUMFERENCE_IN_CENTIMETERS,
         range = HUMAN_WAIST_CIRCUMFERENCE_RANGE_IN_CENTIMETERS,
-        stepSize = 0.5,
+        stepSize = if (value != null) 0.5 else 1.0,
         formatToString = { MeasureFormatExt.short().doubleToString(it, MeasureUnit.CENTIMETER) },
         valueChooseAction = valueChooseAction
     )
 }
 
-fun Fragment.showWeightPickerDialog(title: String, value: Double, valueChooseAction: (Double) -> Unit) {
+fun Fragment.showWeightPickerDialog(title: String, value: Double?, valueChooseAction: (Double) -> Unit) {
     showNumberPickerDialog(
         title = title,
-        value = value,
+        value = value ?: DEFAULT_INPUT_VALUE_WEIGHT_IN_KILOGRAMS,
         range = HUMAN_WEIGHT_RANGE_IN_KILOGRAMS,
-        stepSize = 0.1,
+        stepSize = if (value != null) 0.1 else 1.0,
         formatToString = { MeasureFormatExt.short().doubleToString(it, MeasureUnit.KILOGRAM) },
         valueChooseAction = valueChooseAction
     )
