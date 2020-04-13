@@ -1,6 +1,6 @@
 package com.flinesoft.fitnesstracker.persistence
 
-import androidx.test.runner.AndroidJUnit4
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.flinesoft.fitnesstracker.helpers.extensions.awaitValue
 import com.flinesoft.fitnesstracker.model.Workout
 import kotlinx.coroutines.runBlocking
@@ -12,7 +12,7 @@ import org.junit.runner.RunWith
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
-@RunWith(AndroidJUnit4::class)
+@RunWith(AndroidJUnit4ClassRunner::class)
 class WorkoutTest : PersistenceTest() {
     @Test
     @Throws(Exception::class)

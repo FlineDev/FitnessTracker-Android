@@ -1,7 +1,7 @@
 package com.flinesoft.fitnesstracker
 
 import androidx.test.filters.LargeTest
-import androidx.test.runner.AndroidJUnit4
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.flinesoft.fitnesstracker.helpers.EspressoTest
 import com.flinesoft.fitnesstracker.helpers.TestContext
 import org.junit.Test
@@ -11,7 +11,7 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 @LargeTest
-@RunWith(AndroidJUnit4::class)
+@RunWith(AndroidJUnit4ClassRunner::class)
 class OnboardingTest : EspressoTest() {
     override fun prepareContext() {
         TestContext.resetAll()
