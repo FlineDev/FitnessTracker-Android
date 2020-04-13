@@ -12,8 +12,8 @@
              alt="Coverage"/>
     </a>
     <a href="https://github.com/Flinesoft/FitnessTracker-Android/releases">
-        <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg"
-             alt="Version: 1.0.0">
+        <img src="https://img.shields.io/badge/Version-1.0.1-blue.svg"
+             alt="Version: 1.0.1">
     </a>
     <a href="https://github.com/Flinesoft/FitnessTracker-Android/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-GPL--3.0-lightgrey.svg"

@@ -21,17 +21,23 @@ If needed, pluralize to `Tasks`, `PRs` or `Authors` and list multiple entries se
 ### Added
 - None.
 ### Changed
-- Automatically zoom in statistics to data of last 30 days, still being scrollable to view all data.  
-  PR: [#1](https://github.com/Flinesoft/FitnessTracker-Android/pull/1) | Author: [Cihat Gündüz](https://github.com/Jeehut)
+- None.
 ### Deprecated
 - None.
 ### Removed
 - None.
 ### Fixed
-- Choosing an initial weight or waist circumference is much faster now (10x / 2x) by just increasing the step size on initial value choosing.  
-  PR: [#2](https://github.com/Flinesoft/FitnessTracker-Android/pull/2) | Author: [Cihat Gündüz](https://github.com/Jeehut)  
+- None.
 ### Security
 - None.
+
+## [1.0.1] - 2020-04-13
+### Changed
+- Automatically zoom in statistics to data of last 30 days, still being scrollable to view all data.  
+  PR: [#1](https://github.com/Flinesoft/FitnessTracker-Android/pull/1) | Author: [Cihat Gündüz](https://github.com/Jeehut)
+### Fixed
+- Choosing an initial weight or waist circumference is much faster now (10x / 2x) by just increasing the step size on initial value choosing.  
+  PR: [#2](https://github.com/Flinesoft/FitnessTracker-Android/pull/2) | Author: [Cihat Gündüz](https://github.com/Jeehut)  
 
 ## [1.0.0] - 2020-03-06
 ### Added
