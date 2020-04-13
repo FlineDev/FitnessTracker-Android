@@ -1,14 +1,20 @@
 package com.flinesoft.fitnesstracker.helpers
 
 import android.content.Context
+import android.os.Build
 import androidx.test.platform.app.InstrumentationRegistry
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.AppPreferences
-import com.flinesoft.fitnesstracker.model.*
+import com.flinesoft.fitnesstracker.model.Gender
+import com.flinesoft.fitnesstracker.model.Impediment
+import com.flinesoft.fitnesstracker.model.WaistCircumferenceMeasurement
+import com.flinesoft.fitnesstracker.model.WeightMeasurement
+import com.flinesoft.fitnesstracker.model.Workout
 import com.flinesoft.fitnesstracker.persistence.FitnessTrackerDatabase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.joda.time.DateTime
+import kotlin.system.exitProcess
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -17,6 +23,7 @@ object TestContext {
     private lateinit var appContext: Context
 
     fun resetAll() {
+        requireEmulator()
         appContext = InstrumentationRegistry.getInstrumentation().targetContext
 
         AppPreferences.setup(appContext)
@@ -27,16 +34,19 @@ object TestContext {
     }
 
     fun skipOnboarding() {
+        requireEmulator()
         AppPreferences.onboardingCompleted = true
     }
 
     fun skipInitialPersonalDataModal() {
+        requireEmulator()
         AppPreferences.heightInCentimeters = 170
         AppPreferences.birthYear = 1985
         AppPreferences.gender = Gender.FEMALE
     }
 
     fun withSampleData() {
+        requireEmulator()
         skipOnboarding()
         skipInitialPersonalDataModal()
 
@@ -160,4 +170,18 @@ object TestContext {
         WaistCircumferenceMeasurement(92.0, DateTime.now().minusDays(1).withTime(6, 30, 0, 0)),
         WaistCircumferenceMeasurement(90.5, DateTime.now().minusDays(0).withTime(6, 30, 0, 0))
     )
+
+    private fun requireEmulator() {
+        if (!runningOnEmulator()) {
+            throw RuntimeException("Running UI tests on a real device will reset all data and is not allowed to prevent data loss.")
+            exitProcess(1)
+        }
+    }
+
+    private fun runningOnEmulator(): Boolean = Build.FINGERPRINT.contains("generic_")
+            || Build.MODEL.contains("Android SDK")
+            || Build.MODEL.contains("Emulator")
+            || Build.DEVICE.contains("generic_")
+            || Build.BOARD.contains("goldfish_")
+            || Build.PRODUCT.contains("sdk_")
 }
