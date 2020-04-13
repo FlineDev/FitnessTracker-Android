@@ -2,6 +2,7 @@ package com.flinesoft.fitnesstracker.helpers
 
 import android.content.Context
 import android.os.Build
+import android.provider.Settings
 import androidx.test.platform.app.InstrumentationRegistry
 import com.flinesoft.fitnesstracker.R
 import com.flinesoft.fitnesstracker.globals.AppPreferences
@@ -23,8 +24,8 @@ object TestContext {
     private lateinit var appContext: Context
 
     fun resetAll() {
-        requireEmulator()
         appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        requireEmulatorOrFirebaseTestLab()
 
         AppPreferences.setup(appContext)
         AppPreferences.clear()
@@ -34,19 +35,19 @@ object TestContext {
     }
 
     fun skipOnboarding() {
-        requireEmulator()
+        requireEmulatorOrFirebaseTestLab()
         AppPreferences.onboardingCompleted = true
     }
 
     fun skipInitialPersonalDataModal() {
-        requireEmulator()
+        requireEmulatorOrFirebaseTestLab()
         AppPreferences.heightInCentimeters = 170
         AppPreferences.birthYear = 1985
         AppPreferences.gender = Gender.FEMALE
     }
 
     fun withSampleData() {
-        requireEmulator()
+        requireEmulatorOrFirebaseTestLab()
         skipOnboarding()
         skipInitialPersonalDataModal()
 
@@ -291,8 +292,8 @@ object TestContext {
         WaistCircumferenceMeasurement(90.5, DateTime.now().minusDays(0).withTime(6, 30, 0, 0))
     )
 
-    private fun requireEmulator() {
-        if (!runningOnEmulator()) {
+    private fun requireEmulatorOrFirebaseTestLab() {
+        if (!runningOnEmulator() && !runningOnFirebaseTestLab()) {
             throw RuntimeException("Running UI tests on a real device will reset all data and is not allowed to prevent data loss.")
             exitProcess(1)
         }
@@ -304,4 +305,6 @@ object TestContext {
             || Build.DEVICE.contains("generic_")
             || Build.BOARD.contains("goldfish_")
             || Build.PRODUCT.contains("sdk_")
+
+    private fun runningOnFirebaseTestLab(): Boolean = Settings.System.getString(appContext.contentResolver, "firebase.test.lab") == "true"
 }
